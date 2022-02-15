@@ -1,0 +1,24 @@
+DEAULT ADMIN
+Email: admin@ccc.edu.ph
+Pass: Admin_123
+hashed: $2y$10$56Ved.uKoECtj.42nYAaqu63OS6n6w5jC46WwIzaktCpB2wFl8vdS
+
+RICO ACC
+Email: guinanaorico@gmail.com
+Pass: CCC_rics123
+hashed: $2y$10$PLXTlb7hJAUk95adnXxePOq1DZpfiU2m5Y7nHou/FFbfROYFI/Ime
+
+SIR WANIA
+EMAIL: michaelwania@ccc.edu.ph
+Pass: CCC_sirwania123
+hashed: $2y$10$NqlbQE87giWBcPRkIZpiZ.fRx0Y7E.1USdM2gQM4z23xVC3S37PPu
+
+RICO ACC 2 
+Email: reguinanao@ccc.edu.ph
+Pass: Rics_123
+hashed: $2y$10$gFJ23QO39mxDcMw6ELwJcucuKulZxNM6A6zVzsP0Zft8Ksvbzu5Mm
+
+John Doe
+Email: johndoe@gmail.com
+Pass: John_doe123
+hashed: $2y$10$7ItyvUwksfAUR1HMKWbD0OSLX3HqufiAzlNWmRGFu5Metn9/rOZpG
