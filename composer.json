@@ -1,0 +1,12 @@
+{
+    "name": "ccc/admission",
+    "authors": [
+        {
+            "name": "Rico Guinana",
+            "email": "guinanaorico@gmail.com"
+        }
+    ],
+    "require": {
+        "mikehaertl/php-pdftk": "^0.10.0"
+    }
+}
