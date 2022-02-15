@@ -1,0 +1,730 @@
+body{
+    background-color: #f0f2f5;
+    counter-reset: question-counter;
+    /* background-color: #042b70; */
+}
+b.number::before {
+    /* Increment "question-counter" by 1 */
+    counter-increment: question-counter;
+    content: counter(question-counter) ". ";
+}
+body.swal2-shown > [aria-hidden="true"] {
+    filter: blur(2px);
+}
+/* body > * {
+    transition: 0.1s filter linear;
+} */
+.table-darkblue{
+    background-color: #043e9f; 
+    color: white;
+    border-radius: 50px;
+}
+.colorDefinition {
+    background: #000000;
+    color : #FFFFFF;
+    border-color: #F0068E;
+    }
+    .size_xl {
+    font-size: 50px;
+    border-width: 8px;
+    border-radius: 6px;
+    }
+    .size_lg {
+    font-size: 40px;
+    border-width: 7px;
+    border-radius: 5px;
+    }
+    .size_md {
+    font-size: 30px;
+    border-width: 5px;
+    border-radius: 4px;
+    }
+    .size_sm {
+    font-size: 20px;
+    border-width: 3px;
+    border-radius: 3px;
+    }
+    .size_xs {
+    font-size: 15px;
+    border-width: 2px;
+    border-radius: 2px;
+    }
+.logo{
+    width:150px;
+    height: auto;
+    padding-top:60px;
+
+    -webkit-user-drag: none;
+    -khtml-user-drag: none;
+    -moz-user-drag: none;
+    -o-user-drag: none;
+}
+.schoolname{
+    color: #ffffff;
+    text-transform: uppercase;
+}
+.admissiontest{
+    color: #ffffff;
+    font-size: 50px;
+}
+.title{
+    padding-top: 60px;
+}
+.stud{
+    margin-top: 50px;
+}
+.form-pad {
+    margin-top:80px;
+    margin-bottom: 30px;
+}
+.rounded-0 {
+    border-radius: 0;
+}
+
+.table {
+    width: 100%;
+    margin-bottom: 0rem;
+    background-color: rgba(0,0,0,0);
+    text-indent: initial;
+    border-spacing: 2px;
+    border-color: grey;
+    font-size: 15px;
+    height: 10px;
+    vertical-align: middle;
+    }
+.card {
+    position: relative;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: #fff;
+    background-clip: border-box;
+    border: 1px solid rgba(0,0,0,.125);
+    border-radius: 5px;
+  
+}
+.login{
+    margin-top: 70px;
+}
+.allcard{
+    width: 500px;
+}
+.start{
+    border: none;
+    background-color: #fa9909;
+    width:100%;
+}
+.start:hover{
+    border: none;
+    background-color: #ff820e;
+    width:100%;
+    transition: .5s;
+}
+.header{
+    background-color: #ffffff;
+    padding: 50px;
+    border-radius: 10px; 
+    border-top: 15px solid #043e9f;
+    /* box-shadow: 3px 3px rgb(4 9 20 / 3%); */
+}
+.examset{
+    background-color: #ffffff;
+    padding: 0px;
+    overflow: auto;
+    border-radius: 10px;
+}
+.test{
+    background-color: #ffffff;
+    padding: 50px;
+    border-radius: 10px;
+    border-top: 15px solid #043e9f;
+    border-bottom: 15px solid #043e9f;
+}
+.result{
+    background-color: #ffffff;
+    padding: 50px;
+    border-radius: 10px;
+    border-top: 15px solid #043e9f;
+    border-bottom: 15px solid #043e9f;
+}
+div.question img{
+    -webkit-user-drag: none;
+    -khtml-user-drag: none;
+    -moz-user-drag: none;
+    -o-user-drag: none;
+}
+div.question{
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Old versions of Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome, Edge, Opera and Firefox */
+}
+.head{
+    margin-bottom: 80px;
+}
+img.ccclogo{
+    width: 120px;
+}
+
+.ccclogo, .ccctitle{
+    -webkit-user-drag: none;
+    -khtml-user-drag: none;
+    -moz-user-drag: none;
+    -o-user-drag: none;
+}
+.profile{
+    float: left;
+    width: 120px;
+    height: 120px;
+    overflow: hidden;
+    position: relative;
+    z-index: 10;
+    margin: 0 0 -20px;
+}
+
+img.photo{
+    width: 100px;
+    height: 100px;
+    border-radius: 50px;
+}
+div.name{
+    display: block;
+}
+div.right{
+    float: right;
+    display: flex;
+    flex-wrap: wrap;
+    align-content: center;
+}
+.appno{
+    text-align: left;
+}
+.examinee{
+    font-weight: 700;
+}
+.pl-4, .px-4 {
+    padding-left: 1.5rem !important;
+}
+.form-group {
+    margin-bottom: 1rem;
+}
+.btn-examtitle{
+    margin-top: 60px;
+    height: 150px;
+    flex: 1;
+}
+.btn-tests{
+    background: none;
+    border: none;
+    position: relative;
+    text-decoration: none;
+    flex: 1;
+    color: white;
+    cursor: pointer;
+}
+.btn-tests:hover{
+    color: rgb(255, 136, 0);
+}
+
+.btn-col{
+    border-radius: 10px;
+    margin-right: 20px;
+    display: flex;
+    flex: 1;
+    background-color: #011d4e;
+}
+.floating-timer{
+  
+    opacity: 0;
+    visibility: hidden;
+    transition: .5s;  
+}
+.floating-timer.show{
+    opacity: 1;
+    visibility: visible;
+    transition: .5s;  
+}
+.floating-timer .countdown-box{
+  padding: 10px;
+  width: 10%;
+  border-style: solid;
+  border-color: #0054e6;
+  border-radius: 10px;
+}
+.floating-timer p.countdown{
+    color: rgb(197, 38, 38);
+    font-weight: 700;
+    font-size: 20px;
+    margin: 0;
+}
+
+/*back to top button*/
+#btn-scrolltop {
+    text-decoration: none;
+    display: inline-block;
+    background-color: #043e9f;
+    width: 50px;
+    height: 50px;
+    text-align: center;
+    border-radius: 5px;
+    position: fixed !important;
+    bottom: 30px;
+    right: 30px;
+    transition: background-color .3s, 
+    opacity .5s, visibility .5s;
+    opacity: 0;
+    visibility: hidden;
+    z-index: 1000;
+  }
+  #btn-feedback {
+    cursor: pointer;
+    color: white;
+    text-decoration: none;
+    display: inline-block;
+    background-color: #043e9f;
+    width: 50px;
+    height: 50px;
+    text-align: center;
+    border-radius: 5px;
+    position: fixed !important;
+    bottom: 30px;
+    right: 30px;
+    transition: background-color .3s, 
+    opacity .5s, visibility .5s;
+    opacity: 0;
+    visibility: hidden;
+    z-index: 1000;
+  }
+  .feedback-box{
+    border-radius: 5px;
+    box-shadow: 0 0.46875rem 2.1875rem rgb(4 9 20 / 3%), 0 0.9375rem 1.40625rem rgb(4 9 20 / 3%), 0 0.25rem 0.53125rem rgb(4 9 20 / 5%), 0 0.125rem 0.1875rem rgb(4 9 20 / 3%);
+    background-color: #f7f7f7;
+    width: 280px;
+    height: 380px;
+    position: fixed !important;
+    bottom: 30px;
+    right: 100px;
+    z-index: 1000;
+  }
+  .feedback-header{
+    display: flex;
+    flex: 1;
+    color: white;
+    border-top-left-radius:5px;
+    border-top-right-radius:5px;
+    background-color: #043e9f;
+    padding: 10px;
+    cursor: pointer;
+  }
+  .feedback-header h6{
+    font-weight: 500;
+    display: flex;
+    flex: 1;
+    float: right;
+    margin: 0;
+  }
+  .close-feedback{
+    font-size: 1.5rem;
+    margin-right: auto;
+    cursor: pointer;
+    color: rgb(255, 255, 255);
+  }
+  .close-feedback:hover{
+    border-radius: 50px;
+    color: rgb(255, 255, 255);
+    background-color: rgb(22, 22, 22);
+    opacity: 0.5;
+    transition: 0.3s;
+  }
+  .feedback-content{
+      padding: 15px
+  }
+  .feedback-txt{
+    padding: 5px;
+    outline: none;
+    border-radius: 1px;
+    border: 1px solid #a5a5a5;
+    resize: none;
+    width: 100%;
+  }
+  /* #btn-scrolltop::after {
+    content: "\f077";
+    font-family: FontAwesome;
+    font-weight: normal;
+    font-style: normal;
+    font-size: 2em;
+    line-height: 50px;
+    color: #fff;
+  } */
+  .bxs-send{
+    font-size:2.2rem;
+    color:#0456e4;
+  }
+  .bxs-send:hover{
+    color:#043e9f;
+    transition: 0.3s;
+  }
+  #btn-send{
+    background-color: transparent;
+    background-repeat: no-repeat;
+    border: none;
+    cursor: pointer;
+    overflow: hidden;
+    outline: none;
+  }
+  .arrowUp{
+    font-weight: normal;
+    font-style: normal;
+    font-size: 3rem;
+    line-height: 50px;
+    color: #fff;
+  }
+  #fands{
+    font-weight: normal;
+    font-style: normal;
+    font-size: 2rem;
+    line-height: 50px;
+    color: #fff;
+  }
+  #btn-scrolltop:hover {
+    cursor: pointer;
+    background-color: rgb(5, 53, 136);
+    transition: .3s;
+  }
+  #btn-feedback:hover {
+    cursor: pointer;
+    background-color: rgb(5, 53, 136);
+    transition: .3s;
+  }
+  #btn-scrolltop:active {
+    background-color: #042b70;
+  }
+  #btn-feedback:active {
+    background-color: #042b70;
+  }
+  #btn-feedback.show {
+    opacity: 1;
+    visibility: visible;
+  }
+  #btn-scrolltop.show {
+    opacity: 1;
+    visibility: visible;
+  }
+  .test-card{
+      color: white;
+      border-radius: 5px;
+      background-image: linear-gradient(-40deg , #012158 0%, #042b70 100%) !important;
+  }
+
+  #instructions{
+      align-items: center;
+      width: 90%;
+      text-align: justify;
+  }
+  #read{
+    color: #dc3545;
+  }
+
+  
+/* width */
+::-webkit-scrollbar {
+    width: 5px;
+    height: 5px;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px rgb(197, 197, 197);
+    border-radius: 50px;
+  }
+  
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: #043e9f;
+    border-radius: 50px;
+  }
+
+  @media (max-width: 768px) {
+   
+    .floating-timer .countdown-box{
+      padding: 10px;
+      width: 25%;
+      border-style: solid;
+      border-color: #0054e6;
+      border-radius: 10px;
+    }
+    .floating-timer p.countdown{
+      color: rgb(197, 38, 38);
+      font-weight: 700;
+      font-size: 15px;
+      margin: 0;
+    }
+    #test-results{
+      font-size: 10px;
+    }
+    .tbl-results{
+      overflow: auto;
+    }
+    div.student-profile{
+      width: 50%
+    }
+    div.student-app{
+      width: 50%
+    }
+    #studentName{
+      font-size: 15px;
+    }
+    .name h5{
+      font-size: 12px;
+    }
+    .appno h4{
+      font-size: 18px;
+    }
+  }
+  
+  @media (max-width: 600px) {
+    .ccctitle{
+      margin-left: -30px;
+    }
+    #test-paper{
+      display: none;
+    }
+    .floating-timer .countdown-box{
+      padding: 10px;
+      width: 25%;
+      border-style: solid;
+      border-color: #0054e6;
+      border-radius: 10px;
+    }
+    .floating-timer p.countdown{
+      color: rgb(197, 38, 38);
+      font-weight: 700;
+      font-size: 15px;
+      margin: 0;
+    }
+    div.profile{
+      float: none;
+    }
+    div.name{
+      text-align: center;
+    }
+    #studentName{
+      font-size: 15px;
+    }
+    .name h5{
+      font-size: 12px;
+    }
+    .appno h4{
+      font-size: 16px;
+      text-align: center;
+    }
+    div.right{
+      float: none;
+      display: block;
+    }
+    #title{
+      font-size: 20px;
+    }
+    .instructions{
+      font-size: 12px;
+    }
+    div.question{
+      font-size: 12px;
+    }
+    div.box{
+      max-width: auto;
+    }
+    #test-results{
+      font-size: 10px;
+    }
+    .tbl-results{
+      overflow: auto;
+    }
+    .info-test{
+      font-size: 10px;
+    }
+    .feedback-box{
+      width: 250px;
+      right: 80px;
+    }
+    #btn-feedback{
+      right: 10px
+    }
+    div.student-profile{
+
+      width: 100%
+    }
+    div.student-app{
+
+      width: 100%
+    }
+    input#pass{
+      width: 100%;
+    }
+  }
+  
+  @media (max-width: 375px) {
+    .ccctitle{
+      margin-left: -30px;
+    }
+    #test-paper{
+      display: none;
+    }
+    .floating-timer .countdown-box{
+      padding: 10px;
+      width: 25%;
+      border-style: solid;
+      border-color: #0054e6;
+      border-radius: 10px;
+    }
+    .floating-timer p.countdown{
+      color: rgb(197, 38, 38);
+      font-weight: 700;
+      font-size: 15px;
+      margin: 0;
+    }
+    div.profile{
+      float: none;
+    }
+    div.name{
+      text-align: center;
+    }
+    #studentName{
+      font-size: 15px;
+    }
+    .name h5{
+      font-size: 12px;
+    }
+    .appno h4{
+      font-size: 16px;
+      text-align: center;
+    }
+    div.right{
+      float: none;
+      display: block;
+    }
+    #title{
+      font-size: 20px;
+    }
+    .instructions{
+      font-size: 12px;
+    }
+    div.question{
+      font-size: 12px;
+    }
+    div.box{
+      max-width: auto;
+    }
+    #test-results{
+      font-size: 10px;
+    }
+    .tbl-results{
+      overflow: auto;
+    }
+    .info-test{
+      font-size: 10px;
+    }
+    .feedback-box{
+      width: 250px;
+      right: 80px;
+    }
+    #btn-feedback{
+      right: 10px
+    }
+    div.student-profile{
+
+      width: 100%
+    }
+    div.student-app{
+
+      width: 100%
+    }
+    input#pass{
+      width: 100%;
+    }
+  }
+  @media only screen and (max-width: 320px) {
+    .ccctitle{
+      margin-left: -50px;
+    }
+    #test-paper{
+      display: none;
+    }
+    .floating-timer .countdown-box{
+      padding: 10px;
+      width: 25%;
+      border-style: solid;
+      border-color: #0054e6;
+      border-radius: 10px;
+    }
+    .floating-timer p.countdown{
+      color: rgb(197, 38, 38);
+      font-weight: 700;
+      font-size: 15px;
+      margin: 0;
+    }
+    div.profile{
+      float: none;
+    }
+    div.name{
+      text-align: center;
+    }
+    #studentName{
+      font-size: 15px;
+    }
+    .name h5{
+      font-size: 12px;
+    }
+    .appno h4{
+      font-size: 12px;
+      text-align: center;
+    }
+    div.right{
+      float: none;
+      display: block;
+    }
+    #title{
+      font-size: 20px;
+    }
+    .instructions{
+      font-size: 12px;
+    }
+    div.question{
+      font-size: 12px;
+    }
+    div.box{
+      max-width: auto;
+    }
+    #test-results{
+      font-size: 10px;
+    }
+    .tbl-results{
+      overflow: auto;
+    }
+    .info-test{
+      font-size: 10px;
+    }
+    .feedback-box{
+      width: 230px;
+      right: 80px;
+    }
+    #btn-feedback{
+      right: 10px
+    }
+    input#pass{
+      width: 100%;
+    }
+  }
+
+  #pass{
+    width: 35%; 
+    background-color: #043e9f; 
+    color: white
+  }
+  
