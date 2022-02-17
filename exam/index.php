@@ -1,130 +1,223 @@
-
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
-<style>
-* {
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+<?php
+if(!isset($_SESSION)){
+    session_start();
 }
+include_once("../connect.php");
+$con=connect();
 
-body {
-  padding: 0;
-  margin: 0;
-}
+// $sql = "SELECT * FROM `exam_tbl`";
+// $exam = $con->query($sql) or die ($con->error);
+if(isset($_POST['login'])){
+    $appNo=mysqli_real_escape_string($con, $_POST['application']);
 
-#notfound {
-  position: relative;
-  height: 100vh;
-  background:#002668;
-  color:white;
-}
-
-#notfound .notfound {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  -webkit-transform: translate(-50%, -50%);
-      -ms-transform: translate(-50%, -50%);
-          transform: translate(-50%, -50%);
-}
-
-.notfound {
-  max-width: 460px;
-  width: 100%;
-  text-align: center;
-  line-height: 1.4;
-}
-
-.notfound .notfound-404 {
-  position: relative;
-  width: 180px;
-  height: 180px;
-  margin: 0px auto 50px;
-}
-
-.notfound .notfound-404>div:first-child {
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 0;
-  bottom: 0;
-  background: #002668;
-  -webkit-transform: rotate(45deg);
-  -ms-transform: rotate(45deg);
-  transform: rotate(45deg);
-  border: 5px solid white;
-  border-radius: 5px;
-}
-
-.notfound .notfound-404>div:first-child:before {
-  content: '';
-  position: absolute;
-  left: -5px;
-  right: -5px;
-  bottom: -5px;
-  top: -5px;
-  -webkit-box-shadow: 0px 0px 0px 5px rgba(0, 0, 0, 0.1) inset;
-  box-shadow: 0px 0px 0px 5px rgba(0, 0, 0, 0.1) inset;
-  border-radius: 5px;
-}
-
-.notfound .notfound-404 h1 {
-  font-family: 'Cabin', sans-serif;
-  color: white;
-  font-weight: 700;
-  margin: 0;
-  font-size: 90px;
-  position: absolute;
-  top: 50%;
-  -webkit-transform: translate(-50%, -50%);
-      -ms-transform: translate(-50%, -50%);
-          transform: translate(-50%, -50%);
-  left: 50%;
-  text-align: center;
-  height: 40px;
-  line-height: 40px;
-}
-
-.notfound h2 {
-  font-family: 'Cabin', sans-serif;
-  font-size: 33px;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 7px;
-}
-
-.notfound p {
-  font-family: 'Cabin', sans-serif;
-  font-size: 16px;
-  color: white;
-  font-weight: 400;
-}
-
-
-
-.notfound a:hover {
-  background-color: #2c2c2c;
-}
-
+    $sql = "SELECT * FROM `student_info` WHERE `application_no`='$appNo'";
+	$stud = $con->query($sql) or die ($con->error);
+	$row = $stud->fetch_assoc();
+	$total = $stud->num_rows;
   
-</style>
+        if(($total>0)&&($row['verification']=="Verified")){
+            $_SESSION['appID']=$row['application_no'];
+            $_SESSION['f_name']=$row['first_name'];
+            $_SESSION['l_name']=$row['last_name'];
+            $_SESSION['studemail']=$row['stud_email'];
+            $_SESSION['verify']=$row['verification'];
+            $_SESSION['pic']=$row['picture'];
+            $appID=$_SESSION['appID'];
+            $name=$_SESSION['f_name'].' '.$_SESSION['l_name'];
+            date_default_timezone_set('Asia/Manila');
+            $time=date("h:i A");
+            
+            $sql="SELECT * FROM `student_exam_log` WHERE `application_no`='$appID'";
+            $attempt = $con->query($sql) or die ($con->error);
+            $status=$attempt->fetch_array();
+            
+            
+            if(empty($status['test_status'])){
+                // while($row = $exam->fetch_assoc()){
+                    // $examid=$row['exam_id'];
+                    $take=$con->query("INSERT INTO `student_exam_log`(`log_id`, `application_no`, `student_name`, `time_started`, `time_ended`, `test_status`) VALUES ('','$appID','$name','$time','','Yet to Take')");
+                // }
+                $_SESSION['message'] =
+                "<script>
+                Swal.fire({
+                    position: 'center',
+                    icon: 'success',
+                    width: '35rem',
+                    title: 'Hi $_SESSION[f_name], you have 3 hours to answer the exam.',
+                    confirmButtonText: 'Start Now',
+                    confirmButtonColor: '#043e9f',
+                    allowOutsideClick: () => {
+                        const popup = Swal.getPopup()
+                        popup.classList.remove('swal2-show')
+                        setTimeout(() => {
+                          popup.classList.add('animate__animated', 'animate__headShake')
+                        })
+                        setTimeout(() => {
+                          popup.classList.remove('animate__animated', 'animate__headShake')
+                        }, 500)
+                        return false
+                      }
+                    
+                }).then((result)=>{
+                    if(result.isConfirmed){
+                        window.location.href = 'examination.php';
+                    }
+                })
+                </script>";
+            } else if(!empty($status['test_status'])){
+                $_SESSION['message'] =
+                "<script>
+                Swal.fire({
+                position: 'center',
+                icon: 'error',
+                width: '35rem',
+                title: 'Sorry $row[first_name], you&#39;ve already taken the entrance examination',
+                confirmButtonColor: '#043e9f'
+                })
+                </script>";
+                unsetSession();
+            }
+
+        } 
+         else if(($total>0)&&($row['verification']=="Pending")){
+            $_SESSION['message'] ="
+            <script>
+            Swal.fire({
+            position: 'center',
+            icon: 'info',
+            width: '35rem',
+            title: 'Your application is pending',
+            text: 'Sorry $row[first_name], only verified students are allowed to take the admission test.',
+            confirmButtonColor: '#043e9f'
+            })
+            </script>";
+        }else if(($total>0)&&($row['verification']=="Declined")){
+            $_SESSION['message'] =
+            "<script>
+            Swal.fire({
+            position: 'center',
+            icon: 'error',
+            width: '35rem',
+            title: 'Your application was declined',
+            text: 'Sorry $row[first_name], only verified students are allowed to take the admission test.',
+            confirmButtonColor: '#043e9f'
+            })
+            </script>";
+        }else{
+            $_SESSION['message'] =
+            "<script>
+            Swal.fire({
+            position: 'center',
+            icon: 'error',
+            width: '35rem',
+            title: 'Invalid Application Number',
+            text: 'Please enter valid application number!',
+            focusConfirmColor: '#043e9f',
+            confirmButtonColor: '#043e9f',
+            })
+            </script>";
+        }
+
+        
+
+}
+if(isset($_SESSION['previous'])){
+    header('refresh: 0');
+    if(basename($_SERVER['PHP_SELF']!=$_SESSION['previous'])){
+        unsetSession();
+    }
+}
+function unsetSession(){
+    unset($_SESSION['appID']);
+    unset($_SESSION['f_name']);
+    unset($_SESSION['l_name']);
+    unset($_SESSION['studemail']);
+    unset($_SESSION['verify']);
+    unset($_SESSION['pic']);
+    unset($_SESSION['previous']);
+}
+?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admission Test | City College of Calamba</title>
+    <link rel="shortcut icon" type=image/x-icon href=../assets/imgs/logo/ccc.png>
+
+    <link rel="stylesheet" href="../assets/css/bootstrap-5.0.1-dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="../assets/css/fontawesome/css/all.css" />
+    <link rel="stylesheet" href="assets/css/exam.css">
+    <link rel="stylesheet" href="../assets/css/aos.css">
+    <link rel="stylesheet" href="../assets/css/animate.min.css">
+
+    <script src="assets/js/exam.js" defer></script>
+    <script src="assets/js/sweetalert.js"></script>
+    <script src="../assets/js/popper.js"></script>
+    <script src="../assets/js/bootstrap-notify.min.js" defer></script>
+    <script src="../assets/js/bootstrap.min.js" defer></script>
+    <script src="../assets/js/bootstrap.bundle.min.js" ></script>
+    <script src="../assets/js/jquery.min.js"></script>
+    <script src="../assets/js/placeholders.js"></script>
+    <script src="../assets/js/aos.js" defer></script>
 </head>
-<body>
-<div id="notfound">
-<div class="notfound">
-<div class="notfound-404">
-<div class="box"></div>
-<h1>404</h1>
-</div>
-<h2>Page not found</h2>
-<p>The page you are looking for might have been removed or is temporarily unavailable.</p>
-</div>
-</div>
+<body style="background-color: #042b70;">
+
+    <div class="main container">
+    <?php if(isset($_SESSION['message'])){?>
+        <?php 
+               echo $_SESSION['message'];
+               unset($_SESSION['message']);
+        ?>
+    <?php }?>
+        <div class="row">
+            <div class="col-md-5">
+                <center>
+                    <img src="../assets/imgs/logo/ccc.png" class="logo" alt="">
+                </center>
+                
+            </div>
+            <div class="col-md-7">
+                <center>
+                    <div class="title">
+                        <h1 class="admissiontest">Entrance Examination</h1>
+                        <h4 class="schoolname">City College of Calamba</h4>
+                    </div>
+                </center>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-5" >
+                <img src="assets/imgs/onlineexam.png" class="img-fluid stud" alt="">
+            </div>
+            <div class="col-md-7">
+                <div class="row">
+                    <div class="col-md-6 mx-auto allcard">
+                        <span class="anchor" id="formLogin"></span>
+                        <div class="card form-pad">
+                            <div class="card-header text-center">
+                                <h3 class="mb-0 text-uppercase">application number</h3>
+                            </div>
+                            <div class="card-body mt-5">
+                                <form class="form" role="form" autocomplete="on" method="post" action="" name="loginForm">
+                                    <div class="form-group">
+                                        <input type="password" name="application" placeholder="CCC-2021-XXXXX" class="form-control form-control-lg rounded-5" style="text-transform:uppercase" required="">
+                                    </div>
+                                    <div class="btn-start mt-5">
+                                        <button type="submit" class="btn btn-lg btn-primary start" id="start" value="START" name="login"><h3>TAKE TEST</h3></button> 
+                                    </div>
+                                </form> 
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
+<script src="../assets/js/aos.js"></script>
+<script>
+    AOS.init();
+</script>
 </html>
