@@ -4,7 +4,7 @@ if(!isset($_SESSION)){
 }
 include_once("../connect.php");
 $con=connect();
-
+$year=date('Y');
 // $sql = "SELECT * FROM `exam_tbl`";
 // $exam = $con->query($sql) or die ($con->error);
 if(isset($_POST['login'])){
@@ -209,7 +209,7 @@ function unsetSession(){
                                     </div>
                                     <div class="form-group">
                                         <label for="application"><b>Application Number:</b></label>
-                                        <input type="password" name="application" placeholder="CCC-2021-XXXXX" id="application" class="form-control form-control rounded-5" style="text-transform:uppercase" required="">
+                                        <input type="password" name="application" placeholder=<?php echo $year ?>-A-XXXX id="application" class="form-control form-control rounded-5" style="text-transform:uppercase" required="">
                                     </div>
                                     <div class="btn-start mt-4">
                                         <button type="submit" class="btn btn-lg btn-primary start" id="start" value="START" name="login"><h3>TAKE TEST</h3></button> 
