@@ -205,7 +205,7 @@ function unsetSession(){
                                 <form class="form" role="form" autocomplete="on" method="post" action="" name="loginForm">
                                     <div class="form-group">
                                         <label for="email"><b>Email:</b></label>
-                                        <input type="email" name="email" placeholder="example@domain.com" id="email" class="form-control form-control rounded-5" style="" required="">
+                                        <input type="email" name="email" placeholder="example@domain.com" id="email" class="form-control form-control rounded-5" required="">
                                     </div>
                                     <div class="form-group">
                                         <label for="application"><b>Application Number:</b></label>
