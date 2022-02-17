@@ -116,8 +116,8 @@
                       }
                     });
                     Swal.fire({
-                        title: 'Sorry, your attempts to leave the Admission Test exceeded 3 times ',
-                        html: 'Your answer have been submitted',
+                        title: 'You leave during the Admission Test.',
+                        html: 'Your answers have been submitted',
                         icon: 'error',
                         width: 600,
                         confirmButtonText: 'View result',

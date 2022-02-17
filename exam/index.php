@@ -46,7 +46,7 @@ if(isset($_POST['login'])){
                     width: '690',
                     footer: '<b>Do your best! Good luck!</b>',
                     title: '<b id=read>READ THE INSTRUCTIONS:</b>',
-                    html: '<center><div id=instructions><ol><li><b>Avoid refreshing the page.</b> Once you do, it will automatically exit.</li><br><li>You have <b>3 attempts</b> to leave the Admission Test.</li><br><li>The system will <b>auto submit</b> your answers when the timer is up.</li></ol></div></center>',
+                    html: '<center><div id=instructions><ol><li><b>Avoid refreshing the page.</b> Once you do, it will automatically exit.</li><br><li>Also avoid to use <b>alt+tab</b> keys or leave the Admission Test.</li><br><li>The system will <b>auto submit</b> your answers when the timer is up.</li></ol></div></center>',
                     confirmButtonText: 'Start Now',
                     confirmButtonColor: '#043e9f',
                     allowOutsideClick: () => {
