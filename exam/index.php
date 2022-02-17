@@ -9,8 +9,9 @@ $con=connect();
 // $exam = $con->query($sql) or die ($con->error);
 if(isset($_POST['login'])){
     $appNo=mysqli_real_escape_string($con, $_POST['application']);
+    $email=mysqli_real_escape_string($con, $_POST['email']);
 
-    $sql = "SELECT * FROM `student_info` WHERE `application_no`='$appNo'";
+    $sql = "SELECT * FROM `student_info` WHERE `stud_email`='$email' AND `application_no`='$appNo'";
 	$stud = $con->query($sql) or die ($con->error);
 	$row = $stud->fetch_assoc();
 	$total = $stud->num_rows;
@@ -24,6 +25,7 @@ if(isset($_POST['login'])){
             $_SESSION['pic']=$row['picture'];
             $appID=$_SESSION['appID'];
             $name=$_SESSION['f_name'].' '.$_SESSION['l_name'];
+            $studname=mysqli_real_escape_string($con, $name);
             date_default_timezone_set('Asia/Manila');
             $time=date("h:i A");
             
@@ -31,19 +33,20 @@ if(isset($_POST['login'])){
             $attempt = $con->query($sql) or die ($con->error);
             $status=$attempt->fetch_array();
             
-            
             if(empty($status['test_status'])){
                 // while($row = $exam->fetch_assoc()){
                     // $examid=$row['exam_id'];
-                    $take=$con->query("INSERT INTO `student_exam_log`(`log_id`, `application_no`, `student_name`, `time_started`, `time_ended`, `test_status`) VALUES ('','$appID','$name','$time','','Yet to Take')");
+                    $take=$con->query("INSERT INTO `student_exam_log`(`application_no`, `student_name`, `time_started`, `time_ended`, `test_status`, `leaveAttempt`) VALUES ('$appID','$studname','$time','','Yet to Take', 0)");
                 // }
                 $_SESSION['message'] =
                 "<script>
                 Swal.fire({
                     position: 'center',
                     icon: 'success',
-                    width: '35rem',
-                    title: 'Hi $_SESSION[f_name], you have 3 hours to answer the exam.',
+                    width: '690',
+                    footer: '<b>Do your best! Good luck!</b>',
+                    title: '<b id=read>READ THE INSTRUCTIONS:</b>',
+                    html: '<center><div id=instructions><ol><li><b>Avoid refreshing the page.</b> Once you do, it will automatically exit.</li><br><li>You have <b>3 attempts</b> to leave the Admission Test.</li><br><li>The system will <b>auto submit</b> your answers when the timer is up.</li></ol></div></center>',
                     confirmButtonText: 'Start Now',
                     confirmButtonColor: '#043e9f',
                     allowOutsideClick: () => {
@@ -71,7 +74,7 @@ if(isset($_POST['login'])){
                 position: 'center',
                 icon: 'error',
                 width: '35rem',
-                title: 'Sorry $row[first_name], you&#39;ve already taken the entrance examination',
+                title: 'You&#39;ve already taken the Entrance Examination',
                 confirmButtonColor: '#043e9f'
                 })
                 </script>";
@@ -87,7 +90,7 @@ if(isset($_POST['login'])){
             icon: 'info',
             width: '35rem',
             title: 'Your application is pending',
-            text: 'Sorry $row[first_name], only verified students are allowed to take the admission test.',
+            text: 'Only verified students are allowed to take the admission test.',
             confirmButtonColor: '#043e9f'
             })
             </script>";
@@ -99,7 +102,7 @@ if(isset($_POST['login'])){
             icon: 'error',
             width: '35rem',
             title: 'Your application was declined',
-            text: 'Sorry $row[first_name], only verified students are allowed to take the admission test.',
+            text: 'Only verified students are allowed to take the admission test.',
             confirmButtonColor: '#043e9f'
             })
             </script>";
@@ -110,8 +113,8 @@ if(isset($_POST['login'])){
             position: 'center',
             icon: 'error',
             width: '35rem',
-            title: 'Invalid Application Number',
-            text: 'Please enter valid application number!',
+            title: 'Invalid Log In Details',
+            text: 'Please enter valid details!',
             focusConfirmColor: '#043e9f',
             confirmButtonColor: '#043e9f',
             })
@@ -163,7 +166,6 @@ function unsetSession(){
     <script src="../assets/js/aos.js" defer></script>
 </head>
 <body style="background-color: #042b70;">
-
     <div class="main container">
     <?php if(isset($_SESSION['message'])){?>
         <?php 
@@ -188,23 +190,28 @@ function unsetSession(){
             </div>
         </div>
         <div class="row">
-            <div class="col-md-5" >
+            <div class="col-md-5" id="test-paper">
                 <img src="assets/imgs/onlineexam.png" class="img-fluid stud" alt="">
             </div>
             <div class="col-md-7">
-                <div class="row">
+                <div class="row"> 
                     <div class="col-md-6 mx-auto allcard">
                         <span class="anchor" id="formLogin"></span>
                         <div class="card form-pad">
                             <div class="card-header text-center">
-                                <h3 class="mb-0 text-uppercase">application number</h3>
+                                <h3 class="mb-0 text-uppercase">LOG IN ADMISSION TEST</h3>
                             </div>
-                            <div class="card-body mt-5">
+                            <div class="card-body p-5">
                                 <form class="form" role="form" autocomplete="on" method="post" action="" name="loginForm">
                                     <div class="form-group">
-                                        <input type="password" name="application" placeholder="CCC-2021-XXXXX" class="form-control form-control-lg rounded-5" style="text-transform:uppercase" required="">
+                                        <label for="email"><b>Email:</b></label>
+                                        <input type="email" name="email" placeholder="example@domain.com" id="email" class="form-control form-control rounded-5" style="" required="">
                                     </div>
-                                    <div class="btn-start mt-5">
+                                    <div class="form-group">
+                                        <label for="application"><b>Application Number:</b></label>
+                                        <input type="password" name="application" placeholder="CCC-2021-XXXXX" id="application" class="form-control form-control rounded-5" style="text-transform:uppercase" required="">
+                                    </div>
+                                    <div class="btn-start mt-4">
                                         <button type="submit" class="btn btn-lg btn-primary start" id="start" value="START" name="login"><h3>TAKE TEST</h3></button> 
                                     </div>
                                 </form> 
