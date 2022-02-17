@@ -4,7 +4,7 @@ if(!isset($_SESSION)){
 }
 include_once("../connect.php");
 $con=connect();
-
+$year=date('Y');
 // $sql = "SELECT * FROM `exam_tbl`";
 // $exam = $con->query($sql) or die ($con->error);
 if(isset($_POST['login'])){
@@ -46,7 +46,7 @@ if(isset($_POST['login'])){
                     width: '690',
                     footer: '<b>Do your best! Good luck!</b>',
                     title: '<b id=read>READ THE INSTRUCTIONS:</b>',
-                    html: '<center><div id=instructions><ol><li><b>Avoid refreshing the page.</b> Once you do, it will automatically exit.</li><br><li>You have <b>3 attempts</b> to leave the Admission Test.</li><br><li>The system will <b>auto submit</b> your answers when the timer is up.</li></ol></div></center>',
+                    html: '<center><div id=instructions><ol><li><b>Avoid refreshing the page.</b> Once you do, it will automatically exit.</li><br><li>Also avoid to use <b>alt+tab</b> keys or leave the Admission Test.</li><br><li>The system will <b>auto submit</b> your answers when the timer is up.</li></ol></div></center>',
                     confirmButtonText: 'Start Now',
                     confirmButtonColor: '#043e9f',
                     allowOutsideClick: () => {
@@ -209,7 +209,7 @@ function unsetSession(){
                                     </div>
                                     <div class="form-group">
                                         <label for="application"><b>Application Number:</b></label>
-                                        <input type="password" name="application" placeholder="CCC-2021-XXXXX" id="application" class="form-control form-control rounded-5" style="text-transform:uppercase" required="">
+                                        <input type="password" name="application" placeholder=<?php echo $year ?>-A-XXXX id="application" class="form-control form-control rounded-5" style="text-transform:uppercase" required="">
                                     </div>
                                     <div class="btn-start mt-4">
                                         <button type="submit" class="btn btn-lg btn-primary start" id="start" value="START" name="login"><h3>TAKE TEST</h3></button> 
