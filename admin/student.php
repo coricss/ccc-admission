@@ -1040,7 +1040,7 @@ if(isset($_SESSION['ID'])&&($_SESSION['email'])){
                                 <small class="text-danger" id="indigencyerror"></small>
                             </div>
                             <div class="col-md-6 col-sm-12 mb-3">
-                                <label for="votecert"><b>Voter's Certification of Parent/Guardian:</b><i class="req">*</i></label><br>
+                                <label for="votecert"><b>Voter's Certification of Student/Parent/Guardian:</b><i class="req">*</i></label><br>
                                 <input type="file" name="votercert" id="votecert" class="inputfile form-control" accept=".pdf, .png, .jpg" required>
                                 <small class="text-danger" id="votecerterror"></small>
                             </div>
