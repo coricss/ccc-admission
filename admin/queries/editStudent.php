@@ -27,6 +27,10 @@ $org_involve=$org->fetch_array();
 $sql = "SELECT * FROM `personal_admiration` WHERE `student_id`=$id";
 $person=$con->query($sql) or die ($con->error);
 $personalAdmire=$person->fetch_array();
+
+$sql = "SELECT * FROM `requirements` WHERE `student_id`=$id";
+$requirements=$con->query($sql) or die ($con->error);
+$req=$requirements->fetch_array();
 date_default_timezone_set('Asia/Manila');
 
 $gr=$studInfo["groups"];
@@ -72,6 +76,33 @@ if($gr=="N/A"){
     $('#workingstud1').prop('disabled', true);
     
     </script>";
+}
+
+if($educBG['als_cert']!=""){
+    $display="inline-block";
+}else{
+    $display="none";
+}
+if($req['vaxcard']!=""){
+    $display2="inline-block";
+}else{
+    $display2="none";
+}
+if(($req['g11card']!="")&&($req['g12card']!="")){
+    $g11Dis="inline-block";
+    $g12Dis="inline-block";
+}else{
+    $g11Dis="none";
+    $g12Dis="none";
+}
+
+if(($req['torpg1']!="")&&($req['torpg2']!="")){
+    $torpg1Dis="inline-block";
+    $torpg2Dis="inline-block";
+}else {
+    $torpg1Dis="none";
+    $torpg2Dis="none";
+
 }
 
 echo '
@@ -471,9 +502,19 @@ echo '
                         <label for="als_name2"><b>Alternative Learning System (ALS):</b></label>
                         <input type="text" name="als_name2" id=als_name2 value="'.$educBG["als_name"].'" placeholder="School Name" class="form-control">
                     </div>
-                    <div class="col-md-6 col-sm-12">
+                    <div class="col-md-3 col-sm-12">
                         <label for="als_address2">Address</label>
                         <input type="text" name="als_address2" id=als_address2 value="'.$educBG["als_address"].'" placeholder="Address" class="form-control">
+                    </div>
+                    <div class="col-md-3 col-sm-12">
+                        <label for="als_cert">ALS Certification: 
+                            <a href="../requirements/AlsCertificates/'.$educBG["als_cert"].'" target="_blank">
+                                <small style="display: '.$display.'"><i class="bx bx-paperclip bx-rotate-270" style="font-size: 15px"></i>Current ALS Certification
+                                </small>
+                            </a>  
+                        </label>
+                        <input type="file" value="'.$educBG["als_cert"].'" name="als_cert2" id="als_cert2" placeholder="" class="form-control">
+                        <small class="text-danger" id="alscerterror2"></small>
                     </div>
                 </div>
                 <hr>
@@ -827,7 +868,112 @@ echo '
                         <textarea name="dream2" id="dream2" value="'.$personalAdmire["goals"].'" placeholder="What are your dreams and goals" class="form-control forms" required>'.$personalAdmire["goals"].'</textarea>
                     </div>
                 </div> 
-
+                <hr>
+                <h4 class="mt-3 mb-3">Requirements</h4>
+                <div id="reportcard2">
+                    <div class="row mb-3">
+                        <div class="col-md-6 col-sm-12 mb-3">
+                            <label for="g11cardfile2"><b>Grade 11 Report Card:</b><i class="req">*</i>
+                                <a href="../requirements/Grade11Cards/'.$req["g12card"].'" target="_blank">
+                                    <small style="display: '.$g11Dis.'"><i class="bx bx-paperclip bx-rotate-270" style="font-size: 15px"></i>Current G11 Report Card
+                                    </small>
+                                </a>  
+                            </label>
+                            <input type="file" name="g11card2" id="g11cardfile2" class="inputfile form-control" accept=".pdf, .png, .jpg">
+                            <small class="text-danger" id="g11error2"></small>
+                        </div>
+                        <div class="col-md-6 col-sm-12">
+                            <label for="g12cardfile2"><b>Grade 12 Report Card:</b><i class="req">*</i>
+                                <a href="../requirements/Grade12Cards/'.$req["g12card"].'" target="_blank">
+                                    <small style="display: '.$g12Dis.'"><i class="bx bx-paperclip bx-rotate-270" style="font-size: 15px"></i>Current G12 Report Card
+                                    </small>
+                                </a>  
+                            </label>
+                            <input type="file" name="g12card2" id="g12cardfile2" class="inputfile form-control" accept=".pdf, .png, .jpg">
+                            <small class="text-danger" id="g12error2"></small>
+                        </div>   
+                    </div> 
+                </div> 
+                <div id="transcript">
+                    <div class="row mb-3">
+                        <div class="col-md-6 col-sm-12 mb-3">
+                            <label for="torpg12"><b>Transcript of Records (Page 1):</b><i class="req">*</i>
+                                <a href="../requirements/TOR_Page1/'.$req["torpg1"].'" target="_blank">
+                                    <small style="display: '.$torpg1Dis.'"><i class="bx bx-paperclip bx-rotate-270" style="font-size: 15px"></i>Current ToR 1 Card
+                                    </small>
+                                </a>  
+                            </label>
+                            <input type="file" name="torpg12" id="torpg12" class="inputfile form-control" accept=".pdf, .png, .jpg">
+                            <small class="text-danger" id="torpg1error2"></small>
+                        </div>
+                        <div class="col-md-6 col-sm-12">
+                            <label for="torpg22"><b>Transcript of Records (Page 2):</b><i class="req">*</i>
+                                <a href="../requirements/TOR_Page2/'.$req["torpg2"].'" target="_blank">
+                                    <small style="display: '.$torpg2Dis.'"><i class="bx bx-paperclip bx-rotate-270" style="font-size: 15px"></i>Current ToR 2 Card
+                                    </small>
+                                </a>  
+                            </label>
+                            <input type="file" name="torpg22" id="torpg22" class="inputfile form-control" accept=".pdf, .png, .jpg">
+                            <small class="text-danger" id="torpg2error2"></small>
+                        </div>
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <div class="col-md-6 col-sm-12 mb-3">
+                        <label for="goodmoral"><b>Good Moral Certification:</b><i class="req">*</i>
+                            <a href="../requirements/Good Morals/'.$req["goodmoral"].'" target="_blank">
+                                <small><i class="bx bx-paperclip bx-rotate-270" style="font-size: 15px"></i>Current Good Moral File
+                                </small>
+                            </a>  
+                        </label><br>
+                        <input type="file" name="goodmoral2" id="goodmoral2" class="inputfile form-control" accept=".pdf, .png, .jpg">
+                        <small class="text-danger" id="goodmoralerror2"></small>
+                    </div>
+                    <div class="col-md-6 col-sm-12">
+                        <label for="birthcert"><b>Birth Certificate:</b><i class="req">*</i>
+                            <a href="../requirements/BirthCertificates/'.$req["birthcert"].'" target="_blank">
+                                <small><i class="bx bx-paperclip bx-rotate-270" style="font-size: 15px"></i>Current Birth Certicate
+                                </small>
+                            </a>  
+                        </label><br>
+                        <input type="file" name="birthcert2" id="birthcert2" class="inputfile form-control" accept=".pdf, .png, .jpg">
+                        <small class="text-danger" id="birthcerterror2"></small>
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <div class="col-md-6 col-sm-12 mb-3">
+                        <label for="indigency"><b>Certificate of Residency:</b><i class="req">*</i>
+                            <a href="../requirements/Indigency/'.$req["indigency"].'" target="_blank">
+                                <small><i class="bx bx-paperclip bx-rotate-270" style="font-size: 15px"></i>Current Certificate of Residency
+                                </small>
+                            </a>  
+                        </label><br>
+                        <input type="file" name="indigency2" id="indigency2" class="inputfile form-control" accept=".pdf, .png, .jpg">
+                        <small class="text-danger" id="indigencyerror2"></small>
+                    </div>
+                    <div class="col-md-6 col-sm-12 mb-3">
+                        <label for="votecert"><b>Voters Certification of Student/Parent/Guardian:</b><i class="req">*</i>
+                            <a href="../requirements/Voter_Certificates/'.$req["voters"].'" target="_blank">
+                                <small"><i class="bx bx-paperclip bx-rotate-270" style="font-size: 15px"></i>Current Voters Certificate
+                                </small>
+                            </a>  
+                        </label><br>
+                        <input type="file" name="votercert2" id="votecert2" class="inputfile form-control" accept=".pdf, .png, .jpg">
+                        <small class="text-danger" id="votecerterror2"></small>
+                    </div>
+                </div>
+                <div class="text-center row mb-3">
+                    <div class=" col-md-12 col-sm-12 mb-3">
+                        <label for="vaxcard"><b>Copy of Vaccination Card:</b>
+                            <a href="../requirements/VaccinationCards/'.$req["vaxcard"].'" target="_blank">
+                                <small style="display: '.$display2.'"><i class="bx bx-paperclip bx-rotate-270" style="font-size: 15px"></i>Current Vaccination Card
+                                </small>
+                            </a> 
+                        </label><br>
+                        <input type="file" name="vaxcard2" id="vaxcard2" class="inputfile form-control" accept=".pdf, .png, .jpg">
+                        <small class="text-danger" id="vaxcarderror2"></small>
+                    </div>
+                </div>
         </div>
     </div>
     <center>
@@ -837,9 +983,10 @@ echo '
 
 ';
 
-echo "
+?>
 <script>
-    (function () {
+
+(function () {
         'use strict'
         var forms = document.querySelectorAll('#editStudentForm')
         Array.prototype.slice.call(forms)
@@ -851,26 +998,559 @@ echo "
                           event.preventDefault()
                           event.stopPropagation()
                           imgFormat();
+                          alsFormat2();
+                          g11Format();
+                          g12Format();
+                          torpg1Format();
+                          torpg2Format();
+                          goodmoralFormat();
+                          birthcertFormat();
+                          indigencyFormat2();
+                          votecertFormat2();
+                          vaxcardFormat2();
+
                       }else{
-                          if(imgFormat()){
+                            if(imgFormat()){
   
-                          }else{
-                        		  $('#btn-editStud').prop('type', 'submit');	
-                        	  }
+                            }else if(alsFormat2()){
+
+                            }else if(g11Format()){
+
+                            }else if(g12Format()){
+
+                            }else if(torpg1Format()){
+
+                            }else if(torpg2Format()){
+
+                            }else if(goodmoralFormat()){
+
+                            }else if(birthcertFormat()){
+
+                            }else if(indigencyFormat2()){
+
+                            }else if(votecertFormat2()){
+
+                            }else if(vaxcardFormat2()){
+
+                            }else{
+                        	    $('#btn-editStud').prop('type', 'submit');	
+                            }
                         // $('#btn-editStud').prop('type', 'submit');	
                         }
         
                       form.classList.add('was-validated')
                       })
                 })
-        })()
+})()
 
-        
-</script>
-";
+function alsFormat2(){
+    if($('#als_cert2').val()!=""){
+        var ext = ['jpg', 'pdf', 'png', ''];
+        if(($.inArray($('#als_cert2').val().split('.').pop().toLowerCase(), ext) == -1)){
+            $(function() {
+                Swal.fire({
+                    title: 'ALS Certificate must be in JPG, PNG and PDF format',
+                    text: 'Please upload different file format!',
+                    icon: 'error',
+                    showConfirmButton: false,
+                    timer: 2000,
+                    allowOutsideClick: () => {
+                    const popup = Swal.getPopup()
+                    popup.classList.remove('swal2-show')
+                    setTimeout(() => {
+                        popup.classList.add('animate__animated', 'animate__headShake')
+                    })
+                    setTimeout(() => {
+                        popup.classList.remove('animate__animated', 'animate__headShake')
+                    }, 500)
+                    return false
+                    }
+                });
+            });
+            return true;
+        }else if(alscertfile2()){
+            return true;
+        }else{
+            return false;
+        }
+    }else{
+        $('#alscerterror2').html('');
+        return false;
+    }
+}
+function alscertfile2(){
+    var alscert = $('#als_cert2')[0].files[0].size;
+    if(alscert>5000000){
+        $('#alscerterror2').html('File is greater than 5MB');
+        return true;
+    }else{
+        $('#alscerterror2').html('');
+        return false;
+    }
+}
+function vaxcardFormat2(){
+    if($('#vaxcard2').val()!=""){
+        var ext = ['jpg', 'pdf', 'png', ''];
+        if(($.inArray($('#vaxcard2').val().split('.').pop().toLowerCase(), ext) == -1)){
+            $(function() {
+                Swal.fire({
+                    title: 'Vaccination Card must be in JPG, PNG and PDF format',
+                    text: 'Please upload different file format!',
+                    icon: 'error',
+                    showConfirmButton: false,
+                    timer: 2000,
+                    allowOutsideClick: () => {
+                    const popup = Swal.getPopup()
+                    popup.classList.remove('swal2-show')
+                    setTimeout(() => {
+                        popup.classList.add('animate__animated', 'animate__headShake')
+                    })
+                    setTimeout(() => {
+                        popup.classList.remove('animate__animated', 'animate__headShake')
+                    }, 500)
+                    return false
+                    }
+                });
+            });
+            return true;
+        }else if(vaxcardfile2()){
+            return true;
+        }else{
+            return false;
+        }
+    }else{
+        $('#vaxcarderror2').html('');
+        return false;
+    }
+}
+function vaxcardfile2(){
+    var votecert = $('#vaxcard2')[0].files[0].size;
+    if(votecert>5000000){
+        $('#vaxcarderror2').html('File is greater than 5MB');
+        return true;
+    }else{
+        $('#vaxcarderror2').html('');
+        return false;
+    }
+}
+function g11Format(){
+    if($('#g11cardfile2').val()!=""){
+        var ext = ['jpg', 'pdf', 'png', ''];
+        if(($.inArray($('#g11cardfile2').val().split('.').pop().toLowerCase(), ext) == -1)){
+            $(function() {
+                Swal.fire({
+                    title: 'G11 Card must be in JPG, PNG and PDF format',
+                    text: 'Please upload different file format!',
+                    icon: 'error',
+                    showConfirmButton: false,
+                    timer: 2000,
+                    allowOutsideClick: () => {
+                    const popup = Swal.getPopup()
+                    popup.classList.remove('swal2-show')
+                    setTimeout(() => {
+                        popup.classList.add('animate__animated', 'animate__headShake')
+                    })
+                    setTimeout(() => {
+                        popup.classList.remove('animate__animated', 'animate__headShake')
+                    }, 500)
+                    return false
+                    }
+                });
+            });
+            return true;
+        }else if(g11cardfileRestriction2()){
+            return true;
+        }else{
+            return false;
+        }
+    }else{
+        $('#g11error2').html('');
+        return false;
+    }
+}
+function g11cardfileRestriction2(){
+    var g11cardfile = $('#g11cardfile2')[0].files[0].size;
+    if(g11cardfile>5000000){
+        $('#g11error2').html('File is greater than 5MB');
+        return true;
+    }else{
+        $('#g11error2').html('');
+        return false;
+    }
+}
 
-?>
-<script>
+function g12Format(){
+    if($('#g12cardfile2').val()!=""){
+        var ext = ['jpg', 'pdf', 'png', ''];
+        if(($.inArray($('#g12cardfile2').val().split('.').pop().toLowerCase(), ext) == -1)){
+            $(function() {
+                Swal.fire({
+                    title: 'G12 Card must be in JPG, PNG and PDF format',
+                    text: 'Please upload different file format!',
+                    icon: 'error',
+                    showConfirmButton: false,
+                    timer: 2000,
+                    allowOutsideClick: () => {
+                    const popup = Swal.getPopup()
+                    popup.classList.remove('swal2-show')
+                    setTimeout(() => {
+                        popup.classList.add('animate__animated', 'animate__headShake')
+                    })
+                    setTimeout(() => {
+                        popup.classList.remove('animate__animated', 'animate__headShake')
+                    }, 500)
+                    return false
+                    }
+                });
+            });
+            return true;
+        }else if(g12cardfileRestriction2()){
+            return true;
+        }else{
+            return false;
+        }
+    }else{
+        $('#g12error2').html('');
+        return false;
+    }
+}
+function g12cardfileRestriction2(){
+    var g12cardfile = $('#g12cardfile2')[0].files[0].size;
+    if(g12cardfile>5000000){
+        $('#g12error2').html('File is greater than 5MB');
+        return true;
+    }else{
+        $('#g12error2').html('');
+        return false;
+    }
+}
+
+function torpg1Format(){
+    if($('#torpg12').val()!=""){
+        var ext = ['jpg', 'pdf', 'png', ''];
+        if(($.inArray($('#torpg12').val().split('.').pop().toLowerCase(), ext) == -1)){
+            $(function() {
+                Swal.fire({
+                    title: 'Transcript of Record 1 must be in JPG, PNG and PDF format',
+                    text: 'Please upload different file format!',
+                    icon: 'error',
+                    showConfirmButton: false,
+                    timer: 2000,
+                    allowOutsideClick: () => {
+                    const popup = Swal.getPopup()
+                    popup.classList.remove('swal2-show')
+                    setTimeout(() => {
+                        popup.classList.add('animate__animated', 'animate__headShake')
+                    })
+                    setTimeout(() => {
+                        popup.classList.remove('animate__animated', 'animate__headShake')
+                    }, 500)
+                    return false
+                    }
+                });
+            });
+            return true;
+        }else if(torpg1file2()){
+            return true;
+        }else{
+            return false;
+        }
+    }else{
+        $('#torpg1error2').html('');
+        return false;
+    }
+}
+function torpg1file2(){
+    var torpg1 = $('#torpg12')[0].files[0].size;
+    if(torpg1>5000000){
+        $('#torpg1error2').html('File is greater than 5MB');
+        return true;
+    }else{
+        $('#torpg1error2').html('');
+        return false;
+    }
+}
+
+function torpg2Format(){
+    if($('#torpg22').val()!=""){
+        var ext = ['jpg', 'pdf', 'png', ''];
+        if(($.inArray($('#torpg22').val().split('.').pop().toLowerCase(), ext) == -1)){
+            $(function() {
+                Swal.fire({
+                    title: 'Transcript of Record 2 must be in JPG, PNG and PDF format',
+                    text: 'Please upload different file format!',
+                    icon: 'error',
+                    showConfirmButton: false,
+                    timer: 2000,
+                    allowOutsideClick: () => {
+                    const popup = Swal.getPopup()
+                    popup.classList.remove('swal2-show')
+                    setTimeout(() => {
+                        popup.classList.add('animate__animated', 'animate__headShake')
+                    })
+                    setTimeout(() => {
+                        popup.classList.remove('animate__animated', 'animate__headShake')
+                    }, 500)
+                    return false
+                    }
+                });
+            });
+            return true;
+        }else if(torpg2file2()){
+            return true;
+        }else{
+            return false;
+        }
+    }else{
+        $('#torpg2error2').html('');
+        return false;
+    }
+}
+function torpg2file2(){
+    var torpg2 = $('#torpg22')[0].files[0].size;
+    if(torpg2>5000000){
+        $('#torpg2error2').html('File is greater than 5MB');
+        return true;
+    }else{
+        $('#torpg2error2').html('');
+        return false;
+    }
+}
+
+function goodmoralFormat(){
+    if($('#goodmoral2').val()!=""){
+        var ext = ['jpg', 'pdf', 'png', ''];
+        if(($.inArray($('#goodmoral2').val().split('.').pop().toLowerCase(), ext) == -1)){
+            $(function() {
+                Swal.fire({
+                    title: 'Good Moral must be in JPG, PNG and PDF format',
+                    text: 'Please upload different file format!',
+                    icon: 'error',
+                    showConfirmButton: false,
+                    timer: 2000,
+                    allowOutsideClick: () => {
+                    const popup = Swal.getPopup()
+                    popup.classList.remove('swal2-show')
+                    setTimeout(() => {
+                        popup.classList.add('animate__animated', 'animate__headShake')
+                    })
+                    setTimeout(() => {
+                        popup.classList.remove('animate__animated', 'animate__headShake')
+                    }, 500)
+                    return false
+                    }
+                });
+            });
+            return true;
+        }else if(goodmoralfile2()){
+            return true;
+        }else{
+            return false;
+        }
+    }else{
+        $('#goodmoralerror2').html('');
+        return false;
+    }
+}
+function goodmoralfile2(){
+    var goodmoral = $('#goodmoral2')[0].files[0].size;
+    if(goodmoral>5000000){
+        $('#goodmoralerror2').html('File is greater than 5MB');
+        return true;
+    }else{
+        $('#goodmoralerror2').html('');
+        return false;
+    }
+}
+function birthcertFormat(){
+    if($('#birthcert2').val()!=""){
+        var ext = ['jpg', 'pdf', 'png', ''];
+        if(($.inArray($('#birthcert2').val().split('.').pop().toLowerCase(), ext) == -1)){
+            $(function() {
+                Swal.fire({
+                    title: 'Birth Certificate must be in JPG, PNG and PDF format',
+                    text: 'Please upload different file format!',
+                    icon: 'error',
+                    showConfirmButton: false,
+                    timer: 2000,
+                    allowOutsideClick: () => {
+                    const popup = Swal.getPopup()
+                    popup.classList.remove('swal2-show')
+                    setTimeout(() => {
+                        popup.classList.add('animate__animated', 'animate__headShake')
+                    })
+                    setTimeout(() => {
+                        popup.classList.remove('animate__animated', 'animate__headShake')
+                    }, 500)
+                    return false
+                    }
+                });
+            });
+            return true;
+        }else if(birthcertfile2()){
+            return true;
+        }else{
+            return false;
+        }
+    }else{
+        $('#birthcerterror2').html('');
+        return false;
+    }
+}
+function birthcertfile2(){
+    var birthcert = $('#birthcert2')[0].files[0].size;
+    if( birthcert>5000000){
+        $('#birthcerterror2').html('File is greater than 5MB');
+        return true;
+    }else{
+        $('#birthcerterror2').html('');
+        return false;
+    }
+}
+
+function indigencyFormat2(){
+    if($('#indigency2').val()!=""){
+        var ext = ['jpg', 'pdf', 'png', ''];
+        if(($.inArray($('#indigency2').val().split('.').pop().toLowerCase(), ext) == -1)){
+            $(function() {
+                Swal.fire({
+                    title: 'Certificate of Residency must be in JPG, PNG and PDF format',
+                    text: 'Please upload different file format!',
+                    icon: 'error',
+                    showConfirmButton: false,
+                    timer: 2000,
+                    allowOutsideClick: () => {
+                    const popup = Swal.getPopup()
+                    popup.classList.remove('swal2-show')
+                    setTimeout(() => {
+                        popup.classList.add('animate__animated', 'animate__headShake')
+                    })
+                    setTimeout(() => {
+                        popup.classList.remove('animate__animated', 'animate__headShake')
+                    }, 500)
+                    return false
+                    }
+                });
+            });
+            return true;
+        }else if(indigencyfile2()){
+            return true;
+        }else{
+            return false;
+        }
+    }else{
+        $('#indigencyerror2').html('');
+        return false;
+    }
+}
+function indigencyfile2(){
+    var indigency = $('#indigency2')[0].files[0].size;
+    if(indigency>5000000){
+        $('#indigencyerror2').html('File is greater than 5MB');
+        return true;
+    }else{
+        $('#indigencyerror2').html('');
+        return false;
+    }
+}
+function votecertFormat2(){
+    if($('#votecert2').val()!=""){
+        var ext = ['jpg', 'pdf', 'png', ''];
+        if(($.inArray($('#votecert2').val().split('.').pop().toLowerCase(), ext) == -1)){
+            $(function() {
+                Swal.fire({
+                    title: 'Voters Identification/Certification must be in JPG, PNG and PDF format',
+                    text: 'Please upload different file format!',
+                    icon: 'error',
+                    showConfirmButton: false,
+                    timer: 2000,
+                    allowOutsideClick: () => {
+                    const popup = Swal.getPopup()
+                    popup.classList.remove('swal2-show')
+                    setTimeout(() => {
+                        popup.classList.add('animate__animated', 'animate__headShake')
+                    })
+                    setTimeout(() => {
+                        popup.classList.remove('animate__animated', 'animate__headShake')
+                    }, 500)
+                    return false
+                    }
+                });
+            });
+            return true;
+        }else if(votecertfile2()){
+            return true;
+        }else{
+            return false;
+        }
+    }else{
+        $('#votecerterror2').html('');
+        return false;
+    }
+}
+function votecertfile2(){
+    var votecert = $('#votecert2')[0].files[0].size;
+    if(votecert>5000000){
+        $('#votecerterror2').html('File is greater than 5MB');
+        return true;
+    }else{
+        $('#votecerterror2').html('');
+        return false;
+    }
+}
+resetfileerror2();
+function resetfileerror2(){
+    $('#g11cardfile2').change(function(){
+        if($('#g11error2').html()!=""){
+            $('#g11error2').html('');
+        }
+    })
+    $('#g12cardfile2').change(function(){
+        if($('#g12error2').html()!=""){
+            $('#g12error2').html('');
+        }
+    })
+    $('#torpg12').change(function(){
+        if($('#torpg1error2').html()!=""){
+            $('#torpg1error2').html('');
+        }
+    })
+    $('#torpg22').change(function(){
+        if($('#torpg2error2').html()!=""){
+            $('#torpg2error2').html('');
+        }
+    })
+    $('#goodmoral2').change(function(){
+        if($('#goodmoralerror2').html()!=""){
+            $('#goodmoralerror2').html('');
+        }
+    })
+    $('#birthcert2').change(function(){
+        if($('#birthcerterror2').html()!=""){
+            $('#birthcerterror2').html('');
+        }
+    })
+    $('#indigency2').change(function(){
+        if($('#indigencyerror2').html()!=""){
+            $('#indigencyerror2').html('');
+        }
+    })
+    $('#votecert2').change(function(){
+        if($('#votecerterror2').html()!=""){
+            $('#votecerterror2').html('');
+        }
+    })
+    $('#als_cert2').change(function(){
+        if($('#alscerterror2').html()!=""){
+            $('#alscerterror2').html('');
+        }
+    })
+    $('#vaxcard2').change(function(){
+        if($('#vaxcarderror2').html()!=""){
+            $('#vaxcarderror2').html('');
+        }
+    })
+}
 
 if($('#status2').val()=="Married"){
     $('#married2').show();
@@ -931,12 +1611,16 @@ if($('#admit2').val()=="Transferee"){
 	$("#college_address2").prop('required',true);
 	$("#college_course2").prop('required',true);
 	$("#college_gwa2").prop('required',true);
+    $("#transcript").show();
+    $("#reportcard2").hide();
 }else{
     $('#college2').hide();
     $("#college_name2").prop('required',false);
 	$("#college_address2").prop('required',false);
 	$("#college_course2").prop('required',false);
 	$("#college_gwa2").prop('required',false);
+    $("#reportcard2").show();
+    $("#transcript").hide();
 }
 
 $('#admit2').change(function(){
@@ -944,19 +1628,48 @@ $('#admit2').change(function(){
     $("#college_address2").val("");
     $("#college_course2").val("");
     $("#college_gwa2").val("");
+    $('#torpg12').val("");
+    $('#torpg22').val("");
+    $('#g11cardfile2').val("");
+    $('#g12cardfile2').val("");
     if($('#admit2').val()=="Transferee"){
         $('#college2').show();
         $("#college_name2").prop('required',true);
         $("#college_address2").prop('required',true);
         $("#college_course2").prop('required',true);
         $("#college_gwa2").prop('required',true);
+        $("#transcript").show();
+        $("#reportcard2").hide();
+        $('#g11cardfile2').prop('required', false);
+        $('#g12cardfile2').prop('required', false);
+        if(("<?php echo $req['torpg1'] ?>"!="")&&("<?php echo $req['torpg2'] ?>"!="")){
+            $('#torpg12').prop('required', false);
+            $('#torpg22').prop('required', false);
+        }else{
+            $('#torpg12').prop('required', true);
+            $('#torpg22').prop('required', true);
+            $('#g11cardfile2').prop('required', false);
+            $('#g12cardfile2').prop('required', false);
+        }
     }else{
         $('#college2').hide();
         $("#college_name2").prop('required',false);
         $("#college_address2").prop('required',false);
         $("#college_course2").prop('required',false);
         $("#college_gwa2").prop('required',false);
-      
+        $("#reportcard2").show();
+        $("#transcript").hide();
+        $('#torpg12').prop('required', false);
+        $('#torpg22').prop('required', false);
+        if(("<?php echo $req['g11card'] ?>"!="")&&("<?php echo $req['g12card'] ?>"!="")){
+            $('#g11cardfile2').prop('required', false);
+            $('#g12cardfile2').prop('required', false);
+        }else{
+            $('#g11cardfile2').prop('required', true);
+            $('#g12cardfile2').prop('required', true);
+            $('#torpg12').prop('required', false);
+            $('#torpg22').prop('required', false);
+        }
     }
 })
 
