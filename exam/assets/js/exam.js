@@ -179,7 +179,7 @@ $(document).on('submit', '#testForm', function(e){
   return false;
 });
 
-window.onload = shuffle;
+// window.onload = shuffle;
 
 function shuffle() {
  var container = document.getElementById("all-items");
