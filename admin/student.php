@@ -449,21 +449,21 @@ if(isset($_SESSION['ID'])&&($_SESSION['email'])){
                                             <input type="hidden" name="group" value="N/A">
                                             <input type="checkbox" class="non form-check-input" name="group[]" value="N/A" id="none" onclick="wala()" checked>
                                             <small>None</small><br>
-                                            <input type="checkbox" class="form-check-input" name="group[]" value="Recipient of Student Financial Assistance" onclick="uncheck()" id="stuFap">
+                                            <input type="checkbox" class="form-check-input" name="group[]" value="Recipient of Student Financial Assistance" onclick="uncheck()" id="stuFap" disabled>
                                             <small>Recipient of Student Financial Assistance</small><br>
-                                            <input type="checkbox" class="form-check-input" name="group[]" value="Person from Disadvantaged Group" onclick="uncheck()" id="disadvantagedGroup">
+                                            <input type="checkbox" class="form-check-input" name="group[]" value="Person from Disadvantaged Group" onclick="uncheck()" id="disadvantagedGroup" disabled>
                                             <small>Person from Disadvantaged Group</small><br>
-                                            <input type="checkbox" class="form-check-input" name="group[]" value="Person from Depressed or Conflicted-Areas" onclick="uncheck()" id="depressed">
+                                            <input type="checkbox" class="form-check-input" name="group[]" value="Person from Depressed or Conflicted-Areas" onclick="uncheck()" id="depressed" disabled>
                                             <small>Person from Depressed or Conflicted Areas</small><br>
                                             </div>
                                             <div class="col-md-6">
-                                            <input type="checkbox" class="form-check-input" name="group[]" value="Member of Indigenous People" onclick="uncheck()" id="indigenous">
+                                            <input type="checkbox" class="form-check-input" name="group[]" value="Member of Indigenous People" onclick="uncheck()" id="indigenous" disabled>
                                             <small>Member of Indigenous People</small><br>
-                                            <input type="checkbox" class="form-check-input" name="group[]" value="Person with Disability" onclick="uncheck()" id="pwd">
+                                            <input type="checkbox" class="form-check-input" name="group[]" value="Person with Disability" onclick="uncheck()" id="pwd" disabled>
                                             <small>Person with Disability (PWD)</small><br>
-                                            <input type="checkbox" class="form-check-input" name="group[]" value="Recipient of 4Ps" onclick="uncheck()" id="4ps">
+                                            <input type="checkbox" class="form-check-input" name="group[]" value="Recipient of 4Ps" onclick="uncheck()" id="4ps" disabled>
                                             <small>Recipient of 4Ps</small><br>
-                                            <input type="checkbox" class="form-check-input" name="group[]" value="Working Student" onclick="uncheck()" id="workingstud">
+                                            <input type="checkbox" class="form-check-input" name="group[]" value="Working Student" onclick="uncheck()" id="workingstud" disabled>
                                             <small>Working Student</small><br> 
                                             
                                         </div>
