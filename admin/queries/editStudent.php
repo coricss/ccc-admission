@@ -921,7 +921,7 @@ echo '
                 <div class="row mb-3">
                     <div class="col-md-6 col-sm-12 mb-3">
                         <label for="goodmoral"><b>Good Moral Certification:</b><i class="req">*</i>
-                            <a href="../requirements/Good Morals/'.$req["goodmoral"].'" target="_blank">
+                            <a href="../requirements/Good Morals/'.$req["goodmoral"].'" target="_blank" style="text-decoration: none">
                                 <small><i class="bx bx-paperclip bx-rotate-270" style="font-size: 15px"></i>Current Good Moral File
                                 </small>
                             </a>  
@@ -931,7 +931,7 @@ echo '
                     </div>
                     <div class="col-md-6 col-sm-12">
                         <label for="birthcert"><b>Birth Certificate:</b><i class="req">*</i>
-                            <a href="../requirements/BirthCertificates/'.$req["birthcert"].'" target="_blank">
+                            <a href="../requirements/BirthCertificates/'.$req["birthcert"].'" target="_blank" style="text-decoration: none">
                                 <small><i class="bx bx-paperclip bx-rotate-270" style="font-size: 15px"></i>Current Birth Certicate
                                 </small>
                             </a>  
@@ -943,7 +943,7 @@ echo '
                 <div class="row mb-3">
                     <div class="col-md-6 col-sm-12 mb-3">
                         <label for="indigency"><b>Certificate of Residency:</b><i class="req">*</i>
-                            <a href="../requirements/Indigency/'.$req["indigency"].'" target="_blank">
+                            <a href="../requirements/Indigency/'.$req["indigency"].'" target="_blank" style="text-decoration: none">
                                 <small><i class="bx bx-paperclip bx-rotate-270" style="font-size: 15px"></i>Current Certificate of Residency
                                 </small>
                             </a>  
@@ -953,7 +953,7 @@ echo '
                     </div>
                     <div class="col-md-6 col-sm-12 mb-3">
                         <label for="votecert"><b>Voters Certification of Student/Parent/Guardian:</b><i class="req">*</i>
-                            <a href="../requirements/Voter_Certificates/'.$req["voters"].'" target="_blank">
+                            <a href="../requirements/Voter_Certificates/'.$req["voters"].'" target="_blank" style="text-decoration: none">
                                 <small"><i class="bx bx-paperclip bx-rotate-270" style="font-size: 15px"></i>Current Voters Certificate
                                 </small>
                             </a>  
