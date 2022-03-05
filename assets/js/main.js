@@ -38,6 +38,12 @@ $(window).scroll(function() {
         btn.removeClass('show');
     }
 });
+var age = $("#age").val();
+var date = $("#bday").val();
+var year = 2022-age;
+$('#bday').change(function(){
+	alert(year);
+})
 
 btn.on('click', function(e) {
     e.preventDefault();
