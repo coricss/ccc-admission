@@ -112,7 +112,7 @@
                     </div>
                     <div class="col-md-2 col-sm-6">
                         <label for="bday">Date of Birth:<i class="req">*</i></label>
-                        <input type="date" name="bday" id=bday class="form-control"  required>
+                        <input type="date" name="bday" id=bday class="form-control" disabled required>
                     </div>
                     <div class="col-md-2 col-sm-12">
                         <label for="religion">Religion:<i class="req">*</i></label>
