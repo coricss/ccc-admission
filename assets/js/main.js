@@ -59,8 +59,17 @@ $('#age').change(function(){
 	$('#bday').attr("min", birthyear+"-01-01");
 	$('#bday').attr("max", birthyear+"-12-31");
 
-
 })
+
+// $("#bday").change(function(){
+// 	var day1 = $(this).val(); 
+// 	var day2 = new Date();
+
+// 	var difference= Math.abs(day2-day1);
+// 	days = difference/(1000 * 3600 * 24)
+
+// 	alert(Math.trunc(days/365));
+// })
 
 btn.on('click', function(e) {
     e.preventDefault();
