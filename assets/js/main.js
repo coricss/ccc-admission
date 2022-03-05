@@ -42,18 +42,23 @@ $(window).scroll(function() {
 // var date = $("#bday").val();
 // var year = 2022-age;
 $('#age').change(function(){
+
 	var current = $('#age').val();
 	if (current != 'null') {
 		$('#age').css('color','black');
+		$('#bday').prop("disabled", false);
 	} else {
 		$('#age').css('color','#6c757d');
+		$('#bday').prop("disabled", true);
 	}
 
+	$('#bday').val("");
 	var age = $('#age').val();
 	var currentYear = (new Date).getFullYear();
 	var birthyear = currentYear-age;
-	
-	
+	$('#bday').attr("min", birthyear+"-01-01");
+	$('#bday').attr("max", birthyear+"-12-31");
+
 
 })
 
