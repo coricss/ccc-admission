@@ -68,8 +68,8 @@
                         </div>
                     </div>
                     <div class="col-md-3 col-sm-6">
-                        <label for="mname">Middle Name:<i class="req">*</i></label>
-                        <input type="text" name="mname" id=mname placeholder="Middle name" class="form-control" required>
+                        <label for="mname">Middle Name:</label>
+                        <input type="text" name="mname" id=mname placeholder="Middle name" class="form-control">
                     </div>
                     <div class="col-md-3 col-sm-6">
                         <label for="lname">Last Name:<i class="req">*</i></label>
