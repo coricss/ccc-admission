@@ -38,11 +38,23 @@ $(window).scroll(function() {
         btn.removeClass('show');
     }
 });
-var age = $("#age").val();
-var date = $("#bday").val();
-var year = 2022-age;
-$('#bday').change(function(){
-	alert(year);
+// var age = $("#age").val();
+// var date = $("#bday").val();
+// var year = 2022-age;
+$('#age').change(function(){
+	var current = $('#age').val();
+	if (current != 'null') {
+		$('#age').css('color','black');
+	} else {
+		$('#age').css('color','#6c757d');
+	}
+
+	var age = $('#age').val();
+	var currentYear = (new Date).getFullYear();
+	var birthyear = currentYear-age;
+	
+	
+
 })
 
 btn.on('click', function(e) {
