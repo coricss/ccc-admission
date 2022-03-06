@@ -41,35 +41,41 @@ $(window).scroll(function() {
 // var age = $("#age").val();
 // var date = $("#bday").val();
 // var year = 2022-age;
-$('#age').change(function(){
+// $('#age').change(function(){
 
-	var current = $('#age').val();
-	if (current != 'null') {
-		$('#age').css('color','black');
-		$('#bday').prop("disabled", false);
-	} else {
-		$('#age').css('color','#6c757d');
-		$('#bday').prop("disabled", true);
-	}
+// 	var current = $('#age').val();
+// 	if (current != 'null') {
+// 		$('#age').css('color','black');
+// 		$('#bday').prop("disabled", false);
+// 	} else {
+// 		$('#age').css('color','#6c757d');
+// 		$('#bday').prop("disabled", true);
+// 	}
 
-	$('#bday').val("");
-	var age = $('#age').val();
-	var currentYear = (new Date).getFullYear();
-	var birthyear = currentYear-age;
-	$('#bday').attr("min", birthyear+"-01-01");
-	$('#bday').attr("max", birthyear+"-12-31");
+// 	$('#bday').val("");
+// 	var age = $('#age').val();
+// 	var currentYear = (new Date).getFullYear();
+// 	var birthyear = currentYear-age;
+// 	$('#bday').attr("min", birthyear+"-01-01");
+// 	$('#bday').attr("max", birthyear+"-12-31");
 
-})
-
-// $("#bday").change(function(){
-// 	var day1 = $(this).val(); 
-// 	var day2 = new Date();
-
-// 	var difference= Math.abs(day2-day1);
-// 	days = difference/(1000 * 3600 * 24)
-
-// 	alert(Math.trunc(days/365));
 // })
+maxDate();
+function maxDate(){
+	var currentYear = (new Date).getFullYear();
+	var maxYear= currentYear-18;
+
+	$("#bday").attr("max", maxYear+"-12-31");
+}
+$("#bday").change(function(){
+	var day1 = new Date($("#bday").val()); 
+	var day2 = new Date();
+
+	var difference= Math.abs(day2-day1);
+	days = difference/(1000 * 3600 * 24)
+
+	$("#age").val(Math.trunc(days/365));
+})
 
 btn.on('click', function(e) {
     e.preventDefault();
