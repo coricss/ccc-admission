@@ -166,17 +166,17 @@ $(document).ready(function() {
 	}
 	}); 
 });
-$(document).ready(function() {
-	$('#age').css('color','#6c757d');
-	$('#age').change(function() {
-	var current = $('#age').val();
-	if (current != 'null') {
-		$('#age').css('color','black');
-	} else {
-		$('#age').css('color','#6c757d');
-	}
-	}); 
-});
+// $(document).ready(function() {
+// 	$('#age').css('color','#6c757d');
+// 	$('#age').change(function() {
+// 	var current = $('#age').val();
+// 	if (current != 'null') {
+// 		$('#age').css('color','black');
+// 	} else {
+// 		$('#age').css('color','#6c757d');
+// 	}
+// 	}); 
+// });
 $(document).ready(function() {
 	$('#status').css('color','#6c757d');
 	$('#status').change(function() {
