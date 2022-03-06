@@ -215,7 +215,10 @@ function triggerClick(e) {
 			document.getElementById('calambaresyes').style.display= 'block';
 			document.getElementById('calambaresno').style.display = 'none';
 			document.getElementById('pre_city').value = 'Calamba';
+			document.getElementById('pre_zip').value = '4027';
 			document.getElementById('yrs_calamba').disabled= false;
+			$('#pre_city').prop("readonly", true);
+			$('#pre_zip').prop("readonly", true);
 			$("#pre_brgy1").prop('required',true);
 			$("#pre_brgy2").prop('required',false);
 			$(".yrs_calamba").prop('required',true);
@@ -224,6 +227,9 @@ function triggerClick(e) {
 			document.getElementById('calambaresno').style.display = 'block';
 			document.getElementById('calambaresyes').style.display = 'none';
 			document.getElementById('pre_city').value = '';
+			document.getElementById('pre_zip').value = '';
+			$('#pre_city').prop("readonly", false);
+			$('#pre_zip').prop("readonly", false);
 			document.getElementById('yrs_calamba').disabled = true;
 			$("#pre_brgy1").prop('required',false);
 			$("#pre_brgy2").prop('required',true);
