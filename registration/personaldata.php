@@ -99,7 +99,7 @@
                             <option value="24" class="others">24</option>
                             <option value="25" class="others">25</option>
                         </select> -->
-                        <input type="text" class="form-control" name="age" id="age" readonly>
+                        <input type="text" class="form-control" name="age" placeholder="Age" id="age" readonly>
                     </div>
                 </div>
 
