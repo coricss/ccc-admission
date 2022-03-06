@@ -1567,45 +1567,43 @@ var requirements = document.querySelectorAll('#requirements')
 	$(document).on('keyup', '#fname', function(e){
 		e.preventDefault();
 		var firstname = $('#fname').val();
-		var middlename = $('#mname').val();
 		var lastname = $('#lname').val();
 		
 		$.ajax({
 			url: 'queries/userCheck.php',
 			type: 'POST',
-			data: {firstname:firstname, middlename:middlename, lastname:lastname},
+			data: {firstname:firstname, lastname:lastname},
 			success:function(data){
 				$('#feedbackName').html(data);		
 			}
 		});
 			
 	})
-	$(document).on('keyup', '#mname', function(e){
-		e.preventDefault();
-		var firstname = $('#fname').val();
-		var middlename = $('#mname').val();
-		var lastname = $('#lname').val();
+	// $(document).on('keyup', '#mname', function(e){
+	// 	e.preventDefault();
+	// 	var firstname = $('#fname').val();
+	// 	var middlename = $('#mname').val();
+	// 	var lastname = $('#lname').val();
 		
-		$.ajax({
-			url: 'queries/userCheck.php',
-			type: 'POST',
-			data: {firstname:firstname, middlename:middlename, lastname:lastname},
-			success:function(data){
-				$('#feedbackName').html(data);		
-			}
-		});
+	// 	$.ajax({
+	// 		url: 'queries/userCheck.php',
+	// 		type: 'POST',
+	// 		data: {firstname:firstname, middlename:middlename, lastname:lastname},
+	// 		success:function(data){
+	// 			$('#feedbackName').html(data);		
+	// 		}
+	// 	});
 			
-	})
+	// })
 	$(document).on('keyup', '#lname', function(e){
 		e.preventDefault();
 		var firstname = $('#fname').val();
-		var middlename = $('#mname').val();
 		var lastname = $('#lname').val();
 		
 		$.ajax({
 			url: 'queries/userCheck.php',
 			type: 'POST',
-			data: {firstname:firstname, middlename:middlename, lastname:lastname},
+			data: {firstname:firstname, lastname:lastname},
 			success:function(data){
 				$('#feedbackName').html(data);		
 			}
