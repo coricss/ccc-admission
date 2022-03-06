@@ -89,10 +89,7 @@
                     </div>
                     <div class="col-md-1 col-sm-3">
                         <label for="age">Age:<i class="req">*</i></label>
-                        <select class="form-control" name="age" id="age"  required>
-                            <option value="" class=plchold>16</option>
-                            <option value="16" class="others">16</option>
-                            <option value="17" class="others">17</option>
+                        <!-- <select class="form-control" name="age" id="age"  required>
                             <option value="18" class="others">18</option>
                             <option value="19" class="others">19</option>
                             <option value="20" class="others">20</option>
@@ -101,7 +98,8 @@
                             <option value="23" class="others">23</option>
                             <option value="24" class="others">24</option>
                             <option value="25" class="others">25</option>
-                        </select>
+                        </select> -->
+                        <input type="text" class="form-control" name="age" id="age" readonly>
                     </div>
                 </div>
 
@@ -112,7 +110,7 @@
                     </div>
                     <div class="col-md-2 col-sm-6">
                         <label for="bday">Date of Birth:<i class="req">*</i></label>
-                        <input type="date" name="bday" id=bday class="form-control" disabled required>
+                        <input type="date" name="bday" id=bday class="form-control" required>
                     </div>
                     <div class="col-md-2 col-sm-12">
                         <label for="religion">Religion:<i class="req">*</i></label>
@@ -231,6 +229,9 @@
                         <input type="hidden" name="yrs_calamba" id="yrs_calambaa" value="0">
                         <input type="number" name="yrs_calamba" min=0 max=40 value="1" class="form-control yrs_calamba" placeholder="Years" id="yrs_calamba" disabled>
                     </div>
+                    <!-- <div class="col-md-1 col-sm-6">
+                        <input type="date" class="form-control input-daterange">
+                    </div> -->
                     <div class="col-md-3 col-sm-6">
                         <label for="pre_houseno">Present Address:<i class="req">*</i></label>
                         <input type="text" name="pre_houseno" class="form-control" placeholder="House No./Unit/Purok/Subdivision/Village" id="pre_houseno" required>
