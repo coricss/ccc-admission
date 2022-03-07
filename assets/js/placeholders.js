@@ -166,6 +166,17 @@ $(document).ready(function() {
 	}
 	}); 
 });
+$(document).ready(function() {
+	$('#yrs_calambaa').css('color','#6c757d');
+	$('#yrs_calambaa').change(function() {
+	var current = $('#yrs_calambaa').val();
+	if (current != 'null') {
+		$('#yrs_calambaa').css('color','black');
+	} else {
+		$('#yrs_calambaa').css('color','#6c757d');
+	}
+	}); 
+});
 // $(document).ready(function() {
 // 	$('#age').css('color','#6c757d');
 // 	$('#age').change(function() {
