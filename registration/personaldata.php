@@ -224,15 +224,16 @@
                         <input type="radio" name="calambano" onclick="javascript:yesnoCheck();" value="No" id="calambano">
                         <label class="custom-control-label" for="calambano">No</label> -->
                     </div>
-                    <div class="col-md-1 col-sm-6">
+                    <!-- <div class="col-md-2 col-sm-6">
                         <label for="yrs_calamba">Years:</label>
                         <input type="hidden" name="yrs_calamba" id="yrs_calambaa" value="0">
                         <input type="number" name="yrs_calamba" min=0 max=40 value="1" class="form-control yrs_calamba" placeholder="Years" id="yrs_calamba" disabled>
-                    </div>
-                    <!-- <div class="col-md-1 col-sm-6">
-                        <input type="date" class="form-control input-daterange">
                     </div> -->
-                    <div class="col-md-3 col-sm-6">
+                    <div class="col-md-2 col-sm-6">
+                        <label for="yrs_calamba">Since when?</label>
+                        <input type="date" class="form-control" name="yrs_calamba" id="yrs_calambaa" input-daterange>
+                    </div>
+                    <div class="col-md-2 col-sm-6">
                         <label for="pre_houseno">Present Address:<i class="req">*</i></label>
                         <input type="text" name="pre_houseno" class="form-control" placeholder="House No./Unit/Purok/Subdivision/Village" id="pre_houseno" required>
                     </div>
