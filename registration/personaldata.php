@@ -230,8 +230,8 @@
                         <input type="number" name="yrs_calamba" min=0 max=40 value="1" class="form-control yrs_calamba" placeholder="Years" id="yrs_calamba" disabled>
                     </div> -->
                     <div class="col-md-2 col-sm-6">
-                        <label for="yrs_calamba">Since when?</label>
-                        <input type="date" class="form-control" name="yrs_calamba" id="yrs_calambaa" input-daterange>
+                        <label for="yrs_calamba">Date of Residency:</label>
+                        <input type="date" class="form-control" name="yrs_calamba" id="yrs_calambaa" disabled>
                     </div>
                     <div class="col-md-2 col-sm-6">
                         <label for="pre_houseno">Present Address:<i class="req">*</i></label>
