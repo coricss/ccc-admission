@@ -182,7 +182,7 @@
                         <input type="tel" name="phone" pattern="(\+?\d{2}?\s?\d{3}\s?\d{3}\s?\d{4})|([0]\d{3}\s?\d{3}\s?\d{4})" onpaste="return false;" onkeypress="return onlyNumberKey(event)" maxlength="11" minlength="11" id="stud_phone" placeholder="09XXxxxxxxx" class="form-control" required>
                     </div>
                     <div class="col-md-3 col-sm-6">
-                        <label for="1stprio">1st Priority Course:<i class="req">*</i></label>
+                        <label for="1stprio">1st Priority Program:<i class="req">*</i></label>
                         <select class="form-select" name="1stprio" id="1stprio"  required>
                             <option value="" disabled selected>(e.g. BSIT)</option>
                             <option value="BSCS" class="others">Bachelor of Science in Computer Science</option>
@@ -196,7 +196,7 @@
                         </select>
                     </div>
                     <div class="col-md-3 col-sm-6">
-                        <label for="2ndprio">2nd Priority Course:<i class="req">*</i></label> <br>
+                        <label for="2ndprio">2nd Priority Program:<i class="req">*</i></label> <br>
                         <select class="form-select" name="2ndprio" id="2ndprio"  required>
                             <option value="" disabled selected>(e.g. BSIT)</option>
                             <option value="BSCS" class="others">Bachelor of Science in Computer Science</option>
