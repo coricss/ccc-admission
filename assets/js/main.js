@@ -260,10 +260,36 @@ var x = new Date();
 var today = maxDateRes(x);
 
 $("#yrs_calambaa").attr("max", today);
+$("#dgrad_elem").attr("max", today);
+$("#jhs_dgrad").attr("max", today);
+$("#shs_dgrad").attr("max", today);
+
 
 $("#yrs_calambaa").click(function(){
 	var minDateRes = $("#bday").val();
 	$(this).attr("min", minDateRes);
+})
+
+$("#dgrad_elem").click(function(){
+	var current_age = $("#age").val();
+	var current_year = new Date().getFullYear();
+	var birthyear = current_year-current_age;
+	var elemdgrad=birthyear+12;
+	$("#dgrad_elem").prop("min", elemdgrad+"-01-01");
+})
+$("#jhs_dgrad").click(function(){
+	var current_age = $("#age").val();
+	var current_year = new Date().getFullYear();
+	var birthyear = current_year-current_age;
+	var jhs_yr=birthyear+16;
+	$(this).prop("min", jhs_yr+"-01-01");
+})
+$("#shs_dgrad").click(function(){
+	var current_age = $("#age").val();
+	var current_year = new Date().getFullYear();
+	var birthyear = current_year-current_age;
+	var shs_yr=birthyear+18;
+	$(this).prop("min", shs_yr+"-01-01");
 })
 
 	
