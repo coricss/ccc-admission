@@ -75,6 +75,9 @@ $("#bday").change(function(){
 	days = difference/(1000 * 3600 * 24)
 
 	$("#age").val(Math.trunc(days/365));
+
+	var minDateRes = $("#bday").val();
+	$("#yrs_calambaa").attr("min", minDateRes);
 })
 
 btn.on('click', function(e) {
@@ -216,7 +219,7 @@ function triggerClick(e) {
 			document.getElementById('calambaresno').style.display = 'none';
 			document.getElementById('pre_city').value = 'Calamba';
 			document.getElementById('pre_zip').value = '4027';
-			document.getElementById('yrs_calamba').disabled= false;
+			document.getElementById('yrs_calambaa').disabled= false;
 			$('#pre_city').prop("readonly", true);
 			$('#pre_zip').prop("readonly", true);
 			$("#pre_brgy1").prop('required',true);
@@ -230,7 +233,7 @@ function triggerClick(e) {
 			document.getElementById('pre_zip').value = '';
 			$('#pre_city').prop("readonly", false);
 			$('#pre_zip').prop("readonly", false);
-			document.getElementById('yrs_calamba').disabled = true;
+			document.getElementById('yrs_calambaa').disabled = true;
 			$("#pre_brgy1").prop('required',false);
 			$("#pre_brgy2").prop('required',true);
 			$(".yrs_calamba").prop('required',false);
@@ -241,6 +244,30 @@ function triggerClick(e) {
 	
 	}
 
+function maxDateRes(date) {
+    var d = new Date(date),
+        month = '' + (d.getMonth() + 1),
+        day = '' + d.getDate(),
+        year = d.getFullYear();
+
+    if (month.length < 2) 
+        month = '0' + month;
+    if (day.length < 2) 
+        day = '0' + day;
+
+    return [year, month, day].join('-');
+}
+var x = new Date();
+var today = maxDateRes(x);
+
+$("#yrs_calambaa").attr("max", today);
+
+$("#yrs_calambaa").click(function(){
+	var minDateRes = $("#bday").val();
+	$(this).attr("min", minDateRes);
+})
+
+	
 	function StopConsoleText() {
 		console.log("%cYAMETE KUDASAI!", "color: red; font-family: sans-serif; font-size: 4.5em; font-weight: bolder; text-shadow: #000 1px 1px;")
 	}
