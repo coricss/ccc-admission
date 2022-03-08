@@ -263,6 +263,7 @@ $("#yrs_calambaa").attr("max", today);
 $("#dgrad_elem").attr("max", today);
 $("#jhs_dgrad").attr("max", today);
 $("#shs_dgrad").attr("max", today);
+$("#tvc_dgrad").attr("max", today);
 
 
 $("#yrs_calambaa").click(function(){
