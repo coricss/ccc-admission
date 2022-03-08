@@ -224,7 +224,6 @@ function triggerClick(e) {
 			$('#pre_zip').prop("readonly", true);
 			$("#pre_brgy1").prop('required',true);
 			$("#pre_brgy2").prop('required',false);
-			$(".yrs_calamba").prop('required',true);
 		}
 		else if (document.getElementById('calambares').value=="No") {
 			document.getElementById('calambaresno').style.display = 'block';
@@ -236,7 +235,7 @@ function triggerClick(e) {
 			document.getElementById('yrs_calambaa').disabled = true;
 			$("#pre_brgy1").prop('required',false);
 			$("#pre_brgy2").prop('required',true);
-			$(".yrs_calamba").prop('required',false);
+			$("#yrs_calambaa").val("");
 		}
 		else{
 			document.getElementById('calambaresno').style.display = 'block';
@@ -1307,8 +1306,8 @@ var requirements = document.querySelectorAll('#requirements')
 		}
 		$('#calambares1').html($('#calambares').val());
 		if($('#calambares').val()=="Yes"){
-			$('#yrs_calamba1').html($('#yrs_calamba').val());
-			$('#yrs_calamba2').val($('#yrs_calamba').val());
+			$('#yrs_calamba1').html($('#yrs_calambaa').val());
+			$('#yrs_calamba2').val($('#yrs_calambaa').val());
 		}else{
 			$('#yrs_calamba1').html("N/A");
 			$('#yrs_calamba2').val("0");
