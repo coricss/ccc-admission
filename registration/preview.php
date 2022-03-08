@@ -116,7 +116,7 @@
                                     <td><b>Calamba Resident:</b></td>
                                     <td class="values" id="calambares1"></td>
                                     <input type="hidden" name="calambares" id=calambares2>
-                                    <td><b>Years in Calamba:</b></td>
+                                    <td><b>Date of Residency:</b></td>
                                     <td class="values" id="yrs_calamba1"></td>
                                     <input type="hidden" name="yrs_calamba" id=yrs_calamba2>
                                 </tr>
