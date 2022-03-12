@@ -335,26 +335,26 @@
                 <div class="row mb-3">
                     <div class="col-md-6 col-sm-12">
                         <div class="row">
-                            <label for="">Please select the group you belong to:</label><br><br>
+                            <label for="">Please select <b>one</b> group you belong to:</label><br><br>
                             <div class="col-md-6">
                                 <input type="hidden" name="group" value="N/A">
-                                <input type="checkbox" class="non form-check-input" name="group[]" value="N/A" id="none" onclick="wala()" checked>
+                                <input type="radio" class="non form-check-input" name="group[]" value="N/A" id="none" onclick="wala()" checked>
                                 <small>None</small><br>
-                                <input type="checkbox" class="form-check-input" name="group[]" value="Recipient of Student Financial Assistance" onclick="uncheck()" id="stuFap">
+                                <input type="radio" class="form-check-input" name="group[]" value="Recipient of Student Financial Assistance" onclick="uncheck()" id="stuFap">
                                 <small>Recipient of Student Financial Assistance</small><br>
-                                <input type="checkbox" class="form-check-input" name="group[]" value="Person from Disadvantaged Group" onclick="uncheck()" id="disadvantagedGroup">
+                                <input type="radio" class="form-check-input" name="group[]" value="Person from Disadvantaged Group" onclick="uncheck()" id="disadvantagedGroup">
                                 <small>Person from Disadvantaged Group</small><br>
-                                <input type="checkbox" class="form-check-input" name="group[]" value="Person from Depressed or Conflicted-Areas" onclick="uncheck()" id="depressed">
+                                <input type="radio" class="form-check-input" name="group[]" value="Person from Depressed or Conflicted-Areas" onclick="uncheck()" id="depressed">
                                 <small>Person from Depressed or Conflicted Areas</small><br>
                                 </div>
                                 <div class="col-md-6">
-                                <input type="checkbox" class="form-check-input" name="group[]" value="Member of Indigenous People" onclick="uncheck()" id="indigenous">
+                                <input type="radio" class="form-check-input" name="group[]" value="Member of Indigenous People" onclick="uncheck()" id="indigenous">
                                 <small>Member of Indigenous People</small><br>
-                                <input type="checkbox" class="form-check-input" name="group[]" value="Person with Disability" onclick="uncheck()" id="pwd">
+                                <input type="radio" class="form-check-input" name="group[]" value="Person with Disability" onclick="uncheck()" id="pwd">
                                 <small>Person with Disability (PWD)</small><br>
-                                <input type="checkbox" class="form-check-input" name="group[]" value="Recipient of 4Ps" onclick="uncheck()" id="4ps">
+                                <input type="radio" class="form-check-input" name="group[]" value="Recipient of 4Ps" onclick="uncheck()" id="4ps">
                                 <small>Recipient of 4Ps</small><br>
-                                <input type="checkbox" class="form-check-input" name="group[]" value="Working Student" onclick="uncheck()" id="workingstud">
+                                <input type="radio" class="form-check-input" name="group[]" value="Working Student" onclick="uncheck()" id="workingstud">
                                 <small>Working Student</small><br> 
                                   
                             </div>
