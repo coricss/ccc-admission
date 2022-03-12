@@ -348,6 +348,23 @@ $("#shs_dgrad").click(function(){
 		}
 	}
 
+	$(document).on("change", "#1stprio", function(){
+		var first_prio=$(this).val();
+		if((first_prio=="BSEE")||(first_prio=="BSEM")||(first_prio=="BSES")){
+			$("#g11_gwa").prop("min", 87);
+			$("#g12_gwa").prop("min", 87);
+		}else if((first_prio=="BSIT")||(first_prio=="BSCS")||(first_prio=="BEED")||(first_prio=="BSAIS")){
+			$("#g11_gwa").prop("min", 85);
+			$("#g12_gwa").prop("min", 85);
+		}else{
+			$("#g11_gwa").prop("min", 89);
+			$("#g12_gwa").prop("min", 89);
+		}
+	})
+	$(document).on("change", "#2ndprio", function(){
+		var second_prio=$(this).val();
+	})
+
 	function wala()
 	{
 		if(document.getElementById("none").checked==false){
