@@ -901,29 +901,42 @@ var requirements = document.querySelectorAll('#requirements')
 	function groupName(){
 		if(document.getElementById("none").checked==true){
 			$("#group-file").hide();
+			$("#group-file2").hide();
 			$("#vax-file").removeClass("col-md-6");
 			$("#vax-file").addClass("col-md-12");
+			$("#vax-file2").removeClass("col-md-6");
+			$("#vax-file2").addClass("col-md-12");
 			$("#group-requirement").prop("required", false);
 		}else{
 			$("#group-file").show();
+			$("#group-file2").show();
 			$("#vax-file").removeClass("col-md-12");
 			$("#vax-file").addClass("col-md-6");
+			$("#vax-file2").removeClass("col-md-12");
+			$("#vax-file2").addClass("col-md-6");
 			$("#group-requirement").prop("required", true);
 		}
 		if(document.getElementById("stuFap").checked==true){
 			$("#groupName").html("Proof of Student Financial Assistance:");
+			$("#groupName2").html("Proof of Student Financial Assistance:");
 		}else if(document.getElementById("disadvantagedGroup").checked==true){
 			$("#groupName").html("Proof of being from Disadvantaged Group:");
+			$("#groupName2").html("Proof of being from Disadvantaged Group:");
 		}else if(document.getElementById("depressed").checked==true){
 			$("#groupName").html("Proof of being from Depressed or Conflicted-Areas:");
+			$("#groupName2").html("Proof of being from Depressed or Conflicted-Areas:");
 		}else if(document.getElementById("indigenous").checked==true){
 			$("#groupName").html("Proof of being an Indigenous People:");
+			$("#groupName2").html("Proof of being an Indigenous People:");
 		}else if(document.getElementById("pwd").checked==true){
 			$("#groupName").html("Proof of being a Person with Disability:");
+			$("#groupName2").html("Proof of being a Person with Disability:");
 		}else if(document.getElementById("4ps").checked==true){
 			$("#groupName").html("Proof of being a Recipient of 4Ps:");
+			$("#groupName2").html("Proof of being a Recipient of 4Ps:");
 		}else if(document.getElementById("workingstud").checked==true){
 			$("#groupName").html("Proof of being a Working Student:");
+			$("#groupName2").html("Proof of being a Working Student:");
 		}
 	}
 	function imgFormat(){
@@ -1329,12 +1342,19 @@ var requirements = document.querySelectorAll('#requirements')
 		alscertnew.attr('onclick', 'return false;');
 		$('#als_cert1').html(alscertnew);
 
-		var alscert=$('#vaxcard');
-		alscertnew = alscert.clone();
-		alscertnew.attr('id', '#vaxcardnew');
-		alscertnew.attr('onclick', 'return false;');
-		$('#vax').html(alscertnew);
-			
+		var vaxcard=$('#vaxcard');
+		vaxcardnew = vaxcard.clone();
+		vaxcardnew.attr('id', '#vaxcardnew');
+		vaxcardnew.attr('onclick', 'return false;');
+		$('#vax').html(vaxcardnew);
+
+		var group=$('#group-requirement');
+		groupnew = group.clone();
+		groupnew.attr('id', '#group-requirementnew');
+		groupnew.attr('onclick', 'return false;');
+		$('#group-req').html(groupnew);
+		
+
 		// var img = $('#profileImage'),
 		// imgnew = img.clone();
 		// img.addClass('x');

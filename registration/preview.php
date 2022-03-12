@@ -660,9 +660,15 @@
                                                 </div>
                                             </div>    
                                         </div>
-                                        <div class="row mt-4 text-center">
-                                            <div class="col-12">
-                                                <label for="vax"><b>Voter's Certification of Parent/Guardian:</b></label>
+                                        <div class="row mt-4 ">
+                                            <div class="col-6" id="group-file2">
+                                                <label for="group-req"><b id="groupName2">:</b></label>
+                                                <div id="group-req">
+                                                    
+                                                </div>
+                                            </div>
+                                            <div class="col-6" id="vax-file2">
+                                                <label for="vax"><b>Vaccination Card:</b></label>
                                                 <div id="vax">
                                                     
                                                 </div>
