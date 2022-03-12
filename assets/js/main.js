@@ -62,12 +62,19 @@ $(window).scroll(function() {
 // })
 maxDate();
 function maxDate(){
-	var currentYear = (new Date).getFullYear();
-	var maxYear= currentYear-18;
-
-	$("#bday").attr("max", maxYear+"-12-31");
+	var now = new Date();
+	now.setFullYear(now.getFullYear()-18);
+	function convert(str) {
+		var date = new Date(str),
+			mnth = ("0" + (date.getMonth() + 1)).slice(-2),
+			day = ("0" + date.getDate()).slice(-2);
+		return [date.getFullYear(), mnth, day].join("-");
+	}
+	
+	$("#bday").attr("max", convert(now));
 }
 $("#bday").change(function(){
+	
 	var day1 = new Date($("#bday").val()); 
 	var day2 = new Date();
 
