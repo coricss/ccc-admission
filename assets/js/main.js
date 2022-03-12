@@ -787,6 +787,7 @@ var requirements = document.querySelectorAll('#requirements')
           event.stopPropagation()
 		  $('#personalAD').show();
         }else{
+			groupName();
 			$('#personalAD').hide();
 			$('.step-5').removeClass('active');
 			$('.step-6').addClass('active');
@@ -897,6 +898,34 @@ var requirements = document.querySelectorAll('#requirements')
 	// 		}
 	// 	})
 	// })
+	function groupName(){
+		if(document.getElementById("none").checked==true){
+			$("#group-file").hide();
+			$("#vax-file").removeClass("col-md-6");
+			$("#vax-file").addClass("col-md-12");
+			$("#group-requirement").prop("required", false);
+		}else{
+			$("#group-file").show();
+			$("#vax-file").removeClass("col-md-12");
+			$("#vax-file").addClass("col-md-6");
+			$("#group-requirement").prop("required", true);
+		}
+		if(document.getElementById("stuFap").checked==true){
+			$("#groupName").html("Proof of Student Financial Assistance:");
+		}else if(document.getElementById("disadvantagedGroup").checked==true){
+			$("#groupName").html("Proof of being from Disadvantaged Group:");
+		}else if(document.getElementById("depressed").checked==true){
+			$("#groupName").html("Proof of being from Depressed or Conflicted-Areas:");
+		}else if(document.getElementById("indigenous").checked==true){
+			$("#groupName").html("Proof of being an Indigenous People:");
+		}else if(document.getElementById("pwd").checked==true){
+			$("#groupName").html("Proof of being a Person with Disability:");
+		}else if(document.getElementById("4ps").checked==true){
+			$("#groupName").html("Proof of being a Recipient of 4Ps:");
+		}else if(document.getElementById("workingstud").checked==true){
+			$("#groupName").html("Proof of being a Working Student:");
+		}
+	}
 	function imgFormat(){
 		var fileExt = ['jpg', 'png'];
 		// var imgsize = $('#profileImage')[0].files[0].size;
