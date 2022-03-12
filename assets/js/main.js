@@ -365,59 +365,131 @@ $("#shs_dgrad").click(function(){
 		var second_prio=$(this).val();
 	})
 
-	function wala()
-	{
-		if(document.getElementById("none").checked==false){
-			$(function(){
-				$("#none").prop('required',true);
-		 	});
-                $(function() {
-                    $.notify({
-                        title: 'Select a group',
-                        message: 'If you are not belong to the group list, please check none!'
-                    },{
-                    animate: {
-                        enter: 'animate__animated animate__fadeInDown',
-                        exit: 'animate__animated animate__fadeOutRight'
-                    },
-                    delay: 4000,
-                    placement: {
-                        from: 'top',
-                        align: 'right'
-                    },
-                    type: 'pastel-warning',
-                    allow_dismiss: false
-                    });
-                });
+	// function wala()
+	// {
+	// 	if(document.getElementById("none").checked==false){
+	// 		$(function(){
+	// 			$("#none").prop('required',true);
+	// 	 	});
+  //               $(function() {
+  //                   $.notify({
+  //                       title: 'Select a group',
+  //                       message: 'If you are not belong to the group list, please check none!'
+  //                   },{
+  //                   animate: {
+  //                       enter: 'animate__animated animate__fadeInDown',
+  //                       exit: 'animate__animated animate__fadeOutRight'
+  //                   },
+  //                   delay: 4000,
+  //                   placement: {
+  //                       from: 'top',
+  //                       align: 'right'
+  //                   },
+  //                   type: 'pastel-warning',
+  //                   allow_dismiss: false
+  //                   });
+  //               });
            
-		}
-		if(document.getElementById("none").checked){
-			document.getElementById("stuFap").disabled = true;
-			document.getElementById("disadvantagedGroup").disabled = true;
-			document.getElementById("depressed").disabled = true;
-			document.getElementById("indigenous").disabled = true;
-			document.getElementById("pwd").disabled = true;
-			document.getElementById("4ps").disabled = true;
-			document.getElementById("workingstud").disabled = true;
+	// 	}
+	// 	if(document.getElementById("none").checked){
+	// 		document.getElementById("stuFap").disabled = true;
+	// 		document.getElementById("disadvantagedGroup").disabled = true;
+	// 		document.getElementById("depressed").disabled = true;
+	// 		document.getElementById("indigenous").disabled = true;
+	// 		document.getElementById("pwd").disabled = true;
+	// 		document.getElementById("4ps").disabled = true;
+	// 		document.getElementById("workingstud").disabled = true;
 			
-			document.getElementById("stuFap").checked = false;
-			document.getElementById("disadvantagedGroup").checked = false;
-			document.getElementById("depressed").checked = false;
-			document.getElementById("indigenous").checked = false;
-			document.getElementById("pwd").checked = false;
-			document.getElementById("4ps").checked = false;
-			document.getElementById("workingstud").checked = false;
-		}
-		else{
-			document.getElementById("stuFap").disabled = false;
-			document.getElementById("disadvantagedGroup").disabled = false;
-			document.getElementById("depressed").disabled = false;
-			document.getElementById("indigenous").disabled = false;
-			document.getElementById("pwd").disabled = false;
-			document.getElementById("4ps").disabled = false;
-			document.getElementById("workingstud").disabled = false;	
-		}
-	}
+	// 		document.getElementById("stuFap").checked = false;
+	// 		document.getElementById("disadvantagedGroup").checked = false;
+	// 		document.getElementById("depressed").checked = false;
+	// 		document.getElementById("indigenous").checked = false;
+	// 		document.getElementById("pwd").checked = false;
+	// 		document.getElementById("4ps").checked = false;
+	// 		document.getElementById("workingstud").checked = false;
+	// 	}
+	// 	else{
+	// 		document.getElementById("stuFap").disabled = false;
+	// 		document.getElementById("disadvantagedGroup").disabled = false;
+	// 		document.getElementById("depressed").disabled = false;
+	// 		document.getElementById("indigenous").disabled = false;
+	// 		document.getElementById("pwd").disabled = false;
+	// 		document.getElementById("4ps").disabled = false;
+	// 		document.getElementById("workingstud").disabled = false;	
+	// 	}
+	// }
+	
+	// $("#stuFap").click(function(){
+	// 	document.getElementById("disadvantagedGroup").disabled = true;
+	// 	document.getElementById("depressed").disabled = true;
+	// 	document.getElementById("indigenous").disabled = true;
+	// 	document.getElementById("pwd").disabled = true;
+	// 	document.getElementById("4ps").disabled = true;
+	// 	document.getElementById("workingstud").disabled = true;
+	// })
+	// $("#stuFap").click(function(){
+	// 	document.getElementById("stuFap").disabled = false;
+	// 	document.getElementById("disadvantagedGroup").disabled = false;
+	// 	document.getElementById("depressed").disabled = false;
+	// 	document.getElementById("indigenous").disabled = false;
+	// 	document.getElementById("pwd").disabled = false;
+	// 	document.getElementById("4ps").disabled = false;
+	// 	document.getElementById("workingstud").disabled = false;
+	// })
+	// $("#stuFap").click(function(){
+	// 	document.getElementById("stuFap").disabled = false;
+	// 	document.getElementById("disadvantagedGroup").disabled = false;
+	// 	document.getElementById("depressed").disabled = false;
+	// 	document.getElementById("indigenous").disabled = false;
+	// 	document.getElementById("pwd").disabled = false;
+	// 	document.getElementById("4ps").disabled = false;
+	// 	document.getElementById("workingstud").disabled = false;
+	// })
+	// $("#stuFap").click(function(){
+	// 	document.getElementById("stuFap").disabled = false;
+	// 	document.getElementById("disadvantagedGroup").disabled = false;
+	// 	document.getElementById("depressed").disabled = false;
+	// 	document.getElementById("indigenous").disabled = false;
+	// 	document.getElementById("pwd").disabled = false;
+	// 	document.getElementById("4ps").disabled = false;
+	// 	document.getElementById("workingstud").disabled = false;
+	// })
+	// $("#stuFap").click(function(){
+	// 	document.getElementById("stuFap").disabled = false;
+	// 	document.getElementById("disadvantagedGroup").disabled = false;
+	// 	document.getElementById("depressed").disabled = false;
+	// 	document.getElementById("indigenous").disabled = false;
+	// 	document.getElementById("pwd").disabled = false;
+	// 	document.getElementById("4ps").disabled = false;
+	// 	document.getElementById("workingstud").disabled = false;
+	// })
+	// $("#stuFap").click(function(){
+	// 	document.getElementById("stuFap").disabled = false;
+	// 	document.getElementById("disadvantagedGroup").disabled = false;
+	// 	document.getElementById("depressed").disabled = false;
+	// 	document.getElementById("indigenous").disabled = false;
+	// 	document.getElementById("pwd").disabled = false;
+	// 	document.getElementById("4ps").disabled = false;
+	// 	document.getElementById("workingstud").disabled = false;
+	// })
+	// $("#stuFap").click(function(){
+	// 	document.getElementById("stuFap").disabled = false;
+	// 	document.getElementById("disadvantagedGroup").disabled = false;
+	// 	document.getElementById("depressed").disabled = false;
+	// 	document.getElementById("indigenous").disabled = false;
+	// 	document.getElementById("pwd").disabled = false;
+	// 	document.getElementById("4ps").disabled = false;
+	// 	document.getElementById("workingstud").disabled = false;
+	// })
+	// $("#stuFap").click(function(){
+	// 	document.getElementById("stuFap").disabled = false;
+	// 	document.getElementById("disadvantagedGroup").disabled = false;
+	// 	document.getElementById("depressed").disabled = false;
+	// 	document.getElementById("indigenous").disabled = false;
+	// 	document.getElementById("pwd").disabled = false;
+	// 	document.getElementById("4ps").disabled = false;
+	// 	document.getElementById("workingstud").disabled = false;
+	// })
 	function strand(){
 		document.getElementById('shs_strands').value="";
 		if(document.getElementById('shs_tracks').value == 'Academics'){
