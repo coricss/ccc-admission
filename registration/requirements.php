@@ -101,8 +101,13 @@
                             <small class="text-danger" id="votecerterror"></small>
                         </div>
                     </div>
-                    <div class="text-center row mb-3">
-                        <div class=" col-md-12 col-sm-12 mb-3">
+                    <div class="row mb-3">
+                        <div class="col-md-6 col-sm-12 mb-3" id="group-file">
+                            <label for="group-requirement"><b id="groupName"></b></label><br>
+                            <input type="file" name="group-requirement" id="group-requirement" class="inputfile form-control" accept=".pdf, .png, .jpg">
+                            <small class="text-danger" id="grouperror"></small>
+                        </div>
+                        <div class="col-md-6 col-sm-12 mb-3" id="vax-file">
                             <label for="vaxcard"><b>Copy of Vaccination Card:</b></label><br>
                             <input type="file" name="vaxcard" id="vaxcard" class="inputfile form-control" accept=".pdf, .png, .jpg">
                             <small class="text-danger" id="vaxcarderror"></small>
