@@ -236,6 +236,7 @@ else{
                 </div>
             </div>
         </section>
+        
         <div class="row mt-3 mb-5">
             <section class="verification">
                 <div class="col-lg-12 col-md-12">
@@ -286,15 +287,15 @@ else{
                             <table class="mb-0 table table-responsive table-bordered table-hover text-center" id="studVerify">
                                 <thead class='table-ccc'>
                                     <tr>
-                                        <th width=10%>Application #</th>
+                                        <th width=8%>Application #</th>
                                         <th width=5%>Photo</th>
-                                        <th width=10%>Name</th>
-                                        <th wodth=5%>Contact No.</th>
+                                        <th width=8%>Name</th>
+                                        <th wodth=8%>Contact No.</th>
                                         <th width=10%>Email</th>
                                         <th width=15%>Address</th>
-                                        <th width=10%>Admit Type</th>
-                                        <th width=10%>Application Form</th>
-                                        <th width=10%>Requirements</th>
+                                        <th width=5%>Admit Type</th>
+                                        <th width=8%>Application Form</th>
+                                        <th width=20%>Requirements</th>
                                         <th width=5%>Status</th>
                                         <th width=10%>Action</th>
                                     </tr>
@@ -309,6 +310,6 @@ else{
             </section>
         <div>
     </div>
-    
+
 </body>
 </html>
