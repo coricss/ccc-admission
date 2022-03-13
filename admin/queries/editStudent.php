@@ -508,10 +508,24 @@ echo '
                     </div>
                     <div class="col-md-3 col-sm-12">
                         <label for="als_cert">ALS Certification: 
-                            <a href="../requirements/AlsCertificates/'.$educBG["als_cert"].'" target="_blank">
+                            <a class="link-req" id="btn-req" data-bs-toggle="modal" data-bs-target="#als-'.$educBG['student_id'].'">
                                 <small style="display: '.$display.'"><i class="bx bx-paperclip bx-rotate-270" style="font-size: 15px"></i>Current ALS Certification
                                 </small>
                             </a>  
+                            <div class="modal fade" id="als-'.$educBG["student_id"].'" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog modal-dialog-centered modal-xl">
+                                    <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel">'.$studInfo["application_no"].': ALS Certificate</h5>
+                                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body text-center">
+                                        <iframe src="../requirements/AlsCertificates/'.$educBG["als_cert"].'" class="file-view"></iframe>
+                                    </div>
+                                    
+                                    </div>
+                                </div>
+                            </div>
                         </label>
                         <input type="file" value="'.$educBG["als_cert"].'" name="als_cert2" id="als_cert2" placeholder="" class="form-control">
                         <small class="text-danger" id="alscerterror2"></small>
@@ -874,21 +888,47 @@ echo '
                     <div class="row mb-3">
                         <div class="col-md-6 col-sm-12 mb-3">
                             <label for="g11cardfile2"><b>Grade 11 Report Card:</b><i class="req">*</i>
-                                <a href="../requirements/Grade11Cards/'.$req["g12card"].'" target="_blank">
+                                <a class="link-req" id="btn-req" data-bs-toggle="modal" data-bs-target="#card1-'.$req['student_id'].'">
                                     <small style="display: '.$g11Dis.'"><i class="bx bx-paperclip bx-rotate-270" style="font-size: 15px"></i>Current G11 Report Card
                                     </small>
-                                </a>  
+                                </a>
                             </label>
+                            <div class="modal fade" id="card1-'.$req["student_id"].'" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog modal-dialog-centered modal-xl">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLabel">'.$studInfo["application_no"].': Grade 11 Card</h5>
+                                            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body text-center">
+                                            <iframe src="../requirements/Grade11Cards/'.$req["g11card"].'" class="file-view"></iframe>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>  
                             <input type="file" name="g11card2" id="g11cardfile2" class="inputfile form-control" accept=".pdf, .png, .jpg">
                             <small class="text-danger" id="g11error2"></small>
                         </div>
                         <div class="col-md-6 col-sm-12">
                             <label for="g12cardfile2"><b>Grade 12 Report Card:</b><i class="req">*</i>
-                                <a href="../requirements/Grade12Cards/'.$req["g12card"].'" target="_blank">
+                                <a class="link-req" id="btn-req" data-bs-toggle="modal" data-bs-target="#card2-'.$req['student_id'].'">
                                     <small style="display: '.$g12Dis.'"><i class="bx bx-paperclip bx-rotate-270" style="font-size: 15px"></i>Current G12 Report Card
                                     </small>
-                                </a>  
+                                </a>
                             </label>
+                            <div class="modal fade" id="card2-'.$req["student_id"].'" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog modal-dialog-centered modal-xl">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLabel">'.$studInfo["application_no"].': Grade 12 Card</h5>
+                                            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body text-center">
+                                            <iframe src="../requirements/Grade12Cards/'.$req["g12card"].'" class="file-view"></iframe>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>   
                             <input type="file" name="g12card2" id="g12cardfile2" class="inputfile form-control" accept=".pdf, .png, .jpg">
                             <small class="text-danger" id="g12error2"></small>
                         </div>   
@@ -898,21 +938,47 @@ echo '
                     <div class="row mb-3">
                         <div class="col-md-6 col-sm-12 mb-3">
                             <label for="torpg12"><b>Transcript of Records (Page 1):</b><i class="req">*</i>
-                                <a href="../requirements/TOR_Page1/'.$req["torpg1"].'" target="_blank">
+                                <a class="link-req" id="btn-req" data-bs-toggle="modal" data-bs-target="#tor1-'.$req['student_id'].'">
                                     <small style="display: '.$torpg1Dis.'"><i class="bx bx-paperclip bx-rotate-270" style="font-size: 15px"></i>Current ToR 1 Card
                                     </small>
-                                </a>  
+                                </a>
                             </label>
+                            <div class="modal fade" id="tor1-'.$req["student_id"].'" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog modal-dialog-centered modal-xl">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLabel">'.$studInfo["application_no"].': Transcript of Record Page 1</h5>
+                                            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body text-center">
+                                            <iframe src="../requirements/TOR_Page1/'.$req["torpg1"].'" class="file-view"></iframe>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div> 
                             <input type="file" name="torpg12" id="torpg12" class="inputfile form-control" accept=".pdf, .png, .jpg">
                             <small class="text-danger" id="torpg1error2"></small>
                         </div>
                         <div class="col-md-6 col-sm-12">
                             <label for="torpg22"><b>Transcript of Records (Page 2):</b><i class="req">*</i>
-                                <a href="../requirements/TOR_Page2/'.$req["torpg2"].'" target="_blank">
+                                <a class="link-req" id="btn-req" data-bs-toggle="modal" data-bs-target="#tor2-'.$req['student_id'].'">
                                     <small style="display: '.$torpg2Dis.'"><i class="bx bx-paperclip bx-rotate-270" style="font-size: 15px"></i>Current ToR 2 Card
                                     </small>
-                                </a>  
+                                </a>
                             </label>
+                            <div class="modal fade" id="tor2-'.$req["student_id"].'" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered modal-xl">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel">'.$studInfo["application_no"].': Transcript of Record Page 2</h5>
+                                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body text-center">
+                                        <iframe src="../requirements/TOR_Page2/'.$req["torpg2"].'" class="file-view"></iframe>
+                                    </div>
+                                </div>
+                            </div>
+                            </div>   
                             <input type="file" name="torpg22" id="torpg22" class="inputfile form-control" accept=".pdf, .png, .jpg">
                             <small class="text-danger" id="torpg2error2"></small>
                         </div>
@@ -921,21 +987,47 @@ echo '
                 <div class="row mb-3">
                     <div class="col-md-6 col-sm-12 mb-3">
                         <label for="goodmoral"><b>Good Moral Certification:</b><i class="req">*</i>
-                            <a href="../requirements/Good Morals/'.$req["goodmoral"].'" target="_blank" style="text-decoration: none">
+                            <a class="link-req" id="btn-req" data-bs-toggle="modal" data-bs-target="#goodmoral-'.$req['student_id'].'">
                                 <small><i class="bx bx-paperclip bx-rotate-270" style="font-size: 15px"></i>Current Good Moral File
                                 </small>
-                            </a>  
-                        </label><br>
+                            </a>
+                        </label>
+                        <div class="modal fade" id="goodmoral-'.$req["student_id"].'" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered modal-xl">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel">'.$studInfo["application_no"].': Good Moral Certification</h5>
+                                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body text-center">
+                                        <iframe src="../requirements/Good Morals/'.$req["goodmoral"].'" class="file-view"></iframe>
+                                    </div>
+                                </div>
+                            </div> 
+                        </div> 
                         <input type="file" name="goodmoral2" id="goodmoral2" class="inputfile form-control" accept=".pdf, .png, .jpg">
                         <small class="text-danger" id="goodmoralerror2"></small>
                     </div>
                     <div class="col-md-6 col-sm-12">
                         <label for="birthcert"><b>Birth Certificate:</b><i class="req">*</i>
-                            <a href="../requirements/BirthCertificates/'.$req["birthcert"].'" target="_blank" style="text-decoration: none">
+                            <a class="link-req" id="btn-req" data-bs-toggle="modal" data-bs-target="#birthcert-'.$req['student_id'].'">
                                 <small><i class="bx bx-paperclip bx-rotate-270" style="font-size: 15px"></i>Current Birth Certicate
                                 </small>
                             </a>  
-                        </label><br>
+                        </label>
+                        <div class="modal fade" id="birthcert-'.$req["student_id"].'" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered modal-xl">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel">'.$studInfo["application_no"].': Birth Certificate</h5>
+                                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body text-center">
+                                        <iframe src="../requirements/BirthCertificates/'.$req["birthcert"].'" class="file-view"></iframe>
+                                    </div>
+                                </div>
+                            </div> 
+                        </div>
                         <input type="file" name="birthcert2" id="birthcert2" class="inputfile form-control" accept=".pdf, .png, .jpg">
                         <small class="text-danger" id="birthcerterror2"></small>
                     </div>
@@ -943,21 +1035,47 @@ echo '
                 <div class="row mb-3">
                     <div class="col-md-6 col-sm-12 mb-3">
                         <label for="indigency"><b>Certificate of Residency:</b><i class="req">*</i>
-                            <a href="../requirements/Indigency/'.$req["indigency"].'" target="_blank" style="text-decoration: none">
+                            <a class="link-req" id="btn-req" data-bs-toggle="modal" data-bs-target="#indigency-'.$req['student_id'].'">
                                 <small><i class="bx bx-paperclip bx-rotate-270" style="font-size: 15px"></i>Current Certificate of Residency
                                 </small>
                             </a>  
-                        </label><br>
+                        </label>
+                        <div class="modal fade" id="indigency-'.$req["student_id"].'" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered modal-xl">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel">'.$studInfo["application_no"].': Certificate of Residency</h5>
+                                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body text-center">
+                                        <iframe src="../requirements/Indigency/'.$req["indigency"].'" class="file-view"></iframe>
+                                    </div>
+                                </div>
+                            </div> 
+                        </div>
                         <input type="file" name="indigency2" id="indigency2" class="inputfile form-control" accept=".pdf, .png, .jpg">
                         <small class="text-danger" id="indigencyerror2"></small>
                     </div>
                     <div class="col-md-6 col-sm-12 mb-3">
                         <label for="votecert"><b>Voters Certification of Student/Parent/Guardian:</b><i class="req">*</i>
-                            <a href="../requirements/Voter_Certificates/'.$req["voters"].'" target="_blank" style="text-decoration: none">
+                            <a class="link-req" id="btn-req" data-bs-toggle="modal" data-bs-target="#voters-'.$req['student_id'].'">
                                 <small"><i class="bx bx-paperclip bx-rotate-270" style="font-size: 15px"></i>Current Voters Certificate
                                 </small>
                             </a>  
-                        </label><br>
+                        </label>
+                        <div class="modal fade" id="voters-'.$req["student_id"].'" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered modal-xl">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel">'.$studInfo["application_no"].': Voters Certification/Identification</h5>
+                                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body text-center">
+                                        <iframe src="../requirements/Voter_Certificates/'.$req["voters"].'" class="file-view"></iframe>
+                                    </div>
+                                </div>
+                            </div> 
+                        </div>
                         <input type="file" name="votercert2" id="votecert2" class="inputfile form-control" accept=".pdf, .png, .jpg">
                         <small class="text-danger" id="votecerterror2"></small>
                     </div>
@@ -965,11 +1083,24 @@ echo '
                 <div class="text-center row mb-3">
                     <div class=" col-md-12 col-sm-12 mb-3">
                         <label for="vaxcard"><b>Copy of Vaccination Card:</b>
-                            <a href="../requirements/VaccinationCards/'.$req["vaxcard"].'" target="_blank">
+                            <a class="link-req" id="btn-req" data-bs-toggle="modal" data-bs-target="#vax-'.$req['student_id'].'">
                                 <small style="display: '.$display2.'"><i class="bx bx-paperclip bx-rotate-270" style="font-size: 15px"></i>Current Vaccination Card
                                 </small>
                             </a> 
-                        </label><br>
+                        </label>
+                        <div class="modal fade" id="vax-'.$req["student_id"].'" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered modal-xl">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel">'.$studInfo["application_no"].': Vaccination Card</h5>
+                                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body text-center">
+                                        <iframe src="../requirements/VaccinationCards/'.$req["vaxcard"].'" class="file-view"></iframe>
+                                    </div>
+                                </div>
+                            </div> 
+                        </div>
                         <input type="file" name="vaxcard2" id="vaxcard2" class="inputfile form-control" accept=".pdf, .png, .jpg">
                         <small class="text-danger" id="vaxcarderror2"></small>
                     </div>
