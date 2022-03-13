@@ -155,7 +155,7 @@ if(isset($_SESSION['ID'])&&($_SESSION['email'])){
                                     </form>
                                 </li>
                                 <li>
-                                    <button class="dropdown-item" type="" name="print-students" onclick="printJS('studData', 'html')" id="print-students">
+                                    <button class="dropdown-item" type="" name="print-students" id="print-students">
                                         <i class='bx bxs-printer' style="font-size: 15px"></i> Print
                                     </button>
                                 </li>
@@ -173,7 +173,7 @@ if(isset($_SESSION['ID'])&&($_SESSION['email'])){
                                 <form action="queries/export-tables.php" method="post" style="display: flex; margin: 0">
                                 <button type="submit" name="export-overview" class=export id="export" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-original-title="Export"><i class='bx bxs-download' style="font-size: 25px"></i></button>
                                 </form>
-                                <button type="" name="print-students" onclick="printJS('studData', 'html')" class=refresh id="print-students" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-original-title="Print"><i class='bx bxs-printer' style="font-size: 25px"></i></button>
+                                <button type="" name="print-students"  class=refresh id="print-students" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-original-title="Print"><i class='bx bxs-printer' style="font-size: 25px"></i></button>
                                 <button class=refresh id="refresh"><i class='bx bx-refresh' style="font-size: 30px" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-original-title="Refresh"></i></button>
                                 <select class="form-select sort" id="sortoverview" class="sort">
                                     <option value="" disabled selected>Sort By</option>
@@ -206,7 +206,7 @@ if(isset($_SESSION['ID'])&&($_SESSION['email'])){
                                     <th style='border: 1px solid gray' width=20%>Address</th>
                                     <th style='border: 1px solid gray' width=10%>Admit Type</th>
                                     <th style='border: 1px solid gray' width=10%>Status</th>
-                                    <th style='border: 1px solid gray' width=10%>Action</th>
+                                    <th id='actions' style='border: 1px solid gray;' width=10%>Action</th>
                                 </tr>
                             </thead>
                             <tbody id=dataa>

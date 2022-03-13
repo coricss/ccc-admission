@@ -989,6 +989,13 @@ $('#goback2').click(function(){
   $('#editStud').hide();
   $('#main-card').show();
 })
+$(document).on('click', "#print-students", function(){
+  $("#actions").hide();
+  $("td.actions").hide();
+  printJS('studData', 'html')
+  $("#actions").show();
+  $("td.actions").show();
+})
 $('#print-admin').click(function(){
   $('#admin-table').printThis();
 })
@@ -1177,6 +1184,11 @@ function setInputFilter(textbox, inputFilter) {
     });
   });
 }
+$(document).on('click', '#btn-view', function(e){
+  e.preventDefault();
+  var id = $(this).attr("data-id");
+  $("#modal-overview-"+id).show();
+})
 $(document).on('click', '#editstudent', function(e){
   e.preventDefault();
    var id = $(this).attr("data-id");
