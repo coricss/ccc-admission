@@ -89,6 +89,14 @@
                                 </a>
                             </li>";
                 }
+                if($row['proof_of_group']!=""){
+                    $output.=
+                            "<li>
+                                <a class='link-req' href='../requirements/Proof_of_Groups/".$row['proof_of_group']."' target='_blank' style='text-decoration: none;'>
+                                    <i class='bx bxs-file' style='font-size: 10px'></i> <small>".$row['groups']."</small>
+                                </a>
+                            </li>";
+                }
                     $output.=
                       "</ul>
                     </div>
