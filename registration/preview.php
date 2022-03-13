@@ -116,7 +116,7 @@
                                     <td><b>Calamba Resident:</b></td>
                                     <td class="values" id="calambares1"></td>
                                     <input type="hidden" name="calambares" id=calambares2>
-                                    <td><b>Years in Calamba:</b></td>
+                                    <td><b>Date of Residency:</b></td>
                                     <td class="values" id="yrs_calamba1"></td>
                                     <input type="hidden" name="yrs_calamba" id=yrs_calamba2>
                                 </tr>
@@ -152,23 +152,23 @@
                                             <label for=""><b>Groups you are belong to:</b></label>
                                                     <div class="col-md-4" style="margin-left: 20px">
                                                         <input type="hidden" name="group" value="N/A">
-                                                        <input type="checkbox" class="non" name="group[]" value="N/A" id="nonee2" onclick="return false;">
+                                                        <input type="radio" class="non" name="group[]" value="N/A" id="nonee2" onclick="return false;">
                                                         <small>None</small><br>
-                                                        <input type="checkbox" class="" name="group[]" value="Recipient of Student Financial Assistance" onclick="return false;" id="stuFap2">
+                                                        <input type="radio" class="" name="group[]" value="Recipient of Student Financial Assistance" onclick="return false;" id="stuFap2">
                                                         <small>Recipient of Student Financial Assistance</small><br>
-                                                        <input type="checkbox" class="" name="group[]" value="Person from Disadvantaged Group" onclick="return false;" id="disadvantagedGroup2">
+                                                        <input type="radio" class="" name="group[]" value="Person from Disadvantaged Group" onclick="return false;" id="disadvantagedGroup2">
                                                         <small>Person from Disadvantaged Group</small><br>
-                                                        <input type="checkbox" class="" name="group[]" value="Person from Depressed or Conflicted-Areas" onclick="return false;" id="depressed2">
+                                                        <input type="radio" class="" name="group[]" value="Person from Depressed or Conflicted-Areas" onclick="return false;" id="depressed2">
                                                         <small>Person from Depressed or Conflicted Areas</small><br>
                                                     </div>
                                                     <div class="col-md-4" style="margin-left: 20px">
-                                                        <input type="checkbox" class="" name="group[]" value="Member of Indigenous People" onclick="return false;" id="indigenous2">
+                                                        <input type="radio" class="" name="group[]" value="Member of Indigenous People" onclick="return false;" id="indigenous2">
                                                         <small>Member of Indigenous People</small><br>
-                                                        <input type="checkbox" class="" name="group[]" value="Person with Disability" onclick="return false;" id="pwd2">
+                                                        <input type="radio" class="" name="group[]" value="Person with Disability" onclick="return false;" id="pwd2">
                                                         <small>Person with Disability (PWD)</small><br>
-                                                        <input type="checkbox" class="" name="group[]" value="Recipient of 4Ps" onclick="return false;" id="4ps2">
+                                                        <input type="radio" class="" name="group[]" value="Recipient of 4Ps" onclick="return false;" id="4ps2">
                                                         <small>Recipient of 4Ps</small><br>
-                                                        <input type="checkbox" class="" name="group[]" value="Working Student" onclick="return false;" id="workingstud2">
+                                                        <input type="radio" class="" name="group[]" value="Working Student" onclick="return false;" id="workingstud2">
                                                         <small>Working Student</small><br> 
                                                     </div>
                                         </div>
@@ -660,9 +660,15 @@
                                                 </div>
                                             </div>    
                                         </div>
-                                        <div class="row mt-4 text-center">
-                                            <div class="col-12">
-                                                <label for="vax"><b>Voter's Certification of Parent/Guardian:</b></label>
+                                        <div class="row mt-4 ">
+                                            <div class="col-6" id="group-file2">
+                                                <label for="group-req"><b id="groupName2">:</b></label>
+                                                <div id="group-req">
+                                                    
+                                                </div>
+                                            </div>
+                                            <div class="col-6" id="vax-file2">
+                                                <label for="vax"><b>Vaccination Card:</b></label>
                                                 <div id="vax">
                                                     
                                                 </div>

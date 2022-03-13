@@ -38,6 +38,54 @@ $(window).scroll(function() {
         btn.removeClass('show');
     }
 });
+// var age = $("#age").val();
+// var date = $("#bday").val();
+// var year = 2022-age;
+// $('#age').change(function(){
+
+// 	var current = $('#age').val();
+// 	if (current != 'null') {
+// 		$('#age').css('color','black');
+// 		$('#bday').prop("disabled", false);
+// 	} else {
+// 		$('#age').css('color','#6c757d');
+// 		$('#bday').prop("disabled", true);
+// 	}
+
+// 	$('#bday').val("");
+// 	var age = $('#age').val();
+// 	var currentYear = (new Date).getFullYear();
+// 	var birthyear = currentYear-age;
+// 	$('#bday').attr("min", birthyear+"-01-01");
+// 	$('#bday').attr("max", birthyear+"-12-31");
+
+// })
+maxDate();
+function maxDate(){
+	var now = new Date();
+	now.setFullYear(now.getFullYear()-18);
+	function convert(str) {
+		var date = new Date(str),
+			mnth = ("0" + (date.getMonth() + 1)).slice(-2),
+			day = ("0" + date.getDate()).slice(-2);
+		return [date.getFullYear(), mnth, day].join("-");
+	}
+	
+	$("#bday").attr("max", convert(now));
+}
+$("#bday").change(function(){
+	
+	var day1 = new Date($("#bday").val()); 
+	var day2 = new Date();
+
+	var difference= Math.abs(day2-day1);
+	days = difference/(1000 * 3600 * 24)
+
+	$("#age").val(Math.trunc(days/365));
+
+	var minDateRes = $("#bday").val();
+	$("#yrs_calambaa").attr("min", minDateRes);
+})
 
 btn.on('click', function(e) {
     e.preventDefault();
@@ -177,19 +225,24 @@ function triggerClick(e) {
 			document.getElementById('calambaresyes').style.display= 'block';
 			document.getElementById('calambaresno').style.display = 'none';
 			document.getElementById('pre_city').value = 'Calamba';
-			document.getElementById('yrs_calamba').disabled= false;
+			document.getElementById('pre_zip').value = '4027';
+			document.getElementById('yrs_calambaa').disabled= false;
+			$('#pre_city').prop("readonly", true);
+			$('#pre_zip').prop("readonly", true);
 			$("#pre_brgy1").prop('required',true);
 			$("#pre_brgy2").prop('required',false);
-			$(".yrs_calamba").prop('required',true);
 		}
 		else if (document.getElementById('calambares').value=="No") {
 			document.getElementById('calambaresno').style.display = 'block';
 			document.getElementById('calambaresyes').style.display = 'none';
 			document.getElementById('pre_city').value = '';
-			document.getElementById('yrs_calamba').disabled = true;
+			document.getElementById('pre_zip').value = '';
+			$('#pre_city').prop("readonly", false);
+			$('#pre_zip').prop("readonly", false);
+			document.getElementById('yrs_calambaa').disabled = true;
 			$("#pre_brgy1").prop('required',false);
 			$("#pre_brgy2").prop('required',true);
-			$(".yrs_calamba").prop('required',false);
+			$("#yrs_calambaa").val("");
 		}
 		else{
 			document.getElementById('calambaresno').style.display = 'block';
@@ -197,6 +250,57 @@ function triggerClick(e) {
 	
 	}
 
+function maxDateRes(date) {
+    var d = new Date(date),
+        month = '' + (d.getMonth() + 1),
+        day = '' + d.getDate(),
+        year = d.getFullYear();
+
+    if (month.length < 2) 
+        month = '0' + month;
+    if (day.length < 2) 
+        day = '0' + day;
+
+    return [year, month, day].join('-');
+}
+var x = new Date();
+var today = maxDateRes(x);
+
+$("#yrs_calambaa").attr("max", today);
+$("#dgrad_elem").attr("max", today);
+$("#jhs_dgrad").attr("max", today);
+$("#shs_dgrad").attr("max", today);
+$("#tvc_dgrad").attr("max", today);
+
+
+$("#yrs_calambaa").click(function(){
+	var minDateRes = $("#bday").val();
+	$(this).attr("min", minDateRes);
+})
+
+$("#dgrad_elem").click(function(){
+	var current_age = $("#age").val();
+	var current_year = new Date().getFullYear();
+	var birthyear = current_year-current_age;
+	var elemdgrad=birthyear+12;
+	$("#dgrad_elem").prop("min", elemdgrad+"-01-01");
+})
+$("#jhs_dgrad").click(function(){
+	var current_age = $("#age").val();
+	var current_year = new Date().getFullYear();
+	var birthyear = current_year-current_age;
+	var jhs_yr=birthyear+16;
+	$(this).prop("min", jhs_yr+"-01-01");
+})
+$("#shs_dgrad").click(function(){
+	var current_age = $("#age").val();
+	var current_year = new Date().getFullYear();
+	var birthyear = current_year-current_age;
+	var shs_yr=birthyear+18;
+	$(this).prop("min", shs_yr+"-01-01");
+})
+
+	
 	function StopConsoleText() {
 		console.log("%cYAMETE KUDASAI!", "color: red; font-family: sans-serif; font-size: 4.5em; font-weight: bolder; text-shadow: #000 1px 1px;")
 	}
@@ -251,59 +355,148 @@ function triggerClick(e) {
 		}
 	}
 
-	function wala()
-	{
-		if(document.getElementById("none").checked==false){
-			$(function(){
-				$("#none").prop('required',true);
-		 	});
-                $(function() {
-                    $.notify({
-                        title: 'Select a group',
-                        message: 'If you are not belong to the group list, please check none!'
-                    },{
-                    animate: {
-                        enter: 'animate__animated animate__fadeInDown',
-                        exit: 'animate__animated animate__fadeOutRight'
-                    },
-                    delay: 4000,
-                    placement: {
-                        from: 'top',
-                        align: 'right'
-                    },
-                    type: 'pastel-warning',
-                    allow_dismiss: false
-                    });
-                });
+	$(document).on("change", "#1stprio", function(){
+		var first_prio=$(this).val();
+		if((first_prio=="BSEE")||(first_prio=="BSEM")||(first_prio=="BSES")){
+			$("#g11_gwa").prop("min", 87);
+			$("#g12_gwa").prop("min", 87);
+		}else if((first_prio=="BSIT")||(first_prio=="BSCS")||(first_prio=="BEED")||(first_prio=="BSAIS")){
+			$("#g11_gwa").prop("min", 85);
+			$("#g12_gwa").prop("min", 85);
+		}else{
+			$("#g11_gwa").prop("min", 89);
+			$("#g12_gwa").prop("min", 89);
+		}
+	})
+	$(document).on("change", "#2ndprio", function(){
+		var second_prio=$(this).val();
+	})
+
+	// function wala()
+	// {
+	// 	if(document.getElementById("none").checked==false){
+	// 		$(function(){
+	// 			$("#none").prop('required',true);
+	// 	 	});
+  //               $(function() {
+  //                   $.notify({
+  //                       title: 'Select a group',
+  //                       message: 'If you are not belong to the group list, please check none!'
+  //                   },{
+  //                   animate: {
+  //                       enter: 'animate__animated animate__fadeInDown',
+  //                       exit: 'animate__animated animate__fadeOutRight'
+  //                   },
+  //                   delay: 4000,
+  //                   placement: {
+  //                       from: 'top',
+  //                       align: 'right'
+  //                   },
+  //                   type: 'pastel-warning',
+  //                   allow_dismiss: false
+  //                   });
+  //               });
            
-		}
-		if(document.getElementById("none").checked){
-			document.getElementById("stuFap").disabled = true;
-			document.getElementById("disadvantagedGroup").disabled = true;
-			document.getElementById("depressed").disabled = true;
-			document.getElementById("indigenous").disabled = true;
-			document.getElementById("pwd").disabled = true;
-			document.getElementById("4ps").disabled = true;
-			document.getElementById("workingstud").disabled = true;
+	// 	}
+	// 	if(document.getElementById("none").checked){
+	// 		document.getElementById("stuFap").disabled = true;
+	// 		document.getElementById("disadvantagedGroup").disabled = true;
+	// 		document.getElementById("depressed").disabled = true;
+	// 		document.getElementById("indigenous").disabled = true;
+	// 		document.getElementById("pwd").disabled = true;
+	// 		document.getElementById("4ps").disabled = true;
+	// 		document.getElementById("workingstud").disabled = true;
 			
-			document.getElementById("stuFap").checked = false;
-			document.getElementById("disadvantagedGroup").checked = false;
-			document.getElementById("depressed").checked = false;
-			document.getElementById("indigenous").checked = false;
-			document.getElementById("pwd").checked = false;
-			document.getElementById("4ps").checked = false;
-			document.getElementById("workingstud").checked = false;
-		}
-		else{
-			document.getElementById("stuFap").disabled = false;
-			document.getElementById("disadvantagedGroup").disabled = false;
-			document.getElementById("depressed").disabled = false;
-			document.getElementById("indigenous").disabled = false;
-			document.getElementById("pwd").disabled = false;
-			document.getElementById("4ps").disabled = false;
-			document.getElementById("workingstud").disabled = false;	
-		}
-	}
+	// 		document.getElementById("stuFap").checked = false;
+	// 		document.getElementById("disadvantagedGroup").checked = false;
+	// 		document.getElementById("depressed").checked = false;
+	// 		document.getElementById("indigenous").checked = false;
+	// 		document.getElementById("pwd").checked = false;
+	// 		document.getElementById("4ps").checked = false;
+	// 		document.getElementById("workingstud").checked = false;
+	// 	}
+	// 	else{
+	// 		document.getElementById("stuFap").disabled = false;
+	// 		document.getElementById("disadvantagedGroup").disabled = false;
+	// 		document.getElementById("depressed").disabled = false;
+	// 		document.getElementById("indigenous").disabled = false;
+	// 		document.getElementById("pwd").disabled = false;
+	// 		document.getElementById("4ps").disabled = false;
+	// 		document.getElementById("workingstud").disabled = false;	
+	// 	}
+	// }
+	
+	// $("#stuFap").click(function(){
+	// 	document.getElementById("disadvantagedGroup").disabled = true;
+	// 	document.getElementById("depressed").disabled = true;
+	// 	document.getElementById("indigenous").disabled = true;
+	// 	document.getElementById("pwd").disabled = true;
+	// 	document.getElementById("4ps").disabled = true;
+	// 	document.getElementById("workingstud").disabled = true;
+	// })
+	// $("#stuFap").click(function(){
+	// 	document.getElementById("stuFap").disabled = false;
+	// 	document.getElementById("disadvantagedGroup").disabled = false;
+	// 	document.getElementById("depressed").disabled = false;
+	// 	document.getElementById("indigenous").disabled = false;
+	// 	document.getElementById("pwd").disabled = false;
+	// 	document.getElementById("4ps").disabled = false;
+	// 	document.getElementById("workingstud").disabled = false;
+	// })
+	// $("#stuFap").click(function(){
+	// 	document.getElementById("stuFap").disabled = false;
+	// 	document.getElementById("disadvantagedGroup").disabled = false;
+	// 	document.getElementById("depressed").disabled = false;
+	// 	document.getElementById("indigenous").disabled = false;
+	// 	document.getElementById("pwd").disabled = false;
+	// 	document.getElementById("4ps").disabled = false;
+	// 	document.getElementById("workingstud").disabled = false;
+	// })
+	// $("#stuFap").click(function(){
+	// 	document.getElementById("stuFap").disabled = false;
+	// 	document.getElementById("disadvantagedGroup").disabled = false;
+	// 	document.getElementById("depressed").disabled = false;
+	// 	document.getElementById("indigenous").disabled = false;
+	// 	document.getElementById("pwd").disabled = false;
+	// 	document.getElementById("4ps").disabled = false;
+	// 	document.getElementById("workingstud").disabled = false;
+	// })
+	// $("#stuFap").click(function(){
+	// 	document.getElementById("stuFap").disabled = false;
+	// 	document.getElementById("disadvantagedGroup").disabled = false;
+	// 	document.getElementById("depressed").disabled = false;
+	// 	document.getElementById("indigenous").disabled = false;
+	// 	document.getElementById("pwd").disabled = false;
+	// 	document.getElementById("4ps").disabled = false;
+	// 	document.getElementById("workingstud").disabled = false;
+	// })
+	// $("#stuFap").click(function(){
+	// 	document.getElementById("stuFap").disabled = false;
+	// 	document.getElementById("disadvantagedGroup").disabled = false;
+	// 	document.getElementById("depressed").disabled = false;
+	// 	document.getElementById("indigenous").disabled = false;
+	// 	document.getElementById("pwd").disabled = false;
+	// 	document.getElementById("4ps").disabled = false;
+	// 	document.getElementById("workingstud").disabled = false;
+	// })
+	// $("#stuFap").click(function(){
+	// 	document.getElementById("stuFap").disabled = false;
+	// 	document.getElementById("disadvantagedGroup").disabled = false;
+	// 	document.getElementById("depressed").disabled = false;
+	// 	document.getElementById("indigenous").disabled = false;
+	// 	document.getElementById("pwd").disabled = false;
+	// 	document.getElementById("4ps").disabled = false;
+	// 	document.getElementById("workingstud").disabled = false;
+	// })
+	// $("#stuFap").click(function(){
+	// 	document.getElementById("stuFap").disabled = false;
+	// 	document.getElementById("disadvantagedGroup").disabled = false;
+	// 	document.getElementById("depressed").disabled = false;
+	// 	document.getElementById("indigenous").disabled = false;
+	// 	document.getElementById("pwd").disabled = false;
+	// 	document.getElementById("4ps").disabled = false;
+	// 	document.getElementById("workingstud").disabled = false;
+	// })
 	function strand(){
 		document.getElementById('shs_strands').value="";
 		if(document.getElementById('shs_tracks').value == 'Academics'){
@@ -594,6 +787,7 @@ var requirements = document.querySelectorAll('#requirements')
           event.stopPropagation()
 		  $('#personalAD').show();
         }else{
+			groupName();
 			$('#personalAD').hide();
 			$('.step-5').removeClass('active');
 			$('.step-6').addClass('active');
@@ -704,6 +898,47 @@ var requirements = document.querySelectorAll('#requirements')
 	// 		}
 	// 	})
 	// })
+	function groupName(){
+		if(document.getElementById("none").checked==true){
+			$("#group-file").hide();
+			$("#group-file2").hide();
+			$("#vax-file").removeClass("col-md-6");
+			$("#vax-file").addClass("col-md-12");
+			$("#vax-file2").removeClass("col-md-6");
+			$("#vax-file2").addClass("col-md-12");
+			$("#group-requirement").prop("required", false);
+		}else{
+			$("#group-file").show();
+			$("#group-file2").show();
+			$("#vax-file").removeClass("col-md-12");
+			$("#vax-file").addClass("col-md-6");
+			$("#vax-file2").removeClass("col-md-12");
+			$("#vax-file2").addClass("col-md-6");
+			$("#group-requirement").prop("required", true);
+		}
+		if(document.getElementById("stuFap").checked==true){
+			$("#groupName").html("Proof of Student Financial Assistance:");
+			$("#groupName2").html("Proof of Student Financial Assistance:");
+		}else if(document.getElementById("disadvantagedGroup").checked==true){
+			$("#groupName").html("Proof of being from Disadvantaged Group:");
+			$("#groupName2").html("Proof of being from Disadvantaged Group:");
+		}else if(document.getElementById("depressed").checked==true){
+			$("#groupName").html("Proof of being from Depressed or Conflicted-Areas:");
+			$("#groupName2").html("Proof of being from Depressed or Conflicted-Areas:");
+		}else if(document.getElementById("indigenous").checked==true){
+			$("#groupName").html("Proof of being an Indigenous People:");
+			$("#groupName2").html("Proof of being an Indigenous People:");
+		}else if(document.getElementById("pwd").checked==true){
+			$("#groupName").html("Proof of being a Person with Disability:");
+			$("#groupName2").html("Proof of being a Person with Disability:");
+		}else if(document.getElementById("4ps").checked==true){
+			$("#groupName").html("Proof of being a Recipient of 4Ps:");
+			$("#groupName2").html("Proof of being a Recipient of 4Ps:");
+		}else if(document.getElementById("workingstud").checked==true){
+			$("#groupName").html("Proof of being a Working Student:");
+			$("#groupName2").html("Proof of being a Working Student:");
+		}
+	}
 	function imgFormat(){
 		var fileExt = ['jpg', 'png'];
 		// var imgsize = $('#profileImage')[0].files[0].size;
@@ -1107,12 +1342,19 @@ var requirements = document.querySelectorAll('#requirements')
 		alscertnew.attr('onclick', 'return false;');
 		$('#als_cert1').html(alscertnew);
 
-		var alscert=$('#vaxcard');
-		alscertnew = alscert.clone();
-		alscertnew.attr('id', '#vaxcardnew');
-		alscertnew.attr('onclick', 'return false;');
-		$('#vax').html(alscertnew);
-			
+		var vaxcard=$('#vaxcard');
+		vaxcardnew = vaxcard.clone();
+		vaxcardnew.attr('id', '#vaxcardnew');
+		vaxcardnew.attr('onclick', 'return false;');
+		$('#vax').html(vaxcardnew);
+
+		var group=$('#group-requirement');
+		groupnew = group.clone();
+		groupnew.attr('id', '#group-requirementnew');
+		groupnew.attr('onclick', 'return false;');
+		$('#group-req').html(groupnew);
+		
+
 		// var img = $('#profileImage'),
 		// imgnew = img.clone();
 		// img.addClass('x');
@@ -1236,8 +1478,8 @@ var requirements = document.querySelectorAll('#requirements')
 		}
 		$('#calambares1').html($('#calambares').val());
 		if($('#calambares').val()=="Yes"){
-			$('#yrs_calamba1').html($('#yrs_calamba').val());
-			$('#yrs_calamba2').val($('#yrs_calamba').val());
+			$('#yrs_calamba1').html($('#yrs_calambaa').val());
+			$('#yrs_calamba2').val($('#yrs_calambaa').val());
 		}else{
 			$('#yrs_calamba1').html("N/A");
 			$('#yrs_calamba2').val("0");
@@ -1523,45 +1765,43 @@ var requirements = document.querySelectorAll('#requirements')
 	$(document).on('keyup', '#fname', function(e){
 		e.preventDefault();
 		var firstname = $('#fname').val();
-		var middlename = $('#mname').val();
 		var lastname = $('#lname').val();
 		
 		$.ajax({
 			url: 'queries/userCheck.php',
 			type: 'POST',
-			data: {firstname:firstname, middlename:middlename, lastname:lastname},
+			data: {firstname:firstname, lastname:lastname},
 			success:function(data){
 				$('#feedbackName').html(data);		
 			}
 		});
 			
 	})
-	$(document).on('keyup', '#mname', function(e){
-		e.preventDefault();
-		var firstname = $('#fname').val();
-		var middlename = $('#mname').val();
-		var lastname = $('#lname').val();
+	// $(document).on('keyup', '#mname', function(e){
+	// 	e.preventDefault();
+	// 	var firstname = $('#fname').val();
+	// 	var middlename = $('#mname').val();
+	// 	var lastname = $('#lname').val();
 		
-		$.ajax({
-			url: 'queries/userCheck.php',
-			type: 'POST',
-			data: {firstname:firstname, middlename:middlename, lastname:lastname},
-			success:function(data){
-				$('#feedbackName').html(data);		
-			}
-		});
+	// 	$.ajax({
+	// 		url: 'queries/userCheck.php',
+	// 		type: 'POST',
+	// 		data: {firstname:firstname, middlename:middlename, lastname:lastname},
+	// 		success:function(data){
+	// 			$('#feedbackName').html(data);		
+	// 		}
+	// 	});
 			
-	})
+	// })
 	$(document).on('keyup', '#lname', function(e){
 		e.preventDefault();
 		var firstname = $('#fname').val();
-		var middlename = $('#mname').val();
 		var lastname = $('#lname').val();
 		
 		$.ajax({
 			url: 'queries/userCheck.php',
 			type: 'POST',
-			data: {firstname:firstname, middlename:middlename, lastname:lastname},
+			data: {firstname:firstname, lastname:lastname},
 			success:function(data){
 				$('#feedbackName').html(data);		
 			}

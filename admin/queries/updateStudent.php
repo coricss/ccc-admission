@@ -204,6 +204,153 @@ if(isset($_POST['btn-editStud'])){
   $characteristics=mysqli_real_escape_string($con, $_POST['characteristics2']);
   $dream=mysqli_real_escape_string($con, $_POST['dream2']);
 
+  $sql_educ="SELECT * FROM `educ_bg` WHERE `student_id`='$studID'";
+  $educ=$con->query($sql_educ) or die ($con->error);
+  $educBG=$educ->fetch_array();  
+
+  $sql_req="SELECT * FROM `requirements` WHERE `student_id`='$studID'";
+  $req=$con->query($sql_req) or die ($con->error);
+  $reqs=$req->fetch_array();  
+
+  //ALS_CERT
+  if(!empty($_FILES['als_cert2']['name'])){
+    if(!empty($educBG['als_cert'])){
+        unlink("../requirements/AlsCertificates/".$educBG['als_cert']);
+    }
+    $als_cert=$application.'.'.pathinfo($_FILES["als_cert2"]['name'], PATHINFO_EXTENSION);
+    $alsTarget="../requirements/AlsCertificates/".$als_cert;
+    move_uploaded_file($_FILES["als_cert2"]["tmp_name"], $alsTarget);
+    
+  }else{
+    $als_cert=$educBG['als_cert'];
+  }
+  //VAXCARD
+  if(!empty($_FILES['vaxcard2']['name'])){
+    if(!empty($reqs['vaxcard'])){
+        unlink("../requirements/VaccinationCards/".$reqs['vaxcard']);
+    }
+    $vaxcard=$application.'.'.pathinfo($_FILES["vaxcard2"]['name'], PATHINFO_EXTENSION);
+    $vaxTarget="../requirements/VaccinationCards/".$vaxcard;
+    move_uploaded_file($_FILES["vaxcard2"]["tmp_name"], $vaxTarget);
+    
+  }else{
+    $vaxcard=$reqs['vaxcard'];
+  }
+  //GOODMORAL
+  if(!empty($_FILES['goodmoral2']['name'])){
+    if(!empty($reqs['goodmoral'])){
+        unlink("../requirements/Good Morals/".$reqs['goodmoral']);
+    }
+    $goodmoral=$application.'.'.pathinfo($_FILES["goodmoral2"]['name'], PATHINFO_EXTENSION);
+    $goodmoralTarget="../requirements/Good Morals/".$goodmoral;
+    move_uploaded_file($_FILES["goodmoral2"]["tmp_name"], $goodmoralTarget);
+    
+  }else{
+    $goodmoral=$reqs['goodmoral'];
+  }
+  //BirthCert
+  if(!empty($_FILES['birthcert2']['name'])){
+    if(!empty($reqs['birthcert'])){
+        unlink("../requirements/BirthCertificates/".$reqs['birthcert']);
+    }
+    $birthcert=$application.'.'.pathinfo($_FILES["birthcert2"]['name'], PATHINFO_EXTENSION);
+    $birthcertTarget="../requirements/BirthCertificates/".$birthcert;
+    move_uploaded_file($_FILES["birthcert2"]["tmp_name"], $birthcertTarget);
+    
+  }else{
+    $birthcert=$reqs['birthcert'];
+  }
+  //Indigency
+  if(!empty($_FILES['indigency2']['name'])){
+    if(!empty($reqs['indigency'])){
+        unlink("../requirements/Indigency/".$reqs['indigency']);
+    }
+    $indigency=$application.'.'.pathinfo($_FILES["indigency2"]['name'], PATHINFO_EXTENSION);
+    $indigencyTarget="../requirements/Indigency/".$indigency;
+    move_uploaded_file($_FILES["indigency2"]["tmp_name"], $indigencyTarget);
+    
+  }else{
+    $indigency=$reqs['indigency'];
+  }
+  //voters
+  if(!empty($_FILES['votercert2']['name'])){
+    if(!empty($reqs['voters'])){
+        unlink("../requirements/Voter_Certificates/".$reqs['voters']);
+    }
+    $votecert=$application.'.'.pathinfo($_FILES["votercert2"]['name'], PATHINFO_EXTENSION);
+    $votecertTarget="../requirements/Voter_Certificates/".$votecert;
+    move_uploaded_file($_FILES["votercert2"]["tmp_name"], $votecertTarget);
+  }else{
+    $votecert=$reqs['voters'];
+  }
+
+  //CARDS
+  if($admit=="Freshman"){
+    if(!empty($_FILES['g11card2']['name'])){
+        if(!empty($reqs['g11card'])){
+            unlink("../requirements/Grade11Cards/".$reqs['g11card']);
+        }else{
+            unlink("../requirements/TOR_Page1/".$reqs['torpg1']);
+        }
+        $g11card=$application.'.'.pathinfo($_FILES["g11card2"]['name'], PATHINFO_EXTENSION);
+        $g11cardTarget="../requirements/Grade11Cards/".$g11card;
+        move_uploaded_file($_FILES["g11card2"]["tmp_name"], $g11cardTarget);
+        $torpg1="";
+        
+    }else{
+        $g11card=$reqs['g11card'];
+        $torpg1="";
+    }
+    if(!empty($_FILES['g12card2']['name'])){
+        if(!empty($reqs['g12card'])){
+            unlink("../requirements/Grade12Cards/".$reqs['g12card']);
+        }else{
+            unlink("../requirements/TOR_Page2/".$reqs['torpg2']);
+        }
+        $g12card=$application.'.'.pathinfo($_FILES["g12card2"]['name'], PATHINFO_EXTENSION);
+        $g12cardTarget="../requirements/Grade12Cards/".$g12card;
+        move_uploaded_file($_FILES["g12card2"]["tmp_name"], $g12cardTarget);
+        $torpg2="";
+        
+    }else{
+        $g12card=$reqs['g12card'];
+        $torpg2="";
+    }
+  }else if($admit=="Transferee"){
+    if(!empty($_FILES['torpg12']['name'])){
+        if(!empty($reqs['torpg1'])){
+            unlink("../requirements/TOR_Page1/".$reqs['torpg1']);
+        }else{
+            unlink("../requirements/Grade11Cards/".$reqs['g11card']);
+        }
+
+        $torpg1=$application.'.'.pathinfo($_FILES["torpg12"]['name'], PATHINFO_EXTENSION);
+        $torpg1Target="../requirements/TOR_Page1/".$torpg1;
+        move_uploaded_file($_FILES["torpg12"]["tmp_name"], $torpg1Target);
+        $g11card="";
+        
+    }else{
+        $torpg1=$reqs['torpg1'];
+        $g11card="";
+    }
+    if(!empty($_FILES['torpg22']['name'])){
+        if(!empty($reqs['torpg2'])){
+            unlink("../requirements/TOR_Page2/".$reqs['torpg2']);
+        }else{
+            unlink("../requirements/Grade12Cards/".$reqs['g12card']);
+        }
+
+        $torpg2=$application.'.'.pathinfo($_FILES["torpg22"]['name'], PATHINFO_EXTENSION);
+        $torpg2Target="../requirements/TOR_Page2/".$torpg2;
+        move_uploaded_file($_FILES["torpg22"]["tmp_name"], $torpg2Target);
+        $g12card="";
+        
+    }else{
+        $torpg2=$reqs['torpg2'];
+        $g12card="";
+    }
+  }
+
    //freshman
    $Freshman=""; $Transferee="";
    if($admit=="Freshman"){
@@ -341,7 +488,7 @@ if(isset($_POST['btn-editStud'])){
                 $sql= "UPDATE `student_info` SET `picture`='$ImageName',`first_name`='$fname',`middle_name`='$mname',`last_name`='$lname',`suffix`='$suffixx',`stud_age`='$age',`birthplace`='$birthplace',`stud_bday`='$bday',`religion`='$religion',`gender`='$gender',`civil_status`='$status',`spouse_name`='$spouse_name',`spouse_add`='$spouse_add',`spouse_no`='$spouse_contact',`spouse_work`='$spouse_work',`spouse_emp`='$spouse_emp',`admit_type`='$admit',`stud_email`='$email',`contactno`='$phone',`1stprio`='$prio1',`2ndprio`='$prio2',`resident_of_calamba`='$calambares',`yrs_in_calamba`='$yrs_calamba',`pre_house`='$pre_houseno',`pre_brgy`='$pre_brgy',`pre_city`='$pre_city',`pre_zipcode`='$pre_zip',`per_house`='$per_houseno',`per_brgy`='$per_brgy',`per_city`='$per_city',`per_zipcode`='$per_zip',`groups`='$groups',`stable_internet`='$stablenet' WHERE `student_id`='$studID'";
                 $con->query($sql) or die ($con->error);
                 //EDUC BG
-                $sql="UPDATE `educ_bg` SET `admit_type`='$admit',`elem_name`='$elem_name',`elem_address`='$elem_address',`elem_grad`='$dgrad_elem',`elem_honors`='$elem_honors',`jhs_name`='$jhs_name',`jhs_address`='$jhs_address',`jhs_grad`='$jhs_dgrad',`jhs_honors`='$jhs_honors',`shs_name`='$shs_name',`shs_address`='$shs_address',`shs_tracks`='$shs_tracks',`shs_strands`='$shs_strands',`shs_grad`='$shs_dgrad',`shs_honors`='$shs_honors',`g11gwa`='$g11_gwa',`g12gwa`='$g12_gwa',`college_name`='$college_name',`college_address`='$college_address',`college_course`='$college_course',`college_gwa`='$college_gwa',`tvc_name`='$tvc_name',`tvc_address`='$tvc_address',`tvc_grad`='$tvc_dgrad',`tvc_course`='$tvc_course',`als_name`='$als_name',`als_address`='$als_address' WHERE `student_id`='$studID'";
+                $sql="UPDATE `educ_bg` SET `admit_type`='$admit',`elem_name`='$elem_name',`elem_address`='$elem_address',`elem_grad`='$dgrad_elem',`elem_honors`='$elem_honors',`jhs_name`='$jhs_name',`jhs_address`='$jhs_address',`jhs_grad`='$jhs_dgrad',`jhs_honors`='$jhs_honors',`shs_name`='$shs_name',`shs_address`='$shs_address',`shs_tracks`='$shs_tracks',`shs_strands`='$shs_strands',`shs_grad`='$shs_dgrad',`shs_honors`='$shs_honors',`g11gwa`='$g11_gwa',`g12gwa`='$g12_gwa',`college_name`='$college_name',`college_address`='$college_address',`college_course`='$college_course',`college_gwa`='$college_gwa',`tvc_name`='$tvc_name',`tvc_address`='$tvc_address',`tvc_grad`='$tvc_dgrad',`tvc_course`='$tvc_course',`als_name`='$als_name',`als_address`='$als_address', `als_cert`='$als_cert' WHERE `student_id`='$studID'";
                 $con->query($sql) or die ($con->error);
                 //FAMBG
                 $sql="UPDATE `fam_bg` SET `father_name`='$father_name',`father_citizenship`='$father_citizen',`father_address`='$father_add',`father_contactno`='$father_contact',`father_email`='$father_email',`father_work`='$father_work',`father_emp`='$father_emp',`father_emp_add`='$father_emp_add',`father_no`='$father_emp_no',`father_educ`='$father_educ',`mother_name`='$mother_name',`mother_citizenship`='$mother_citizen',`mother_address`='$mother_add',`mother_contactno`='$mother_contact',`mother_email`='$mother_email',`mother_work`='$mother_work',`mother_emp`='$mother_emp',`mother_emp_add`='$mother_emp_add',`mother_emp_no`='$mother_emp_no',`mother_educ`='$mother_educ',`guardian_name`='$guardian_name',`guardian_relationship`='$guardian_relation',`guardian_address`='$guardian_add',`guardian_contactno`='$guardian_contact',`guardian_email`='$guardian_email',`guardian_bday`='$guardian_bday',`guardian_work`='$guardian_work',`guardian_emp`='$guardian_emp',`guardian_emp_address`='$guardian_emp_add',`guardian_emp_no`='$guardian_emp_no',`sibling_name1`='$sibling1',`sibling_age1`='$sibling_age1',`sibling_status1`='$sibling_status1',`sibling_contact1`='$sibling_contact1',`sibling_name2`='$sibling2',`sibling_age2`='$sibling_age2',`sibling_status2`='$sibling_status2',`sibling_contact2`='$sibling_contact2',`sibling_name3`='$sibling3',`sibling_age3`='$sibling_age3',`sibling_status3`='$sibling_status3',`sibling_contact3`='$sibling_contact3',`income_fam`='$income' WHERE `student_id`='$studID'";
@@ -352,7 +499,8 @@ if(isset($_POST['btn-editStud'])){
                 //PERSONAL ADMIRE
                  $sql="UPDATE `personal_admiration` SET `hobbies`='$hobbies',`reason_enroll`='$reason4enroll',`characteristics`='$characteristics',`goals`='$dream' WHERE `student_id`='$studID'";
                  $con->query($sql) or die ($con->error);
-
+                //REQUIREMENTS
+                $sql=$con->query("UPDATE `requirements` SET `g11card`='$g11card', `g12card`='$g12card', `torpg1`='$torpg1', `torpg2`='$torpg2', `goodmoral`='$goodmoral', `birthcert`='$birthcert', `indigency`='$indigency', `voters`='$votecert', `vaxcard`='$vaxcard' WHERE `student_id`='$studID'");
                  //NOTIF
                $sqlNotif=$con->query("INSERT INTO `notifications`(`adminID`, `admin_name`, `activity`, `date_time`) VALUES ('$adminID','$name','updated the details of $stud_name','$dateNotif')");
 
@@ -376,7 +524,7 @@ if(isset($_POST['btn-editStud'])){
               $sql= "UPDATE `student_info` SET `picture`='$ImageName',`first_name`='$fname',`middle_name`='$mname',`last_name`='$lname',`suffix`='$suffixx',`stud_age`='$age',`birthplace`='$birthplace',`stud_bday`='$bday',`religion`='$religion',`gender`='$gender',`civil_status`='$status',`spouse_name`='$spouse_name',`spouse_add`='$spouse_add',`spouse_no`='$spouse_contact',`spouse_work`='$spouse_work',`spouse_emp`='$spouse_emp',`admit_type`='$admit',`stud_email`='$email',`contactno`='$phone',`1stprio`='$prio1',`2ndprio`='$prio2',`resident_of_calamba`='$calambares',`yrs_in_calamba`='$yrs_calamba',`pre_house`='$pre_houseno',`pre_brgy`='$pre_brgy',`pre_city`='$pre_city',`pre_zipcode`='$pre_zip',`per_house`='$per_houseno',`per_brgy`='$per_brgy',`per_city`='$per_city',`per_zipcode`='$per_zip',`groups`='$groups',`stable_internet`='$stablenet' WHERE `student_id`='$studID'";
                 $con->query($sql) or die ($con->error);
               //EDUC BG
-              $sql="UPDATE `educ_bg` SET `admit_type`='$admit',`elem_name`='$elem_name',`elem_address`='$elem_address',`elem_grad`='$dgrad_elem',`elem_honors`='$elem_honors',`jhs_name`='$jhs_name',`jhs_address`='$jhs_address',`jhs_grad`='$jhs_dgrad',`jhs_honors`='$jhs_honors',`shs_name`='$shs_name',`shs_address`='$shs_address',`shs_tracks`='$shs_tracks',`shs_strands`='$shs_strands',`shs_grad`='$shs_dgrad',`shs_honors`='$shs_honors',`g11gwa`='$g11_gwa',`g12gwa`='$g12_gwa',`college_name`='$college_name',`college_address`='$college_address',`college_course`='$college_course',`college_gwa`='$college_gwa',`tvc_name`='$tvc_name',`tvc_address`='$tvc_address',`tvc_grad`='$tvc_dgrad',`tvc_course`='$tvc_course',`als_name`='$als_name',`als_address`='$als_address' WHERE `student_id`='$studID'";
+              $sql="UPDATE `educ_bg` SET `admit_type`='$admit',`elem_name`='$elem_name',`elem_address`='$elem_address',`elem_grad`='$dgrad_elem',`elem_honors`='$elem_honors',`jhs_name`='$jhs_name',`jhs_address`='$jhs_address',`jhs_grad`='$jhs_dgrad',`jhs_honors`='$jhs_honors',`shs_name`='$shs_name',`shs_address`='$shs_address',`shs_tracks`='$shs_tracks',`shs_strands`='$shs_strands',`shs_grad`='$shs_dgrad',`shs_honors`='$shs_honors',`g11gwa`='$g11_gwa',`g12gwa`='$g12_gwa',`college_name`='$college_name',`college_address`='$college_address',`college_course`='$college_course',`college_gwa`='$college_gwa',`tvc_name`='$tvc_name',`tvc_address`='$tvc_address',`tvc_grad`='$tvc_dgrad',`tvc_course`='$tvc_course',`als_name`='$als_name',`als_address`='$als_address', `als_cert`='$als_cert' WHERE `student_id`='$studID'";
               $con->query($sql) or die ($con->error);
               //FAMBG
               $sql="UPDATE `fam_bg` SET `father_name`='$father_name',`father_citizenship`='$father_citizen',`father_address`='$father_add',`father_contactno`='$father_contact',`father_email`='$father_email',`father_work`='$father_work',`father_emp`='$father_emp',`father_emp_add`='$father_emp_add',`father_no`='$father_emp_no',`father_educ`='$father_educ',`mother_name`='$mother_name',`mother_citizenship`='$mother_citizen',`mother_address`='$mother_add',`mother_contactno`='$mother_contact',`mother_email`='$mother_email',`mother_work`='$mother_work',`mother_emp`='$mother_emp',`mother_emp_add`='$mother_emp_add',`mother_emp_no`='$mother_emp_no',`mother_educ`='$mother_educ',`guardian_name`='$guardian_name',`guardian_relationship`='$guardian_relation',`guardian_address`='$guardian_add',`guardian_contactno`='$guardian_contact',`guardian_email`='$guardian_email',`guardian_bday`='$guardian_bday',`guardian_work`='$guardian_work',`guardian_emp`='$guardian_emp',`guardian_emp_address`='$guardian_emp_add',`guardian_emp_no`='$guardian_emp_no',`sibling_name1`='$sibling1',`sibling_age1`='$sibling_age1',`sibling_status1`='$sibling_status1',`sibling_contact1`='$sibling_contact1',`sibling_name2`='$sibling2',`sibling_age2`='$sibling_age2',`sibling_status2`='$sibling_status2',`sibling_contact2`='$sibling_contact2',`sibling_name3`='$sibling3',`sibling_age3`='$sibling_age3',`sibling_status3`='$sibling_status3',`sibling_contact3`='$sibling_contact3',`income_fam`='$income' WHERE `student_id`='$studID'";
@@ -387,7 +535,8 @@ if(isset($_POST['btn-editStud'])){
               //PERSONAL ADMIRE
               $sql="UPDATE `personal_admiration` SET `hobbies`='$hobbies',`reason_enroll`='$reason4enroll',`characteristics`='$characteristics',`goals`='$dream' WHERE `student_id`='$studID'";
               $con->query($sql) or die ($con->error);
-
+              //REQUIREMENTS
+              $sql=$con->query("UPDATE `requirements` SET `g11card`='$g11card', `g12card`='$g12card', `torpg1`='$torpg1', `torpg2`='$torpg2', `goodmoral`='$goodmoral', `birthcert`='$birthcert', `indigency`='$indigency', `voters`='$votecert', `vaxcard`='$vaxcard' WHERE `student_id`='$studID'");
                //NOTIF
                $sqlNotif=$con->query("INSERT INTO `notifications`(`adminID`, `admin_name`, `activity`, `date_time`) VALUES ('$adminID','$name','updated the details of $stud_name','$dateNotif')");
 
@@ -557,7 +706,7 @@ if(isset($_POST['btn-editStud'])){
       $sql= "UPDATE `student_info` SET `first_name`='$fname',`middle_name`='$mname',`last_name`='$lname',`suffix`='$suffixx',`stud_age`='$age',`birthplace`='$birthplace',`stud_bday`='$bday',`religion`='$religion',`gender`='$gender',`civil_status`='$status',`spouse_name`='$spouse_name',`spouse_add`='$spouse_add',`spouse_no`='$spouse_contact',`spouse_work`='$spouse_work',`spouse_emp`='$spouse_emp',`admit_type`='$admit',`stud_email`='$email',`contactno`='$phone',`1stprio`='$prio1',`2ndprio`='$prio2',`resident_of_calamba`='$calambares',`yrs_in_calamba`='$yrs_calamba',`pre_house`='$pre_houseno',`pre_brgy`='$pre_brgy',`pre_city`='$pre_city',`pre_zipcode`='$pre_zip',`per_house`='$per_houseno',`per_brgy`='$per_brgy',`per_city`='$per_city',`per_zipcode`='$per_zip',`groups`='$groups',`stable_internet`='$stablenet' WHERE `student_id`='$studID'";
       $con->query($sql) or die ($con->error);
       //EDUC BG
-      $sql="UPDATE `educ_bg` SET `admit_type`='$admit',`elem_name`='$elem_name',`elem_address`='$elem_address',`elem_grad`='$dgrad_elem',`elem_honors`='$elem_honors',`jhs_name`='$jhs_name',`jhs_address`='$jhs_address',`jhs_grad`='$jhs_dgrad',`jhs_honors`='$jhs_honors',`shs_name`='$shs_name',`shs_address`='$shs_address',`shs_tracks`='$shs_tracks',`shs_strands`='$shs_strands',`shs_grad`='$shs_dgrad',`shs_honors`='$shs_honors',`g11gwa`='$g11_gwa',`g12gwa`='$g12_gwa',`college_name`='$college_name',`college_address`='$college_address',`college_course`='$college_course',`college_gwa`='$college_gwa',`tvc_name`='$tvc_name',`tvc_address`='$tvc_address',`tvc_grad`='$tvc_dgrad',`tvc_course`='$tvc_course',`als_name`='$als_name',`als_address`='$als_address' WHERE `student_id`='$studID'";
+      $sql="UPDATE `educ_bg` SET `admit_type`='$admit',`elem_name`='$elem_name',`elem_address`='$elem_address',`elem_grad`='$dgrad_elem',`elem_honors`='$elem_honors',`jhs_name`='$jhs_name',`jhs_address`='$jhs_address',`jhs_grad`='$jhs_dgrad',`jhs_honors`='$jhs_honors',`shs_name`='$shs_name',`shs_address`='$shs_address',`shs_tracks`='$shs_tracks',`shs_strands`='$shs_strands',`shs_grad`='$shs_dgrad',`shs_honors`='$shs_honors',`g11gwa`='$g11_gwa',`g12gwa`='$g12_gwa',`college_name`='$college_name',`college_address`='$college_address',`college_course`='$college_course',`college_gwa`='$college_gwa',`tvc_name`='$tvc_name',`tvc_address`='$tvc_address',`tvc_grad`='$tvc_dgrad',`tvc_course`='$tvc_course',`als_name`='$als_name',`als_address`='$als_address', `als_cert`='$als_cert' WHERE `student_id`='$studID'";
       $con->query($sql) or die ($con->error);
       //FAMBG
       $sql="UPDATE `fam_bg` SET `father_name`='$father_name',`father_citizenship`='$father_citizen',`father_address`='$father_add',`father_contactno`='$father_contact',`father_email`='$father_email',`father_work`='$father_work',`father_emp`='$father_emp',`father_emp_add`='$father_emp_add',`father_no`='$father_emp_no',`father_educ`='$father_educ',`mother_name`='$mother_name',`mother_citizenship`='$mother_citizen',`mother_address`='$mother_add',`mother_contactno`='$mother_contact',`mother_email`='$mother_email',`mother_work`='$mother_work',`mother_emp`='$mother_emp',`mother_emp_add`='$mother_emp_add',`mother_emp_no`='$mother_emp_no',`mother_educ`='$mother_educ',`guardian_name`='$guardian_name',`guardian_relationship`='$guardian_relation',`guardian_address`='$guardian_add',`guardian_contactno`='$guardian_contact',`guardian_email`='$guardian_email',`guardian_bday`='$guardian_bday',`guardian_work`='$guardian_work',`guardian_emp`='$guardian_emp',`guardian_emp_address`='$guardian_emp_add',`guardian_emp_no`='$guardian_emp_no',`sibling_name1`='$sibling1',`sibling_age1`='$sibling_age1',`sibling_status1`='$sibling_status1',`sibling_contact1`='$sibling_contact1',`sibling_name2`='$sibling2',`sibling_age2`='$sibling_age2',`sibling_status2`='$sibling_status2',`sibling_contact2`='$sibling_contact2',`sibling_name3`='$sibling3',`sibling_age3`='$sibling_age3',`sibling_status3`='$sibling_status3',`sibling_contact3`='$sibling_contact3',`income_fam`='$income' WHERE `student_id`='$studID'";
@@ -572,7 +721,8 @@ if(isset($_POST['btn-editStud'])){
        //LOG
        $sql="INSERT INTO `admin_logs`(`adminID`, `activity`, `date`, `time`) VALUES ($adminID,'You Updated Student Details','$phdate','$phtime')";
        $con->query($sql) or die ($con->error);
-
+        //REQUIREMENTS
+        $sql=$con->query("UPDATE `requirements` SET `g11card`='$g11card', `g12card`='$g12card', `torpg1`='$torpg1', `torpg2`='$torpg2', `goodmoral`='$goodmoral', `birthcert`='$birthcert', `indigency`='$indigency', `voters`='$votecert', `vaxcard`='$vaxcard' WHERE `student_id`='$studID'");
         //NOTIF
       $sqlNotif=$con->query("INSERT INTO `notifications`(`adminID`, `admin_name`, `activity`, `date_time`) VALUES ('$adminID','$name','updated the details of $stud_name','$dateNotif')");
 

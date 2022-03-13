@@ -11,14 +11,14 @@ $update=$con->query("UPDATE `student_exam_log` SET `leaveAttempt`= `leaveAttempt
 $rem_attmpt=2-$row['leaveAttempt'];
 $name=$_SESSION['f_name'];
 
-if($row['leaveAttempt']!=0){
+
     echo "<script>
         $(window).unbind('beforeunload');
         $(window).unbind('focus');
         $('#autoSubmit').val('leave');
         $('#testForm').submit();
     </script>";
-}
+
 // else{
 //     echo "<script>
 //     Swal.fire({

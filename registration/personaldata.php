@@ -68,8 +68,8 @@
                         </div>
                     </div>
                     <div class="col-md-3 col-sm-6">
-                        <label for="mname">Middle Name:<i class="req">*</i></label>
-                        <input type="text" name="mname" id=mname placeholder="Middle name" class="form-control" required>
+                        <label for="mname">Middle Name:</label>
+                        <input type="text" name="mname" id=mname placeholder="Middle name" class="form-control">
                     </div>
                     <div class="col-md-3 col-sm-6">
                         <label for="lname">Last Name:<i class="req">*</i></label>
@@ -89,10 +89,7 @@
                     </div>
                     <div class="col-md-1 col-sm-3">
                         <label for="age">Age:<i class="req">*</i></label>
-                        <select class="form-control" name="age" id="age"  required>
-                            <option value="" class=plchold>16</option>
-                            <option value="16" class="others">16</option>
-                            <option value="17" class="others">17</option>
+                        <!-- <select class="form-control" name="age" id="age"  required>
                             <option value="18" class="others">18</option>
                             <option value="19" class="others">19</option>
                             <option value="20" class="others">20</option>
@@ -101,7 +98,8 @@
                             <option value="23" class="others">23</option>
                             <option value="24" class="others">24</option>
                             <option value="25" class="others">25</option>
-                        </select>
+                        </select> -->
+                        <input type="text" class="form-control" name="age" placeholder="Age" id="age" readonly>
                     </div>
                 </div>
 
@@ -112,7 +110,7 @@
                     </div>
                     <div class="col-md-2 col-sm-6">
                         <label for="bday">Date of Birth:<i class="req">*</i></label>
-                        <input type="date" name="bday" id=bday class="form-control"  required>
+                        <input type="date" name="bday" min="1982-01-01" id=bday class="form-control" required>
                     </div>
                     <div class="col-md-2 col-sm-12">
                         <label for="religion">Religion:<i class="req">*</i></label>
@@ -184,7 +182,7 @@
                         <input type="tel" name="phone" pattern="(\+?\d{2}?\s?\d{3}\s?\d{3}\s?\d{4})|([0]\d{3}\s?\d{3}\s?\d{4})" onpaste="return false;" onkeypress="return onlyNumberKey(event)" maxlength="11" minlength="11" id="stud_phone" placeholder="09XXxxxxxxx" class="form-control" required>
                     </div>
                     <div class="col-md-3 col-sm-6">
-                        <label for="1stprio">1st Priority Course:<i class="req">*</i></label>
+                        <label for="1stprio">1st Priority Program:<i class="req">*</i></label>
                         <select class="form-select" name="1stprio" id="1stprio"  required>
                             <option value="" disabled selected>(e.g. BSIT)</option>
                             <option value="BSCS" class="others">Bachelor of Science in Computer Science</option>
@@ -198,7 +196,7 @@
                         </select>
                     </div>
                     <div class="col-md-3 col-sm-6">
-                        <label for="2ndprio">2nd Priority Course:<i class="req">*</i></label> <br>
+                        <label for="2ndprio">2nd Priority Program:<i class="req">*</i></label> <br>
                         <select class="form-select" name="2ndprio" id="2ndprio"  required>
                             <option value="" disabled selected>(e.g. BSIT)</option>
                             <option value="BSCS" class="others">Bachelor of Science in Computer Science</option>
@@ -226,12 +224,16 @@
                         <input type="radio" name="calambano" onclick="javascript:yesnoCheck();" value="No" id="calambano">
                         <label class="custom-control-label" for="calambano">No</label> -->
                     </div>
-                    <div class="col-md-1 col-sm-6">
+                    <!-- <div class="col-md-2 col-sm-6">
                         <label for="yrs_calamba">Years:</label>
                         <input type="hidden" name="yrs_calamba" id="yrs_calambaa" value="0">
                         <input type="number" name="yrs_calamba" min=0 max=40 value="1" class="form-control yrs_calamba" placeholder="Years" id="yrs_calamba" disabled>
+                    </div> -->
+                    <div class="col-md-2 col-sm-6">
+                        <label for="yrs_calamba">Date of Residency:</label>
+                        <input type="date" class="form-control" name="yrs_calamba" id="yrs_calambaa" disabled>
                     </div>
-                    <div class="col-md-3 col-sm-6">
+                    <div class="col-md-2 col-sm-6">
                         <label for="pre_houseno">Present Address:<i class="req">*</i></label>
                         <input type="text" name="pre_houseno" class="form-control" placeholder="House No./Unit/Purok/Subdivision/Village" id="pre_houseno" required>
                     </div>
@@ -333,26 +335,26 @@
                 <div class="row mb-3">
                     <div class="col-md-6 col-sm-12">
                         <div class="row">
-                            <label for="">Please select the group you belong to:</label><br><br>
+                            <label for="">Please select <b>one</b> group you belong to:</label><br><br>
                             <div class="col-md-6">
                                 <input type="hidden" name="group" value="N/A">
-                                <input type="checkbox" class="non form-check-input" name="group[]" value="N/A" id="none" onclick="wala()" checked>
+                                <input type="radio" class="non form-check-input" name="group[]" value="N/A" id="none" onclick="wala()" checked>
                                 <small>None</small><br>
-                                <input type="checkbox" class="form-check-input" name="group[]" value="Recipient of Student Financial Assistance" onclick="uncheck()" id="stuFap">
+                                <input type="radio" class="form-check-input" name="group[]" value="Recipient of Student Financial Assistance" onclick="uncheck()" id="stuFap">
                                 <small>Recipient of Student Financial Assistance</small><br>
-                                <input type="checkbox" class="form-check-input" name="group[]" value="Person from Disadvantaged Group" onclick="uncheck()" id="disadvantagedGroup">
+                                <input type="radio" class="form-check-input" name="group[]" value="Person from Disadvantaged Group" onclick="uncheck()" id="disadvantagedGroup">
                                 <small>Person from Disadvantaged Group</small><br>
-                                <input type="checkbox" class="form-check-input" name="group[]" value="Person from Depressed or Conflicted-Areas" onclick="uncheck()" id="depressed">
+                                <input type="radio" class="form-check-input" name="group[]" value="Person from Depressed or Conflicted-Areas" onclick="uncheck()" id="depressed">
                                 <small>Person from Depressed or Conflicted Areas</small><br>
                                 </div>
                                 <div class="col-md-6">
-                                <input type="checkbox" class="form-check-input" name="group[]" value="Member of Indigenous People" onclick="uncheck()" id="indigenous">
+                                <input type="radio" class="form-check-input" name="group[]" value="Member of Indigenous People" onclick="uncheck()" id="indigenous">
                                 <small>Member of Indigenous People</small><br>
-                                <input type="checkbox" class="form-check-input" name="group[]" value="Person with Disability" onclick="uncheck()" id="pwd">
+                                <input type="radio" class="form-check-input" name="group[]" value="Person with Disability" onclick="uncheck()" id="pwd">
                                 <small>Person with Disability (PWD)</small><br>
-                                <input type="checkbox" class="form-check-input" name="group[]" value="Recipient of 4Ps" onclick="uncheck()" id="4ps">
+                                <input type="radio" class="form-check-input" name="group[]" value="Recipient of 4Ps" onclick="uncheck()" id="4ps">
                                 <small>Recipient of 4Ps</small><br>
-                                <input type="checkbox" class="form-check-input" name="group[]" value="Working Student" onclick="uncheck()" id="workingstud">
+                                <input type="radio" class="form-check-input" name="group[]" value="Working Student" onclick="uncheck()" id="workingstud">
                                 <small>Working Student</small><br> 
                                   
                             </div>
