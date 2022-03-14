@@ -20,7 +20,7 @@ if($stud->num_rows!=0){
             <th style='border: 1px solid gray' width=20%>Address</th>
             <th style='border: 1px solid gray' width=10%>Admit Type</th>
             <th style='border: 1px solid gray' width=10%>Status</th>
-            <th style='border: 1px solid gray' width=5%>Action</th>
+            <th id='actions' style='border: 1px solid gray' width=5%>Action</th>
         </thead>
         <tbody>";
         while($row = $stud->fetch_array()){ 
@@ -44,7 +44,7 @@ if($stud->num_rows!=0){
                         ".$row['verification']."
                     </div>
                 </td>
-                <td style='border: 1px solid gray'>
+                <td style='border: 1px solid gray' class='actions'>
                     <button class='btn btn-danger mb-1 stud-del' id='stud-del' data-id='".$row['student_id']."'><i class='bx bxs-trash mt-1 p-0' style='font-size: 20px'></i></button>
                 </td>
             </tr>";
