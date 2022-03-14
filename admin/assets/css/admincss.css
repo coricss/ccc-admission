@@ -42,7 +42,6 @@
         background: #022563;
         color: white;
         padding: 5px;
-      
         width: 100%;
         box-shadow: 0px 0px 9px #0e0e0e;
        
@@ -549,8 +548,6 @@
     }
 
     .examcard {
-      position: relative;
-      position: sticky;
       flex-direction: column;
       min-width: 0;
       word-wrap: break-word;

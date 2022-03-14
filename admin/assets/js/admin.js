@@ -996,6 +996,41 @@ $(document).on('click', "#print-students", function(){
   $("#actions").show();
   $("td.actions").show();
 })
+$(document).on('click', "#print-results", function(){
+  $("#actions").hide();
+  $("td.actions").hide();
+  printJS('results', 'html')
+  $("#actions").show();
+  $("td.actions").show();
+})
+$(document).on('click', "#print-studentsArchive", function(){
+  $("#actions").hide();
+  $("td.actions").hide();
+  printJS('tbl-stud-archive', 'html')
+  $("#actions").show();
+  $("td.actions").show();
+})
+$(document).on('click', "#print-resultsArchive", function(){
+  $("#actions-results").hide();
+  $("td.actions").hide();
+  printJS('tbl-results-archive', 'html')
+  $("#actions-results").show();
+  $("td.actions").show();
+})
+
+$(document).ready(function(){
+  $("#home-tab").addClass("active");
+  $("#home").addClass("active");
+  $('button[data-bs-toggle="tab"]').on('show.bs.tab', function(e) {
+    localStorage.setItem('archive-tab', $(this).attr('id'));
+  });
+
+  var activeTab = localStorage.getItem('archive-tab');
+  if(activeTab){
+    $('#myTab button[id="' + activeTab + '"]').tab('show');
+  }
+})
+
 $('#print-admin').click(function(){
   $('#admin-table').printThis();
 })
@@ -1188,6 +1223,11 @@ $(document).on('click', '#btn-view', function(e){
   e.preventDefault();
   var id = $(this).attr("data-id");
   $("#modal-overview-"+id).show();
+})
+$(document).on('click', '#btn-view-results', function(e){
+  e.preventDefault();
+  var id = $(this).attr("data-id");
+  $("#modal-results-"+id).show();
 })
 $(document).on('click', '#editstudent', function(e){
   e.preventDefault();
