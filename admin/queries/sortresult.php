@@ -26,7 +26,7 @@ $output="
         <th style='border: 1px solid gray' width=5% >Percentile Rank</th>
         <th style='border: 1px solid gray' width=5% >Stanine</th>
         <th style='border: 1px solid gray' width=10% >Verbal Interpretation</th>
-        <th style='border: 1px solid gray' width=5% >Print</th>
+        <th id='actions' style='border: 1px solid gray' width=5% >Print</th>
         </tr>
     </thead>
     <tbody>
@@ -53,10 +53,25 @@ while($row = $result->fetch_array()){
             </div>
         </td>
         
-        <td style='border: 1px solid gray'>
-            <a href='../test results/files/".$row['application_no'].".pdf' target='_blank' style='text-decoration: none;'>
-                 <button class='btn btn-primary mb-2' onclick='' data-id=".$row['application_no']." id='print' data-bs-toggle='tooltip' data-bs-placement='bottom' data-bs-original-title='Print'><i class='bx bx-printer mt-1' style='font-size: 20px'></i></button>
-            </a>
+        <td style='border: 1px solid gray' class='actions'>
+           
+            <button class='btn btn-primary' id='btn-view-results' data-bs-toggle='modal' data-bs-target='#results-".$row['student_id']."' data-id='".$row['student_id']."'><i class='bx bx-printer mt-1' style='font-size: 20px'></i></button>
+            
+            <div id='modal-results-".$row['student_id']."' style='display: none'>
+                <div class='modal fade' id='results-".$row['student_id']."' tabindex='-1' aria-labelledby='exampleModalLabel' aria-hidden='true'>
+                    <div class='modal-dialog modal-dialog-centered modal-xl'>
+                        <div class='modal-content'>
+                            <div class='modal-header'>
+                                <h5 class='modal-title' id='exampleModalLabel'>".$row['application_no'].": ".$row['first_name'].' '.$row['last_name']."'s Test Results</h5>
+                                <button type='button' class='btn-close btn-close-white' data-bs-dismiss='modal' aria-label='Close'></button>
+                            </div>
+                            <div class='modal-body text-center'>
+                                <iframe src='../test results/files/".$row['application_no'].".pdf' class='file-view'></iframe>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </td>
     </tr> 
     ";

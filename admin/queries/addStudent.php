@@ -241,6 +241,13 @@ require('../vendor/autoload.php');
     }else{
         $vaxcard="";
     }
+    if(!empty($_FILES['group-requirement']['name'])){
+        $group_file=$application.'.'.pathinfo($_FILES["group-requirement"]['name'], PATHINFO_EXTENSION);
+        $groupTarget="../requirements/Proof_of_Groups/".$group_file;
+        move_uploaded_file($_FILES["group-requirement"]["tmp_name"], $groupTarget);
+    }else{
+        $group_file="";
+    }
 
     $g11card=$application.'.'.pathinfo($_FILES["g11card"]['name'], PATHINFO_EXTENSION);
     $g12card=$application.'.'.pathinfo($_FILES["g12card"]['name'], PATHINFO_EXTENSION);
@@ -430,7 +437,7 @@ require('../vendor/autoload.php');
                  $sql="INSERT INTO `personal_admiration`(`hobbies`, `reason_enroll`, `characteristics`, `goals`) VALUES ('$hobbies','$reason4enroll', '$characteristics', '$dream')";
                  $con->query($sql) or die ($con->error);
                  //Requirements
-                 $sql="INSERT INTO `requirements`(`admit_type`, `g11card`, `g12card`, `goodmoral`, `birthcert`, `indigency`, `voters`, `vaxcard`) VALUES ('$admit', '$g11card', '$g12card', '$goodmoral', '$birthcert', '$indigency', '$votecert', '$vaxcard')";
+                 $sql="INSERT INTO `requirements`(`admit_type`, `g11card`, `g12card`, `goodmoral`, `birthcert`, `indigency`, `voters`, `vaxcard`, `proof_of_group`) VALUES ('$admit', '$g11card', '$g12card', '$goodmoral', '$birthcert', '$indigency', '$votecert', '$vaxcard', '$group_file')";
                  $con->query($sql) or die ($con->error);
                  //LOG
                  $sql="INSERT INTO `admin_logs`(`adminID`, `activity`, `date`, `time`) VALUES ('$adminID','You Registered New Student','$phdate','$phtime')";
@@ -622,7 +629,7 @@ require('../vendor/autoload.php');
                      $sql="INSERT INTO `personal_admiration`(`hobbies`, `reason_enroll`, `characteristics`, `goals`) VALUES ('$hobbies','$reason4enroll', '$characteristics', '$dream')";
                      $con->query($sql) or die ($con->error);
                      //Requirements
-                     $sql="INSERT INTO `requirements`(`admit_type`, `torpg1`, `torpg2`, `goodmoral`, `birthcert`, `indigency`, `voters`, `vaxcard`) VALUES ('$admit', '$torpg1', '$torpg2', '$goodmoral', '$birthcert', '$indigency', '$votecert', '$vaxcard')";
+                     $sql="INSERT INTO `requirements`(`admit_type`, `torpg1`, `torpg2`, `goodmoral`, `birthcert`, `indigency`, `voters`, `vaxcard`, `proof_of_group`) VALUES ('$admit', '$torpg1', '$torpg2', '$goodmoral', '$birthcert', '$indigency', '$votecert', '$vaxcard', '$group_file')";
                      $con->query($sql) or die ($con->error);
                      //LOG
                      $sql="INSERT INTO `admin_logs`(`adminID`, `activity`, `date`, `time`) VALUES ('$adminID','You Registered New Student','$phdate','$phtime')";
@@ -817,7 +824,7 @@ require('../vendor/autoload.php');
              $sql="INSERT INTO `personal_admiration`(`hobbies`, `reason_enroll`, `characteristics`, `goals`) VALUES ('$hobbies','$reason4enroll', '$characteristics', '$dream')";
              $con->query($sql) or die ($con->error);
              //Requirements
-             $sql="INSERT INTO `requirements`(`admit_type`, `g11card`, `g12card`, `goodmoral`, `birthcert`, `indigency`, `voters`, `vaxcard`) VALUES ('$admit', '$g11card', '$g12card', '$goodmoral', '$birthcert', '$indigency', '$votecert', '$vaxcard')";
+             $sql="INSERT INTO `requirements`(`admit_type`, `g11card`, `g12card`, `goodmoral`, `birthcert`, `indigency`, `voters`, `vaxcard`, `proof_of_group`) VALUES ('$admit', '$g11card', '$g12card', '$goodmoral', '$birthcert', '$indigency', '$votecert', '$vaxcard', '$group_file')";
              $con->query($sql) or die ($con->error);
              //LOG
              $sql="INSERT INTO `admin_logs`(`adminID`, `activity`, `date`, `time`) VALUES ('$adminID','You Registered New Student','$phdate','$phtime')";
@@ -1009,7 +1016,7 @@ require('../vendor/autoload.php');
                  $sql="INSERT INTO `personal_admiration`(`hobbies`, `reason_enroll`, `characteristics`, `goals`) VALUES ('$hobbies','$reason4enroll', '$characteristics', '$dream')";
                  $con->query($sql) or die ($con->error);
                  //Requirements
-                 $sql="INSERT INTO `requirements`(`admit_type`, `torpg1`, `torpg2`, `goodmoral`, `birthcert`, `indigency`, `voters`, `vaxcard`) VALUES ('$admit', '$torpg1', '$torpg2', '$goodmoral', '$birthcert', '$indigency', '$votecert', '$vaxcard')";
+                 $sql="INSERT INTO `requirements`(`admit_type`, `torpg1`, `torpg2`, `goodmoral`, `birthcert`, `indigency`, `voters`, `vaxcard`, `proof_of_group`) VALUES ('$admit', '$torpg1', '$torpg2', '$goodmoral', '$birthcert', '$indigency', '$votecert', '$vaxcard', '$group_file')";
                  $con->query($sql) or die ($con->error);
                  //LOG
                  $sql="INSERT INTO `admin_logs`(`adminID`, `activity`, `date`, `time`) VALUES ('$adminID','You Registered New Student','$phdate','$phtime')";

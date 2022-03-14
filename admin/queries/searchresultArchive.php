@@ -23,7 +23,7 @@ $output="
             <th style='border: 1px solid gray' width=5% >Percentile Rank</th>
             <th style='border: 1px solid gray' width=5% >Stanine</th>
             <th style='border: 1px solid gray' width=10% >Verbal Interpretation</th>
-            <th style='border: 1px solid gray' width=5% >Print</th>
+            <th id='actions-results' style='border: 1px solid gray' width=5% >Action</th>
         </tr>
     </thead>
     <tbody>
@@ -50,7 +50,7 @@ while($row = $search->fetch_array()){
             </div>
         </td>
         
-        <td style='border: 1px solid gray'>
+        <td style='border: 1px solid gray' class='actions'>
             <button class='btn btn-danger mb-1 result-del' id='result-del' data-id='".$row['result_id']."'><i class='bx bxs-trash mt-1 p-0' style='font-size: 20px'></i></button>
         </td>
     </tr> 

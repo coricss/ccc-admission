@@ -155,7 +155,7 @@ if(isset($_SESSION['ID'])&&($_SESSION['email'])){
                                     </form>
                                 </li>
                                 <li>
-                                    <button class="dropdown-item" type="" name="print-students" onclick="printJS('studData', 'html')" id="print-students">
+                                    <button class="dropdown-item" type="" name="print-students" id="print-students">
                                         <i class='bx bxs-printer' style="font-size: 15px"></i> Print
                                     </button>
                                 </li>
@@ -173,7 +173,7 @@ if(isset($_SESSION['ID'])&&($_SESSION['email'])){
                                 <form action="queries/export-tables.php" method="post" style="display: flex; margin: 0">
                                 <button type="submit" name="export-overview" class=export id="export" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-original-title="Export"><i class='bx bxs-download' style="font-size: 25px"></i></button>
                                 </form>
-                                <button type="" name="print-students" onclick="printJS('studData', 'html')" class=refresh id="print-students" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-original-title="Print"><i class='bx bxs-printer' style="font-size: 25px"></i></button>
+                                <button type="" name="print-students"  class=refresh id="print-students" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-original-title="Print"><i class='bx bxs-printer' style="font-size: 25px"></i></button>
                                 <button class=refresh id="refresh"><i class='bx bx-refresh' style="font-size: 30px" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-original-title="Refresh"></i></button>
                                 <select class="form-select sort" id="sortoverview" class="sort">
                                     <option value="" disabled selected>Sort By</option>
@@ -206,7 +206,7 @@ if(isset($_SESSION['ID'])&&($_SESSION['email'])){
                                     <th style='border: 1px solid gray' width=20%>Address</th>
                                     <th style='border: 1px solid gray' width=10%>Admit Type</th>
                                     <th style='border: 1px solid gray' width=10%>Status</th>
-                                    <th style='border: 1px solid gray' width=10%>Action</th>
+                                    <th id='actions' style='border: 1px solid gray;' width=10%>Action</th>
                                 </tr>
                             </thead>
                             <tbody id=dataa>
@@ -270,19 +270,7 @@ if(isset($_SESSION['ID'])&&($_SESSION['email'])){
                                     </div>
                                     <div class="col-md-1 col-sm-3">
                                         <label for="age">Age:<i class="req">*</i></label>
-                                        <select class="form-select" name="age" id="age"  required>
-                                            <option value="" class=plchold>16</option>
-                                            <option value="16" class="others">16</option>
-                                            <option value="17" class="others">17</option>
-                                            <option value="18" class="others">18</option>
-                                            <option value="19" class="others">19</option>
-                                            <option value="20" class="others">20</option>
-                                            <option value="21" class="others">21</option>
-                                            <option value="22" class="others">22</option>
-                                            <option value="23" class="others">23</option>
-                                            <option value="24" class="others">24</option>
-                                            <option value="25" class="others">25</option>
-                                        </select>
+                                        <input type="text" class="form-control" name="age" id="age" placeholder="Age"  readonly>
                                     </div>
                                 </div>
                                 <div class="row mb-3">
@@ -292,7 +280,7 @@ if(isset($_SESSION['ID'])&&($_SESSION['email'])){
                                     </div>
                                     <div class="col-md-2 col-sm-6">
                                         <label for="bday">Date of Birth:<i class="req">*</i></label>
-                                        <input type="date" name="bday" id=bday class="form-control"  required>
+                                        <input type="date" min="1982-01-01" name="bday" id=bday class="form-control"  required>
                                     </div>
                                     <div class="col-md-2 col-sm-12">
                                         <label for="religion">Religion:<i class="req">*</i></label>
@@ -399,12 +387,11 @@ if(isset($_SESSION['ID'])&&($_SESSION['email'])){
                                             <option value="No" class="others">No</option>
                                         </select>
                                     </div>
-                                    <div class="col-md-1 col-sm-6">
-                                        <label for="yrs_calamba" id="yrs_calamba1">Years:</label>
-                                        <input type="hidden" name="yrs_calamba" value="0">
-                                        <input type="number" name="yrs_calamba" min=0 max=40 value="1" class="form-control yrs_calamba" value="" placeholder="Years" id="yrs_calamba" disabled>
+                                    <div class="col-md-2 col-sm-6">
+                                        <label for="yrs_calamba">Date of Residency:</label>
+                                        <input type="date" class="form-control" name="yrs_calamba" id="yrs_calambaa" disabled>
                                     </div>
-                                    <div class="col-md-3 col-sm-6">
+                                    <div class="col-md-2 col-sm-6">
                                         <label for="pre_houseno">Present Address:<i class="req">*</i></label>
                                         <input type="text" name="pre_houseno" class="form-control" placeholder="House No./Unit/Purok/Subdivision/Village" id="pre_houseno" required>
                                     </div>
@@ -447,23 +434,23 @@ if(isset($_SESSION['ID'])&&($_SESSION['email'])){
                                         <label for="">Please select the group you belong to:</label><br><br>
                                         <div class="col-md-6">
                                             <input type="hidden" name="group" value="N/A">
-                                            <input type="checkbox" class="non form-check-input" name="group[]" value="N/A" id="none" onclick="wala()" checked>
+                                            <input type="radio" class="non form-check-input" name="group[]" value="N/A" id="none" onclick="groupName()" checked>
                                             <small>None</small><br>
-                                            <input type="checkbox" class="form-check-input" name="group[]" value="Recipient of Student Financial Assistance" onclick="uncheck()" id="stuFap" disabled>
+                                            <input type="radio" class="form-check-input" name="group[]" value="Recipient of Student Financial Assistance" onclick="groupName()" id="stuFap">
                                             <small>Recipient of Student Financial Assistance</small><br>
-                                            <input type="checkbox" class="form-check-input" name="group[]" value="Person from Disadvantaged Group" onclick="uncheck()" id="disadvantagedGroup" disabled>
+                                            <input type="radio" class="form-check-input" name="group[]" value="Person from Disadvantaged Group" onclick="groupName()" id="disadvantagedGroup">
                                             <small>Person from Disadvantaged Group</small><br>
-                                            <input type="checkbox" class="form-check-input" name="group[]" value="Person from Depressed or Conflicted-Areas" onclick="uncheck()" id="depressed" disabled>
+                                            <input type="radio" class="form-check-input" name="group[]" value="Person from Depressed or Conflicted-Areas" onclick="groupName()" id="depressed">
                                             <small>Person from Depressed or Conflicted Areas</small><br>
                                             </div>
                                             <div class="col-md-6">
-                                            <input type="checkbox" class="form-check-input" name="group[]" value="Member of Indigenous People" onclick="uncheck()" id="indigenous" disabled>
+                                            <input type="radio" class="form-check-input" name="group[]" value="Member of Indigenous People" onclick="groupName()" id="indigenous">
                                             <small>Member of Indigenous People</small><br>
-                                            <input type="checkbox" class="form-check-input" name="group[]" value="Person with Disability" onclick="uncheck()" id="pwd" disabled>
+                                            <input type="radio" class="form-check-input" name="group[]" value="Person with Disability" onclick="groupName()" id="pwd">
                                             <small>Person with Disability (PWD)</small><br>
-                                            <input type="checkbox" class="form-check-input" name="group[]" value="Recipient of 4Ps" onclick="uncheck()" id="4ps" disabled>
+                                            <input type="radio" class="form-check-input" name="group[]" value="Recipient of 4Ps" onclick="groupName()" id="4ps">
                                             <small>Recipient of 4Ps</small><br>
-                                            <input type="checkbox" class="form-check-input" name="group[]" value="Working Student" onclick="uncheck()" id="workingstud" disabled>
+                                            <input type="radio" class="form-check-input" name="group[]" value="Working Student" onclick="groupName()" id="workingstud">
                                             <small>Working Student</small><br> 
                                             
                                         </div>
@@ -1045,8 +1032,13 @@ if(isset($_SESSION['ID'])&&($_SESSION['email'])){
                                 <small class="text-danger" id="votecerterror"></small>
                             </div>
                         </div>
-                        <div class="text-center row mb-3">
-                            <div class=" col-md-12 col-sm-12 mb-3">
+                        <div class="row mb-3">
+                            <div class="col-md-6 col-sm-12 mb-3" id="group-file" style="display: none">
+                                <label for="group-requirement"><b id="groupName"></b></label><br>
+                                <input type="file" name="group-requirement" id="group-requirement" class="inputfile form-control" accept=".pdf, .png, .jpg">
+                                <small class="text-danger" id="grouperror"></small>
+                            </div>
+                            <div class=" col-md-12 col-sm-12 mb-3" id="vax-file">
                                 <label for="vaxcard"><b>Copy of Vaccination Card:</b></label><br>
                                 <input type="file" name="vaxcard" id="vaxcard" class="inputfile form-control" accept=".pdf, .png, .jpg">
                                 <small class="text-danger" id="vaxcarderror"></small>

@@ -27,7 +27,7 @@ $result=$con->query($sql) or die ($con->error);
                         <th style='border: 1px solid gray' width=20%>Address</th>
                         <th style='border: 1px solid gray' width=10%>Admit Type</th>
                         <th style='border: 1px solid gray' width=10%>Status</th>
-                        <th style='border: 1px solid gray' width=10%>Action</th>
+                        <th id='actions' style='border: 1px solid gray' width=10%>Action</th>
                     </tr>
                 </thead>
             <tbody>";
@@ -51,23 +51,25 @@ $result=$con->query($sql) or die ($con->error);
                         ".$row['verification']."
                     </div>
                 </td>
-                <td style='border: 1px solid gray'>
-                <button class='btn btn-primary' id='btn-req' data-bs-toggle='modal' data-bs-target='#form-".$row['student_id']."' data-id='".$row['application_no']."'><i class='bx bxs-show mt-1 p-0' style='font-size: 20px'></i></button>
-                <div class='modal fade' id='form-".$row['student_id']."' tabindex='-1' aria-labelledby='exampleModalLabel' aria-hidden='true'>
-                    <div class='modal-dialog modal-dialog-centered modal-xl'>
-                        <div class='modal-content'>
-                        <div class='modal-header'>
-                            <h5 class='modal-title' id='exampleModalLabel'>".$row['application_no'].": ".$row['first_name'].' '.$row['last_name']."'s Application Form</h5>
-                            <button type='button' class='btn-close btn-close-white' data-bs-dismiss='modal' aria-label='Close'></button>
-                        </div>
-                        <div class='modal-body text-center'>
-                            <iframe src='../PDFCopies/".$row['application_no'].".pdf' class='file-view'></iframe>
-                        </div>
-                        
+                <td style='border: 1px solid gray' class='actions'>
+                    <button class='btn btn-primary' id='btn-view' data-bs-toggle='modal' data-bs-target='#form-".$row['student_id']."' data-id='".$row['student_id']."'><i class='bx bxs-show mt-1 p-0' style='font-size: 20px'></i></button>
+                    <button class='btn btn-success mb-1' id='editstudent' data-id='".$row['student_id']."'><i class='bx bxs-pencil mt-1 p-0' style='font-size: 20px'></i></button>
+                    
+                    <div id='modal-overview-".$row['student_id']."' style='display: none'>
+                        <div class='modal fade' id='form-".$row['student_id']."' tabindex='-1' aria-labelledby='exampleModalLabel' aria-hidden='true'>
+                            <div class='modal-dialog modal-dialog-centered modal-xl'>
+                                <div class='modal-content'>
+                                    <div class='modal-header'>
+                                        <h5 class='modal-title' id='exampleModalLabel'>".$row['application_no'].": ".$row['first_name'].' '.$row['last_name']."'s Application Form</h5>
+                                        <button type='button' class='btn-close btn-close-white' data-bs-dismiss='modal' aria-label='Close'></button>
+                                    </div>
+                                    <div class='modal-body text-center'>
+                                        <iframe src='../PDFCopies/".$row['application_no'].".pdf' class='file-view'></iframe>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <button class='btn btn-success mb-1' id='editstudent' data-id='".$row['student_id']."' data-bs-toggle='tooltip' data-bs-placement='bottom' data-bs-original-title='Edit details'><i class='bx bxs-pencil mt-1 p-0' style='font-size: 20px'></i></button>
                 </td>
             </tr>";
             }

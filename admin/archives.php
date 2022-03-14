@@ -142,14 +142,14 @@ if(isset($_SESSION['ID'])&&($_SESSION['email'])){
                         <div class="" style="background: #fff; height: 100%;">
                             <ul class="nav nav-tabs" id="myTab" role="tablist">
                                 <li class="nav-item" role="presentation">
-                                    <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home" type="button" role="tab" aria-controls="home" aria-selected="true">Student's Data</button>
+                                    <button class="nav-link" id="home-tab" data-bs-toggle="tab" data-bs-target="#home" type="button" role="tab" aria-controls="home" aria-selected="true">Student's Data</button>
                                 </li>
                                 <li class="nav-item" role="presentation">
                                     <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile" type="button" role="tab" aria-controls="profile" aria-selected="false">Test Results</button>
                                 </li>
                             </ul>
                             <div class="tab-content" id="myTabContent">
-                                <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                                <div class="tab-pane fade show" id="home" role="tabpanel" aria-labelledby="home-tab">
                                     <div class="head">
                                         <div class="dropdown mb-3" style="display: flex; flex: 1">
                                             <i class='bx bx-dots-vertical-rounded' id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false"></i> 
@@ -167,7 +167,7 @@ if(isset($_SESSION['ID'])&&($_SESSION['email'])){
                                                     </form>
                                                 </li>
                                                 <li>
-                                                    <button class="dropdown-item" type="" name="print-students" onclick="printJS('tbl-stud-archive', 'html')" id="print-students">
+                                                    <button class="dropdown-item" type="" name="print-studentsArchive" id="print-studentsArchive">
                                                         <i class='bx bxs-printer' style="font-size: 15px"></i> Print
                                                     </button>
                                                 </li>
@@ -184,7 +184,7 @@ if(isset($_SESSION['ID'])&&($_SESSION['email'])){
                                                 <form action="queries/export-tables.php" method="post" style="display: flex; margin: 0">
                                                 <button type="submit" name="export-studArchive" class=export id="export" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-original-title="Export"><i class='bx bxs-download' style="font-size: 25px"></i></button>
                                                 </form>
-                                                <button type="" name="print-students" onclick="printJS('tbl-stud-archive', 'html')" class=refresh id="print-students" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-original-title="Print"><i class='bx bxs-printer' style="font-size: 25px"></i></button>
+                                                <button type="" name="print-studentsArchive" class=refresh id="print-studentsArchive" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-original-title="Print"><i class='bx bxs-printer' style="font-size: 25px"></i></button>
                                                 <button class=refresh id="refresh"><i class='bx bx-refresh' style="font-size: 30px" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-original-title="Refresh"></i></button>
                                                
                                                 <input class="search-inputhome form-control" id=search_studArchive name="query" type="search" placeholder="Search student details..">
@@ -208,7 +208,7 @@ if(isset($_SESSION['ID'])&&($_SESSION['email'])){
                                                 <th style='border: 1px solid gray' width=20%>Address</th>
                                                 <th style='border: 1px solid gray' width=10%>Admit Type</th>
                                                 <th style='border: 1px solid gray' width=10%>Status</th>
-                                                <th style='border: 1px solid gray' width=5%>Action</th>
+                                                <th id='actions' style='border: 1px solid gray' width=5%>Action</th>
                                             </thead>
                                             <tbody id="stud-archives">
                                                 
@@ -235,7 +235,7 @@ if(isset($_SESSION['ID'])&&($_SESSION['email'])){
                                                     </form>
                                                 </li>
                                                 <li>
-                                                    <button class="dropdown-item" type="" name="print-students" onclick="printJS('tbl-results-archive', 'html')" id="print-students">
+                                                    <button class="dropdown-item" type="" name="print-resultsArchive" id="print-resultsArchive">
                                                         <i class='bx bxs-printer' style="font-size: 15px"></i> Print
                                                     </button>
                                                 </li>
@@ -252,7 +252,7 @@ if(isset($_SESSION['ID'])&&($_SESSION['email'])){
                                                 <form action="queries/export-tables.php" method="post" style="display: flex; margin: 0">
                                                 <button type="submit" name="export-resultArchive" class=export id="export" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-original-title="Export"><i class='bx bxs-download' style="font-size: 25px"></i></button>
                                                 </form>
-                                                <button type="" name="print-students" onclick="printJS('tbl-results-archive', 'html')" class=refresh id="print-students" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-original-title="Print"><i class='bx bxs-printer' style="font-size: 25px"></i></button>
+                                                <button type="" name="print-resultsArchive" class=refresh id="print-resultsArchive" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-original-title="Print"><i class='bx bxs-printer' style="font-size: 25px"></i></button>
                                                 <button class=refresh id="refresh"><i class='bx bx-refresh' style="font-size: 30px" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-original-title="Refresh"></i></button>
                                                
                                                 <input class="search-inputhome form-control" id=search_resultArchive name="query" type="search" placeholder="Search result details..">
@@ -277,7 +277,7 @@ if(isset($_SESSION['ID'])&&($_SESSION['email'])){
                                                     <th style="border: 1px solid gray" width=5% >Percentile Rank</th>
                                                     <th style="border: 1px solid gray" width=5% >Stanine</th>
                                                     <th style="border: 1px solid gray" width=10% >Verbal Interpretation</th>
-                                                    <th style="border: 1px solid gray" width=5% >Action</th>
+                                                    <th id='actions-results' style="border: 1px solid gray" width=5% >Action</th>
                                                 </tr>
                                             </thead>
                                             <tbody id='result-archive'>

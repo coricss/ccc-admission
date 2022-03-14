@@ -146,7 +146,7 @@ if(isset($_SESSION['ID'])&&($_SESSION['email'])){
                                     </form>
                                 </li>
                                 <li>
-                                    <button class="dropdown-item" type="" name="print-admin" onclick="printJS('results', 'html')" id="print-admin">
+                                    <button class="dropdown-item" type="" name="print-results" id="print-results">
                                         <i class='bx bxs-printer' style="font-size: 15px"></i> Print
                                     </button>
                                 </li>
@@ -162,7 +162,7 @@ if(isset($_SESSION['ID'])&&($_SESSION['email'])){
                                 <form action="queries/export-tables.php" method="post" style="display: flex; margin: 0">
                                 <button type="submit" name="export-results" class=export id="export" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-original-title="Export"><i class='bx bxs-download' style="font-size: 25px"></i></button>
                                 </form>
-                                <button type="" name="print-admin" onclick="printJS('results', 'html')" class=refresh id="print-admin" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-original-title="Print"><i class='bx bxs-printer' style="font-size: 25px"></i></button>
+                                <button type="" name="print-results" class=refresh id="print-results" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-original-title="Print"><i class='bx bxs-printer' style="font-size: 25px"></i></button>
                                 <button class=refresh id="refresh" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-original-title="Refresh"><i class='bx bx-refresh' style="font-size: 30px"></i></button>
                                 <select class="form-select sort" id="sortresult" class="sort">
                                     <option value="" disabled selected>Sort By</option>
@@ -195,7 +195,7 @@ if(isset($_SESSION['ID'])&&($_SESSION['email'])){
                                 <th style="border: 1px solid gray" width=5% >Percentile Rank</th>
                                 <th style="border: 1px solid gray" width=5% >Stanine</th>
                                 <th style="border: 1px solid gray" width=10% >Verbal Interpretation</th>
-                                <th style="border: 1px solid gray" width=5% >Print</th>
+                                <th id="actions" style="border: 1px solid gray" width=5% >Print</th>
                             </tr>
                         </thead>
                         <tbody id='result'>

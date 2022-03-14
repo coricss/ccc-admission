@@ -31,7 +31,7 @@ while($row = $resultsql->fetch_array()){
             </div>
         </td>
         
-        <td style='border: 1px solid gray'>
+        <td style='border: 1px solid gray' class='actions'>
             <button class='btn btn-danger mb-1 result-del' id='result-del' data-id='".$row['result_id']."'><i class='bx bxs-trash mt-1 p-0' style='font-size: 20px'></i></button>
         </td>
     </tr> 
