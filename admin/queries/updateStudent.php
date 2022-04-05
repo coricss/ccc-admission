@@ -283,6 +283,17 @@ if(isset($_POST['btn-editStud'])){
   }else{
     $votecert=$reqs['voters'];
   }
+  
+  if(!empty($_FILES['group-requirement2']['name'])){
+    if(!empty($reqs['proof_of_group'])){
+        unlink("../requirements/Proof_of_Groups/".$reqs['proof_of_group']);
+    }
+    $group_file=$application.'.'.pathinfo($_FILES["group-requirement2"]['name'], PATHINFO_EXTENSION);
+    $group_fileTarget="../requirements/Proof_of_Groups/".$group_file;
+    move_uploaded_file($_FILES["group-requirement2"]["tmp_name"], $group_fileTarget);
+  }else{
+    $group_file="";
+  }
 
   //CARDS
   if($admit=="Freshman"){
@@ -500,7 +511,7 @@ if(isset($_POST['btn-editStud'])){
                  $sql="UPDATE `personal_admiration` SET `hobbies`='$hobbies',`reason_enroll`='$reason4enroll',`characteristics`='$characteristics',`goals`='$dream' WHERE `student_id`='$studID'";
                  $con->query($sql) or die ($con->error);
                 //REQUIREMENTS
-                $sql=$con->query("UPDATE `requirements` SET `g11card`='$g11card', `g12card`='$g12card', `torpg1`='$torpg1', `torpg2`='$torpg2', `goodmoral`='$goodmoral', `birthcert`='$birthcert', `indigency`='$indigency', `voters`='$votecert', `vaxcard`='$vaxcard' WHERE `student_id`='$studID'");
+                $sql=$con->query("UPDATE `requirements` SET `g11card`='$g11card', `g12card`='$g12card', `torpg1`='$torpg1', `torpg2`='$torpg2', `goodmoral`='$goodmoral', `birthcert`='$birthcert', `indigency`='$indigency', `voters`='$votecert', `vaxcard`='$vaxcard', `proof_of_group`='$group_file' WHERE `student_id`='$studID'");
                  //NOTIF
                $sqlNotif=$con->query("INSERT INTO `notifications`(`adminID`, `admin_name`, `activity`, `date_time`) VALUES ('$adminID','$name','updated the details of $stud_name','$dateNotif')");
 
@@ -536,7 +547,7 @@ if(isset($_POST['btn-editStud'])){
               $sql="UPDATE `personal_admiration` SET `hobbies`='$hobbies',`reason_enroll`='$reason4enroll',`characteristics`='$characteristics',`goals`='$dream' WHERE `student_id`='$studID'";
               $con->query($sql) or die ($con->error);
               //REQUIREMENTS
-              $sql=$con->query("UPDATE `requirements` SET `g11card`='$g11card', `g12card`='$g12card', `torpg1`='$torpg1', `torpg2`='$torpg2', `goodmoral`='$goodmoral', `birthcert`='$birthcert', `indigency`='$indigency', `voters`='$votecert', `vaxcard`='$vaxcard' WHERE `student_id`='$studID'");
+              $sql=$con->query("UPDATE `requirements` SET `g11card`='$g11card', `g12card`='$g12card', `torpg1`='$torpg1', `torpg2`='$torpg2', `goodmoral`='$goodmoral', `birthcert`='$birthcert', `indigency`='$indigency', `voters`='$votecert', `vaxcard`='$vaxcard', `proof_of_group`='$group_file' WHERE `student_id`='$studID'");
                //NOTIF
                $sqlNotif=$con->query("INSERT INTO `notifications`(`adminID`, `admin_name`, `activity`, `date_time`) VALUES ('$adminID','$name','updated the details of $stud_name','$dateNotif')");
 
@@ -722,7 +733,7 @@ if(isset($_POST['btn-editStud'])){
        $sql="INSERT INTO `admin_logs`(`adminID`, `activity`, `date`, `time`) VALUES ($adminID,'You Updated Student Details','$phdate','$phtime')";
        $con->query($sql) or die ($con->error);
         //REQUIREMENTS
-        $sql=$con->query("UPDATE `requirements` SET `g11card`='$g11card', `g12card`='$g12card', `torpg1`='$torpg1', `torpg2`='$torpg2', `goodmoral`='$goodmoral', `birthcert`='$birthcert', `indigency`='$indigency', `voters`='$votecert', `vaxcard`='$vaxcard' WHERE `student_id`='$studID'");
+        $sql=$con->query("UPDATE `requirements` SET `g11card`='$g11card', `g12card`='$g12card', `torpg1`='$torpg1', `torpg2`='$torpg2', `goodmoral`='$goodmoral', `birthcert`='$birthcert', `indigency`='$indigency', `voters`='$votecert', `vaxcard`='$vaxcard', `proof_of_group`='$group_file' WHERE `student_id`='$studID'");
         //NOTIF
       $sqlNotif=$con->query("INSERT INTO `notifications`(`adminID`, `admin_name`, `activity`, `date_time`) VALUES ('$adminID','$name','updated the details of $stud_name','$dateNotif')");
 
