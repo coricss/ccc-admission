@@ -66,15 +66,7 @@ if(preg_match("/{$g}/", $gr)){
 }
 if($gr=="N/A"){
     echo "<script>
-    $('#none1').prop('checked', true);
-    $('#stuFap1').prop('disabled', true);
-    $('#disadvantagedGroup1').prop('disabled', true);
-    $('#depressed1').prop('disabled', true);
-    $('#indigenous1').prop('disabled', true);
-    $('#pwd1').prop('disabled', true);
-    $('#4ps1').prop('disabled', true);
-    $('#workingstud1').prop('disabled', true);
-    
+     $('#none1').prop('checked', true);
     </script>";
 }
 
@@ -87,6 +79,11 @@ if($req['vaxcard']!=""){
     $display2="inline-block";
 }else{
     $display2="none";
+}
+if($req['proof_of_group']!=""){
+    $display1="inline-block";
+}else{
+    $display1="none";
 }
 if(($req['g11card']!="")&&($req['g12card']!="")){
     $g11Dis="inline-block";
@@ -329,23 +326,23 @@ echo '
                             <label for="">Please select the group you belong to:</label><br><br>
                             <div class="col-md-6">
                                 <input type="hidden" name="group2" value="N/A">
-                                <input type="checkbox" class="non form-check-input" name="group2[]" value="N/A" id="none1" onclick="none()">
+                                <input type="radio" class="non form-check-input" name="group2[]" value="N/A" onclick="groupName2()" id="none1">
                                 <small>None</small><br>
-                                <input type="checkbox" class="form-check-input" name="group2[]" value="Recipient of Student Financial Assistance" onclick="uncheck()" id="stuFap1">
+                                <input type="radio" class="form-check-input" name="group2[]" value="Recipient of Student Financial Assistance" onclick="groupName2()" id="stuFap1">
                                 <small>Recipient of Student Financial Assistance</small><br>
-                                <input type="checkbox" class="form-check-input" name="group2[]" value="Person from Disadvantaged Group" onclick="uncheck()" id="disadvantagedGroup1">
+                                <input type="radio" class="form-check-input" name="group2[]" value="Person from Disadvantaged Group" onclick="groupName2()" id="disadvantagedGroup1">
                                 <small>Person from Disadvantaged Group</small><br>
-                                <input type="checkbox" class="form-check-input" name="group2[]" value="Person from Depressed or Conflicted-Areas" onclick="uncheck()" id="depressed1">
+                                <input type="radio" class="form-check-input" name="group2[]" value="Person from Depressed or Conflicted-Areas" onclick="groupName2()" id="depressed1">
                                 <small>Person from Depressed or Conflicted Areas</small><br>
                                 </div>
                                 <div class="col-md-6">
-                                <input type="checkbox" class="form-check-input" name="group2[]" value="Member of Indigenous People" onclick="uncheck()" id="indigenous1">
+                                <input type="radio" class="form-check-input" name="group2[]" value="Member of Indigenous People" onclick="groupName2()" id="indigenous1">
                                 <small>Member of Indigenous People</small><br>
-                                <input type="checkbox" class="form-check-input" name="group2[]" value="Person with Disability" onclick="uncheck()" id="pwd1">
+                                <input type="radio" class="form-check-input" name="group2[]" value="Person with Disability" onclick="groupName2()" id="pwd1">
                                 <small>Person with Disability (PWD)</small><br>
-                                <input type="checkbox" class="form-check-input" name="group2[]" value="Recipient of 4Ps" onclick="uncheck()" id="4ps1">
+                                <input type="radio" class="form-check-input" name="group2[]" value="Recipient of 4Ps" onclick="groupName2()" id="4ps1">
                                 <small>Recipient of 4Ps</small><br>
-                                <input type="checkbox" class="form-check-input" name="group2[]" value="Working Student" onclick="uncheck()" id="workingstud1">
+                                <input type="radio" class="form-check-input" name="group2[]" value="Working Student" onclick="groupName2()" id="workingstud1">
                                 <small>Working Student</small><br> 
                                 
                             </div>
@@ -1080,8 +1077,33 @@ echo '
                         <small class="text-danger" id="votecerterror2"></small>
                     </div>
                 </div>
-                <div class="text-center row mb-3">
-                    <div class=" col-md-12 col-sm-12 mb-3">
+                <div class="row mb-3">
+                    <div class="col-md-6 col-sm-12 mb-3" id="group-file2" style="display: none">
+                        <label for="group-requirement2"><b id="groupName2"></b>
+                            <a class="link-req" id="btn-req" data-bs-toggle="modal" data-bs-target="#group-'.$req['student_id'].'">
+                                <small style="display: '.$display1.'" id="group-proof">
+                                </small>
+                            </a>
+                        </label>
+                        <div class="modal fade" id="group-'.$req["student_id"].'" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered modal-xl">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel">'.$studInfo["application_no"].': Group File Proof</h5>
+                                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="text-center">
+                                            <iframe src="../requirements/Proof_of_Groups/'.$req["proof_of_group"].'" style="width: 100%; height: 600px" frameborder="0"></iframe>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div> 
+                        </div>
+                        <input type="file" name="group-requirement2" id="group-requirement2" class="inputfile form-control" accept=".pdf, .png, .jpg">
+                        <small class="text-danger" id="grouperror"></small>
+                    </div>
+                    <div class=" col-md-12 col-sm-12 mb-3" id="vax-file2">
                         <label for="vaxcard"><b>Copy of Vaccination Card:</b>
                             <a class="link-req" id="btn-req" data-bs-toggle="modal" data-bs-target="#vax-'.$req['student_id'].'">
                                 <small style="display: '.$display2.'"><i class="bx bx-paperclip bx-rotate-270" style="font-size: 15px"></i>Current Vaccination Card
@@ -1116,6 +1138,68 @@ echo '
 
 ?>
 <script>
+    if(document.getElementById("none1").checked==true){
+        $("#group-file2").hide();
+        $("#vax-file2").removeClass("col-md-6");
+        $("#vax-file2").addClass("col-md-12");
+        $("#group-requirement2").prop("required", false);
+    }else{
+        $("#group-file2").show();
+        $("#vax-file2").removeClass("col-md-12");
+        $("#vax-file2").addClass("col-md-6");
+        $("#group-requirement2").prop("required", true);
+    }
+    if(document.getElementById("stuFap1").checked==true){
+        $("#groupName2").html("Proof of Student Financial Assistance:");
+        $("#group-proof").html("<i class='bx bx-paperclip bx-rotate-270' style='font-size: 15px'></i>Current proof of Student Financial Assistance");
+    }else if(document.getElementById("disadvantagedGroup1").checked==true){
+        $("#groupName2").html("Proof of being from Disadvantaged Group:");
+        $("#group-proof").html("<i class='bx bx-paperclip bx-rotate-270' style='font-size: 15px'></i>Current proof of being from Disadvantaged Group");
+    }else if(document.getElementById("depressed1").checked==true){
+        $("#groupName2").html("Proof of being from Depressed or Conflicted-Areas:");
+        $("#group-proof").html("<i class='bx bx-paperclip bx-rotate-270' style='font-size: 15px'></i>Current proof of being from Depressed or Conflicted-Areas");
+    }else if(document.getElementById("indigenous1").checked==true){
+        $("#groupName2").html("Proof of being an Indigenous People:");
+        $("#group-proof").html("<i class='bx bx-paperclip bx-rotate-270' style='font-size: 15px'></i>Current proof of being an Indigenous People");
+    }else if(document.getElementById("pwd1").checked==true){
+        $("#groupName2").html("Proof of being a Person with Disability:");
+        $("#group-proof").html("<i class='bx bx-paperclip bx-rotate-270' style='font-size: 15px'></i>Current proof of being a Person with Disability");
+    }else if(document.getElementById("4ps1").checked==true){
+        $("#groupName2").html("Proof of being a Recipient of 4Ps:");
+        $("#group-proof").html("<i class='bx bx-paperclip bx-rotate-270' style='font-size: 15px'></i>Current proof of being a Recipient of 4Ps");
+    }else if(document.getElementById("workingstud1").checked==true){
+        $("#groupName2").html("Proof of being a Working Student:");
+        $("#group-proof").html("<i class='bx bx-paperclip bx-rotate-270' style='font-size: 15px'></i>Current proof of being a Working Student");
+    }
+function groupName2(){
+    if(document.getElementById("none1").checked==true){
+        $("#group-file2").hide();
+        $("#vax-file2").removeClass("col-md-6");
+        $("#vax-file2").addClass("col-md-12");
+        $("#group-requirement2").prop("required", false);
+    }else{
+        $("#group-file").show();
+        $("#group-file2").show();
+        $("#vax-file2").removeClass("col-md-12");
+        $("#vax-file2").addClass("col-md-6");
+        $("#group-requirement2").prop("required", true);
+    }
+    if(document.getElementById("stuFap1").checked==true){
+        $("#groupName2").html("Proof of Student Financial Assistance:");
+    }else if(document.getElementById("disadvantagedGroup1").checked==true){
+        $("#groupName2").html("Proof of being from Disadvantaged Group:");
+    }else if(document.getElementById("depressed1").checked==true){
+        $("#groupName2").html("Proof of being from Depressed or Conflicted-Areas:");
+    }else if(document.getElementById("indigenous1").checked==true){
+        $("#groupName2").html("Proof of being an Indigenous People:");
+    }else if(document.getElementById("pwd1").checked==true){
+        $("#groupName2").html("Proof of being a Person with Disability:");
+    }else if(document.getElementById("4ps1").checked==true){
+        $("#groupName2").html("Proof of being a Recipient of 4Ps:");
+    }else if(document.getElementById("workingstud1").checked==true){
+        $("#groupName2").html("Proof of being a Working Student:");
+    }
+}
 
 (function () {
         'use strict'
@@ -1804,75 +1888,75 @@ $('#admit2').change(function(){
     }
 })
 
-function none()
-	{
-		if(document.getElementById("none1").checked==false){
-			$(function(){
-				$("#none1").prop('required',true);
-		 	});
-                Swal.fire({
-                    title: 'Select a group',
-                    text: 'If student is not belong to the group list, Check none.',
-                    icon: 'warning',
-                    showConfirmButton: false,
-                    timer: 2000,
-                    allowOutsideClick: () => {
-                    const popup = Swal.getPopup()
-                    popup.classList.remove('swal2-show')
-                    setTimeout(() => {
-                        popup.classList.add('animate__animated', 'animate__headShake')
-                    })
-                    setTimeout(() => {
-                        popup.classList.remove('animate__animated', 'animate__headShake')
-                    }, 500)
-                    return false
-                    }
-                });
+// function none()
+// 	{
+// 		if(document.getElementById("none1").checked==false){
+// 			$(function(){
+// 				$("#none1").prop('required',true);
+// 		 	});
+//                 Swal.fire({
+//                     title: 'Select a group',
+//                     text: 'If student is not belong to the group list, Check none.',
+//                     icon: 'warning',
+//                     showConfirmButton: false,
+//                     timer: 2000,
+//                     allowOutsideClick: () => {
+//                     const popup = Swal.getPopup()
+//                     popup.classList.remove('swal2-show')
+//                     setTimeout(() => {
+//                         popup.classList.add('animate__animated', 'animate__headShake')
+//                     })
+//                     setTimeout(() => {
+//                         popup.classList.remove('animate__animated', 'animate__headShake')
+//                     }, 500)
+//                     return false
+//                     }
+//                 });
            
-		}
-		if(document.getElementById("none1").checked){
-			document.getElementById("stuFap1").disabled = true;
-			document.getElementById("disadvantagedGroup1").disabled = true;
-			document.getElementById("depressed1").disabled = true;
-			document.getElementById("indigenous1").disabled = true;
-			document.getElementById("pwd1").disabled = true;
-			document.getElementById("4ps1").disabled = true;
-			document.getElementById("workingstud1").disabled = true;
+// 		}
+// 		if(document.getElementById("none1").checked){
+// 			document.getElementById("stuFap1").disabled = true;
+// 			document.getElementById("disadvantagedGroup1").disabled = true;
+// 			document.getElementById("depressed1").disabled = true;
+// 			document.getElementById("indigenous1").disabled = true;
+// 			document.getElementById("pwd1").disabled = true;
+// 			document.getElementById("4ps1").disabled = true;
+// 			document.getElementById("workingstud1").disabled = true;
 			
-			document.getElementById("stuFap1").checked = false;
-			document.getElementById("disadvantagedGroup1").checked = false;
-			document.getElementById("depressed1").checked = false;
-			document.getElementById("indigenous1").checked = false;
-			document.getElementById("pwd1").checked = false;
-			document.getElementById("4ps1").checked = false;
-			document.getElementById("workingstud1").checked = false;
-		}
-		else{
-			document.getElementById("stuFap1").disabled = false;
-			document.getElementById("disadvantagedGroup1").disabled = false;
-			document.getElementById("depressed1").disabled = false;
-			document.getElementById("indigenous1").disabled = false;
-			document.getElementById("pwd1").disabled = false;
-			document.getElementById("4ps1").disabled = false;
-			document.getElementById("workingstud1").disabled = false;	
-		}
-	}
+// 			document.getElementById("stuFap1").checked = false;
+// 			document.getElementById("disadvantagedGroup1").checked = false;
+// 			document.getElementById("depressed1").checked = false;
+// 			document.getElementById("indigenous1").checked = false;
+// 			document.getElementById("pwd1").checked = false;
+// 			document.getElementById("4ps1").checked = false;
+// 			document.getElementById("workingstud1").checked = false;
+// 		}
+// 		else{
+// 			document.getElementById("stuFap1").disabled = false;
+// 			document.getElementById("disadvantagedGroup1").disabled = false;
+// 			document.getElementById("depressed1").disabled = false;
+// 			document.getElementById("indigenous1").disabled = false;
+// 			document.getElementById("pwd1").disabled = false;
+// 			document.getElementById("4ps1").disabled = false;
+// 			document.getElementById("workingstud1").disabled = false;	
+// 		}
+// 	}
 
-    function uncheck(){
-		if(document.getElementById("none1").checked == true){
-			document.getElementById("none1").checked = false;
-		}
-		if((document.getElementById("stuFap1").checked==true)||(document.getElementById("disadvantagedGroup1").checked==true)||(document.getElementById("depressed1").checked==true)||(document.getElementById("indigenous1").checked==true)||(document.getElementById("pwd1").checked==true)||(document.getElementById("4ps1").checked==true)||(document.getElementById("workingstud1").checked==true)){
-			$(function(){
-				$("#none1").prop('required',false);
-		 	});
-		}
-		else{
-			$(function(){
-				$("#none1").prop('required',true);
-		 	});
-		}
-	}
+    // function uncheck(){
+	// 	if(document.getElementById("none1").checked == true){
+	// 		document.getElementById("none1").checked = false;
+	// 	}
+	// 	if((document.getElementById("stuFap1").checked==true)||(document.getElementById("disadvantagedGroup1").checked==true)||(document.getElementById("depressed1").checked==true)||(document.getElementById("indigenous1").checked==true)||(document.getElementById("pwd1").checked==true)||(document.getElementById("4ps1").checked==true)||(document.getElementById("workingstud1").checked==true)){
+	// 		$(function(){
+	// 			$("#none1").prop('required',false);
+	// 	 	});
+	// 	}
+	// 	else{
+	// 		$(function(){
+	// 			$("#none1").prop('required',true);
+	// 	 	});
+	// 	}
+	// }
 
 var jhsgrad=$('#jhs_dgrad2').val();
 
