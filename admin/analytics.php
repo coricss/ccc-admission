@@ -82,6 +82,12 @@ if(isset($_SESSION['ID'])&&($_SESSION['email'])){
                 </a>
             </li>
             <li>
+                <a href="programs.php" id="" class="sidelinks" data-bs-toggle='tooltip' data-bs-placement='right' data-bs-original-title='Manage Programs'>
+                    <i class='bx bxs-graduation'></i>
+                    <span class="link-name">Manage Programs</span>
+                </a>
+            </li>
+            <li>
                 <a href="settings.php" id="" class="sidelinks" data-bs-toggle='tooltip' data-bs-placement='right' data-bs-original-title='Admin Settings'>
                     <i class='bx bx-cog' ></i>
                     <span class="link-name">Admin Settings</span>
