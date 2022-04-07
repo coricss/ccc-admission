@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 27, 2022 at 05:24 PM
+-- Generation Time: Apr 07, 2022 at 04:12 PM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 8.1.2
 
@@ -47,7 +47,7 @@ CREATE TABLE `admin_info` (
 
 INSERT INTO `admin_info` (`adminID`, `admin_photo`, `admin_firstname`, `admin_lastname`, `admin_email`, `admin_pwd`, `admin_contactno`, `admin_address`, `code`, `code_expiry`, `login_attempt`) VALUES
 (1, 'default_photo.png', 'CCC', 'Admin', 'admin@ccc.edu.ph', '$2y$10$56Ved.uKoECtj.42nYAaqu63OS6n6w5jC46WwIzaktCpB2wFl8vdS', '', '', '', 'Expired', '0'),
-(7, '1644367690285.jpg', 'Rico', 'Guinanao', 'guinanaorico@gmail.com', '$2y$10$FLZz.VHXUGtXm9LOT9g1EOMIfEexv/wGC5VOMHRf3P6ZozU7bPJgq', '09319542169', 'Block 14 Lot 76 Majada In', '433132', 'New', '0'),
+(7, '1647245956_rics.png', 'Rico', 'Guinanao', 'guinanaorico@gmail.com', '$2y$10$PLXTlb7hJAUk95adnXxePOq1DZpfiU2m5Y7nHou/FFbfROYFI/Ime', '09319542169', 'Block 14 Lot 76 Majada In', '433132', 'New', '0'),
 (8, 'default_photo.png', 'Michael', 'Wania', 'mjwania@yahoo.com', '$2y$10$XgREsh7WJfAluvY9N2jZPutjAVuUd2OIMZB2QHY8cFGVV1JWXwe.2', '09251486985', 'Calamba, Laguna', '', '', '0');
 
 -- --------------------------------------------------------
@@ -137,7 +137,86 @@ INSERT INTO `admin_logs` (`log_id`, `adminID`, `activity`, `date`, `time`) VALUE
 (66, 1, 'You Verified a Student', '02/25/2022', '5:15 PM'),
 (67, 1, 'You Verified a Student', '02/25/2022', '5:15 PM'),
 (68, 1, 'You Verified a Student', '02/25/2022', '5:16 PM'),
-(69, 1, 'You Updated Student Details', '02/25/2022', '6:31 PM');
+(69, 1, 'You Updated Student Details', '02/25/2022', '6:31 PM'),
+(70, 1, 'Your Account was Logged Out', '02/28/2022', '12:25 AM'),
+(71, 1, 'Your Account was Logged In', '02/28/2022', '12:35 AM'),
+(72, 1, 'You Verified a Student', '02/28/2022', '12:36 AM'),
+(73, 1, 'You Entered Invalid Password', '02/28/2022', '4:05 PM'),
+(74, 1, 'Your Account was Logged In', '02/28/2022', '4:05 PM'),
+(75, 1, 'You Entered Invalid Password', '02/28/2022', '11:47 PM'),
+(76, 1, 'Your Account was Logged In', '02/28/2022', '11:47 PM'),
+(77, 1, 'Your Account was Logged In', '03/01/2022', '4:36 PM'),
+(78, 1, 'You Verified a Student', '03/01/2022', '4:46 PM'),
+(79, 1, 'You Updated Student Details', '03/01/2022', '4:46 PM'),
+(80, 1, 'Your Account was Logged Out', '03/01/2022', '4:51 PM'),
+(81, 1, 'You Entered Invalid Password', '03/01/2022', '5:01 PM'),
+(82, 1, 'Your Account was Logged In', '03/01/2022', '5:01 PM'),
+(83, 1, 'Your Account was Logged Out', '03/01/2022', '8:07 PM'),
+(84, 1, 'Your Account was Logged In', '03/02/2022', '10:20 AM'),
+(85, 1, 'Your Account was Logged Out', '03/02/2022', '10:21 AM'),
+(86, 1, 'Your Account was Logged In', '03/02/2022', '2:53 PM'),
+(87, 1, 'You Verified a Student', '03/02/2022', '2:56 PM'),
+(88, 1, 'You Verified a Student', '03/02/2022', '2:59 PM'),
+(89, 1, 'Your Account was Logged Out', '03/02/2022', '3:22 PM'),
+(90, 1, 'You Entered Invalid Password', '03/05/2022', '2:59 PM'),
+(91, 1, 'Your Account was Logged In', '03/05/2022', '2:59 PM'),
+(92, 1, 'Your Account was Logged In', '03/06/2022', '10:54 PM'),
+(93, 1, 'Your Account was Logged Out', '03/07/2022', '12:31 AM'),
+(94, 7, 'You Entered Invalid Password', '03/08/2022', '5:51 PM'),
+(95, 7, 'You Entered Invalid Password', '03/08/2022', '5:52 PM'),
+(96, 7, 'Your Login Attempts was Exceeded', '03/08/2022', '5:52 PM'),
+(97, 7, 'Your Login Attempts was Exceeded', '03/08/2022', '5:52 PM'),
+(98, 1, 'Your Account was Logged In', '03/08/2022', '5:52 PM'),
+(99, 1, 'Your Account was Logged Out', '03/08/2022', '5:53 PM'),
+(100, 7, 'Your Account was Logged In', '03/08/2022', '5:53 PM'),
+(101, 7, 'Your Account was Logged Out', '03/08/2022', '5:53 PM'),
+(102, 1, 'Your Account was Logged In', '03/08/2022', '5:55 PM'),
+(103, 1, 'Your Account was Logged Out', '03/08/2022', '5:56 PM'),
+(104, 1, 'Your Account was Logged In', '03/08/2022', '8:53 PM'),
+(105, 1, 'Your Account was Logged In', '03/09/2022', '4:32 PM'),
+(106, 1, 'Your Account was Logged In', '03/10/2022', '7:20 PM'),
+(107, 1, 'Your Account was Logged In', '03/11/2022', '6:11 PM'),
+(108, 1, 'You Entered Invalid Password', '03/11/2022', '9:51 PM'),
+(109, 1, 'Your Account was Logged In', '03/11/2022', '9:52 PM'),
+(110, 1, 'You Entered Invalid Password', '03/12/2022', '7:34 PM'),
+(111, 1, 'Your Account was Logged In', '03/12/2022', '7:34 PM'),
+(112, 1, 'Your Account was Logged In', '03/12/2022', '11:12 PM'),
+(113, 1, 'You Entered Invalid Password', '03/12/2022', '11:25 PM'),
+(114, 1, 'Your Account was Logged In', '03/12/2022', '11:25 PM'),
+(115, 1, 'Your Account was Logged In', '03/13/2022', '1:32 AM'),
+(116, 1, 'Your Account was Logged Out', '03/13/2022', '3:33 AM'),
+(117, 1, 'Your Account was Logged In', '03/13/2022', '4:33 PM'),
+(118, 1, 'You Entered Invalid Password', '03/13/2022', '5:20 PM'),
+(119, 1, 'Your Account was Logged In', '03/13/2022', '5:20 PM'),
+(120, 1, 'You Entered Invalid Password', '03/13/2022', '10:34 PM'),
+(121, 1, 'You Entered Invalid Password', '03/13/2022', '10:34 PM'),
+(122, 1, 'Your Account was Logged In', '03/14/2022', '2:39 PM'),
+(123, 1, 'Your Account was Logged Out', '03/14/2022', '4:15 PM'),
+(124, 7, 'You Entered Invalid Password', '03/14/2022', '4:16 PM'),
+(125, 7, 'You Entered Invalid Password', '03/14/2022', '4:16 PM'),
+(126, 7, 'Your Login Attempts was Exceeded', '03/14/2022', '4:16 PM'),
+(127, 7, 'Your Login Attempts was Exceeded', '03/14/2022', '4:16 PM'),
+(128, 7, 'Your Login Attempts was Exceeded', '03/14/2022', '4:17 PM'),
+(129, 1, 'Your Account was Logged In', '03/14/2022', '4:17 PM'),
+(130, 1, 'Your Account was Logged Out', '03/14/2022', '4:17 PM'),
+(131, 7, 'Your Account was Logged In', '03/14/2022', '4:18 PM'),
+(132, 7, 'Your Photo was Updated', '03/14/2022', '4:19 PM'),
+(133, 7, 'You Updated Student Details', '03/14/2022', '4:22 PM'),
+(134, 7, 'You Registered New Student', '03/14/2022', '11:55 PM'),
+(135, 7, 'Your Account was Logged Out', '03/15/2022', '12:10 AM'),
+(136, 1, 'Your Account was Logged In', '03/17/2022', '5:17 PM'),
+(137, 1, 'Your Account was Logged In', '03/18/2022', '5:37 PM'),
+(138, 1, 'Your Account was Logged In', '04/05/2022', '1:57 PM'),
+(139, 1, 'You Updated Student Details', '04/05/2022', '3:29 PM'),
+(140, 1, 'You Updated Student Details', '04/05/2022', '5:18 PM'),
+(141, 1, 'You Updated Student Details', '04/05/2022', '5:18 PM'),
+(142, 1, 'You Updated Student Details', '04/05/2022', '5:19 PM'),
+(143, 1, 'You Updated Student Details', '04/05/2022', '5:31 PM'),
+(144, 1, 'You Updated Student Details', '04/05/2022', '5:33 PM'),
+(145, 1, 'Your Account was Logged In', '04/05/2022', '5:55 PM'),
+(146, 1, 'You Updated Student Details', '04/05/2022', '6:21 PM'),
+(147, 1, 'Your Account was Logged In', '04/06/2022', '7:45 PM'),
+(148, 1, 'Your Account was Logged In', '04/07/2022', '10:43 AM');
 
 -- --------------------------------------------------------
 
@@ -345,7 +424,15 @@ INSERT INTO `educ_bg` (`student_id`, `admit_type`, `elem_name`, `elem_address`, 
 (33, 'Transferee', 'Pamplona Elem School', 'Block 14 Lot 76 Majada In', '2022-03-02', '', 'MajadaInNHS', 'Block 14 Lot 76 Majada In', '2022-02-20', '', 'STI College Calamba', 'Block 14 Lot 76 Majada In', 'Technical-Vocational-Livelihood', 'ICT', '2022-02-11', '', '90', '89', 'PWU', 'Block 14 Lot 76 Majada In', 'BSCS', '90', '', '', '', '', '', '', ''),
 (34, 'Freshman', 'Pamplona Elem School', 'Block 14 Lot 76 Majada In', '2022-02-16', '', 'MajadaInNHS', 'Block 14 Lot 76 Majada In', '2022-02-16', '', 'STI College Calamba', 'Block 14 Lot 76 Majada In', 'Technical-Vocational-Livelihood', 'ICT', '2022-02-04', '', '90', '90', '', '', '', '', '', '', '', '', '', '', ''),
 (35, 'Freshman', 'Pamplona Elem School', 'Block 14 Lot 76 Majada In', '2022-02-16', '', 'MajadaInNHS', 'Block 14 Lot 76 Majada In', '2022-02-02', '', 'STI College Calamba', 'Block 14 Lot 76 Majada In', 'Technical-Vocational-Livelihood', 'Industrial Arts', '2022-02-23', '', '89', '90', '', '', '', '', '', '', '', '', '', '', ''),
-(36, 'Freshman', 'Pamplona Elem School', 'Block 14 Lot 76 Majada In', '2022-02-28', '', 'MajadaInNHS', 'Block 14 Lot 76 Majada In', '2022-02-16', '', 'STI College Calamba', 'Block 14 Lot 76 Majada In', 'Technical-Vocational-Livelihood', 'ICT', '2022-02-15', '', '90', '89', '', '', '', '', '', '', '', '', '', '', '');
+(36, 'Freshman', 'Pamplona Elem School', 'Block 14 Lot 76 Majada In', '2022-02-28', '', 'MajadaInNHS', 'Block 14 Lot 76 Majada In', '2022-02-16', '', 'STI College Calamba', 'Block 14 Lot 76 Majada In', 'Technical-Vocational-Livelihood', 'ICT', '2022-02-15', '', '90', '89', '', '', '', '', '', '', '', '', '', '', ''),
+(37, 'Freshman', 'Pamplona Elem School', 'Block 14 Lot 76 Majada In', '2022-02-16', '', 'MajadaInNHS', 'Block 14 Lot 76 Majada In', '2022-02-15', '', 'STI College Calamba', 'Block 14 Lot 76 Majada In', 'Technical-Vocational-Livelihood', 'ICT', '2022-02-10', '', '90', '90', '', '', '', '', '', '', '', '', '', '', ''),
+(38, 'Transferee', 'Pamplona Elem School', 'Block 14 Lot 76 Majada In', '2022-03-28', '', 'MajadaInNHS', 'Block 14 Lot 76 Majada In', '2022-03-20', '', 'STI College Calamba', 'Block 14 Lot 76 Majada In', 'Arts and Design', 'N/A', '2022-03-16', '', '90', '90', 'STI', 'Block 14 Lot 76 Majada In', 'BSIT', '90', '', '', '', '', 'ghjfg', 'Makati', '2022-A-0033.jpg'),
+(39, 'Freshman', 'Pamplona Elem School', 'Block 14 Lot 76 Majada In', '2022-03-08', '', 'MajadaInNHS', 'Block 14 Lot 76 Majada In', '2022-03-23', '', 'STI College Calamba', 'Block 14 Lot 76 Majada In', 'Technical-Vocational-Livelihood', 'ICT', '2022-03-16', '', '80', '80', '', '', '', '', '', '', '', '', '', '', ''),
+(40, 'Transferee', 'Pamplona Elem School', 'Block 14 Lot 76 Majada In', '2022-03-05', '', 'MajadaInNHS', 'Imus, Cavite', '2022-03-06', '', 'STI College Calamba', 'Imus, Cavite', 'Academics', 'ABM', '2022-03-23', '', '90', '90', 'PWU', 'Block 14 Lot 76 Majada In', 'BSIT', '90', '', '', '', '', '', '', ''),
+(41, 'Freshman', 'Pamplona Elem School', 'Block 14 Lot 76 Majada In', '2022-02-28', '', 'MajadaInNHS', 'Block 14 Lot 76 Majada In', '2022-03-10', '', 'STI College Calamba', 'Block 14 Lot 76 Majada In', 'Technical-Vocational-Livelihood', 'Industrial Arts', '2022-03-09', '', '89', '89', '', '', '', '', '', '', '', '', '', '', ''),
+(42, 'Freshman', 'Pamplona Elem School', 'Block 14 Lot 76 Majada In', '2022-03-04', '', 'MajadaInNHS', 'Block 14 Lot 76 Majada In', '2022-03-07', '', 'STI College Calamba', 'Block 14 Lot 76 Majada In', 'Technical-Vocational-Livelihood', 'Home Economics', '2022-03-09', '', '90', '90', '', '', '', '', '', '', '', '', '', '', ''),
+(43, 'Freshman', 'Pamplona Elem School', 'erter', '2022-03-08', '', 'MajadaInNHS', 'Block 14 Lot 76 Majada In', '2022-03-02', '', 'STI College Calamba', 'Block 14 Lot 76 Majada In', 'Technical-Vocational-Livelihood', 'ICT', '2022-03-03', '', '90', '90', '', '', '', '', '', '', '', '', '', '', ''),
+(44, 'Freshman', 'Pamplona Elem School', 'Block 14 Lot 76 Majada In', '2022-03-03', '', 'MajadaInNHS', 'Block 14 Lot 76 Majada In', '2022-03-03', '', 'STI College Calamba', 'Calamba, Laguna', 'Technical-Vocational-Livelihood', 'Agri-Fishery Arts', '2022-03-10', '', '90', '90', '', '', '', '', '', '', '', '', '', '', '');
 
 -- --------------------------------------------------------
 
@@ -385,7 +472,10 @@ INSERT INTO `exam_results` (`result_id`, `application_no`, `student_name`, `raw_
 (14, '2022-A-0026', 'Irene Luna', 43, 658, 35, 4, 'Average'),
 (15, '2021-A-0020', 'Seth Rivera', 0, 0, 0, 0, 'Below Average'),
 (16, '2021-A-0017', 'Jeremy Garcia', 0, 0, 0, 0, 'Below Average'),
-(17, '2021-A-0022', 'Cedric Pascua', 16, 592, 1, 1, 'Below Average');
+(17, '2021-A-0022', 'Cedric Pascua', 16, 592, 1, 1, 'Below Average'),
+(18, '2022-A-0032', 'Rics Guinanao', 46, 665, 42, 5, 'Average'),
+(19, '2022-A-0033', 'Eren Yeager', 0, 0, 0, 0, 'Below Average'),
+(20, '2022-A-0034', 'Rico Guinanao', 25, 617, 6, 2, 'Below Average');
 
 -- --------------------------------------------------------
 
@@ -480,7 +570,15 @@ INSERT INTO `fam_bg` (`student_id`, `father_name`, `father_citizenship`, `father
 (33, 'Nildo Guinanao', 'Filipino', 'Block 14 Lot 76 Majada In', '09625487878', 'guinanaorico@gmail.com', 'Private Employee', '', '', '', 'High School Undergraduate', 'Eden Guinanao', 'Filipino', 'Block 14 Lot 76 Majada In', '09124547878', 'admin@ccc.edu.ph', 'Private Employee', '', '', '', 'College Undergraduate', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'P10, 481.00-P20, 962.00'),
 (34, 'Nildo Guinanao', 'Filipino', 'Block 14 Lot 76 Majada In', '09625487878', 'guinanaorico@gmail.com', 'Private Employee', '', '', '', 'College Undergraduate', 'Eden Guinanao', 'Filipino', 'Block 14 Lot 76 Majada In', '09124547878', 'guinanaorico@gmail.com', 'Private Employee', '', '', '', 'High School Graduate', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'Below P10, 481'),
 (35, 'Nildo Guinanao', 'Filipino', 'Block 14 Lot 76 Majada In', '09625487878', 'guinanaorico@gmail.com', 'Private Employee', '', '', '', 'High School Undergraduate', 'Eden Guinanao', 'Filipino', 'Block 14 Lot 76 Majada In', '09124547878', 'guinanaorico@gmail.com', 'Self-Employed', '', '', '', 'High School Undergraduate', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'P41, 924.00-P73, 367.00'),
-(36, 'Nildo Guinanao', 'Filipino', 'Block 14 Lot 76 Majada In', '09625487878', 'guinanaorico@gmail.com', 'Government Employee', '', '', '', 'High School Undergraduate', 'Eden Guinanao', 'Filipino', 'Block 14 Lot 76 Majada In', '09124547878', 'guinanaorico@gmail.com', 'Government Employee', '', '', '', 'Elementary Graduate', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'Below P10, 481');
+(36, 'Nildo Guinanao', 'Filipino', 'Block 14 Lot 76 Majada In', '09625487878', 'guinanaorico@gmail.com', 'Government Employee', '', '', '', 'High School Undergraduate', 'Eden Guinanao', 'Filipino', 'Block 14 Lot 76 Majada In', '09124547878', 'guinanaorico@gmail.com', 'Government Employee', '', '', '', 'Elementary Graduate', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'Below P10, 481'),
+(37, 'Nildo Guinanao', 'Filipino', 'Block 14 Lot 76 Majada In', '09625487878', 'guinanaorico@gmail.com', 'Private Employee', '', '', '', 'High School Undergraduate', 'Eden Guinanao', 'Filipino', 'Block 14 Lot 76 Majada In', '09124547878', 'guinanaorico@gmail.com', 'Private Employee', '', '', '', 'High School Undergraduate', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'P41, 924.00-P73, 367.00'),
+(38, 'Nildo Guinanao', 'Filipino', 'Block 14 Lot 76 Majada In', '09457898365', 'guinanaorico@gmail.com', 'Private Employee', '', '', '', 'High School Undergraduate', 'Eden Guinanao', 'Filipino', 'Block 14 Lot 76 Majada In', '09124547878', 'guinanaorico@gmail.com', 'Private Employee', '', '', '', 'High School Graduate', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'Below P10, 481'),
+(39, 'Nildo Guinanao', 'Filipino', 'Block 14 Lot 76 Majada In', '09625487878', 'guinanaorico@gmail.com', 'Self-Employed', '', '', '', 'High School Undergraduate', 'Eden Guinanao', 'Filipino', 'Block 14 Lot 76 Majada In', '09124547878', 'guinanaorico@gmail.com', 'Government Employee', '', '', '', 'High School Undergraduate', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'Below P10, 481'),
+(40, 'Nildo Guinanao', 'Filipino', 'Block 14 Lot 76 Majada In', '09625487878', 'guinanaorico@gmail.com', 'Self-Employed', '', '', '', 'High School Undergraduate', 'Eden Guinanao', 'Filipino', 'Block 14 Lot 76 Majada In', '09124547878', 'guinanaorico@gmail.com', 'Self-Employed', '', '', '', 'High School Graduate', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'Below P10, 481'),
+(41, 'Nildo Guinanao', 'Filipino', 'Block 14 Lot 76 Majada In', '09625487878', 'guinanaorico@gmail.com', 'Private Employee', '', '', '', 'Elementary Graduate', 'dsfsf', 'Filipino', 'Block 14 Lot 76 Majada In', '09124547878', 'guinanaorico@gmail.com', 'Self-Employed', '', '', '', 'High School Undergraduate', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'Below P10, 481'),
+(42, 'Nildo Guinanao', 'Filipino', 'Block 14 Lot 76 Majada In', '09625487878', 'guinanaorico@gmail.com', 'Private Employee', '', '', '', 'Elementary Graduate', 'Eden Guinanao', 'Filipino', 'Block 14 Lot 76 Majada In', '09124547878', 'guinanaorico@gmail.com', 'Private Employee', '', '', '', 'Elementary Graduate', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'P10, 481.00-P20, 962.00'),
+(43, 'asd', 'Filipino', 'Block 14 Lot 76 Majada In', '09625487878', 'guinanaorico@gmail.com', 'Private Employee', '', '', '', 'High School Graduate', 'Eden Guinanao', 'Filipino', 'Block 14 Lot 76 Majada In', '09124547878', 'guinanaorico@gmail.com', 'Government Employee', '', '', '', 'High School Undergraduate', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'Below P10, 481'),
+(44, 'Nildo Guinanao', 'Filipino', 'Block 14 Lot 76 Majada In', '09625487878', 'guinanaorico@gmail.com', 'Government Employee', '', '', '', 'Elementary Graduate', 'Eden Guinanao', 'Filipino', 'Block 14 Lot 76 Majada In', '09124547878', 'guinanaorico@gmail.com', 'Private Employee', '', '', '', 'Elementary Undergraduate', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'Below P10, 481');
 
 -- --------------------------------------------------------
 
@@ -497,17 +595,6 @@ CREATE TABLE `feedbacks` (
   `message` varchar(500) NOT NULL,
   `date_sent` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `feedbacks`
---
-
-INSERT INTO `feedbacks` (`feedback_id`, `application_no`, `photo`, `sender`, `email`, `message`, `date_sent`) VALUES
-(1, '2022-A-0027', 'default_photo.png', 'Anonymous', '', 'Thanks', '2022-02-25 05:43:14 PM'),
-(2, '2022-A-0008', '1645723260_3m.jpg', 'Alvin Tenorio', 'alvintenorio@gmail.com', 'Great', '2022-02-25 05:49:52 PM'),
-(3, '2022-A-0006', '1645722195_2m.jpg', 'Arnold Dalisay', 'arnoldnicdaos@gmail.com', 'Nice', '2022-02-25 06:35:26 PM'),
-(4, '2022-A-0014', '1645771765_7m.jpg', 'Muhammad Akbar', 'muhammad@gmail.com', 'Good', '2022-02-25 07:20:50 PM'),
-(5, '2022-A-0032', 'default_photo.png', 'Anonymous', '', 'qweert\'k', '2022-02-25 07:48:16 PM');
 
 -- --------------------------------------------------------
 
@@ -528,69 +615,13 @@ CREATE TABLE `notifications` (
 --
 
 INSERT INTO `notifications` (`notif_id`, `adminID`, `admin_name`, `activity`, `date_time`) VALUES
-(1, 1, 'CCC Admin', 'updated the details of Arnold Dalisay', '2022-02-25 01:03:45 AM'),
-(2, 1, 'CCC Admin', 'registered a student named Kate Uy', '2022-02-25 01:08:45 AM'),
-(3, 7, 'Rico Guinanao', 'registered a student named Alvin Tenorio', '2022-02-25 01:21:00 AM'),
-(4, 7, 'Rico Guinanao', 'added Michael Wania as an administrator', '2022-02-25 01:22:34 AM'),
-(5, 1, 'CCC Admin', 'registered a student named Simon Adolfo', '2022-02-25 01:40:40 AM'),
-(6, 1, 'CCC Admin', 'registered a student named Historia Reiss', '2022-02-25 01:14:20 PM'),
-(7, 1, 'CCC Admin', 'updated the details of Historia Reiss', '2022-02-25 01:14:40 PM'),
-(8, 1, 'CCC Admin', 'registered a student named Connie Springer', '2022-02-25 02:21:49 PM'),
-(9, 1, 'CCC Admin', 'registered a student named Jean Valdez', '2022-02-25 02:27:13 PM'),
-(10, 1, 'CCC Admin', 'registered a student named Hitch Dreyse', '2022-02-25 02:31:53 PM'),
-(11, 1, 'CCC Admin', 'registered a student named Muhammad Akbar', '2022-02-25 02:49:25 PM'),
-(12, 1, 'CCC Admin', 'updated the details of Hitch Dreyse', '2022-02-25 02:50:39 PM'),
-(13, 1, 'CCC Admin', 'updated the details of Hitch Dreyse', '2022-02-25 02:51:08 PM'),
-(14, 1, 'CCC Admin', 'registered a student named Mikasa Lamanca', '2022-02-25 02:56:12 PM'),
-(15, 1, 'CCC Admin', 'registered a student named Ryan Beng', '2022-02-25 03:04:47 PM'),
-(16, 1, 'CCC Admin', 'registered a student named Jeremy Garcia', '2022-02-25 03:10:45 PM'),
-(17, 1, 'CCC Admin', 'registered a student named Anna Reyes', '2022-02-25 03:17:41 PM'),
-(18, 1, 'CCC Admin', 'registered a student named Tiffany Bautista', '2022-02-25 03:22:24 PM'),
-(19, 1, 'CCC Admin', 'updated the details of Mikasa Lamanca', '2022-02-25 03:32:18 PM'),
-(20, 1, 'CCC Admin', 'updated the details of Hitch Dreyse', '2022-02-25 03:32:31 PM'),
-(21, 1, 'CCC Admin', 'updated the details of Historia Reiss', '2022-02-25 03:32:46 PM'),
-(22, 1, 'CCC Admin', 'registered a student named Seth Rivera', '2022-02-25 03:34:58 PM'),
-(23, 1, 'CCC Admin', 'registered a student named Rea Enriquez', '2022-02-25 03:45:33 PM'),
-(24, 1, 'CCC Admin', 'registered a student named Cedric Pascua', '2022-02-25 03:48:56 PM'),
-(25, 1, 'CCC Admin', 'registered a student named Yuki Fajardo', '2022-02-25 03:52:54 PM'),
-(26, 1, 'CCC Admin', 'registered a student named Denzel Espinosa', '2022-02-25 03:57:54 PM'),
-(27, 1, 'CCC Admin', 'registered a student named Gabriel Roxas', '2022-02-25 04:02:57 PM'),
-(28, 1, 'CCC Admin', 'registered a student named Irene Luna', '2022-02-25 04:05:28 PM'),
-(29, 1, 'CCC Admin', 'registered a student named Ali Mateo', '2022-02-25 04:07:38 PM'),
-(30, 1, 'CCC Admin', 'registered a student named Hanna Rosario', '2022-02-25 04:13:39 PM'),
-(31, 1, 'CCC Admin', 'registered a student named Kana Gallardio', '2022-02-25 04:24:37 PM'),
-(32, 1, 'CCC Admin', 'registered a student named Lorenzo Baltazar', '2022-02-25 04:27:50 PM'),
-(33, 1, 'CCC Admin', 'registered a student named Oscar Cervantes', '2022-02-25 04:51:15 PM'),
-(34, 1, 'CCC Admin', 'registered a student named Paolo Malinao', '2022-02-25 04:53:52 PM'),
-(35, 1, 'CCC Admin', 'registered a student named Keith Cortes', '2022-02-25 04:57:32 PM'),
-(36, 1, 'CCC Admin', 'registered a student named Martha Lacson', '2022-02-25 05:04:10 PM'),
-(37, 1, 'CCC Admin', 'registered a student named Palma Lucas', '2022-02-25 05:06:32 PM'),
-(38, 1, 'CCC Admin', 'registered a student named Samantha Espina', '2022-02-25 05:09:06 PM'),
-(39, 1, 'CCC Admin', 'verified the application of Samantha Espina', '2022-02-25 05:12:15 PM'),
-(40, 1, 'CCC Admin', 'verified the application of Palma Lucas', '2022-02-25 05:12:25 PM'),
-(41, 1, 'CCC Admin', 'verified the application of Paolo Malinao', '2022-02-25 05:12:34 PM'),
-(42, 1, 'CCC Admin', 'verified the application of Oscar Cervantes', '2022-02-25 05:12:41 PM'),
-(43, 1, 'CCC Admin', 'verified the application of Kana Gallardio', '2022-02-25 05:12:49 PM'),
-(44, 1, 'CCC Admin', 'verified the application of Irene Luna', '2022-02-25 05:12:57 PM'),
-(45, 1, 'CCC Admin', 'verified the application of Hitch Dreyse', '2022-02-25 05:13:07 PM'),
-(46, 1, 'CCC Admin', 'verified the application of Muhammad Akbar', '2022-02-25 05:13:16 PM'),
-(47, 1, 'CCC Admin', 'verified the application of Keith Cortes', '2022-02-25 05:13:23 PM'),
-(48, 1, 'CCC Admin', 'verified the application of Simon Adolfo', '2022-02-25 05:13:38 PM'),
-(49, 1, 'CCC Admin', 'verified the application of Mikasa Lamanca', '2022-02-25 05:13:51 PM'),
-(50, 1, 'CCC Admin', 'verified the application of Anna Reyes', '2022-02-25 05:14:00 PM'),
-(51, 1, 'CCC Admin', 'verified the application of Cedric Pascua', '2022-02-25 05:14:10 PM'),
-(52, 1, 'CCC Admin', 'verified the application of Sheena Alarcon', '2022-02-25 05:14:19 PM'),
-(53, 1, 'CCC Admin', 'verified the application of Arnold Dalisay', '2022-02-25 05:14:29 PM'),
-(54, 1, 'CCC Admin', 'verified the application of Kate Uy', '2022-02-25 05:14:39 PM'),
-(55, 1, 'CCC Admin', 'verified the application of Seth Rivera', '2022-02-25 05:14:48 PM'),
-(56, 1, 'CCC Admin', 'verified the application of Martha Lacson', '2022-02-25 05:14:56 PM'),
-(57, 1, 'CCC Admin', 'verified the application of Angel Garcia', '2022-02-25 05:15:06 PM'),
-(58, 1, 'CCC Admin', 'verified the application of Rea Enriquez', '2022-02-25 05:15:15 PM'),
-(59, 1, 'CCC Admin', 'verified the application of Ali Mateo', '2022-02-25 05:15:24 PM'),
-(60, 1, 'CCC Admin', 'verified the application of Jeremy Garcia', '2022-02-25 05:15:47 PM'),
-(61, 1, 'CCC Admin', 'verified the application of Alvin Tenorio', '2022-02-25 05:15:59 PM'),
-(62, 1, 'CCC Admin', 'verified the application of Tiffany Bautista', '2022-02-25 05:16:12 PM'),
-(63, 1, 'CCC Admin', 'updated the details of Arnold Dalisay', '2022-02-25 06:31:06 PM');
+(71, 1, 'CCC Admin', 'updated the details of Ali Mateo', '2022-04-05 03:29:35 PM'),
+(72, 1, 'CCC Admin', 'updated the details of Ali Mateo', '2022-04-05 05:18:04 PM'),
+(73, 1, 'CCC Admin', 'updated the details of Ali Mateo', '2022-04-05 05:18:48 PM'),
+(74, 1, 'CCC Admin', 'updated the details of Angel Garcia', '2022-04-05 05:19:15 PM'),
+(75, 1, 'CCC Admin', 'updated the details of Angel Garcia', '2022-04-05 05:31:03 PM'),
+(76, 1, 'CCC Admin', 'updated the details of Angel Garcia', '2022-04-05 05:33:37 PM'),
+(77, 1, 'CCC Admin', 'updated the details of Rico Guinanao', '2022-04-05 06:21:16 PM');
 
 -- --------------------------------------------------------
 
@@ -654,7 +685,15 @@ INSERT INTO `org_involvement` (`student_id`, `org1`, `pos1`, `nature1`, `yrs1`, 
 (33, '', '', '', '', '', '', '', '', '', '', '', ''),
 (34, '', '', '', '', '', '', '', '', '', '', '', ''),
 (35, '', '', '', '', '', '', '', '', '', '', '', ''),
-(36, '', '', '', '', '', '', '', '', '', '', '', '');
+(36, '', '', '', '', '', '', '', '', '', '', '', ''),
+(37, 'qwe', 'ada', 'ada', '6', '', '', '', '', '', '', '', ''),
+(38, 'hjkh', 'hjkh', 'hjkh', '9', '', '', '', '', '', '', '', ''),
+(39, '', '', '', '', '', '', '', '', '', '', '', ''),
+(40, '', '', '', '', '', '', '', '', '', '', '', ''),
+(41, '', '', '', '', '', '', '', '', '', '', '', ''),
+(42, '', '', '', '', '', '', '', '', '', '', '', ''),
+(43, '', '', '', '', '', '', '', '', '', '', '', ''),
+(44, '', '', '', '', '', '', '', '', '', '', '', '');
 
 -- --------------------------------------------------------
 
@@ -710,7 +749,36 @@ INSERT INTO `personal_admiration` (`student_id`, `hobbies`, `reason_enroll`, `ch
 (33, 'qweqwrqteeq', 'qewqrwrt', 'qrqrwtw', 'werwerwt'),
 (34, 'ewrwfsf', 'werwetwt', 'werwfsdfw', 'erwerwers'),
 (35, 'qweqsdtfs', 'afafwte', 'sdfsfewr', 'sdfsdfwe'),
-(36, 'qwefdsgdsg', 'sdfdsgdg', 'dfgdshgety', 'dfgdshrt');
+(36, 'qwefdsgdsg', 'sdfdsgdg', 'dfgdshgety', 'dfgdshrt'),
+(37, 'qwewtestds', 'sdfdsfgdste', 'fsdfwaf erfgetgd', 'dgdgrhrt\'j'),
+(38, 'qweqtqertq', 'qweqwrqt', 'qweqrtqtq', 'qweqrqtqet'),
+(39, 'erwsfh', 'etredd', 'jljlkjl', 'tyertdgf'),
+(40, 'werwr', 'ewrw', 'ewrewr', 'ewrwrw'),
+(41, 'dfgdf', 'dfgd', 'dfgdf', 'dfgdfg'),
+(42, 'qweq', 'qweqwe', 'qweqew', 'qweq'),
+(43, 'qweqwe', 'qweq', 'qweq', 'qeqeqw'),
+(44, 'rthrt', 'rtyrt', 'rtyrty', 'rtyr');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `programs`
+--
+
+CREATE TABLE `programs` (
+  `program_id` int(11) NOT NULL,
+  `program_name` varchar(255) NOT NULL,
+  `abbreviation` varchar(255) NOT NULL,
+  `max_no` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `programs`
+--
+
+INSERT INTO `programs` (`program_id`, `program_name`, `abbreviation`, `max_no`) VALUES
+(1, 'Bachelor of Science in Information Technology', 'BSIT', 40),
+(2, 'Bachelor of Science in Computer Science', 'BSCS', 10);
 
 -- --------------------------------------------------------
 
@@ -729,50 +797,59 @@ CREATE TABLE `requirements` (
   `birthcert` varchar(100) NOT NULL,
   `indigency` varchar(100) NOT NULL,
   `voters` varchar(100) NOT NULL,
-  `vaxcard` varchar(100) NOT NULL
+  `vaxcard` varchar(100) NOT NULL,
+  `proof_of_group` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `requirements`
 --
 
-INSERT INTO `requirements` (`student_id`, `admit_type`, `g11card`, `g12card`, `torpg1`, `torpg2`, `goodmoral`, `birthcert`, `indigency`, `voters`, `vaxcard`) VALUES
-(1, 'Freshman', '', '', '2022-A-0001.pdf', '2022-A-0001.pdf', '2022-A-0001.pdf', '2022-A-0001.pdf', '2022-A-0001.pdf', '2022-A-0001.pdf', '2022-A-0001.jpg'),
-(2, 'Freshman', '2022-A-0002.pdf', '2022-A-0002.pdf', '', '', '2022-A-0002.pdf', '2022-A-0002.pdf', '2022-A-0002.pdf', '2022-A-0002.pdf', ''),
-(3, 'Freshman', '2022-A-0003.pdf', '2022-A-0003.pdf', NULL, NULL, '2022-A-0003.pdf', '2022-A-0003.pdf', '2022-A-0003.pdf', '2022-A-0003.pdf', '2022-A-0003.jpg'),
-(4, 'Transferee', NULL, NULL, '2022-A-0004.pdf', '2022-A-0004.pdf', '2022-A-0004.pdf', '2022-A-0004.pdf', '2022-A-0004.pdf', '2022-A-0004.pdf', '2022-A-0004.jpg'),
-(5, 'Transferee', NULL, NULL, '2022-A-0005.pdf', '2022-A-0005.pdf', '2022-A-0005.pdf', '2022-A-0005.pdf', '2022-A-0005.pdf', '2022-A-0005.pdf', '2022-A-0005.jpg'),
-(6, 'Freshman', '2022-A-0006.pdf', '2022-A-0006.pdf', '', '', '2022-A-0006.pdf', '2022-A-0006.pdf', '2022-A-0006.pdf', '2022-A-0006.pdf', ''),
-(7, 'Freshman', '2022-A-0007.pdf', '2022-A-0007.pdf', NULL, NULL, '2022-A-0007.pdf', '2022-A-0007.pdf', '2022-A-0007.pdf', '2022-A-0007.pdf', ''),
-(8, 'Freshman', '2022-A-0008.pdf', '2022-A-0008.pdf', NULL, NULL, '2022-A-0008.pdf', '2022-A-0008.pdf', '2022-A-0008.pdf', '2022-A-0008.pdf', '2022-A-0008.jpg'),
-(9, 'Transferee', NULL, NULL, '2022-A-0009.pdf', '2022-A-0009.pdf', '2022-A-0009.pdf', '2022-A-0009.pdf', '2022-A-0009.pdf', '2022-A-0009.pdf', '2022-A-0009.jpg'),
-(10, 'Transferee', '', '', '2022-A-0010.pdf', '2022-A-0010.pdf', '2022-A-0010.pdf', '2022-A-0010.pdf', '2022-A-0010.pdf', '2022-A-0010.pdf', '2022-A-0010.jpg'),
-(11, 'Freshman', '2022-A-0011.pdf', '2022-A-0011.pdf', NULL, NULL, '2022-A-0011.pdf', '2022-A-0011.pdf', '2022-A-0011.pdf', '2022-A-0011.pdf', '2022-A-0011.jpg'),
-(12, 'Freshman', '2022-A-0012.pdf', '2022-A-0012.pdf', NULL, NULL, '2022-A-0012.pdf', '2022-A-0012.pdf', '2022-A-0012.pdf', '2022-A-0012.pdf', '2022-A-0012.jpg'),
-(13, 'Freshman', '2022-A-0013.pdf', '2022-A-0013.pdf', '', '', '2022-A-0013.pdf', '2022-A-0013.pdf', '2022-A-0013.pdf', '2022-A-0013.pdf', '2022-A-0013.jpg'),
-(14, 'Freshman', '2022-A-0014.pdf', '2022-A-0014.pdf', NULL, NULL, '2022-A-0014.pdf', '2022-A-0014.pdf', '2022-A-0014.pdf', '2022-A-0014.pdf', '2022-A-0014.jpg'),
-(15, 'Transferee', '', '', '2022-A-0015.pdf', '2022-A-0015.pdf', '2022-A-0015.pdf', '2022-A-0015.pdf', '2022-A-0015.pdf', '2022-A-0015.pdf', '2022-A-0015.jpg'),
-(16, 'Freshman', '2022-A-0016.pdf', '2022-A-0016.pdf', NULL, NULL, '2022-A-0016.pdf', '2022-A-0016.pdf', '2022-A-0016.pdf', '2022-A-0016.pdf', '2022-A-0016.jpg'),
-(17, 'Freshman', '2022-A-0017.pdf', '2022-A-0017.pdf', NULL, NULL, '2022-A-0017.pdf', '2022-A-0017.pdf', '2022-A-0017.pdf', '2022-A-0017.pdf', '2022-A-0017.jpg'),
-(18, 'Freshman', '2022-A-0018.pdf', '2022-A-0018.pdf', NULL, NULL, '2022-A-0018.pdf', '2022-A-0018.pdf', '2022-A-0018.pdf', '2022-A-0018.pdf', '2022-A-0018.jpg'),
-(19, 'Transferee', NULL, NULL, '2022-A-0019.pdf', '2022-A-0019.pdf', '2022-A-0019.pdf', '2022-A-0019.pdf', '2022-A-0019.pdf', '2022-A-0019.pdf', '2022-A-0019.jpg'),
-(20, 'Freshman', '2022-A-0020.pdf', '2022-A-0020.pdf', NULL, NULL, '2022-A-0020.pdf', '2022-A-0020.pdf', '2022-A-0020.pdf', '2022-A-0020.pdf', '2022-A-0020.jpg'),
-(21, 'Freshman', '2022-A-0021.pdf', '2022-A-0021.pdf', NULL, NULL, '2022-A-0021.pdf', '2022-A-0021.pdf', '2022-A-0021.pdf', '2022-A-0021.pdf', '2022-A-0021.jpg'),
-(22, 'Transferee', NULL, NULL, '2022-A-0022.pdf', '2022-A-0022.pdf', '2022-A-0022.pdf', '2022-A-0022.pdf', '2022-A-0022.pdf', '2022-A-0022.pdf', '2022-A-0022.jpg'),
-(23, 'Freshman', '2022-A-0023.pdf', '2022-A-0023.pdf', NULL, NULL, '2022-A-0023.pdf', '2022-A-0023.pdf', '2022-A-0023.pdf', '2022-A-0023.pdf', '2022-A-0023.jpg'),
-(24, 'Freshman', '2022-A-0024.pdf', '2022-A-0024.pdf', NULL, NULL, '2022-A-0024.pdf', '2022-A-0024.pdf', '2022-A-0024.pdf', '2022-A-0024.pdf', '2022-A-0024.jpg'),
-(25, 'Freshman', '2022-A-0025.pdf', '2022-A-0025.pdf', NULL, NULL, '2022-A-0025.pdf', '2022-A-0025.pdf', '2022-A-0025.pdf', '2022-A-0025.pdf', '2022-A-0025.jpg'),
-(26, 'Freshman', '2022-A-0026.pdf', '2022-A-0026.pdf', NULL, NULL, '2022-A-0026.pdf', '2022-A-0026.pdf', '2022-A-0026.pdf', '2022-A-0026.pdf', '2022-A-0026.jpg'),
-(27, 'Freshman', '2022-A-0027.pdf', '2022-A-0027.pdf', NULL, NULL, '2022-A-0027.pdf', '2022-A-0027.pdf', '2022-A-0027.pdf', '2022-A-0027.pdf', '2022-A-0027.jpg'),
-(28, 'Freshman', '2022-A-0028.pdf', '2022-A-0028.pdf', NULL, NULL, '2022-A-0028.pdf', '2022-A-0028.pdf', '2022-A-0028.pdf', '2022-A-0028.pdf', '2022-A-0028.jpg'),
-(29, 'Freshman', '2022-A-0029.pdf', '2022-A-0029.pdf', NULL, NULL, '2022-A-0029.pdf', '2022-A-0029.pdf', '2022-A-0029.pdf', '2022-A-0029.pdf', '2022-A-0029.jpg'),
-(30, 'Freshman', '2022-A-0030.pdf', '2022-A-0030.pdf', NULL, NULL, '2022-A-0030.pdf', '2022-A-0030.pdf', '2022-A-0030.pdf', '2022-A-0030.pdf', '2022-A-0030.jpg'),
-(31, 'Freshman', '2022-A-0031.pdf', '2022-A-0031.pdf', NULL, NULL, '2022-A-0031.pdf', '2022-A-0031.pdf', '2022-A-0031.pdf', '2022-A-0031.pdf', '2022-A-0031.jpg'),
-(32, 'Freshman', '2022-A-0032.pdf', '2022-A-0032.pdf', NULL, NULL, '2022-A-0032.pdf', '2022-A-0032.pdf', '2022-A-0032.pdf', '2022-A-0032.pdf', '2022-A-0032.jpg'),
-(33, 'Transferee', NULL, NULL, '2022-A-0033.pdf', '2022-A-0033.pdf', '2022-A-0033.pdf', '2022-A-0033.pdf', '2022-A-0033.pdf', '2022-A-0033.pdf', '2022-A-0033.jpg'),
-(34, 'Freshman', '2022-A-0034.pdf', '2022-A-0034.pdf', NULL, NULL, '2022-A-0034.pdf', '2022-A-0034.pdf', '2022-A-0034.pdf', '2022-A-0034.pdf', '2022-A-0034.jpg'),
-(35, 'Freshman', '2022-A-0035.pdf', '2022-A-0035.pdf', NULL, NULL, '2022-A-0035.pdf', '2022-A-0035.pdf', '2022-A-0035.pdf', '2022-A-0035.pdf', '2022-A-0035.jpg'),
-(36, 'Freshman', '2022-A-0036.pdf', '2022-A-0036.pdf', NULL, NULL, '2022-A-0036.pdf', '2022-A-0036.pdf', '2022-A-0036.pdf', '2022-A-0036.pdf', '2022-A-0036.jpg');
+INSERT INTO `requirements` (`student_id`, `admit_type`, `g11card`, `g12card`, `torpg1`, `torpg2`, `goodmoral`, `birthcert`, `indigency`, `voters`, `vaxcard`, `proof_of_group`) VALUES
+(1, 'Freshman', '', '', '2022-A-0001.pdf', '2022-A-0001.pdf', '2022-A-0001.pdf', '2022-A-0001.pdf', '2022-A-0001.pdf', '2022-A-0001.pdf', '2022-A-0001.jpg', ''),
+(2, 'Freshman', '2022-A-0002.pdf', '2022-A-0002.pdf', '', '', '2022-A-0002.pdf', '2022-A-0002.pdf', '2022-A-0002.pdf', '2022-A-0002.pdf', '', ''),
+(3, 'Freshman', '2022-A-0003.pdf', '2022-A-0003.pdf', NULL, NULL, '2022-A-0003.pdf', '2022-A-0003.pdf', '2022-A-0003.pdf', '2022-A-0003.pdf', '2022-A-0003.jpg', ''),
+(4, 'Transferee', '', '', '2022-A-0004.pdf', '2022-A-0004.pdf', '2022-A-0004.pdf', '2022-A-0004.pdf', '2022-A-0004.pdf', '2022-A-0004.pdf', '2022-A-0004.jpg', '2022-A-0004.png'),
+(5, 'Transferee', NULL, NULL, '2022-A-0005.pdf', '2022-A-0005.pdf', '2022-A-0005.pdf', '2022-A-0005.pdf', '2022-A-0005.pdf', '2022-A-0005.pdf', '2022-A-0005.jpg', ''),
+(6, 'Freshman', '2022-A-0006.pdf', '2022-A-0006.pdf', '', '', '2022-A-0006.pdf', '2022-A-0006.pdf', '2022-A-0006.pdf', '2022-A-0006.pdf', '', ''),
+(7, 'Freshman', '2022-A-0007.pdf', '2022-A-0007.pdf', NULL, NULL, '2022-A-0007.pdf', '2022-A-0007.pdf', '2022-A-0007.pdf', '2022-A-0007.pdf', '', ''),
+(8, 'Freshman', '2022-A-0008.pdf', '2022-A-0008.pdf', NULL, NULL, '2022-A-0008.pdf', '2022-A-0008.pdf', '2022-A-0008.pdf', '2022-A-0008.pdf', '2022-A-0008.jpg', ''),
+(9, 'Transferee', NULL, NULL, '2022-A-0009.pdf', '2022-A-0009.pdf', '2022-A-0009.pdf', '2022-A-0009.pdf', '2022-A-0009.pdf', '2022-A-0009.pdf', '2022-A-0009.jpg', ''),
+(10, 'Transferee', '', '', '2022-A-0010.pdf', '2022-A-0010.pdf', '2022-A-0010.pdf', '2022-A-0010.pdf', '2022-A-0010.pdf', '2022-A-0010.pdf', '2022-A-0010.jpg', ''),
+(11, 'Freshman', '2022-A-0011.pdf', '2022-A-0011.pdf', NULL, NULL, '2022-A-0011.pdf', '2022-A-0011.pdf', '2022-A-0011.pdf', '2022-A-0011.pdf', '2022-A-0011.jpg', ''),
+(12, 'Freshman', '2022-A-0012.pdf', '2022-A-0012.pdf', NULL, NULL, '2022-A-0012.pdf', '2022-A-0012.pdf', '2022-A-0012.pdf', '2022-A-0012.pdf', '2022-A-0012.jpg', ''),
+(13, 'Freshman', '2022-A-0013.pdf', '2022-A-0013.pdf', '', '', '2022-A-0013.pdf', '2022-A-0013.pdf', '2022-A-0013.pdf', '2022-A-0013.pdf', '2022-A-0013.jpg', ''),
+(14, 'Freshman', '2022-A-0014.pdf', '2022-A-0014.pdf', NULL, NULL, '2022-A-0014.pdf', '2022-A-0014.pdf', '2022-A-0014.pdf', '2022-A-0014.pdf', '2022-A-0014.jpg', ''),
+(15, 'Transferee', '', '', '2022-A-0015.pdf', '2022-A-0015.pdf', '2022-A-0015.pdf', '2022-A-0015.pdf', '2022-A-0015.pdf', '2022-A-0015.pdf', '2022-A-0015.jpg', ''),
+(16, 'Freshman', '2022-A-0016.pdf', '2022-A-0016.pdf', NULL, NULL, '2022-A-0016.pdf', '2022-A-0016.pdf', '2022-A-0016.pdf', '2022-A-0016.pdf', '2022-A-0016.jpg', ''),
+(17, 'Freshman', '2022-A-0017.pdf', '2022-A-0017.pdf', NULL, NULL, '2022-A-0017.pdf', '2022-A-0017.pdf', '2022-A-0017.pdf', '2022-A-0017.pdf', '2022-A-0017.jpg', ''),
+(18, 'Freshman', '2022-A-0018.pdf', '2022-A-0018.pdf', NULL, NULL, '2022-A-0018.pdf', '2022-A-0018.pdf', '2022-A-0018.pdf', '2022-A-0018.pdf', '2022-A-0018.jpg', ''),
+(19, 'Transferee', NULL, NULL, '2022-A-0019.pdf', '2022-A-0019.pdf', '2022-A-0019.pdf', '2022-A-0019.pdf', '2022-A-0019.pdf', '2022-A-0019.pdf', '2022-A-0019.jpg', ''),
+(20, 'Freshman', '2022-A-0020.pdf', '2022-A-0020.pdf', NULL, NULL, '2022-A-0020.pdf', '2022-A-0020.pdf', '2022-A-0020.pdf', '2022-A-0020.pdf', '2022-A-0020.jpg', ''),
+(21, 'Freshman', '2022-A-0021.pdf', '2022-A-0021.pdf', NULL, NULL, '2022-A-0021.pdf', '2022-A-0021.pdf', '2022-A-0021.pdf', '2022-A-0021.pdf', '2022-A-0021.jpg', ''),
+(22, 'Transferee', NULL, NULL, '2022-A-0022.pdf', '2022-A-0022.pdf', '2022-A-0022.pdf', '2022-A-0022.pdf', '2022-A-0022.pdf', '2022-A-0022.pdf', '2022-A-0022.jpg', ''),
+(23, 'Freshman', '2022-A-0023.pdf', '2022-A-0023.pdf', NULL, NULL, '2022-A-0023.pdf', '2022-A-0023.pdf', '2022-A-0023.pdf', '2022-A-0023.pdf', '2022-A-0023.jpg', ''),
+(24, 'Freshman', '2022-A-0024.pdf', '2022-A-0024.pdf', NULL, NULL, '2022-A-0024.pdf', '2022-A-0024.pdf', '2022-A-0024.pdf', '2022-A-0024.pdf', '2022-A-0024.jpg', ''),
+(25, 'Freshman', '2022-A-0025.pdf', '2022-A-0025.pdf', NULL, NULL, '2022-A-0025.pdf', '2022-A-0025.pdf', '2022-A-0025.pdf', '2022-A-0025.pdf', '2022-A-0025.jpg', ''),
+(26, 'Freshman', '2022-A-0026.pdf', '2022-A-0026.pdf', NULL, NULL, '2022-A-0026.pdf', '2022-A-0026.pdf', '2022-A-0026.pdf', '2022-A-0026.pdf', '2022-A-0026.jpg', ''),
+(27, 'Freshman', '2022-A-0027.pdf', '2022-A-0027.pdf', '', '', '2022-A-0027.pdf', '2022-A-0027.pdf', '2022-A-0027.pdf', '2022-A-0027.pdf', '2022-A-0027.jpg', '2022-A-0027.jpg'),
+(28, 'Freshman', '2022-A-0028.pdf', '2022-A-0028.pdf', NULL, NULL, '2022-A-0028.pdf', '2022-A-0028.pdf', '2022-A-0028.pdf', '2022-A-0028.pdf', '2022-A-0028.jpg', ''),
+(29, 'Freshman', '2022-A-0029.pdf', '2022-A-0029.pdf', NULL, NULL, '2022-A-0029.pdf', '2022-A-0029.pdf', '2022-A-0029.pdf', '2022-A-0029.pdf', '2022-A-0029.jpg', ''),
+(30, 'Freshman', '2022-A-0030.pdf', '2022-A-0030.pdf', NULL, NULL, '2022-A-0030.pdf', '2022-A-0030.pdf', '2022-A-0030.pdf', '2022-A-0030.pdf', '2022-A-0030.jpg', ''),
+(31, 'Freshman', '2022-A-0031.pdf', '2022-A-0031.pdf', NULL, NULL, '2022-A-0031.pdf', '2022-A-0031.pdf', '2022-A-0031.pdf', '2022-A-0031.pdf', '2022-A-0031.jpg', ''),
+(32, 'Freshman', '2022-A-0032.pdf', '2022-A-0032.pdf', NULL, NULL, '2022-A-0032.pdf', '2022-A-0032.pdf', '2022-A-0032.pdf', '2022-A-0032.pdf', '2022-A-0032.jpg', ''),
+(33, 'Transferee', NULL, NULL, '2022-A-0033.pdf', '2022-A-0033.pdf', '2022-A-0033.pdf', '2022-A-0033.pdf', '2022-A-0033.pdf', '2022-A-0033.pdf', '2022-A-0033.jpg', ''),
+(34, 'Freshman', '2022-A-0034.pdf', '2022-A-0034.pdf', NULL, NULL, '2022-A-0034.pdf', '2022-A-0034.pdf', '2022-A-0034.pdf', '2022-A-0034.pdf', '2022-A-0034.jpg', ''),
+(35, 'Freshman', '2022-A-0035.pdf', '2022-A-0035.pdf', NULL, NULL, '2022-A-0035.pdf', '2022-A-0035.pdf', '2022-A-0035.pdf', '2022-A-0035.pdf', '2022-A-0035.jpg', ''),
+(36, 'Freshman', '2022-A-0036.pdf', '2022-A-0036.pdf', NULL, NULL, '2022-A-0036.pdf', '2022-A-0036.pdf', '2022-A-0036.pdf', '2022-A-0036.pdf', '2022-A-0036.jpg', ''),
+(37, 'Freshman', '2022-A-0032.pdf', '2022-A-0032.pdf', '', '', '2022-A-0032.pdf', '2022-A-0032.pdf', '2022-A-0032.pdf', '2022-A-0032.pdf', '2022-A-0032.jpg', ''),
+(38, 'Transferee', NULL, NULL, '2022-A-0033.pdf', '2022-A-0033.pdf', '2022-A-0033.pdf', '2022-A-0033.pdf', '2022-A-0033.pdf', '2022-A-0033.pdf', '2022-A-0033.jpg', ''),
+(39, 'Freshman', '2022-A-0034.pdf', '2022-A-0034.pdf', '', '', '2022-A-0034.pdf', '2022-A-0034.pdf', '2022-A-0034.pdf', '2022-A-0034.pdf', '2022-A-0034.jpg', '2022-A-0034.jpg'),
+(40, 'Transferee', NULL, NULL, '2022-A-0035.pdf', '2022-A-0035.pdf', '2022-A-0035.pdf', '2022-A-0035.pdf', '2022-A-0035.pdf', '2022-A-0035.pdf', '2022-A-0035.jpg', ''),
+(41, 'Freshman', '2022-A-0036.pdf', '2022-A-0036.pdf', NULL, NULL, '2022-A-0036.pdf', '2022-A-0036.pdf', '2022-A-0036.pdf', '2022-A-0036.pdf', '2022-A-0036.jpg', ''),
+(42, 'Freshman', '2022-A-0037.pdf', '2022-A-0037.pdf', NULL, NULL, '2022-A-0037.pdf', '2022-A-0037.pdf', '2022-A-0037.pdf', '2022-A-0037.pdf', '2022-A-0037.jpg', '2022-A-0037.jpg'),
+(43, 'Freshman', '2022-A-0038.pdf', '2022-A-0038.pdf', NULL, NULL, '2022-A-0038.pdf', '2022-A-0038.pdf', '2022-A-0038.pdf', '2022-A-0038.pdf', '', ''),
+(44, 'Freshman', '2022-A-0039.pdf', '2022-A-0039.pdf', NULL, NULL, '2022-A-0039.pdf', '2022-A-0039.pdf', '2022-A-0039.pdf', '2022-A-0039.pdf', '2022-A-0039.jpg', '2022-A-0039.jpg');
 
 -- --------------------------------------------------------
 
@@ -786,6 +863,159 @@ CREATE TABLE `student_answers` (
   `question_id` int(11) NOT NULL,
   `stud_answer` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `student_answers`
+--
+
+INSERT INTO `student_answers` (`answer_id`, `application_no`, `question_id`, `stud_answer`) VALUES
+(1, '2022-A-0032', 1, 'E'),
+(2, '2022-A-0032', 2, 'F'),
+(3, '2022-A-0032', 3, 'A'),
+(4, '2022-A-0032', 4, 'F'),
+(5, '2022-A-0032', 5, 'A'),
+(6, '2022-A-0032', 6, 'F'),
+(7, '2022-A-0032', 7, 'A'),
+(8, '2022-A-0032', 8, 'F'),
+(9, '2022-A-0032', 9, 'A'),
+(10, '2022-A-0032', 10, 'F'),
+(11, '2022-A-0032', 11, 'A'),
+(12, '2022-A-0032', 12, 'F'),
+(13, '2022-A-0032', 13, 'A'),
+(14, '2022-A-0032', 14, 'F'),
+(15, '2022-A-0032', 15, 'A'),
+(16, '2022-A-0032', 16, 'F'),
+(17, '2022-A-0032', 17, 'A'),
+(18, '2022-A-0032', 18, 'F'),
+(19, '2022-A-0032', 19, 'A'),
+(20, '2022-A-0032', 20, 'F'),
+(21, '2022-A-0032', 21, 'A'),
+(22, '2022-A-0032', 22, 'F'),
+(23, '2022-A-0032', 23, 'A'),
+(24, '2022-A-0032', 24, 'G'),
+(25, '2022-A-0032', 25, 'C'),
+(26, '2022-A-0032', 26, 'F'),
+(27, '2022-A-0032', 27, 'C'),
+(28, '2022-A-0032', 28, 'I'),
+(29, '2022-A-0032', 29, 'E'),
+(30, '2022-A-0032', 30, 'H'),
+(31, '2022-A-0032', 31, 'D'),
+(32, '2022-A-0032', 32, 'I'),
+(33, '2022-A-0032', 33, 'B'),
+(34, '2022-A-0032', 34, 'I'),
+(35, '2022-A-0032', 35, 'E'),
+(36, '2022-A-0032', 36, 'I'),
+(37, '2022-A-0032', 37, 'D'),
+(38, '2022-A-0032', 38, 'I'),
+(39, '2022-A-0032', 39, 'D'),
+(40, '2022-A-0032', 40, 'I'),
+(41, '2022-A-0032', 41, 'E'),
+(42, '2022-A-0032', 42, 'G'),
+(43, '2022-A-0032', 43, 'A'),
+(44, '2022-A-0032', 44, 'I'),
+(45, '2022-A-0032', 45, 'E'),
+(46, '2022-A-0032', 46, 'H'),
+(47, '2022-A-0032', 47, 'C'),
+(48, '2022-A-0032', 48, 'F'),
+(49, '2022-A-0032', 49, 'C'),
+(50, '2022-A-0032', 50, 'I'),
+(51, '2022-A-0032', 51, 'B'),
+(52, '2022-A-0032', 52, 'F'),
+(53, '2022-A-0032', 53, 'A'),
+(54, '2022-A-0032', 54, 'F'),
+(55, '2022-A-0032', 55, 'E'),
+(56, '2022-A-0032', 56, 'G'),
+(57, '2022-A-0032', 57, 'D'),
+(58, '2022-A-0032', 58, 'J'),
+(59, '2022-A-0032', 59, 'D'),
+(60, '2022-A-0032', 60, 'G'),
+(61, '2022-A-0032', 61, 'E'),
+(62, '2022-A-0032', 62, 'G'),
+(63, '2022-A-0032', 63, 'B'),
+(64, '2022-A-0032', 64, 'H'),
+(65, '2022-A-0032', 65, 'E'),
+(66, '2022-A-0032', 66, 'I'),
+(67, '2022-A-0032', 67, 'E'),
+(68, '2022-A-0032', 68, 'G'),
+(69, '2022-A-0032', 69, 'C'),
+(70, '2022-A-0032', 70, 'F'),
+(71, '2022-A-0032', 71, 'A'),
+(72, '2022-A-0032', 72, 'F'),
+(73, '2022-A-0032', 73, ''),
+(74, '2022-A-0033', 73, ''),
+(75, '2022-A-0034', 1, 'A'),
+(76, '2022-A-0034', 2, 'F'),
+(77, '2022-A-0034', 3, 'B'),
+(78, '2022-A-0034', 4, 'F'),
+(79, '2022-A-0034', 5, 'A'),
+(80, '2022-A-0034', 6, 'F'),
+(81, '2022-A-0034', 7, 'A'),
+(82, '2022-A-0034', 8, 'F'),
+(83, '2022-A-0034', 9, 'D'),
+(84, '2022-A-0034', 10, 'G'),
+(85, '2022-A-0034', 11, 'A'),
+(86, '2022-A-0034', 12, 'F'),
+(87, '2022-A-0034', 13, 'B'),
+(88, '2022-A-0034', 14, 'G'),
+(89, '2022-A-0034', 15, 'C'),
+(90, '2022-A-0034', 16, 'G'),
+(91, '2022-A-0034', 17, 'B'),
+(92, '2022-A-0034', 18, 'G'),
+(93, '2022-A-0034', 19, 'A'),
+(94, '2022-A-0034', 20, 'F'),
+(95, '2022-A-0034', 21, 'C'),
+(96, '2022-A-0034', 22, 'H'),
+(97, '2022-A-0034', 23, 'C'),
+(98, '2022-A-0034', 24, 'H'),
+(99, '2022-A-0034', 25, 'B'),
+(100, '2022-A-0034', 26, 'F'),
+(101, '2022-A-0034', 27, 'B'),
+(102, '2022-A-0034', 28, 'F'),
+(103, '2022-A-0034', 29, 'A'),
+(104, '2022-A-0034', 30, 'G'),
+(105, '2022-A-0034', 31, 'B'),
+(106, '2022-A-0034', 32, 'F'),
+(107, '2022-A-0034', 33, 'D'),
+(108, '2022-A-0034', 34, 'G'),
+(109, '2022-A-0034', 35, 'D'),
+(110, '2022-A-0034', 36, 'I'),
+(111, '2022-A-0034', 37, 'B'),
+(112, '2022-A-0034', 38, 'I'),
+(113, '2022-A-0034', 39, 'C'),
+(114, '2022-A-0034', 40, 'J'),
+(115, '2022-A-0034', 41, 'E'),
+(116, '2022-A-0034', 42, 'H'),
+(117, '2022-A-0034', 43, 'A'),
+(118, '2022-A-0034', 44, 'I'),
+(119, '2022-A-0034', 45, 'E'),
+(120, '2022-A-0034', 46, 'H'),
+(121, '2022-A-0034', 47, 'C'),
+(122, '2022-A-0034', 48, 'F'),
+(123, '2022-A-0034', 49, 'C'),
+(124, '2022-A-0034', 50, 'I'),
+(125, '2022-A-0034', 51, 'B'),
+(126, '2022-A-0034', 52, 'F'),
+(127, '2022-A-0034', 53, 'A'),
+(128, '2022-A-0034', 54, 'F'),
+(129, '2022-A-0034', 55, 'E'),
+(130, '2022-A-0034', 56, 'G'),
+(131, '2022-A-0034', 57, 'D'),
+(132, '2022-A-0034', 58, 'I'),
+(133, '2022-A-0034', 59, 'A'),
+(134, '2022-A-0034', 60, 'H'),
+(135, '2022-A-0034', 61, 'C'),
+(136, '2022-A-0034', 62, 'I'),
+(137, '2022-A-0034', 63, 'A'),
+(138, '2022-A-0034', 64, 'G'),
+(139, '2022-A-0034', 65, 'D'),
+(140, '2022-A-0034', 66, 'F'),
+(141, '2022-A-0034', 67, 'C'),
+(142, '2022-A-0034', 68, 'F'),
+(143, '2022-A-0034', 69, 'B'),
+(144, '2022-A-0034', 70, 'F'),
+(145, '2022-A-0034', 71, 'A'),
+(146, '2022-A-0034', 72, 'F'),
+(147, '2022-A-0034', 73, '');
 
 -- --------------------------------------------------------
 
@@ -824,7 +1054,11 @@ INSERT INTO `student_exam_log` (`log_id`, `application_no`, `student_name`, `tim
 (14, '2022-A-0026', 'Irene Luna', '08:50 PM', '08:54 PM', 'Taken', 0),
 (15, '2022-A-0020', 'Seth Rivera', '08:55 PM', '09:00 PM', 'Taken', 2),
 (16, '2022-A-0017', 'Jeremy Garcia', '09:00 PM', '09:01 PM', 'Taken', 1),
-(17, '2022-A-0022', 'Cedric Pascua', '09:03 PM', '09:04 PM', 'Taken', 1);
+(17, '2022-A-0022', 'Cedric Pascua', '09:03 PM', '09:04 PM', 'Taken', 1),
+(18, '2022-A-0032', 'Rics Guinanao', '12:36 AM', '12:39 AM', 'Taken', 0),
+(19, '2022-A-0033', 'Eren Yeager', '04:47 PM', '04:48 PM', 'Taken', 1),
+(20, '2022-A-0034', 'Rico Guinanao', '03:00 PM', '03:04 PM', 'Taken', 0),
+(21, '2022-A-0001', 'Ricos Guinanao', '06:12 PM', '', 'Taken', 0);
 
 -- --------------------------------------------------------
 
@@ -876,7 +1110,7 @@ CREATE TABLE `student_info` (
 --
 
 INSERT INTO `student_info` (`student_id`, `application_no`, `picture`, `first_name`, `middle_name`, `last_name`, `suffix`, `stud_age`, `birthplace`, `stud_bday`, `religion`, `gender`, `civil_status`, `spouse_name`, `spouse_add`, `spouse_no`, `spouse_work`, `spouse_emp`, `admit_type`, `stud_email`, `contactno`, `1stprio`, `2ndprio`, `resident_of_calamba`, `yrs_in_calamba`, `pre_house`, `pre_brgy`, `pre_city`, `pre_zipcode`, `per_house`, `per_brgy`, `per_city`, `per_zipcode`, `groups`, `stable_internet`, `verification`) VALUES
-(1, '2022-A-0001', '1644940563_1644367690285.jpg', 'Rico', 'Estribo', 'Guinanao', '', 22, 'Quezon', '2022-02-17', 'Catholic', 'Male', 'Single', '', '', '', '', '', 'Transferee', 'guinanaorico@gmail.com', '09319542169', 'BSIT', 'BSCS', 'Yes', '1', 'Block 14 Lot 76 Majada In', 'Canlubang', 'Calamba', '4027', 'Block 14 Lot 76 Majada In', 'Canlubang', 'Calamba', '4027', 'Recipient of 4Ps\nWorking Student', 'Yes', 'Verified'),
+(1, '2022-A-0001', '1644940563_1644367690285.jpg', 'Ricos', 'Estribo', 'Guinanao', '', 22, 'Quezon', '2022-02-17', 'Catholic', 'Male', 'Single', '', '', '', '', '', 'Transferee', 'guinanaoricos@gmail.com', '09319542169', 'BSIT', 'BSCS', 'Yes', '1', 'Block 14 Lot 76 Majada In', 'Canlubang', 'Calamba', '4027', 'Block 14 Lot 76 Majada In', 'Canlubang', 'Calamba', '4027', 'Recipient of 4Ps\nWorking Student', 'Yes', 'Verified'),
 (2, '2022-A-0002', 'default_photo.png', 'John', 'Mars', 'Doe', '', 18, 'Quezon', '2022-02-28', 'Catholic', 'Male', 'Single', '', '', '', '', '', 'Freshman', 'johndoe@gmail.com', '09319542169', 'BSA', 'BSCS', 'Yes', '1', 'Block 14 Lot 76 Majada In', 'Canlubang', 'Calamba', '4027', 'Block 14 Lot 76 Majada In', 'Canlubang', 'Calamba', '4027', 'N/A', '', 'Verified'),
 (3, '2022-A-0003', '1645720665_1m.jpg', 'Jose', 'Akbar', 'Santa Maria', '', 22, 'Quezon', '2022-02-16', 'Catholic', 'Male', 'Single', '', '', '', '', '', 'Freshman', 'josesm@gmail.com', '09123446575', 'BSCS', 'BSIT', 'Yes', '20', 'Block 1', 'Mapagong', 'Calamba', '4027', 'Block 1', 'Mapagong', 'Calamba', '4027', 'Recipient of 4Ps', '', 'Pending'),
 (4, '2022-A-0004', '1645721140_1f.jpg', 'Angel', 'Baron', 'Garcia', '', 20, 'Quezon', '2022-02-02', 'Catholic', 'Female', 'Single', '', '', '', '', '', 'Transferee', 'angelgarcia@gmail.com', '09343434343', 'BSAIS', 'BSA', 'Yes', '1', 'Phase 3', 'Banlic', 'Calamba', '4027', 'Phase 3', 'Banlic', 'Calamba', '4027', 'Working Student', 'Yes', 'Verified'),
@@ -902,16 +1136,24 @@ INSERT INTO `student_info` (`student_id`, `application_no`, `picture`, `first_na
 (24, '2022-A-0024', '1645775874_12m.jpg', 'Denzel', 'Vargas', 'Espinosa', '', 21, 'Quezon', '2022-02-02', 'Catholic', 'Male', 'Single', '', '', '', '', '', 'Freshman', 'denzel@gmail.com', '09319542169', 'BSIT', 'BSCS', 'Yes', '1', 'Block 14 Lot 76 Majada In', 'Canlubang', 'Calamba', '4027', 'Block 14 Lot 76 Majada In', 'Canlubang', 'Calamba', '4027', 'N/A', '', 'Pending'),
 (25, '2022-A-0025', '1645776177_13m.jpg', 'Gabriel', 'Borja', 'Roxas', '', 19, 'Quezon', '2022-02-16', 'Catholic', 'Male', 'Single', '', '', '', '', '', 'Freshman', 'gabriel@gmail.com', '09319542169', 'BSAIS', 'BEED', 'Yes', '1', 'Block 14 Lot 76 Majada In', 'Canlubang', 'Calamba', '4027', 'Block 14 Lot 76 Majada In', 'Canlubang', 'Calamba', '4027', 'N/A', '', 'Pending'),
 (26, '2022-A-0026', '1645776328_11f.jpg', 'Irene', 'Uy', 'Luna', '', 20, 'Quezon', '2022-02-23', 'Catholic', 'Female', 'Single', '', '', '', '', '', 'Freshman', 'irene@gmail.com', '09319542169', 'BSEE', 'BSES', 'Yes', '1', 'Block 14 Lot 76 Majada In', 'Canlubang', 'Calamba', '4027', 'Block 14 Lot 76 Majada In', 'Canlubang', 'Calamba', '4027', 'N/A', '', 'Verified'),
-(27, '2022-A-0027', '1645776458_12f.jpg', 'Ali', 'Jose', 'Mateo', '', 20, 'Quezon', '2022-02-25', 'Catholic', 'Female', 'Single', '', '', '', '', '', 'Freshman', 'ali@gmail.com', '09319542169', 'BSCS', 'BSIT', 'Yes', '1', 'Block 14 Lot 76 Majada In', 'Canlubang', 'Calamba', '4027', 'Block 14 Lot 76 Majada In', 'Canlubang', 'Calamba', '4027', 'N/A', '', 'Verified'),
+(27, '2022-A-0027', '1645776458_12f.jpg', 'Ali', 'Jose', 'Mateo', '', 20, 'Quezon', '2022-02-25', 'Catholic', 'Female', 'Single', '', '', '', '', '', 'Freshman', 'ali@gmail.com', '09319542169', 'BSCS', 'BSIT', 'Yes', '1', 'Block 14 Lot 76 Majada In', 'Canlubang', 'Calamba', '4027', 'Block 14 Lot 76 Majada In', 'Canlubang', 'Calamba', '4027', 'Person with Disability', '', 'Verified'),
 (28, '2022-A-0028', '1645776819_13f.jpg', 'Hanna', 'Manzano', 'Rosario', '', 22, 'Quezon', '2022-02-08', 'Catholic', 'Female', 'Single', '', '', '', '', '', 'Freshman', 'hanna@gmail.com', '09319542169', 'BSES', 'BSEE', 'Yes', '1', 'Block 14 Lot 76 Majada In', 'Canlubang', 'Calamba', '4027', 'Block 14 Lot 76 Majada In', 'Canlubang', 'Calamba', '4027', 'N/A', '', 'Pending'),
 (29, '2022-A-0029', '1645777477_14f.jpg', 'Kana', 'Carpio', 'Gallardio', '', 19, 'Quezon', '2022-02-15', 'Catholic', 'Female', 'Single', '', '', '', '', '', 'Freshman', 'kana@gmail.com', '09319542169', 'BSEM', 'BEED', 'Yes', '1', 'Block 14 Lot 76 Majada In', 'Canlubang', 'Calamba', '4027', 'Block 14 Lot 76 Majada In', 'Canlubang', 'Calamba', '4027', 'N/A', '', 'Verified'),
-(30, '2022-A-0030', '1645777670_15m.jpg', 'Lorenzo', 'Pablo', 'Baltazar', '', 20, 'Quezon', '2022-02-16', 'Catholic', 'Male', 'Single', '', '', '', '', '', 'Freshman', 'lorenzo@gmail.com', '09251486985', 'BSAIS', 'BSA', 'Yes', '1', 'Calamba, Laguna', 'Canlubang', 'Calamba', '4027', 'Calamba, Laguna', 'Canlubang', 'Calamba', '4027', 'N/A', '', 'Pending'),
+(30, '2022-A-0030', '1645777670_15m.jpg', 'Lorenzo', 'Pablo', 'Baltazar', '', 20, 'Quezon', '2022-02-16', 'Catholic', 'Male', 'Single', '', '', '', '', '', 'Freshman', 'lorenzo@gmail.com', '09251486985', 'BSAIS', 'BSA', 'Yes', '1', 'Calamba, Laguna', 'Canlubang', 'Calamba', '4027', 'Calamba, Laguna', 'Canlubang', 'Calamba', '4027', 'N/A', '', 'Verified'),
 (31, '2022-A-0031', '1645779075_15m.jpg', 'Oscar', 'Baguio', 'Cervantes', '', 21, 'Quezon', '2022-02-23', 'Catholic', 'Male', 'Single', '', '', '', '', '', 'Freshman', 'oscar@gmail.com', '09123425356', 'BSIT', 'BSCS', 'Yes', '1', 'Block 14 Lot 76 Majada In', 'Canlubang', 'Calamba', '4027', 'Block 14 Lot 76 Majada In', 'Canlubang', 'Calamba', '4027', 'N/A', 'Yes', 'Verified'),
 (32, '2022-A-0005', '1645779232_17m.jpg', 'Paolo', 'Umati', 'Malinao', '', 20, 'Quezon', '2022-02-22', 'Catholic', 'Male', 'Single', '', '', '', '', '', 'Freshman', 'paolo@gmail.com', '09319542169', 'BSEM', 'BSEM', 'Yes', '1', 'Block 14 Lot 76 Majada In', 'Canlubang', 'Calamba', '4027', 'Block 14 Lot 76 Majada In', 'Canlubang', 'Calamba', '4027', 'N/A', '', 'Verified'),
 (33, '2022-A-0017', '1645779452_18m.jpg', 'Keith', 'Roldan', 'Cortes', '', 22, 'Quezon', '2022-02-22', 'Catholic', 'Male', 'Single', '', '', '', '', '', 'Transferee', 'keith@gmail.com', '09251486985', 'BEED', 'BSAIS', 'Yes', '1', 'Calamba, Laguna', 'Canlubang', 'Calamba', '4027', 'Calamba, Laguna', 'Canlubang', 'Calamba', '4027', 'N/A', '', 'Verified'),
 (34, '2022-A-0019', '1645779850_15f.jpg', 'Martha', 'Salinas', 'Lacson', '', 21, 'Quezon', '2022-03-09', 'Catholic', 'Female', 'Single', '', '', '', '', '', 'Freshman', 'martha@gmail.com', '09251486985', 'BSEM', 'BSES', 'Yes', '1', 'Phase 2', 'Canlubang', 'Calamba', '4027', 'Phase 2', 'Canlubang', 'Calamba', '4027', 'N/A', '', 'Verified'),
 (35, '2022-A-0020', '1645779992_16f.jpg', 'Palma', 'Frias', 'Lucas', '', 21, 'Quezon', '2022-03-03', 'Catholic', 'Female', 'Single', '', '', '', '', '', 'Freshman', 'palma@gmail.com', '09251486985', 'BEED', 'BSEM', 'Yes', '1', 'Calamba, Laguna', 'Canlubang', 'Calamba', '4027', 'Calamba, Laguna', 'Canlubang', 'Calamba', '4027', 'N/A', '', 'Verified'),
-(36, '2022-A-0022', '1645780146_17f.jpg', 'Samantha', 'Catalan', 'Espina', '', 20, 'Quezon', '2022-02-23', 'Catholic', 'Female', 'Single', '', '', '', '', '', 'Freshman', 'samantha@gmail.com', '09478563874', 'BEED', 'BSEM', 'Yes', '1', 'Block 14 Lot 76 Majada In', 'Canlubang', 'Calamba', '4027', 'Block 14 Lot 76 Majada In', 'Canlubang', 'Calamba', '4027', 'N/A', '', 'Verified');
+(36, '2022-A-0022', '1645780146_17f.jpg', 'Samantha', 'Catalan', 'Espina', '', 20, 'Quezon', '2022-02-23', 'Catholic', 'Female', 'Single', '', '', '', '', '', 'Freshman', 'samantha@gmail.com', '09478563874', 'BEED', 'BSEM', 'Yes', '1', 'Block 14 Lot 76 Majada In', 'Canlubang', 'Calamba', '4027', 'Block 14 Lot 76 Majada In', 'Canlubang', 'Calamba', '4027', 'N/A', '', 'Verified'),
+(37, '2022-A-0032', '1646124411_16m.jpg', 'Rics', 'Estribo', 'Guinanao', '', 22, 'Quezon', '2022-02-22', 'Catholic', 'Male', 'Single', '', '', '', '', '', 'Freshman', 'estriborics1@gmail.com', '09319542169', 'BSIT', 'BSCS', 'Yes', '1', 'Block 14 Lot 76 Majada In', 'Canlubang', 'Calamba', '4027', 'Block 14 Lot 76 Majada In', 'Canlubang', 'Calamba', '4027', 'N/A', 'Yes', 'Verified'),
+(38, '2022-A-0033', 'default_photo.png', 'Eren', 'Like a Baka', 'Yeager', '', 23, 'Quezon', '2022-03-15', 'Catholic', 'Male', 'Single', '', '', '', '', '', 'Transferee', 'ricoestriboguinanao@gmail.com', '09251486985', 'BSIT', 'BSCS', 'Yes', '23', 'Calamba, Laguna', 'Bagong Kalsada', 'Calamba', '4027', 'Calamba, Laguna', 'Bagong Kalsada', 'Calamba', '4027', 'Member of Indigenous People', 'No', 'Verified'),
+(39, '2022-A-0034', '1649154076_rics.png', 'Rico', 'Estribo', 'Guinanao', '', 20, 'Quezon', '2022-11-10', 'Catholic', 'Male', 'Single', '', '', '', '', '', 'Freshman', 'guinanaorico@gmail.com', '09319542169', 'BSIT', 'BSCS', 'Yes', '0', 'Block 14 Lot 76 Majada In', 'Looc', 'Cabuyao', '4027', 'Block 14 Lot 76 Majada In', 'Looc', 'Cabuyao', '4027', 'Recipient of 4Ps', 'Yes', 'Verified'),
+(40, '2022-A-0035', 'default_photo.png', 'tyuty', 'Estribo', 'rtyur', '', 17, 'Quezon', '2004-12-06', 'Catholic', 'Female', 'Single', '', '', '', '', '', 'Transferee', 'guinanaorico@gmail.crtyom', '09319542169', 'BSIT', 'BSCS', 'Yes', '2022-03-07', 'Block 14 Lot 76 Majada In', 'Barangay 2', 'Calamba', '4027', 'Block 14 Lot 76 Majada In', 'Canlubang', 'Calamba', '4027', 'N/A', '', 'Pending'),
+(41, '2022-A-0036', 'default_photo.png', 'gdfg', 'gdfgd', 'dfgdgd', '', 20, 'FGHNGFDGFDGFDG', '2001-06-20', 'sd', 'Male', 'Single', '', '', '', '', '', 'Freshman', 'ewrwr@gmail.co', '09319542169', 'BSCS', 'BSCS', 'Yes', '', 'Block 14 Lot 76 Majada In', 'Barangay 1', 'Calamba', '4027', 'Block 14 Lot 76 Majada In', 'Canlubang', 'Calamba', '4027', 'Recipient of 4Ps', '', 'Pending'),
+(42, '2022-A-0037', 'default_photo.png', 'qweqwe', 'qweqwe', 'qweqwe', 'Sr.', 18, 'Quezon', '2004-03-09', 'Catholic\'dfg', 'Male', 'Single', '', '', '', '', '', 'Freshman', 'qweq@wd.dsf', '09319542169', 'BSCS', 'BEED', 'Yes', '2022-03-02', 'Block 14 Lot 76 Majada In', 'Camaligan', 'Calamba', '4027', 'Block 14 Lot 76 Majada In', 'Camaligan', 'Calamba', '4027', 'Recipient of Student Financial Assistance', '', 'Pending'),
+(43, '2022-A-0038', 'default_photo.png', 'rter', 'ertgert', 'ertert', '', 18, 'Quezon', '2004-03-03', 'sd', 'Male', 'Single', '', '', '', '', '', 'Freshman', 'guinanaorico@gmail.comerte', '09319542169', 'BSCS', 'BSA', 'Yes', '2022-03-11', 'Block 14 Lot 76 Majada In', 'Camaligan', 'Calamba', '4027', 'Block 14 Lot 76 Majada In', 'Camaligan', 'Calamba', '4027', 'N/A', '', 'Pending'),
+(44, '2022-A-0039', 'default_photo.png', 'qeq', 'qweq', 'qweqw', '', 18, 'qeqw', '2004-03-09', 'sd', 'Male', 'Single', '', '', '', '', '', 'Freshman', 'estriborics@gmail.coeqw', '09251486985', 'BSEE', 'BSAIS', 'Yes', '2022-03-10', 'Calamba, Laguna', 'Canlubang', 'Calamba', '4027', 'Calamba, Laguna', 'Canlubang', 'Calamba', '4027', 'Working Student', '', 'Pending');
 
 --
 -- Indexes for dumped tables
@@ -990,6 +1232,12 @@ ALTER TABLE `personal_admiration`
   ADD PRIMARY KEY (`student_id`);
 
 --
+-- Indexes for table `programs`
+--
+ALTER TABLE `programs`
+  ADD PRIMARY KEY (`program_id`);
+
+--
 -- Indexes for table `requirements`
 --
 ALTER TABLE `requirements`
@@ -1027,7 +1275,7 @@ ALTER TABLE `admin_info`
 -- AUTO_INCREMENT for table `admin_logs`
 --
 ALTER TABLE `admin_logs`
-  MODIFY `log_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=70;
+  MODIFY `log_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=149;
 
 --
 -- AUTO_INCREMENT for table `admission_status`
@@ -1051,19 +1299,19 @@ ALTER TABLE `answer_key`
 -- AUTO_INCREMENT for table `educ_bg`
 --
 ALTER TABLE `educ_bg`
-  MODIFY `student_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
+  MODIFY `student_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
 
 --
 -- AUTO_INCREMENT for table `exam_results`
 --
 ALTER TABLE `exam_results`
-  MODIFY `result_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `result_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT for table `fam_bg`
 --
 ALTER TABLE `fam_bg`
-  MODIFY `student_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
+  MODIFY `student_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
 
 --
 -- AUTO_INCREMENT for table `feedbacks`
@@ -1075,43 +1323,49 @@ ALTER TABLE `feedbacks`
 -- AUTO_INCREMENT for table `notifications`
 --
 ALTER TABLE `notifications`
-  MODIFY `notif_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=64;
+  MODIFY `notif_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=78;
 
 --
 -- AUTO_INCREMENT for table `org_involvement`
 --
 ALTER TABLE `org_involvement`
-  MODIFY `student_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
+  MODIFY `student_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
 
 --
 -- AUTO_INCREMENT for table `personal_admiration`
 --
 ALTER TABLE `personal_admiration`
-  MODIFY `student_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
+  MODIFY `student_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
+
+--
+-- AUTO_INCREMENT for table `programs`
+--
+ALTER TABLE `programs`
+  MODIFY `program_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `requirements`
 --
 ALTER TABLE `requirements`
-  MODIFY `student_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
+  MODIFY `student_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
 
 --
 -- AUTO_INCREMENT for table `student_answers`
 --
 ALTER TABLE `student_answers`
-  MODIFY `answer_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `answer_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=148;
 
 --
 -- AUTO_INCREMENT for table `student_exam_log`
 --
 ALTER TABLE `student_exam_log`
-  MODIFY `log_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `log_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT for table `student_info`
 --
 ALTER TABLE `student_info`
-  MODIFY `student_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
+  MODIFY `student_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
