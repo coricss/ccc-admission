@@ -20,6 +20,10 @@ if($sql->num_rows!=0){
         ";
     }
 }else{
-
+    echo "
+        <tr>
+            <td colspan='5'><h5>No admins registered</h5></td>
+        </tr>
+    ";
 }
 ?>

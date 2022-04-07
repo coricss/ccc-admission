@@ -109,6 +109,7 @@ $(document).ready(function(){
   var forms = document.querySelectorAll('#adminForm')
   var form2 = document.querySelectorAll('#updatepwd')
   var form3 = document.querySelectorAll('#edit-admin')
+  var form4 = document.querySelectorAll('#programForm')
 
           Array.prototype.slice.call(forms)
           .forEach(function (form) {
@@ -210,6 +211,19 @@ $(document).ready(function(){
               form.classList.add('was-validated')
             })
           })
+          Array.prototype.slice.call(form4)
+          .forEach(function (form) {
+            $('#btn-addProgram').click(function(event){
+              if (!form.checkValidity()) {
+                event.preventDefault()
+                event.stopPropagation()
+              }else{
+                $('#btn-addProgram').prop("type", "submit");
+              }
+              form.classList.add('was-validated')
+            })
+          })
+
   
 })()
 
@@ -659,6 +673,18 @@ $(document).on('change', '#sortAdmin', function(e){
     }
   })
 })
+$(document).on('change', '#sortProgram', function(e){
+  e.preventDefault();
+  var column_name=$(this).val();
+  $.ajax({
+    url: 'queries/sortProgram.php',
+    method: 'post',
+    data: {column_name:column_name},
+    success:function(data){
+      $('#tblProgram').html(data);
+    }
+  })
+})
 $(document).on('change', '#sort', function(e){
   e.preventDefault();
   var column_name=$(this).val();
@@ -693,6 +719,18 @@ $('#search_admin').keyup(function(e){
     data: {admin:search},
     success:function(data){
       $('#tblAdmin').html(data);
+    }
+  })
+})
+$('#search_program').keyup(function(e){
+  e.preventDefault();
+  var search = $(this).val();
+  $.ajax({
+    url: "queries/searchProgram.php",
+    method: "POST",
+    data: {program:search},
+    success:function(data){
+      $('#tblProgram').html(data);
     }
   })
 })
@@ -851,6 +889,7 @@ $(document).ready(function(){
   $('#feedback-drawer').load('queries/fetchFeedbacks.php');
   $('.rank-list').load('queries/fetchRanks.php');
   $('#tbladmin-body').load('queries/fetchAdmin.php');
+  $('#tblprogram-body').load('queries/fetchProgram.php');
   $('#notif-body').load('queries/fetchNotif.php');
   $('#msg-body').load('queries/fetchNotifMsg.php');
   $('#stud-archives').load('queries/studentArchive.php');
@@ -968,7 +1007,9 @@ $(document).on('click', '#btn-sendEmail', function(){
     })
   }
 })
-
+$("#admin-reset").click(function(){
+  $("#passres").html("");
+})
 $('.addStudent').click(function(){
   $('#main-card').hide();
   $('#addStud').show();
@@ -977,6 +1018,10 @@ $('.btn-add-admin').click(function(){
   $('.admincard').hide();
   $('.add-admincard').show();
 })
+$('.btn-add-program').click(function(){
+  $('.programcard').hide();
+  $('.add-programcard').show();
+})
 $('#goback').click(function(){
   $('#addStud').hide();
   $('#main-card').show();
@@ -984,6 +1029,14 @@ $('#goback').click(function(){
 $('#goback-admin').click(function(){
   $('.admincard').show();
   $('.add-admincard').hide();
+})
+$('#goback-program').click(function(){
+  $('.programcard').show();
+  $('.add-programcard').hide();
+})
+$('#edit-goback-program').click(function(){
+  $('.programcard').show();
+  $('.edit-programcard').hide();
 })
 $('#goback2').click(function(){
   $('#editStud').hide();
@@ -1010,6 +1063,13 @@ $(document).on('click', "#print-studentsArchive", function(){
   $("#actions").show();
   $("td.actions").show();
 })
+$(document).on('click', "#print-program", function(){
+  $("#actions").hide();
+  $("td.actions").hide();
+  printJS('tblProgram', 'html')
+  $("#actions").show();
+  $("td.actions").show();
+})
 $(document).on('click', "#print-resultsArchive", function(){
   $("#actions-results").hide();
   $("td.actions").hide();
@@ -1031,7 +1091,7 @@ $(document).ready(function(){
   }
 })
 
-$('#print-admin').click(function(){
+$('.print-admin').click(function(){
   $('#admin-table').printThis();
 })
 // $('#export-pending').click(function(){
@@ -1243,6 +1303,21 @@ $(document).on('click', '#editstudent', function(e){
    $('#main-card').hide();
   $('#editStud').show();
  });
+$(document).on('click', '#btn-edit-program', function(e){
+  e.preventDefault();
+   var id = $(this).attr("data-id");
+    $.ajax({
+      url: 'queries/editProgram.php',
+      method: 'post',
+      data: {id:id},
+      success: function(data){
+        $('#edit-container-program').html(data);
+      }
+    })
+   $('.programcard').hide();
+  $('.edit-programcard').show();
+ });
+
  
 setInputFilter(document.getElementById("admin_contact"), function(value) {
   return /^-?\d*$/.test(value); });
