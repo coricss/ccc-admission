@@ -746,6 +746,18 @@
       overflow: auto;
       height:630px;
     }
+    #program-table{
+      flex: 1 auto;
+      padding: .0rem;
+      overflow: auto;
+      height:630px;
+    }
+    .add-programcard{
+      height: 630px
+    }
+    .edit-programcard{
+      height: 630px
+    }
     .card-body2 {
       flex: 1 auto;
       padding: .0rem;
@@ -1312,6 +1324,9 @@ div.ccc{
   button#btn-add-admin{
     display: none;
   }
+  button#btn-add-program{
+    display: none;
+  }
    div#container-admin{
     max-width: 100%;
   }
@@ -1441,6 +1456,9 @@ div.ccc{
   button#btn-add-admin{
     display: none;
   }
+  button#btn-add-program{
+    display: none;
+  }
   div#container-admin{
     max-width: 100%;
   }
@@ -1564,6 +1582,9 @@ div.ccc{
     display: none;
   }
   button#btn-add-admin{
+    display: none;
+  }
+  button#btn-add-program{
     display: none;
   }
   div#container-admin{
@@ -1698,6 +1719,9 @@ div.ccc{
     display: none;
   }
   button#btn-add-admin{
+    display: none;
+  }
+  button#btn-add-program{
     display: none;
   }
   div#container-admin{

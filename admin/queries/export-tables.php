@@ -11,7 +11,8 @@
      $studArchive=$con->query("SELECT * FROM `student_info` WHERE `application_no` NOT LIKE '%$year%' ORDER BY `student_id` ASC");
      $resArchive=$con->query("SELECT * FROM `exam_results` WHERE `application_no` NOT LIKE '%$year%' ORDER BY `result_id` ASC");
     //  $studArchive=$con->query("SELECT * FROM `student_info` ORDER BY `student_id` ASC");
-     
+     $programs= $con->query("SELECT * FROM `programs` ORDER BY `program_id`");
+
     if(isset($_POST['export-overview'])){
         if($overview->num_rows!=0){
             $output= "
@@ -306,8 +307,64 @@
         }
     }
 
-        if(isset($_POST['export-resultArchive'])){
-            if($resArchive->num_rows!=0){
+    if(isset($_POST['export-resultArchive'])){
+        if($resArchive->num_rows!=0){
+        $output= "
+            <style>
+                table, td {
+                    border:1px solid black
+                } 
+                table{
+                    border-collapse:collapse
+                } 
+                .table-header{
+                    color: white; background-color: black
+                }</style>
+            <table>
+                <tr>
+                    <th class='table-header'>Application #</th>
+                    <th class='table-header'>Name</th>
+                    <th class='table-header'>Raw Score</th>
+                    <th class='table-header'>Scaled Score</th>
+                    <th class='table-header'>Percentile</th>
+                    <th class='table-header'>Statine</th>
+                    <th class='table-header'>Verbal Interpretation</th>
+                </tr>
+        ";
+        while($row = $resArchive->fetch_array()){
+                if($row['verbal_interpretation']=='Above Average'){
+                    $color='#c6efce';
+                }else if($row['verbal_interpretation']=='Below Average'){
+                    $color='#ffc7ce';
+                }else if($row['verbal_interpretation']=='Average'){
+                    $color='#ffeb9c';
+                }
+            $output.="
+            <tr>
+                <td style='background-color: $color'>".$row['application_no']."</td>
+                <td style='background-color: $color'>".$row['student_name']."</td>
+                <td style='background-color: $color'>".$row['raw_score']."</td>
+                <td style='background-color: $color'>".$row['scaled_score']."</td>
+                <td style='background-color: $color'>".$row['percentile_rank']."</td>
+                <td style='background-color: $color'>".$row['stanine']."</td>
+                <td style='background-color: $color'>".$row['verbal_interpretation']."</td>
+            </tr>"; 
+        }
+        $output.='</table>';
+        header("Content-Type: application/xls");
+        header ("Content-Disposition: attachment; filename=results_archives-$SchoolYear.xls");
+        echo $output;
+        }else{
+            echo "
+            <script>
+                location.href='../archives.php';
+            </script>
+            ";
+        }
+    }
+
+    if(isset($_POST["export-program"])){
+        if($programs->num_rows!=0){
             $output= "
                 <style>
                     table, td {
@@ -317,48 +374,35 @@
                         border-collapse:collapse
                     } 
                     .table-header{
-                        color: white; background-color: black
+                    color: white; background-color: black
                     }</style>
                 <table>
                     <tr>
-                        <th class='table-header'>Application #</th>
-                        <th class='table-header'>Name</th>
-                        <th class='table-header'>Raw Score</th>
-                        <th class='table-header'>Scaled Score</th>
-                        <th class='table-header'>Percentile</th>
-                        <th class='table-header'>Statine</th>
-                        <th class='table-header'>Verbal Interpretation</th>
+                        <th class='table-header'>Program #</th>
+                        <th class='table-header'>Program Name</th>
+                        <th class='table-header'>Abbreviation</th>
+                        <th class='table-header'>Maximum number of students</th>
                     </tr>
             ";
-            while($row = $resArchive->fetch_array()){
-                    if($row['verbal_interpretation']=='Above Average'){
-                        $color='#c6efce';
-                    }else if($row['verbal_interpretation']=='Below Average'){
-                        $color='#ffc7ce';
-                    }else if($row['verbal_interpretation']=='Average'){
-                        $color='#ffeb9c';
-                    }
+            while($row = $programs->fetch_array()){
                 $output.="
                 <tr>
-                    <td style='background-color: $color'>".$row['application_no']."</td>
-                    <td style='background-color: $color'>".$row['student_name']."</td>
-                    <td style='background-color: $color'>".$row['raw_score']."</td>
-                    <td style='background-color: $color'>".$row['scaled_score']."</td>
-                    <td style='background-color: $color'>".$row['percentile_rank']."</td>
-                    <td style='background-color: $color'>".$row['stanine']."</td>
-                    <td style='background-color: $color'>".$row['verbal_interpretation']."</td>
+                    <td>".$row['program_id']."</td>
+                    <td>".$row['program_name']."</td>
+                    <td>".$row['abbreviation']."</td>
+                    <td>".$row['max_no']."</td>
                 </tr>"; 
             }
             $output.='</table>';
             header("Content-Type: application/xls");
-            header ("Content-Disposition: attachment; filename=results_archives-$SchoolYear.xls");
+            header ("Content-Disposition: attachment; filename=list_of_programs-$SchoolYear.xls");
             echo $output;
-            }else{
-                echo "
-                <script>
-                    location.href='../archives.php';
-                </script>
-                ";
-            }
+        }else{
+            echo "
+            <script>
+                location.href='../programs.php';
+            </script>
+            ";
         }
+    }
 ?>

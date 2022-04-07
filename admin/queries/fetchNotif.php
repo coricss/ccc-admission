@@ -90,12 +90,16 @@ if($sql->num_rows!=0){
         $added = strchr($row['activity'], 'added');
         $register = strchr($row['activity'], 'registered');
         $update = strchr($row['activity'], 'updated');
+        $new_program = strchr($row['activity'], 'inserted');
+        $update_program = strchr($row['activity'], 'changed');
         $suspended= strchr($row['activity'], 'suspended');
  
         if($verify||$decline||$update){
             $link="student.php";
         }else if($added){
             $link="settings.php";
+        }else if($new_program||$update_program){
+            $link="programs.php";
         }else if($register||$suspended){
             $link="dashboard.php";
         }else{

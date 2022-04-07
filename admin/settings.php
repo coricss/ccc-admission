@@ -236,46 +236,46 @@ if(isset($_SESSION['ID'])&&($_SESSION['email'])){
                                 </div> <br><br>
                                 <div class="row mb-3">
                                     <div class="col-md-6 col-sm-12">
-                                        <label for="fname" class="required">First Name:<i class="req">*</i></label>
+                                        <label for="fnameAdmin" class="required">First Name:<i class="req">*</i></label>
                                         <input type="text" name="fnameAdmin" id=fnameAdmin placeholder="Given name" class="form-control" required>
                                         <div class="text-danger" id="adminNameFeedback">
                                             <!-- <small>Admin name already exists</small> -->
                                         </div>
                                     </div>
                                     <div class="col-md-6 col-sm-12">
-                                        <label for="fname" class="required">Last Name:<i class="req">*</i></label>
+                                        <label for="lnameAdmin" class="required">Last Name:<i class="req">*</i></label>
                                         <input type="text" name="lnameAdmin" id=lnameAdmin placeholder="Last name" class="form-control" required>
                                     </div>
                                 </div>
                                 <div class="row mb-3">
                                     <div class="col-md-6 col-sm-12">
-                                        <label for="fname" class="required">Email Address<i class="req">*</i></label>
+                                        <label for="emailAdmin" class="required">Email Address<i class="req">*</i></label>
                                         <input type="email" name="emailAdmin" id=emailAdmin placeholder="example@domain.com" class="form-control" required>
                                         <div class="text-danger" id="adminEmailFeedback">
                                            
                                         </div>
                                     </div>
                                     <div class="col-md-6 col-sm-12">
-                                        <label for="fname" class="required">Contact Number:<i class="req">*</i></label>
+                                        <label for="adminNo" class="required">Contact Number:<i class="req">*</i></label>
                                         <input type="text" name="adminNo" id=adminNo pattern="(\+?\d{2}?\s?\d{3}\s?\d{3}\s?\d{4})|([0]\d{3}\s?\d{3}\s?\d{4})" onpaste="return false;" onkeypress="return onlyNumberKey(event)" maxlength="11" minlength="11" placeholder="09XXxxxxxxx" class="form-control" required>
                                     </div>
                                 </div>
                                 <div class="row mb-3">
                                     <div class="col-md-12 col-sm-12">
-                                        <label for="fname" class="required">Address:<i class="req">*</i></label>
+                                        <label for="adminAdd" class="required">Address:<i class="req">*</i></label>
                                         <input type="text" name="adminAdd" id=adminAdd placeholder="Present address" class="form-control" required>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-md-6 col-sm-12">
-                                        <label for="fname" class="required">Password:<i class="req">*</i></label>
+                                        <label for="newpwd" class="required">Password:<i class="req">*</i></label>
                                         <input type="password" name="newpwd" id=newpwd placeholder="Password" minlength="8" data-bs-toggle="popover" class="form-control" autocomplete="new-password" required>
                                         <div class="mt-1" style="float: left;">
                                            <small id="passres" class=""></small>
                                         </div>
                                     </div>
                                     <div class="col-md-6 col-sm-12">
-                                        <label for="fname" class="required">Confirm Password:<i class="req">*</i></label>
+                                        <label for="confirmpwd" class="required">Confirm Password:<i class="req">*</i></label>
                                         <input type="password" name="confirmpwd" onpaste="return false" id=confirmpwd placeholder="Confirm password" minlength="8" class="form-control" required>
                                         <div class="mt-1" style="float: right">
                                             <input type="checkbox" id="showPass" class="form-check-input mt-1 float-right">&nbsp;<small>Show passwords</small></input>
@@ -286,6 +286,7 @@ if(isset($_SESSION['ID'])&&($_SESSION['email'])){
                                 <div class="row mb-3">
                                     <div class="text-center">
                                         <button type='button' id="btn-addAdmin" name="btn-addAdmin" class='btn btn-primary mt-2'>Add Admin</button>
+                                        <button type='reset'class='btn btn-danger mt-2' id="admin-reset">Reset</button>
                                     </div>
                                 </div>
                             </div>
