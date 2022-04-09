@@ -185,32 +185,34 @@
                         <label for="1stprio">1st Priority Program:<i class="req">*</i></label>
                         <select class="form-select" name="1stprio" id="1stprio"  required>
                             <option value="" disabled selected>(e.g. BSIT)</option>
-                            <option value="BSCS" class="others">Bachelor of Science in Computer Science</option>
+                            <!-- <option value="BSCS" class="others">Bachelor of Science in Computer Science</option>
                             <option value="BSIT" class="others">Bachelor of Science in Information Technology</option>
                             <option value="BSA" class="others">Bachelor of Science in Accountancy</option>
                             <option value="BSAIS" class="others">Bachelor of Science in Accounting Information System</option>
                             <option value="BEED" class="others">Bachelor of Elementary Education</option>
                             <option value="BSEE" class="others">Bachelor of Secondary Education Major in English Language Education</option>
                             <option value="BSEM" class="others">Bachelor of Secondary Education Major in Mathematics Education</option>
-                            <option value="BSES" class="others">Bachelor of Secondary Education Major in Science Education</option>
+                            <option value="BSES" class="others">Bachelor of Secondary Education Major in Science Education</option> -->
                         </select>
                     </div>
                     <div class="col-md-3 col-sm-6">
                         <label for="2ndprio">2nd Priority Program:<i class="req">*</i></label> <br>
                         <select class="form-select" name="2ndprio" id="2ndprio"  required>
                             <option value="" disabled selected>(e.g. BSIT)</option>
-                            <option value="BSCS" class="others">Bachelor of Science in Computer Science</option>
+                            <!-- <option value="BSCS" class="others">Bachelor of Science in Computer Science</option>
                             <option value="BSIT" class="others">Bachelor of Science in Information Technology</option>
                             <option value="BSA" class="others">Bachelor of Science in Accountancy</option>
                             <option value="BSAIS" class="others">Bachelor of Science in Accounting Information System</option>
                             <option value="BEED" class="others">Bachelor of Elementary Education</option>
                             <option value="BSEE" class="others">Bachelor of Secondary Education Major in English Language Education</option>
                             <option value="BSEM" class="others">Bachelor of Secondary Education Major in Mathematics Education</option>
-                            <option value="BSES" class="others">Bachelor of Secondary Education Major in Science Education</option>
+                            <option value="BSES" class="others">Bachelor of Secondary Education Major in Science Education</option> -->
                         </select>
                     </div>
                 </div>
-                
+                <div id="required_gwa">
+                    
+                </div>
                 <div class="row mb-3">
                     <div class="col-md-2 col-sm-6">
                         <label for="calambares">Calamba Resident:<i class="req">*</i></label><br>
