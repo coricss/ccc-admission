@@ -354,19 +354,44 @@ $("#shs_dgrad").click(function(){
 		 	});
 		}
 	}
-
+	$(document).one("click", "#1stprio", function(){
+		$.ajax({
+			url: "queries/select-programs.php",
+			method: "post",
+			success:function(data){
+				$("#1stprio").html(data);
+			}
+		})
+	})
+	$(document).one("click", "#2ndprio", function(){
+		$.ajax({
+			url: "queries/select-programs.php",
+			method: "post",
+			success:function(data){
+				$("#2ndprio").html(data);
+			}
+		})
+	})
 	$(document).on("change", "#1stprio", function(){
 		var first_prio=$(this).val();
-		if((first_prio=="BSEE")||(first_prio=="BSEM")||(first_prio=="BSES")){
-			$("#g11_gwa").prop("min", 87);
-			$("#g12_gwa").prop("min", 87);
-		}else if((first_prio=="BSIT")||(first_prio=="BSCS")||(first_prio=="BEED")||(first_prio=="BSAIS")){
-			$("#g11_gwa").prop("min", 85);
-			$("#g12_gwa").prop("min", 85);
-		}else{
-			$("#g11_gwa").prop("min", 89);
-			$("#g12_gwa").prop("min", 89);
-		}
+		$.ajax({
+			url: "queries/require-gwa.php",
+			method: "post",
+			data: {abbr:first_prio},
+			success:function(data){
+				$("#required_gwa").html(data);
+			}
+		})
+		// if((first_prio=="BSEE")||(first_prio=="BSEM")||(first_prio=="BSES")){
+		// 	$("#g11_gwa").prop("min", 87);
+		// 	$("#g12_gwa").prop("min", 87);
+		// }else if((first_prio=="BSIT")||(first_prio=="BSCS")||(first_prio=="BEED")||(first_prio=="BSAIS")){
+		// 	$("#g11_gwa").prop("min", 85);
+		// 	$("#g12_gwa").prop("min", 85);
+		// }else{
+		// 	$("#g11_gwa").prop("min", 89);
+		// 	$("#g12_gwa").prop("min", 89);
+		// }
 	})
 	$(document).on("change", "#2ndprio", function(){
 		var second_prio=$(this).val();
