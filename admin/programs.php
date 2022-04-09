@@ -192,6 +192,7 @@ if(isset($_SESSION['ID'])&&($_SESSION['email'])){
                                      <th style="border: 1px solid gray" width="10%">Program #</th>
                                      <th style="border: 1px solid gray" width="20%">Program Name</th>
                                      <th style="border: 1px solid gray" width="10%">Abbreviation</th>
+                                     <th style="border: 1px solid gray" width="10%">Required GWA</th>
                                      <th style="border: 1px solid gray" width="10%">Maximum number of students</th>
                                      <th id="actions" style="border: 1px solid gray" width="10%">Action</th>
                                  </thead>
@@ -216,26 +217,26 @@ if(isset($_SESSION['ID'])&&($_SESSION['email'])){
                             <div class="form-group">
                                 <div class="form-row">
                                     <div class="row mt-5">
-                                        <div class="col-md-4 col-sm-12">
+                                        <div class="col-md-6 col-sm-12">
                                             <label for="programName" class="required">Program Name:<i class="req">*</i></label>
                                             <input type="text" name="programName" id=programName placeholder="Program name" class="form-control" required>
-                                            <div class="text-danger" id="adminNameFeedback">
+                                            <div class="text-danger" id="programNameFeedback">
                                                 <!-- <small>Admin name already exists</small> -->
                                             </div>
                                         </div>
-                                        <div class="col-md-4 col-sm-12">
+                                        <div class="col-md-6 col-sm-12">
                                             <label for="abbr" class="required">Abbreviation:<i class="req">*</i></label>
                                             <input type="text" name="abbr" id=abbr placeholder="Abbreviation" class="form-control" required>
-                                            <div class="text-danger" id="adminNameFeedback">
-                                                <!-- <small>Admin name already exists</small> -->
-                                            </div>
                                         </div>
-                                        <div class="col-md-4 col-sm-12">
+                                    </div>
+                                    <div class="row mt-5">
+                                        <div class="col-md-6 col-sm-12">
+                                            <label for="required_gwa" class="required">Required GWA:<i class="req">*</i></label>
+                                            <input type="number" name="required_gwa" id=required_gwa placeholder="Required Average" class="form-control" max="100" min="1" required>
+                                        </div>
+                                        <div class="col-md-6 col-sm-12">
                                             <label for="max_no" class="required">Maximum Number of Students:<i class="req">*</i></label>
-                                            <input type="number" name="max_no" id=max_no placeholder="Max no. of Students" class="form-control" required>
-                                            <div class="text-danger" id="adminNameFeedback">
-                                                <!-- <small>Admin name already exists</small> -->
-                                            </div>
+                                            <input type="number" name="max_no" id=max_no placeholder="Max no. of Students" class="form-control" min="1" required>
                                         </div>
                                     </div>
                                     <div class="row mt-5">

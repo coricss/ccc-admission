@@ -12,6 +12,7 @@ if($sql->num_rows!=0){
                 </td>
                 <td style='border: 1px solid gray'>".$row['program_name']."</td>
                 <td style='border: 1px solid gray'>".$row['abbreviation']."</a></td>
+                <td style='border: 1px solid gray'>".$row['required_gwa']."</td>
                 <td style='border: 1px solid gray'>".$row['max_no']."</td>
                 <td style='border: 1px solid gray' class='actions'>
                   <button class='btn btn-success mb-1' id='btn-edit-program' data-id='".$row['program_id']."'>

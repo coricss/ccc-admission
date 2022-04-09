@@ -19,9 +19,10 @@ if(isset($_POST['btn-updateProgram'])){
   $program_id=mysqli_real_escape_string($con, $_POST["program_id"]);
   $program_name=mysqli_real_escape_string($con, $_POST["programName"]);
   $abbreviation=mysqli_real_escape_string($con, $_POST["abbr"]);
+  $required_gwa=mysqli_real_escape_string($con, $_POST["required_gwa"]);
   $max_no=mysqli_real_escape_string($con, $_POST["max_no"]);
 
-  $sql=$con->query("UPDATE `programs` SET `program_name`='$program_name', `abbreviation`='$abbreviation', `max_no`='$max_no' WHERE `program_id`='$program_id'");
+  $sql=$con->query("UPDATE `programs` SET `program_name`='$program_name', `abbreviation`='$abbreviation', `required_gwa`='$required_gwa', `max_no`='$max_no' WHERE `program_id`='$program_id'");
 
   $sqlNotif=$con->query("INSERT INTO `notifications`(`adminID`, `admin_name`, `activity`, `date_time`) VALUES ('$adminID','$name','changed the details of program: $abbreviation','$dateNotif')");
 
