@@ -1129,6 +1129,9 @@ div.ccc{
   div#container-admin{
     max-width: 100%;
   }
+  div#container-program{
+    max-width: 100%;
+  }
   div.admin-profile{
     max-width: 100%
   }
@@ -1200,6 +1203,9 @@ div.ccc{
     width: 100%;
   }
   div#container-admin{
+    max-width: 100%;
+  }
+  div#container-program{
     max-width: 100%;
   }
   div.admin-profile{
@@ -1328,6 +1334,9 @@ div.ccc{
     display: none;
   }
    div#container-admin{
+    max-width: 100%;
+  }
+  div#container-program{
     max-width: 100%;
   }
   div.admin-profile{
@@ -1462,6 +1471,9 @@ div.ccc{
   div#container-admin{
     max-width: 100%;
   }
+  div#container-program{
+    max-width: 100%;
+  }
   img#profileDisplayAdmin{ 
     height: 1in; 
     width: 1in; 
@@ -1588,6 +1600,9 @@ div.ccc{
     display: none;
   }
   div#container-admin{
+    max-width: 100%;
+  }
+  div#container-program{
     max-width: 100%;
   }
   img#profileDisplayAdmin{ 
@@ -1727,6 +1742,9 @@ div.ccc{
   div#container-admin{
     max-width: 100%;
   }
+  div#container-program{
+    max-width: 100%;
+  }
   img#profileDisplayAdmin{ 
     height: 1in; 
     width: 1in; 
@@ -1767,6 +1785,9 @@ div.ccc{
   border-radius: 100%;
 }
 #container-admin{
+  max-width: 50%;
+}
+#container-program{
   max-width: 50%;
 }
 .img-placeholderAdmin {
