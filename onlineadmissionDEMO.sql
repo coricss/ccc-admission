@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 07, 2022 at 04:12 PM
+-- Generation Time: Apr 09, 2022 at 05:39 PM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 8.1.2
 
@@ -216,7 +216,48 @@ INSERT INTO `admin_logs` (`log_id`, `adminID`, `activity`, `date`, `time`) VALUE
 (145, 1, 'Your Account was Logged In', '04/05/2022', '5:55 PM'),
 (146, 1, 'You Updated Student Details', '04/05/2022', '6:21 PM'),
 (147, 1, 'Your Account was Logged In', '04/06/2022', '7:45 PM'),
-(148, 1, 'Your Account was Logged In', '04/07/2022', '10:43 AM');
+(148, 1, 'Your Account was Logged In', '04/07/2022', '10:43 AM'),
+(149, 1, 'You Added a New Program', '04/07/2022', '11:53 PM'),
+(150, 1, 'Your Account was Logged Out', '04/07/2022', '11:53 PM'),
+(151, 7, 'You Entered Invalid Password', '04/07/2022', '11:54 PM'),
+(152, 7, 'Your Account was Logged In', '04/07/2022', '11:54 PM'),
+(153, 7, 'You Updated Program Details', '04/07/2022', '11:59 PM'),
+(154, 7, 'Your Account was Logged Out', '04/08/2022', '12:00 AM'),
+(155, 1, 'Your Account was Logged In', '04/08/2022', '12:00 AM'),
+(156, 1, 'You Added a New Program', '04/08/2022', '12:05 AM'),
+(157, 1, 'Your Account was Logged Out', '04/08/2022', '12:05 AM'),
+(158, 7, 'Your Account was Logged In', '04/08/2022', '12:06 AM'),
+(159, 7, 'You Updated Program Details', '04/08/2022', '12:09 AM'),
+(160, 7, 'Your Account was Logged Out', '04/08/2022', '12:10 AM'),
+(161, 1, 'Your Account was Logged In', '04/08/2022', '12:14 AM'),
+(162, 1, 'You Updated Program Details', '04/08/2022', '12:15 AM'),
+(163, 1, 'Your Account was Logged Out', '04/08/2022', '12:18 AM'),
+(164, 1, 'Your Account was Logged In', '04/08/2022', '7:48 PM'),
+(165, 1, 'Your Account was Logged In', '04/08/2022', '11:32 PM'),
+(166, 1, 'You Entered Invalid Password', '04/09/2022', '11:37 AM'),
+(167, 1, 'You Entered Invalid Password', '04/09/2022', '11:37 AM'),
+(168, 1, 'Your Account was Logged In', '04/09/2022', '11:37 AM'),
+(169, 1, 'You Added a New Program', '04/09/2022', '12:09 PM'),
+(170, 1, 'You Updated Program Details', '04/09/2022', '12:11 PM'),
+(171, 1, 'You Updated Program Details', '04/09/2022', '12:11 PM'),
+(172, 1, 'You Updated Program Details', '04/09/2022', '12:12 PM'),
+(173, 1, 'You Updated Program Details', '04/09/2022', '12:12 PM'),
+(174, 1, 'You Updated Program Details', '04/09/2022', '12:12 PM'),
+(175, 1, 'You Updated Program Details', '04/09/2022', '4:01 PM'),
+(176, 1, 'You Added a New Program', '04/09/2022', '4:02 PM'),
+(177, 1, 'You Updated Program Details', '04/09/2022', '4:34 PM'),
+(178, 1, 'You Updated Program Details', '04/09/2022', '4:35 PM'),
+(179, 1, 'You Updated Program Details', '04/09/2022', '4:35 PM'),
+(180, 1, 'You Updated Program Details', '04/09/2022', '4:36 PM'),
+(181, 1, 'You Added a New Program', '04/09/2022', '4:37 PM'),
+(182, 1, 'You Verified a Student', '04/09/2022', '5:23 PM'),
+(183, 1, 'You Added a New Program', '04/09/2022', '11:12 PM'),
+(184, 1, 'You Updated Program Details', '04/09/2022', '11:20 PM'),
+(185, 1, 'You Updated Program Details', '04/09/2022', '11:20 PM'),
+(186, 1, 'You Updated Program Details', '04/09/2022', '11:20 PM'),
+(187, 1, 'You Updated Program Details', '04/09/2022', '11:20 PM'),
+(188, 1, 'You Updated Program Details', '04/09/2022', '11:20 PM'),
+(189, 1, 'You Updated Program Details', '04/09/2022', '11:20 PM');
 
 -- --------------------------------------------------------
 
@@ -432,7 +473,8 @@ INSERT INTO `educ_bg` (`student_id`, `admit_type`, `elem_name`, `elem_address`, 
 (41, 'Freshman', 'Pamplona Elem School', 'Block 14 Lot 76 Majada In', '2022-02-28', '', 'MajadaInNHS', 'Block 14 Lot 76 Majada In', '2022-03-10', '', 'STI College Calamba', 'Block 14 Lot 76 Majada In', 'Technical-Vocational-Livelihood', 'Industrial Arts', '2022-03-09', '', '89', '89', '', '', '', '', '', '', '', '', '', '', ''),
 (42, 'Freshman', 'Pamplona Elem School', 'Block 14 Lot 76 Majada In', '2022-03-04', '', 'MajadaInNHS', 'Block 14 Lot 76 Majada In', '2022-03-07', '', 'STI College Calamba', 'Block 14 Lot 76 Majada In', 'Technical-Vocational-Livelihood', 'Home Economics', '2022-03-09', '', '90', '90', '', '', '', '', '', '', '', '', '', '', ''),
 (43, 'Freshman', 'Pamplona Elem School', 'erter', '2022-03-08', '', 'MajadaInNHS', 'Block 14 Lot 76 Majada In', '2022-03-02', '', 'STI College Calamba', 'Block 14 Lot 76 Majada In', 'Technical-Vocational-Livelihood', 'ICT', '2022-03-03', '', '90', '90', '', '', '', '', '', '', '', '', '', '', ''),
-(44, 'Freshman', 'Pamplona Elem School', 'Block 14 Lot 76 Majada In', '2022-03-03', '', 'MajadaInNHS', 'Block 14 Lot 76 Majada In', '2022-03-03', '', 'STI College Calamba', 'Calamba, Laguna', 'Technical-Vocational-Livelihood', 'Agri-Fishery Arts', '2022-03-10', '', '90', '90', '', '', '', '', '', '', '', '', '', '', '');
+(44, 'Freshman', 'Pamplona Elem School', 'Block 14 Lot 76 Majada In', '2022-03-03', '', 'MajadaInNHS', 'Block 14 Lot 76 Majada In', '2022-03-03', '', 'STI College Calamba', 'Calamba, Laguna', 'Technical-Vocational-Livelihood', 'Agri-Fishery Arts', '2022-03-10', '', '90', '90', '', '', '', '', '', '', '', '', '', '', ''),
+(45, 'Freshman', 'Pamplona Elem School', 'Block 14 Lot 76 Majada In', '2022-04-04', '', 'MajadaInNHS', 'Block 14 Lot 76 Majada In', '2022-04-07', '', 'STI College Calamba', 'Block 14 Lot 76 Majada In', 'Technical-Vocational-Livelihood', 'ICT', '2022-04-06', '', '80', '89', '', '', '', '', '', '', '', '', '', '', '');
 
 -- --------------------------------------------------------
 
@@ -475,7 +517,8 @@ INSERT INTO `exam_results` (`result_id`, `application_no`, `student_name`, `raw_
 (17, '2021-A-0022', 'Cedric Pascua', 16, 592, 1, 1, 'Below Average'),
 (18, '2022-A-0032', 'Rics Guinanao', 46, 665, 42, 5, 'Average'),
 (19, '2022-A-0033', 'Eren Yeager', 0, 0, 0, 0, 'Below Average'),
-(20, '2022-A-0034', 'Rico Guinanao', 25, 617, 6, 2, 'Below Average');
+(20, '2022-A-0034', 'Rico Guinanao', 25, 617, 6, 2, 'Below Average'),
+(22, '2022-A-0040', 'zxc zc', 0, 0, 0, 0, 'Below Average');
 
 -- --------------------------------------------------------
 
@@ -578,7 +621,8 @@ INSERT INTO `fam_bg` (`student_id`, `father_name`, `father_citizenship`, `father
 (41, 'Nildo Guinanao', 'Filipino', 'Block 14 Lot 76 Majada In', '09625487878', 'guinanaorico@gmail.com', 'Private Employee', '', '', '', 'Elementary Graduate', 'dsfsf', 'Filipino', 'Block 14 Lot 76 Majada In', '09124547878', 'guinanaorico@gmail.com', 'Self-Employed', '', '', '', 'High School Undergraduate', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'Below P10, 481'),
 (42, 'Nildo Guinanao', 'Filipino', 'Block 14 Lot 76 Majada In', '09625487878', 'guinanaorico@gmail.com', 'Private Employee', '', '', '', 'Elementary Graduate', 'Eden Guinanao', 'Filipino', 'Block 14 Lot 76 Majada In', '09124547878', 'guinanaorico@gmail.com', 'Private Employee', '', '', '', 'Elementary Graduate', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'P10, 481.00-P20, 962.00'),
 (43, 'asd', 'Filipino', 'Block 14 Lot 76 Majada In', '09625487878', 'guinanaorico@gmail.com', 'Private Employee', '', '', '', 'High School Graduate', 'Eden Guinanao', 'Filipino', 'Block 14 Lot 76 Majada In', '09124547878', 'guinanaorico@gmail.com', 'Government Employee', '', '', '', 'High School Undergraduate', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'Below P10, 481'),
-(44, 'Nildo Guinanao', 'Filipino', 'Block 14 Lot 76 Majada In', '09625487878', 'guinanaorico@gmail.com', 'Government Employee', '', '', '', 'Elementary Graduate', 'Eden Guinanao', 'Filipino', 'Block 14 Lot 76 Majada In', '09124547878', 'guinanaorico@gmail.com', 'Private Employee', '', '', '', 'Elementary Undergraduate', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'Below P10, 481');
+(44, 'Nildo Guinanao', 'Filipino', 'Block 14 Lot 76 Majada In', '09625487878', 'guinanaorico@gmail.com', 'Government Employee', '', '', '', 'Elementary Graduate', 'Eden Guinanao', 'Filipino', 'Block 14 Lot 76 Majada In', '09124547878', 'guinanaorico@gmail.com', 'Private Employee', '', '', '', 'Elementary Undergraduate', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'Below P10, 481'),
+(45, 'Nildo Guinanao', 'asdad', 'Block 14 Lot 76 Majada In', '09625487878', 'guinanaorico@gmail.com', 'Private Employee', '', '', '', 'Elementary Undergraduate', 'Eden Guinanao', 'Filipino', 'Block 14 Lot 76 Majada In', '09124547878', 'guinanaorico@gmail.com', 'Government Employee', '', '', '', 'Elementary Graduate', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'Below P10, 481');
 
 -- --------------------------------------------------------
 
@@ -621,7 +665,33 @@ INSERT INTO `notifications` (`notif_id`, `adminID`, `admin_name`, `activity`, `d
 (74, 1, 'CCC Admin', 'updated the details of Angel Garcia', '2022-04-05 05:19:15 PM'),
 (75, 1, 'CCC Admin', 'updated the details of Angel Garcia', '2022-04-05 05:31:03 PM'),
 (76, 1, 'CCC Admin', 'updated the details of Angel Garcia', '2022-04-05 05:33:37 PM'),
-(77, 1, 'CCC Admin', 'updated the details of Rico Guinanao', '2022-04-05 06:21:16 PM');
+(77, 1, 'CCC Admin', 'updated the details of Rico Guinanao', '2022-04-05 06:21:16 PM'),
+(78, 1, 'CCC Admin', 'inserted a new program', '2022-04-07 11:53:17 PM'),
+(79, 7, 'Rico Guinanao', 'changed the details of program: BSCS', '2022-04-07 11:59:54 PM'),
+(80, 1, 'CCC Admin', 'added a new program', '2022-04-08 12:05:48 AM'),
+(81, 7, 'Rico Guinanao', 'changed the details of program: BSIT', '2022-04-08 12:09:59 AM'),
+(82, 1, 'CCC Admin', 'changed the details of program: BSCS', '2022-04-08 12:15:03 AM'),
+(83, 1, 'CCC Admin', 'inserted a new program', '2022-04-09 12:09:53 PM'),
+(84, 1, 'CCC Admin', 'changed the details of program: BSE', '2022-04-09 12:11:12 PM'),
+(85, 1, 'CCC Admin', 'changed the details of program: BSE', '2022-04-09 12:11:56 PM'),
+(86, 1, 'CCC Admin', 'changed the details of program: BSIT', '2022-04-09 12:12:21 PM'),
+(87, 1, 'CCC Admin', 'changed the details of program: BSCS', '2022-04-09 12:12:32 PM'),
+(88, 1, 'CCC Admin', 'changed the details of program: BSCS', '2022-04-09 12:12:37 PM'),
+(89, 1, 'CCC Admin', 'changed the details of program: BSP', '2022-04-09 04:01:12 PM'),
+(90, 1, 'CCC Admin', 'inserted a new program', '2022-04-09 04:02:20 PM'),
+(91, 1, 'CCC Admin', 'changed the details of program: BSA', '2022-04-09 04:34:56 PM'),
+(92, 1, 'CCC Admin', 'changed the details of program: BSAIS', '2022-04-09 04:35:20 PM'),
+(93, 1, 'CCC Admin', 'changed the details of program: BEED', '2022-04-09 04:35:59 PM'),
+(94, 1, 'CCC Admin', 'changed the details of program: BSEM', '2022-04-09 04:36:31 PM'),
+(95, 1, 'CCC Admin', 'inserted a new program', '2022-04-09 04:37:01 PM'),
+(96, 1, 'CCC Admin', 'verified the application of zxc zc', '2022-04-09 05:23:16 PM'),
+(97, 1, 'CCC Admin', 'inserted a new program', '2022-04-09 11:12:16 PM'),
+(98, 1, 'CCC Admin', 'changed the details of program: BSCS', '2022-04-09 11:20:01 PM'),
+(99, 1, 'CCC Admin', 'changed the details of program: BSA', '2022-04-09 11:20:06 PM'),
+(100, 1, 'CCC Admin', 'changed the details of program: BSAIS', '2022-04-09 11:20:11 PM'),
+(101, 1, 'CCC Admin', 'changed the details of program: BEED', '2022-04-09 11:20:17 PM'),
+(102, 1, 'CCC Admin', 'changed the details of program: BSEM', '2022-04-09 11:20:23 PM'),
+(103, 1, 'CCC Admin', 'changed the details of program: BSES', '2022-04-09 11:20:28 PM');
 
 -- --------------------------------------------------------
 
@@ -693,7 +763,8 @@ INSERT INTO `org_involvement` (`student_id`, `org1`, `pos1`, `nature1`, `yrs1`, 
 (41, '', '', '', '', '', '', '', '', '', '', '', ''),
 (42, '', '', '', '', '', '', '', '', '', '', '', ''),
 (43, '', '', '', '', '', '', '', '', '', '', '', ''),
-(44, '', '', '', '', '', '', '', '', '', '', '', '');
+(44, '', '', '', '', '', '', '', '', '', '', '', ''),
+(45, '', '', '', '', '', '', '', '', '', '', '', '');
 
 -- --------------------------------------------------------
 
@@ -757,7 +828,8 @@ INSERT INTO `personal_admiration` (`student_id`, `hobbies`, `reason_enroll`, `ch
 (41, 'dfgdf', 'dfgd', 'dfgdf', 'dfgdfg'),
 (42, 'qweq', 'qweqwe', 'qweqew', 'qweq'),
 (43, 'qweqwe', 'qweq', 'qweq', 'qeqeqw'),
-(44, 'rthrt', 'rtyrt', 'rtyrty', 'rtyr');
+(44, 'rthrt', 'rtyrt', 'rtyrty', 'rtyr'),
+(45, 'dfhfg', 'fgu', 'ftu', 'rtuy');
 
 -- --------------------------------------------------------
 
@@ -769,16 +841,24 @@ CREATE TABLE `programs` (
   `program_id` int(11) NOT NULL,
   `program_name` varchar(255) NOT NULL,
   `abbreviation` varchar(255) NOT NULL,
-  `max_no` int(11) NOT NULL
+  `required_gwa` int(11) NOT NULL,
+  `max_no` int(11) NOT NULL,
+  `type` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `programs`
 --
 
-INSERT INTO `programs` (`program_id`, `program_name`, `abbreviation`, `max_no`) VALUES
-(1, 'Bachelor of Science in Information Technology', 'BSIT', 40),
-(2, 'Bachelor of Science in Computer Science', 'BSCS', 10);
+INSERT INTO `programs` (`program_id`, `program_name`, `abbreviation`, `required_gwa`, `max_no`, `type`) VALUES
+(1, 'Bachelor of Science in Information Technology', 'BSIT', 85, 40, 'Non-board'),
+(2, 'Bachelor of Science in Computer Science', 'BSCS', 85, 10, 'Non-board'),
+(3, 'Bachelor of Science in Accountancy', 'BSA', 89, 50, 'Board'),
+(4, 'Bachelor of Science in Accounting Information System', 'BSAIS', 85, 70, 'Non-board'),
+(5, 'Bachelor of Elementary Education', 'BEED', 85, 60, 'Board'),
+(6, 'Bachelor of Secondary Education Major in English Language Education', 'BSEM', 87, 60, 'Board'),
+(7, 'Bachelor of Secondary Education Major in Science Education', 'BSES', 87, 70, 'Board'),
+(8, 'Bachelor of Science in Psychology', 'BSP', 85, 700, 'Non-board');
 
 -- --------------------------------------------------------
 
@@ -849,7 +929,8 @@ INSERT INTO `requirements` (`student_id`, `admit_type`, `g11card`, `g12card`, `t
 (41, 'Freshman', '2022-A-0036.pdf', '2022-A-0036.pdf', NULL, NULL, '2022-A-0036.pdf', '2022-A-0036.pdf', '2022-A-0036.pdf', '2022-A-0036.pdf', '2022-A-0036.jpg', ''),
 (42, 'Freshman', '2022-A-0037.pdf', '2022-A-0037.pdf', NULL, NULL, '2022-A-0037.pdf', '2022-A-0037.pdf', '2022-A-0037.pdf', '2022-A-0037.pdf', '2022-A-0037.jpg', '2022-A-0037.jpg'),
 (43, 'Freshman', '2022-A-0038.pdf', '2022-A-0038.pdf', NULL, NULL, '2022-A-0038.pdf', '2022-A-0038.pdf', '2022-A-0038.pdf', '2022-A-0038.pdf', '', ''),
-(44, 'Freshman', '2022-A-0039.pdf', '2022-A-0039.pdf', NULL, NULL, '2022-A-0039.pdf', '2022-A-0039.pdf', '2022-A-0039.pdf', '2022-A-0039.pdf', '2022-A-0039.jpg', '2022-A-0039.jpg');
+(44, 'Freshman', '2022-A-0039.pdf', '2022-A-0039.pdf', NULL, NULL, '2022-A-0039.pdf', '2022-A-0039.pdf', '2022-A-0039.pdf', '2022-A-0039.pdf', '2022-A-0039.jpg', '2022-A-0039.jpg'),
+(45, 'Freshman', '2022-A-0040.pdf', '2022-A-0040.pdf', NULL, NULL, '2022-A-0040.pdf', '2022-A-0040.pdf', '2022-A-0040.pdf', '2022-A-0040.pdf', '2022-A-0040.jpg', '2022-A-0040.jpg');
 
 -- --------------------------------------------------------
 
@@ -1015,7 +1096,9 @@ INSERT INTO `student_answers` (`answer_id`, `application_no`, `question_id`, `st
 (144, '2022-A-0034', 70, 'F'),
 (145, '2022-A-0034', 71, 'A'),
 (146, '2022-A-0034', 72, 'F'),
-(147, '2022-A-0034', 73, '');
+(147, '2022-A-0034', 73, ''),
+(148, '2022-A-0040', 54, 'I'),
+(154, '2022-A-0040', 73, '');
 
 -- --------------------------------------------------------
 
@@ -1058,7 +1141,8 @@ INSERT INTO `student_exam_log` (`log_id`, `application_no`, `student_name`, `tim
 (18, '2022-A-0032', 'Rics Guinanao', '12:36 AM', '12:39 AM', 'Taken', 0),
 (19, '2022-A-0033', 'Eren Yeager', '04:47 PM', '04:48 PM', 'Taken', 1),
 (20, '2022-A-0034', 'Rico Guinanao', '03:00 PM', '03:04 PM', 'Taken', 0),
-(21, '2022-A-0001', 'Ricos Guinanao', '06:12 PM', '', 'Taken', 0);
+(21, '2022-A-0001', 'Ricos Guinanao', '06:12 PM', '', 'Taken', 0),
+(22, '2022-A-0040', 'zxc zc', '05:24 PM', '05:27 PM', 'Taken', 10);
 
 -- --------------------------------------------------------
 
@@ -1153,7 +1237,8 @@ INSERT INTO `student_info` (`student_id`, `application_no`, `picture`, `first_na
 (41, '2022-A-0036', 'default_photo.png', 'gdfg', 'gdfgd', 'dfgdgd', '', 20, 'FGHNGFDGFDGFDG', '2001-06-20', 'sd', 'Male', 'Single', '', '', '', '', '', 'Freshman', 'ewrwr@gmail.co', '09319542169', 'BSCS', 'BSCS', 'Yes', '', 'Block 14 Lot 76 Majada In', 'Barangay 1', 'Calamba', '4027', 'Block 14 Lot 76 Majada In', 'Canlubang', 'Calamba', '4027', 'Recipient of 4Ps', '', 'Pending'),
 (42, '2022-A-0037', 'default_photo.png', 'qweqwe', 'qweqwe', 'qweqwe', 'Sr.', 18, 'Quezon', '2004-03-09', 'Catholic\'dfg', 'Male', 'Single', '', '', '', '', '', 'Freshman', 'qweq@wd.dsf', '09319542169', 'BSCS', 'BEED', 'Yes', '2022-03-02', 'Block 14 Lot 76 Majada In', 'Camaligan', 'Calamba', '4027', 'Block 14 Lot 76 Majada In', 'Camaligan', 'Calamba', '4027', 'Recipient of Student Financial Assistance', '', 'Pending'),
 (43, '2022-A-0038', 'default_photo.png', 'rter', 'ertgert', 'ertert', '', 18, 'Quezon', '2004-03-03', 'sd', 'Male', 'Single', '', '', '', '', '', 'Freshman', 'guinanaorico@gmail.comerte', '09319542169', 'BSCS', 'BSA', 'Yes', '2022-03-11', 'Block 14 Lot 76 Majada In', 'Camaligan', 'Calamba', '4027', 'Block 14 Lot 76 Majada In', 'Camaligan', 'Calamba', '4027', 'N/A', '', 'Pending'),
-(44, '2022-A-0039', 'default_photo.png', 'qeq', 'qweq', 'qweqw', '', 18, 'qeqw', '2004-03-09', 'sd', 'Male', 'Single', '', '', '', '', '', 'Freshman', 'estriborics@gmail.coeqw', '09251486985', 'BSEE', 'BSAIS', 'Yes', '2022-03-10', 'Calamba, Laguna', 'Canlubang', 'Calamba', '4027', 'Calamba, Laguna', 'Canlubang', 'Calamba', '4027', 'Working Student', '', 'Pending');
+(44, '2022-A-0039', 'default_photo.png', 'qeq', 'qweq', 'qweqw', '', 18, 'qeqw', '2004-03-09', 'sd', 'Male', 'Single', '', '', '', '', '', 'Freshman', 'estriborics@gmail.coeqw', '09251486985', 'BSEE', 'BSAIS', 'Yes', '2022-03-10', 'Calamba, Laguna', 'Canlubang', 'Calamba', '4027', 'Calamba, Laguna', 'Canlubang', 'Calamba', '4027', 'Working Student', '', 'Pending'),
+(45, '2022-A-0040', '1649496102_placeholder.png', 'zxc', 'zcx', 'zc', '', 18, 'Quezon', '2004-04-07', 'Catholic', 'Male', 'Single', '', '', '', '', '', 'Freshman', 'admin@ccc.edu.ph', '09319542169', 'BSA', 'BSCS', 'Yes', '2021-06-17', 'Block 14 Lot 76 Majada In', 'Banadero', 'Calamba', '4027', 'Block 14 Lot 76 Majada In', 'Banadero', 'Calamba', '4027', 'Recipient of 4Ps', 'Yes', 'Verified');
 
 --
 -- Indexes for dumped tables
@@ -1275,7 +1360,7 @@ ALTER TABLE `admin_info`
 -- AUTO_INCREMENT for table `admin_logs`
 --
 ALTER TABLE `admin_logs`
-  MODIFY `log_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=149;
+  MODIFY `log_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=190;
 
 --
 -- AUTO_INCREMENT for table `admission_status`
@@ -1299,19 +1384,19 @@ ALTER TABLE `answer_key`
 -- AUTO_INCREMENT for table `educ_bg`
 --
 ALTER TABLE `educ_bg`
-  MODIFY `student_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
+  MODIFY `student_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
 
 --
 -- AUTO_INCREMENT for table `exam_results`
 --
 ALTER TABLE `exam_results`
-  MODIFY `result_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `result_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- AUTO_INCREMENT for table `fam_bg`
 --
 ALTER TABLE `fam_bg`
-  MODIFY `student_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
+  MODIFY `student_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
 
 --
 -- AUTO_INCREMENT for table `feedbacks`
@@ -1323,49 +1408,49 @@ ALTER TABLE `feedbacks`
 -- AUTO_INCREMENT for table `notifications`
 --
 ALTER TABLE `notifications`
-  MODIFY `notif_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=78;
+  MODIFY `notif_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=104;
 
 --
 -- AUTO_INCREMENT for table `org_involvement`
 --
 ALTER TABLE `org_involvement`
-  MODIFY `student_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
+  MODIFY `student_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
 
 --
 -- AUTO_INCREMENT for table `personal_admiration`
 --
 ALTER TABLE `personal_admiration`
-  MODIFY `student_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
+  MODIFY `student_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
 
 --
 -- AUTO_INCREMENT for table `programs`
 --
 ALTER TABLE `programs`
-  MODIFY `program_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `program_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `requirements`
 --
 ALTER TABLE `requirements`
-  MODIFY `student_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
+  MODIFY `student_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
 
 --
 -- AUTO_INCREMENT for table `student_answers`
 --
 ALTER TABLE `student_answers`
-  MODIFY `answer_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=148;
+  MODIFY `answer_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=155;
 
 --
 -- AUTO_INCREMENT for table `student_exam_log`
 --
 ALTER TABLE `student_exam_log`
-  MODIFY `log_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `log_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- AUTO_INCREMENT for table `student_info`
 --
 ALTER TABLE `student_info`
-  MODIFY `student_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
+  MODIFY `student_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
