@@ -20,8 +20,9 @@ if(isset($_POST["btn-addProgram"])){
   $abbreviation=mysqli_real_escape_string($con, $_POST["abbr"]);
   $required_gwa=mysqli_real_escape_string($con, $_POST["required_gwa"]);
   $max_no=mysqli_real_escape_string($con, $_POST["max_no"]);
+  $program_type=mysqli_real_escape_string($con, $_POST["program-type"]);
 
-  $sql ="INSERT INTO `programs`(`program_name`, `abbreviation`, `required_gwa`, `max_no`) VALUES ('$program_name','$abbreviation', '$required_gwa', '$max_no')";
+  $sql ="INSERT INTO `programs`(`program_name`, `abbreviation`, `required_gwa`, `max_no`, `type`) VALUES ('$program_name','$abbreviation', '$required_gwa', '$max_no', '$program_type')";
   $con->query($sql) or die ($con->error);
 
   $sql="INSERT INTO `admin_logs`(`adminID`, `activity`, `date`, `time`) VALUES ($adminID,'You Added a New Program','$phdate','$phtime')";

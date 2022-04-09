@@ -31,15 +31,24 @@ echo '
                   <input type="text" name="abbr" value="'.$row['abbreviation'].'" id=abbr2 placeholder="Abbreviation" class="form-control" required>
               </div>
             </div>
-            <div class="row mt-5">
-                <div class="col-md-6 col-sm-12">
+            <div class="row mt-3">
+                <div class="col-md-4 col-sm-12">
                     <label for="required_gwa2" class="required">Required GWA:<i class="req">*</i></label>
                     <input type="number" name="required_gwa" value="'.$row['required_gwa'].'" id="required_gwa2" placeholder="Required Average" class="form-control" max="100" min="1" required>
                 </div>
-                <div class="col-md-6 col-sm-12">
+                <div class="col-md-4 col-sm-12">
                   <label for="max_no2" class="required">Maximum Number of Students:<i class="req">*</i></label>
                   <input type="number" name="max_no" value="'.$row['max_no'].'" id=max_no2 placeholder="Max no. of Students" class="form-control" min="1" required>
                 </div>
+                <div class="col-md-4 col-sm-12">
+                  <label for="program-type" class="required">Program Type:<i class="req">*</i></label>
+                  <select name="program-type" id="program-type" class="form-select" min="1" required>
+                      <option value="'.$row['type'].'">'.$row['type'].'</option>
+                      <option value="Board" class="others">Board</option>
+                      <option value="Non-board" class="others">Non-board</option>
+                  </select>
+                </div>
+                
             </div>
             <div class="row mt-5">
               <div class="text-center">
