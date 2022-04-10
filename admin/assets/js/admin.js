@@ -884,6 +884,7 @@ StopConsoleText()
 $(document).ready(function(){
   $('#dataa').load('queries/overview.php');
   $('#studDataa').load('queries/verification.php');
+  $('#line').load('queries/check-files.php');
   $('#result').load('queries/fetchResults.php');
   $('#activity').load('queries/logs.php');
   $('#feedback-drawer').load('queries/fetchFeedbacks.php');
@@ -894,6 +895,7 @@ $(document).ready(function(){
   $('#msg-body').load('queries/fetchNotifMsg.php');
   $('#stud-archives').load('queries/studentArchive.php');
   $('#result-archive').load('queries/resultArchive.php');
+  
   notif()
   notifMsg()
   setInterval(function(){
