@@ -173,6 +173,9 @@ if(isset($_SESSION['ID'])&&($_SESSION['email'])){
                                 <select class="form-select sort" id="sortresult" class="sort">
                                     <option value="" disabled selected>Sort By</option>
                                     <option class="others" value="student_name">Name</option>
+                                    <option class="others" value="1stprio">1st Priority</option>
+                                    <option class="others" value="2ndprio">2nd Priority</option>
+                                    <option class="others" value="final_program">Final Program</option>
                                     <option class="others" value="raw_score">Raw Score</option>
                                     <option class="others" value="scaled_score">Scaled Score</option>
                                     <option class="others" value="percentile_rank">Percentile Rank</option>
@@ -196,6 +199,9 @@ if(isset($_SESSION['ID'])&&($_SESSION['email'])){
                                 <th style="border: 1px solid gray" width=10% >Application #</th>
                                 <th style="border: 1px solid gray" width=5% >Photo</th>
                                 <th style="border: 1px solid gray" width=10% >Name</th>
+                                <th style="border: 1px solid gray" width=5% >1st Priority</th>
+                                <th style="border: 1px solid gray" width=5% >2nd Priority</th>
+                                <th style="border: 1px solid gray" width=5% >Final Program</th>
                                 <th style="border: 1px solid gray" width=5% >Raw Score</th>
                                 <th style="border: 1px solid gray" width=5% >Scaled Score</th>
                                 <th style="border: 1px solid gray" width=5% >Percentile Rank</th>

@@ -123,8 +123,7 @@ if(isset($_SESSION['appID'])){
                      <form action="" method="POST" id="testForm">
                         <input type='hidden' name='autoSubmit' id='autoSubmit'>
                             <div class='mb-3 text-center' data-aos="fade" data-aos-duration="1000">
-                                <h3 class='text-uppercase' id='title'>Otis-Lennon School Ability Test</h3>
-                                <text>by Arthur S. Otis and Roger T. Lennon</text>
+                                <h3 class='text-uppercase' id='title'>City College of Calamba Admission Test</h3>
                                 <hr>
                             </div>
                             <br>
