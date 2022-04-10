@@ -278,6 +278,9 @@ if(isset($_SESSION['ID'])&&($_SESSION['email'])){
                                                     <th style="border: 1px solid gray" width=10% >Application #</th>
                                                     <th style="border: 1px solid gray" width=5% >Photo</th>
                                                     <th style="border: 1px solid gray" width=10% >Name</th>
+                                                    <th style="border: 1px solid gray" width=5% >1st Priority</th>
+                                                    <th style="border: 1px solid gray" width=5% >2nd Priority</th>
+                                                    <th style="border: 1px solid gray" width=5% >Final Program</th>
                                                     <th style="border: 1px solid gray" width=5% >Raw Score</th>
                                                     <th style="border: 1px solid gray" width=5% >Scaled Score</th>
                                                     <th style="border: 1px solid gray" width=5% >Percentile Rank</th>

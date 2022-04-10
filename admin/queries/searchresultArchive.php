@@ -7,9 +7,9 @@ $year=date("Y");
 $output='';
 if(isset( $_POST['searchkey'])){
 $searchkey=$_POST['searchkey'];
-    $search=$con->query("SELECT exam_results.result_id, exam_results.application_no, student_info.picture, exam_results.student_name, exam_results.raw_score, exam_results.scaled_score, exam_results.percentile_rank, exam_results.stanine, exam_results.verbal_interpretation FROM `exam_results` INNER JOIN `student_info` ON exam_results.application_no=student_info.application_no WHERE exam_results.application_no NOT LIKE '%$year%' AND (exam_results.application_no  LIKE '%$searchkey%' OR exam_results.student_name LIKE '%$searchkey%' OR exam_results.raw_score LIKE '%$searchkey%' OR exam_results.scaled_score LIKE '%$searchkey%' OR exam_results.percentile_rank LIKE '%$searchkey%' OR exam_results.stanine LIKE '%$searchkey%' OR exam_results.verbal_interpretation LIKE '%$searchkey%')");
+    $search=$con->query("SELECT exam_results.result_id, exam_results.application_no, student_info.picture, exam_results.student_name, student_info.1stprio, student_info.2ndprio, exam_results.final_program, exam_results.raw_score, exam_results.scaled_score, exam_results.percentile_rank, exam_results.stanine, exam_results.verbal_interpretation FROM `exam_results` INNER JOIN `student_info` ON exam_results.application_no=student_info.application_no WHERE exam_results.application_no NOT LIKE '%$year%' AND (exam_results.application_no  LIKE '%$searchkey%' OR exam_results.student_name LIKE '%$searchkey%' OR exam_results.raw_score LIKE '%$searchkey%' OR exam_results.scaled_score LIKE '%$searchkey%' OR exam_results.percentile_rank LIKE '%$searchkey%' OR exam_results.stanine LIKE '%$searchkey%' OR exam_results.verbal_interpretation LIKE '%$searchkey%' OR exam_results.final_program LIKE '%$searchkey%')");
 }else{
-    $search=$con->prepare("SELECT * FROM `exam_results`");
+    $search=$con->prepare("SELECT * FROM `exam_results` INNER JOIN `student_info` ON exam_results.application_no=student_info.application_no WHERE exam_results.application_no");
 }
 if($search->num_rows!=0){
 $output="
@@ -18,6 +18,9 @@ $output="
             <th style='border: 1px solid gray' width=10% >Application #</th>
             <th style='border: 1px solid gray' width=5% >Photo</th>
             <th style='border: 1px solid gray' width=10% >Name</th>
+            <th style='border: 1px solid gray' width=5% >1st Priority</th>
+            <th style='border: 1px solid gray' width=5% >2nd Priority</th>
+            <th style='border: 1px solid gray' width=5% >Final Program</th>
             <th style='border: 1px solid gray' width=5% >Raw Score</th>
             <th style='border: 1px solid gray' width=5% >Scaled Score</th>
             <th style='border: 1px solid gray' width=5% >Percentile Rank</th>
@@ -40,6 +43,9 @@ while($row = $search->fetch_array()){
             </center>
         </td>
         <td style='border: 1px solid gray'>".$row['student_name']."</td>
+        <td style='border: 1px solid gray'>".$row['1stprio']."</td>
+        <td style='border: 1px solid gray'>".$row['2ndprio']."</td>
+        <td style='border: 1px solid gray'>".$row['final_program']."</td>
         <td style='border: 1px solid gray'>".$row['raw_score']."</td>
         <td style='border: 1px solid gray'>".$row['scaled_score']."</td>
         <td style='border: 1px solid gray'>".$row['percentile_rank']."</td>

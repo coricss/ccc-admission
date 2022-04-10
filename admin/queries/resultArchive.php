@@ -21,6 +21,9 @@ while($row = $resultsql->fetch_array()){
             </center>
         </td>
         <td style='border: 1px solid gray'>".$row['student_name']."</td>
+        <td style='border: 1px solid gray'>".$row['1stprio']."</td>
+        <td style='border: 1px solid gray'>".$row['2ndprio']."</td>
+        <td style='border: 1px solid gray'>".$row['final_program']."</td>
         <td style='border: 1px solid gray'>".$row['raw_score']."</td>
         <td style='border: 1px solid gray'>".$row['scaled_score']."</td>
         <td style='border: 1px solid gray'>".$row['percentile_rank']."</td>
