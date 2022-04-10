@@ -41,6 +41,9 @@ $result=$con->query($sql) or die ($con->error);
                     $path2="Grade12Cards";
                     $g1=$row['g11card'];
                     $g2=$row['g12card'];
+
+                    $c1="g11";
+                    $c2="g12";
                 }else{
                     $card1="Transcript of Record Page 1";
                     $card2="Transcript of Record Page 2";
@@ -48,6 +51,9 @@ $result=$con->query($sql) or die ($con->error);
                     $path2="TOR_Page2";
                     $g1=$row['torpg1'];
                     $g2=$row['torpg2'];
+
+                    $c1="torpg1";
+                    $c2="torpg2";
                 }
                 $output.="<tr>
                 <th scope=row>".$row['application_no']."</th>
@@ -79,10 +85,12 @@ $result=$con->query($sql) or die ($con->error);
                 <td style='text-align: center'>
                     <div style='text-align: left; margin-left: 10px; margin-right: 10px'>
                         <ul style='list-style: none; padding: 0; '>
-                            <li>
-                            
+                            <li class='d-flex align-items-center'>
+                                <input type='checkbox' name='provided-files' id='$c1-".$row['student_id']."' value='$card1' data-id='".$row['student_id']."' class='provided-files'>
+                                &nbsp;
                                 <a class='link-req' id='btn-req' data-bs-toggle='modal' data-bs-target='#card1-".$row['student_id']."' data-id='".$row['application_no']."'>
-                                    <i class='bx bxs-file' style='font-size: 10px'></i> <small>$card1</small>
+                                    <small>$card1</small>
+                                    <i class='bx bx-link-external' style='font-size: 15px'></i> 
                                 </a>
                             
                                 <div class='modal fade' id='card1-".$row['student_id']."' tabindex='-1' aria-labelledby='exampleModalLabel' aria-hidden='true'>
@@ -100,9 +108,12 @@ $result=$con->query($sql) or die ($con->error);
                                     </div>
                                 </div>
                             </li>
-                            <li>
+                            <li class='d-flex align-items-center'>
+                                <input type='checkbox' name='provided-files' id='$c2-".$row['student_id']."' value='$card2' data-id='".$row['student_id']."' class='provided-files'>
+                                &nbsp;
                                 <a class='link-req' id='btn-req' data-bs-toggle='modal' data-bs-target='#card2-".$row['student_id']."' data-id='".$row['application_no']."'>
-                                <i class='bx bxs-file' style='font-size: 10px'></i> <small>$card2</small>
+                                    <small>$card2</small>
+                                    <i class='bx bx-link-external' style='font-size: 15px'></i> 
                                 </a>
                                 
                                 <div class='modal fade' id='card2-".$row['student_id']."' tabindex='-1' aria-labelledby='exampleModalLabel' aria-hidden='true'>
@@ -121,11 +132,14 @@ $result=$con->query($sql) or die ($con->error);
                             </li>";
                     if($row['als_name']!=""){
                         $output.=
-                                "<li>
-                                    <a class='link-req' id='btn-req' data-bs-toggle='modal' data-bs-target='#als-".$row['student_id']."' data-id='".$row['application_no']."'>
-                                        <i class='bx bxs-file' style='font-size: 10px'></i> <small>ALS Certification</small>
+                                "<li class='d-flex align-items-center'>
+                                    <input type='checkbox' name='provided-files' id='als-".$row['student_id']."' value='ALS Certification' data-id='".$row['student_id']."' class='provided-files'>
+                                    &nbsp;
+                                    <a class='link-req' id='btn-req' data-bs-toggle='modal' data-bs-target='#als-cert-".$row['student_id']."' data-id='".$row['application_no']."'>
+                                        <small>ALS Certification</small>
+                                        <i class='bx bx-link-external' style='font-size: 15px'></i> 
                                     </a>
-                                    <div class='modal fade' id='als-".$row['student_id']."' tabindex='-1' aria-labelledby='exampleModalLabel' aria-hidden='true'>
+                                    <div class='modal fade' id='als-cert-".$row['student_id']."' tabindex='-1' aria-labelledby='exampleModalLabel' aria-hidden='true'>
                                         <div class='modal-dialog modal-dialog-centered modal-xl'>
                                             <div class='modal-content'>
                                                 <div class='modal-header'>
@@ -140,11 +154,14 @@ $result=$con->query($sql) or die ($con->error);
                                     </div>
                                 </li>";
                     }
-                        $output.="<li>
-                                <a class='link-req' id='btn-req' data-bs-toggle='modal' data-bs-target='#goodmoral-".$row['student_id']."' data-id='".$row['application_no']."'>
-                                <i class='bx bxs-file' style='font-size: 10px'></i> <small>Good Moral</small>
+                        $output.="<li class='d-flex align-items-center'>
+                                <input type='checkbox' name='provided-files' id='goodmoral-".$row['student_id']."' value='Good Moral' data-id='".$row['student_id']."' class='provided-files'>
+                                &nbsp;
+                                <a class='link-req' id='btn-req' data-bs-toggle='modal' data-bs-target='#goodmoralfile-".$row['student_id']."' data-id='".$row['application_no']."'>
+                                    <small>Good Moral</small>
+                                    <i class='bx bx-link-external' style='font-size: 15px'></i> 
                                 </a>
-                                <div class='modal fade' id='goodmoral-".$row['student_id']."' tabindex='-1' aria-labelledby='exampleModalLabel' aria-hidden='true'>
+                                <div class='modal fade' id='goodmoralfile-".$row['student_id']."' tabindex='-1' aria-labelledby='exampleModalLabel' aria-hidden='true'>
                                     <div class='modal-dialog modal-dialog-centered modal-xl'>
                                         <div class='modal-content'>
                                             <div class='modal-header'>
@@ -158,11 +175,14 @@ $result=$con->query($sql) or die ($con->error);
                                     </div>
                                 </div>
                             </li>
-                            <li>
-                                <a class='link-req' id='btn-req' data-bs-toggle='modal' data-bs-target='#birthcert-".$row['student_id']."' data-id='".$row['application_no']."'>
-                                <i class='bx bxs-file' style='font-size: 10px'></i> <small>Birth Certificate</small>
+                            <li class='d-flex align-items-center'>
+                                <input type='checkbox' name='provided-files' id='birthcert-".$row['student_id']."' value='Birth Certificate' data-id='".$row['student_id']."' class='provided-files'>
+                                &nbsp;
+                                <a class='link-req' id='btn-req' data-bs-toggle='modal' data-bs-target='#birthcertfile-".$row['student_id']."' data-id='".$row['application_no']."'>
+                                    <small>Birth Certificate</small>
+                                    <i class='bx bx-link-external' style='font-size: 15px'></i> 
                                 </a>
-                                <div class='modal fade' id='birthcert-".$row['student_id']."' tabindex='-1' aria-labelledby='exampleModalLabel' aria-hidden='true'>
+                                <div class='modal fade' id='birthcertfile-".$row['student_id']."' tabindex='-1' aria-labelledby='exampleModalLabel' aria-hidden='true'>
                                     <div class='modal-dialog modal-dialog-centered modal-xl'>
                                         <div class='modal-content'>
                                             <div class='modal-header'>
@@ -176,9 +196,12 @@ $result=$con->query($sql) or die ($con->error);
                                     </div>
                                 </div>
                             </li>
-                            <li>
+                            <li class='d-flex align-items-center'>
+                                <input type='checkbox' name='provided-files' id='cor-".$row['student_id']."' value='Certificate of Residency' data-id='".$row['student_id']."' class='provided-files'>
+                                &nbsp;
                                 <a class='link-req' id='btn-req' data-bs-toggle='modal' data-bs-target='#indigency-".$row['student_id']."' data-id='".$row['application_no']."'>
-                                <i class='bx bxs-file' style='font-size: 10px'></i> <small>Certificate of Residency</small>
+                                    <small>Certificate of Residency</small>
+                                    <i class='bx bx-link-external' style='font-size: 15px'></i> 
                                 </a>
                                 <div class='modal fade' id='indigency-".$row['student_id']."' tabindex='-1' aria-labelledby='exampleModalLabel' aria-hidden='true'>
                                     <div class='modal-dialog modal-dialog-centered modal-xl'>
@@ -194,11 +217,14 @@ $result=$con->query($sql) or die ($con->error);
                                     </div>
                                 </div>
                             </li>
-                            <li>
-                                <a class='link-req' id='btn-req' data-bs-toggle='modal' data-bs-target='#voters-".$row['student_id']."' data-id='".$row['application_no']."'>
-                                <i class='bx bxs-file' style='font-size: 10px'></i> <small>Voter's Certificate/Identification</small>
+                            <li class='d-flex align-items-center'>
+                                <input type='checkbox' name='provided-files' id='voters-".$row['student_id']."' value='Voters Certificate Identification' data-id='".$row['student_id']."' class='provided-files'>
+                                &nbsp;
+                                <a class='link-req' id='btn-req' data-bs-toggle='modal' data-bs-target='#voters-cert-".$row['student_id']."' data-id='".$row['application_no']."'>
+                                    <small>Voter's Certificate/Identification</small>
+                                    <i class='bx bx-link-external' style='font-size: 15px'></i> 
                                 </a>
-                                <div class='modal fade' id='voters-".$row['student_id']."' tabindex='-1' aria-labelledby='exampleModalLabel' aria-hidden='true'>
+                                <div class='modal fade' id='voters-cert-".$row['student_id']."' tabindex='-1' aria-labelledby='exampleModalLabel' aria-hidden='true'>
                                     <div class='modal-dialog modal-dialog-centered modal-xl'>
                                         <div class='modal-content'>
                                             <div class='modal-header'>
@@ -211,13 +237,15 @@ $result=$con->query($sql) or die ($con->error);
                                         </div>
                                     </div>
                                 </div>
-                            </li>
                             </li>";
                     if($row['vaxcard']!=""){
                         $output.=
-                            "<li>
+                            "<li class='d-flex align-items-center'>
+                                <input type='checkbox' name='provided-files' id='vax-".$row['student_id']."' value='Vaccination Card' data-id='".$row['student_id']."' class='provided-files'>
+                                &nbsp;
                                 <a class='link-req' id='btn-req' data-bs-toggle='modal' data-bs-target='#vaxcard-".$row['student_id']."' data-id='".$row['application_no']."'>
-                                    <i class='bx bxs-file' style='font-size: 10px'></i> <small>Vaccination Card</small>
+                                    <small>Vaccination Card</small>
+                                    <i class='bx bx-link-external' style='font-size: 15px'></i> 
                                 </a>
                                 <div class='modal fade' id='vaxcard-".$row['student_id']."' tabindex='-1' aria-labelledby='exampleModalLabel' aria-hidden='true'>
                                     <div class='modal-dialog modal-dialog-centered modal-xl'>
@@ -236,11 +264,14 @@ $result=$con->query($sql) or die ($con->error);
                     }
                     if($row['proof_of_group']!=""){
                         $output.=
-                                "<li>
-                                    <a class='link-req' id='btn-req' data-bs-toggle='modal' data-bs-target='#group-".$row['student_id']."' data-id='".$row['application_no']."'>
-                                        <i class='bx bxs-file' style='font-size: 10px'></i> <small>".$row['groups']."</small>
+                                "<li class='d-flex align-items-center'>
+                                    <input type='checkbox' name='provided-files' id='group-".$row['student_id']."' value='".$row['groups']."' data-id='".$row['student_id']."' class='provided-files'>
+                                    &nbsp;
+                                    <a class='link-req' id='btn-req' data-bs-toggle='modal' data-bs-target='#groupfile-".$row['student_id']."' data-id='".$row['application_no']."'>
+                                        <small>".$row['groups']."</small>
+                                        <i class='bx bx-link-external' style='font-size: 15px'></i> 
                                     </a>
-                                    <div class='modal fade' id='group-".$row['student_id']."' tabindex='-1' aria-labelledby='exampleModalLabel' aria-hidden='true'>
+                                    <div class='modal fade' id='groupfile-".$row['student_id']."' tabindex='-1' aria-labelledby='exampleModalLabel' aria-hidden='true'>
                                         <div class='modal-dialog modal-dialog-centered modal-xl'>
                                             <div class='modal-content'>
                                                 <div class='modal-header'>
@@ -287,3 +318,32 @@ $result=$con->query($sql) or die ($con->error);
             </script>
             ";
 ?>
+<script>
+    $('#line').load('queries/check-files.php');
+    $(".provided-files").click(function(){
+        
+        if($(this).is(':checked')==true){
+            var file = $(this).val();
+            var id = $(this).attr("data-id");
+            $.ajax({
+                url: "queries/providedFiles.php",
+                method: "post",
+                data: {file:file, id:id},
+                success:function(data){
+                }
+            })
+        }else{
+            var file = $(this).val();
+            var id = $(this).attr("data-id");
+
+            $.ajax({
+                url: "queries/removeprovidedFiles.php",
+                method: "post",
+                data: {file:file, id:id},
+                success:function(data){
+                }
+            })
+        }
+        
+    })
+</script>

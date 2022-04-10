@@ -6,10 +6,10 @@
      $year=date("Y");
      
      $overview=$con->query("SELECT * FROM `student_info` WHERE `application_no` LIKE '%$year%' ORDER BY `student_id` ASC");
-     $results=$con->query("SELECT * FROM `exam_results` WHERE `application_no` LIKE '%$year%' ORDER BY `student_name` ASC");
+     $results=$con->query("SELECT * FROM (`exam_results` INNER JOIN `student_info` ON exam_results.application_no=student_info.application_no) WHERE exam_results.application_no LIKE '%$year%' ORDER BY `student_name` ASC");
      $admin=$con->query("SELECT * FROM `admin_info` ORDER BY `admin_firstname` ASC");
      $studArchive=$con->query("SELECT * FROM `student_info` WHERE `application_no` NOT LIKE '%$year%' ORDER BY `student_id` ASC");
-     $resArchive=$con->query("SELECT * FROM `exam_results` WHERE `application_no` NOT LIKE '%$year%' ORDER BY `result_id` ASC");
+     $resArchive=$con->query("SELECT * FROM `exam_results` INNER JOIN `student_info` ON exam_results.application_no=student_info.application_no WHERE exam_results.application_no NOT LIKE '%$year%' ORDER BY exam_results.result_id ASC");
     //  $studArchive=$con->query("SELECT * FROM `student_info` ORDER BY `student_id` ASC");
      $programs= $con->query("SELECT * FROM `programs` ORDER BY `program_id`");
 
@@ -127,6 +127,9 @@
                    <tr>
                        <th class='table-header'>Application #</th>
                        <th class='table-header'>Name</th>
+                       <th class='table-header'>1st Priority</th>
+                       <th class='table-header'>2nd Priority</th>
+                       <th class='table-header'>Final Program</th>
                        <th class='table-header'>Raw Score</th>
                        <th class='table-header'>Scaled Score</th>
                        <th class='table-header'>Percentile</th>
@@ -146,6 +149,9 @@
                <tr>
                    <td style='background-color: $color'>".$row['application_no']."</td>
                    <td style='background-color: $color'>".$row['student_name']."</td>
+                   <td style='background-color: $color'>".$row['1stprio']."</td>
+                   <td style='background-color: $color'>".$row['2ndprio']."</td>
+                   <td style='background-color: $color'>".$row['final_program']."</td>
                    <td style='background-color: $color'>".$row['raw_score']."</td>
                    <td style='background-color: $color'>".$row['scaled_score']."</td>
                    <td style='background-color: $color'>".$row['percentile_rank']."</td>
@@ -324,6 +330,9 @@
                 <tr>
                     <th class='table-header'>Application #</th>
                     <th class='table-header'>Name</th>
+                    <th class='table-header'>1st Priority</th>
+                    <th class='table-header'>2nd Priority</th>
+                    <th class='table-header'>Final Program</th>
                     <th class='table-header'>Raw Score</th>
                     <th class='table-header'>Scaled Score</th>
                     <th class='table-header'>Percentile</th>
@@ -343,6 +352,9 @@
             <tr>
                 <td style='background-color: $color'>".$row['application_no']."</td>
                 <td style='background-color: $color'>".$row['student_name']."</td>
+                <td style='background-color: $color'>".$row['1stprio']."</td>
+                <td style='background-color: $color'>".$row['2ndprio']."</td>
+                <td style='background-color: $color'>".$row['final_program']."</td>
                 <td style='background-color: $color'>".$row['raw_score']."</td>
                 <td style='background-color: $color'>".$row['scaled_score']."</td>
                 <td style='background-color: $color'>".$row['percentile_rank']."</td>
@@ -381,7 +393,9 @@
                         <th class='table-header'>Program #</th>
                         <th class='table-header'>Program Name</th>
                         <th class='table-header'>Abbreviation</th>
+                        <th class='table-header'>Required GWA</th>
                         <th class='table-header'>Maximum number of students</th>
+                        <th class='table-header'>Program Type</th>
                     </tr>
             ";
             while($row = $programs->fetch_array()){
@@ -390,7 +404,9 @@
                     <td>".$row['program_id']."</td>
                     <td>".$row['program_name']."</td>
                     <td>".$row['abbreviation']."</td>
+                    <td>".$row['required_gwa']."</td>
                     <td>".$row['max_no']."</td>
+                    <td>".$row['type']."</td>
                 </tr>"; 
             }
             $output.='</table>';

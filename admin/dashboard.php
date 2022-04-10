@@ -163,6 +163,9 @@ else{
     <?php include('includes/navbar.php')?>
    
     <div class="main mt-5" id=main>
+        <div id="line">
+            
+        </div>
     <?php if(isset($_SESSION['message'])){?>
         <?php 
                echo $_SESSION['message'];
@@ -316,6 +319,5 @@ else{
             </section>
         <div>
     </div>
-
 </body>
 </html>
