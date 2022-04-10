@@ -15,6 +15,32 @@
         $appID=mysqli_real_escape_string($con, $_POST['appID']);
         $studname=mysqli_real_escape_string($con, $_POST['studname']);
         $email=mysqli_real_escape_string($con, $_POST['email']);
+
+            $sql_stud=$con->query("SELECT * FROM `student_info` WHERE `application_no`='$appID'");
+            $stud=$sql_stud->fetch_array();
+            
+            //NONBOARD
+
+            $sql_programsNB=$con->query("SELECT * FROM `programs` WHERE `type`='Non-board' ORDER BY RAND()");
+            $programsNB=$sql_programsNB->fetch_array();
+
+            $sql_1stprioNB=$con->query("SELECT * FROM `programs` INNER JOIN `student_info` ON programs.abbreviation=student_info.1stprio WHERE programs.type = 'Non-board' AND student_info.application_no='$appID'");
+            $NB_1stprio=$sql_1stprioNB->fetch_array();
+
+            $sql_2ndprioNB=$con->query("SELECT * FROM `programs` INNER JOIN `student_info` ON programs.abbreviation=student_info.2ndprio WHERE programs.type = 'Non-board' AND student_info.application_no='$appID'");
+            $NB_2ndprio=$sql_2ndprioNB->fetch_array();
+
+            //BOARD
+
+            $sql_programsB=$con->query("SELECT * FROM `programs` WHERE `type`='Board' ORDER BY RAND()");
+            $programsB=$sql_programsB->fetch_array();
+
+            $sql_1stprioB=$con->query("SELECT * FROM `programs` INNER JOIN `student_info` ON programs.abbreviation=student_info.1stprio WHERE programs.type = 'Board' AND student_info.application_no='$appID'");
+            $B_1stprio=$sql_1stprioB->fetch_array();
+
+            $sql_2ndprioB=$con->query("SELECT * FROM `programs` INNER JOIN `student_info` ON programs.abbreviation=student_info.2ndprio WHERE programs.type = 'Board' AND student_info.application_no='$appID'");
+            $B_2ndprio=$sql_2ndprioB->fetch_array();
+
             //COUNT RAW SCORE
             $scoresql=$con->query("SELECT * FROM `answer_key` INNER JOIN `student_answers` ON answer_key.correct_answer=student_answers.stud_answer WHERE student_answers.application_no='$appID' AND answer_key.question_id=student_answers.question_id");
             $rawscore=$scoresql->num_rows;
@@ -92,16 +118,18 @@
             }
             //STANINE TO VERBAL INTERPRETATION
             //total
-            if($stanine<=3){
-                $verbal='Below Average';
-                $color='red';
-            }else if($stanine<=6){
-                $verbal='Average';
-                $color='#ff6600';
-            }else{
-                $verbal='Above Average';
-                $color='limegreen';
-            }
+            // if($stanine<=3){
+            //     $verbal='Below Average';
+            //     $color='red';
+            // }else if($stanine<=6){
+            //     $verbal='Average';
+            //     $color='#ff6600';
+            // }else{
+            //     $verbal='Above Average';
+            //     $color='limegreen';
+            // }
+            $verbal='Above Average';
+            $color='limegreen';
             //nonverbal
             if($NVstanine<=3){
                 $NV='Below Average';
@@ -118,7 +146,112 @@
             }else{
                 $V='Above Average';
             }
-            //RECOMMENDED COURSES
+            //CHOICE
+            $sql_choice=$con->query("SELECT * FROM `student_info` WHERE `application_no`='$appID'");
+            $row=$sql_choice->fetch_array();
+            
+            $firstchoice=$row["1stprio"];
+            $secondchoice=$row["2ndprio"];
+
+            //MAX FIRSTCHOICE
+            $sql_first_choice1=$con->query("SELECT * FROM `programs`WHERE `abbreviation`='$firstchoice'");
+            $row1=$sql_first_choice1->fetch_array();
+            $max_no1=$row1["max_no"];
+
+             //COUNT FIRSTCHOICE
+            $sql_first_choice2=$con->query("SELECT * FROM `exam_results` INNER JOIN `programs` ON exam_results.final_program=programs.abbreviation WHERE exam_results.final_program='$firstchoice'");
+            $max_row1=$sql_first_choice2->num_rows;
+
+            //MAX SECONDCHOICE
+            $sql_second_choice1=$con->query("SELECT * FROM `programs`WHERE `abbreviation`='$secondchoice'");
+            $row2=$sql_second_choice1->fetch_array();
+            $max_no2=$row2["max_no"];
+        
+            //COUNT SECONDCHOICE
+            $sql_second_choice2=$con->query("SELECT * FROM `exam_results` INNER JOIN `programs` ON exam_results.final_program=programs.abbreviation WHERE exam_results.final_program='$secondchoice'");
+            $max_row2=$sql_second_choice2->num_rows;
+
+            if($max_no1>$max_row1){
+                $sql=$con->query("SELECT * FROM `programs` INNER JOIN `student_info` ON programs.abbreviation=student_info.1stprio WHERE student_info.application_no='$appID'");
+                $row=$sql->fetch_array();
+
+                if($verbal=="Average"){
+                    if($row["type"]=="Non-board"){
+                        $course=$row["1stprio"];
+                        $results=$con->query("INSERT INTO `exam_results`(`application_no`, `student_name`, `final_program`, `raw_score`, `scaled_score`, `percentile_rank`, `stanine`, `verbal_interpretation`) VALUES ('$appID','$studname', '$course', '$rawscore','$scaled','$percentile','$stanine','$verbal')");
+                    }else{
+                        $sql_random=$con->query("SELECT * FROM `programs` WHERE `type`='Non-board' ORDER BY RAND()");
+                        while($row=$sql_random->fetch_array()){
+                            $random_course=$row["abbreviation"];
+                            $max_number=$row["max_no"];
+                            $sql_max_no=$con->query("SELECT * FROM `exam_results` INNER JOIN `programs` ON exam_results.final_program=programs.abbreviation WHERE exam_results.final_program='$random_course'");
+                            $max=$sql_max_no->num_rows;
+                            if($max_number>$max){
+                                $course=$row["abbreviation"];
+                                $results=$con->query("INSERT INTO `exam_results`(`application_no`, `student_name`, `final_program`, `raw_score`, `scaled_score`, `percentile_rank`, `stanine`, `verbal_interpretation`) VALUES ('$appID','$studname', '$course', '$rawscore','$scaled','$percentile','$stanine','$verbal')");
+                                break;
+                            }
+                        }
+                    }
+                }else if($verbal=="Above Average"){
+                  
+                    $course=$row["1stprio"];
+                    $results=$con->query("INSERT INTO `exam_results`(`application_no`, `student_name`, `final_program`, `raw_score`, `scaled_score`, `percentile_rank`, `stanine`, `verbal_interpretation`) VALUES ('$appID','$studname', '$course', '$rawscore','$scaled','$percentile','$stanine','$verbal')");
+                    
+                }else{
+                    $course="Failed";
+                    $results=$con->query("INSERT INTO `exam_results`(`application_no`, `student_name`, `final_program`, `raw_score`, `scaled_score`, `percentile_rank`, `stanine`, `verbal_interpretation`) VALUES ('$appID','$studname', '$course', '$rawscore','$scaled','$percentile','$stanine','$verbal')");
+                }
+
+            }else if($max_no2>$max_row2){
+                $sql=$con->query("SELECT * FROM `programs` INNER JOIN `student_info` ON programs.abbreviation=student_info.2ndprio WHERE student_info.application_no='$appID'");
+
+                $row=$sql->fetch_array();
+
+                if($verbal=="Average"){
+                    if($row["type"]=="Non-board"){
+                        $course=$row["2ndprio"];
+                        $results=$con->query("INSERT INTO `exam_results`(`application_no`, `student_name`, `final_program`, `raw_score`, `scaled_score`, `percentile_rank`, `stanine`, `verbal_interpretation`) VALUES ('$appID','$studname', '$course', '$rawscore','$scaled','$percentile','$stanine','$verbal')");
+                    }else{
+                        $sql_random=$con->query("SELECT * FROM `programs` WHERE `type`='Non-board' ORDER BY RAND()");
+                        while($row=$sql_random->fetch_array()){
+                            $random_course=$row["abbreviation"];
+                            $max_number=$row["max_no"];
+                            $sql_max_no=$con->query("SELECT * FROM `exam_results` INNER JOIN `programs` ON exam_results.final_program=programs.abbreviation WHERE exam_results.final_program='$random_course'");
+                            $max=$sql_max_no->num_rows;
+                            if($max_number>$max){
+                                $course=$row["abbreviation"];
+                                $results=$con->query("INSERT INTO `exam_results`(`application_no`, `student_name`, `final_program`, `raw_score`, `scaled_score`, `percentile_rank`, `stanine`, `verbal_interpretation`) VALUES ('$appID','$studname', '$course', '$rawscore','$scaled','$percentile','$stanine','$verbal')");
+                                break;
+                            }
+                        }
+                    }
+                }else if($verbal=="Above Average"){
+                   
+                    $course=$row["2ndprio"];
+                    $results=$con->query("INSERT INTO `exam_results`(`application_no`, `student_name`, `final_program`, `raw_score`, `scaled_score`, `percentile_rank`, `stanine`, `verbal_interpretation`) VALUES ('$appID','$studname', '$course', '$rawscore','$scaled','$percentile','$stanine','$verbal')");
+                    
+                }else{
+                    $course="Failed";
+                    $results=$con->query("INSERT INTO `exam_results`(`application_no`, `student_name`, `final_program`, `raw_score`, `scaled_score`, `percentile_rank`, `stanine`, `verbal_interpretation`) VALUES ('$appID','$studname', '$course', '$rawscore','$scaled','$percentile','$stanine','$verbal')");
+                }
+            }else{
+                $sql_random=$con->query("SELECT * FROM `programs` ORDER BY RAND()");
+                while($row=$sql_random->fetch_array()){
+                    $random_course=$row["abbreviation"];
+                    $max_number=$row["max_no"];
+                    $sql_max_no=$con->query("SELECT * FROM `exam_results` INNER JOIN `programs` ON exam_results.final_program=programs.abbreviation WHERE exam_results.final_program='$random_course'");
+                    $max=$sql_max_no->num_rows;
+                    if($max_number>$max){
+                        $course=$row["abbreviation"];
+                        $results=$con->query("INSERT INTO `exam_results`(`application_no`, `student_name`, `final_program`, `raw_score`, `scaled_score`, `percentile_rank`, `stanine`, `verbal_interpretation`) VALUES ('$appID','$studname', '$course', '$rawscore','$scaled','$percentile','$stanine','$verbal')");
+                        break;
+                    }
+                }
+            }
+            // $results=$con->query("INSERT INTO `exam_results`(`application_no`, `student_name`, `final_program`, `raw_score`, `scaled_score`, `percentile_rank`, `stanine`, `verbal_interpretation`) VALUES ('$appID','$studname', '$course', '$rawscore','$scaled','$percentile','$stanine','$verbal')");
+            
+            //RECOMMENDATION
             if($verbal=='Average'){
                 $bscs='Yes';
                 $bsit='Yes';
@@ -130,12 +263,12 @@
                 <div class='row'>
                     <div class='col-md-6 col-sm-12'>
                         <p style='margin-left: 10px'>BS in Information Technology</p>
-                    </div>
-                    <div class='col-md-6 col-sm-12'>
                         <p style='margin-left: 10px'>BS in Computer Science</p>
                     </div>
-                </div>
-                ";
+                    <div class='col-md-6 col-sm-12'>
+                        <p style='margin-left: 10px'>BS in Accounting Information Systems</p>
+                    </div>
+                </div>";
             }else if($verbal=='Above Average'){
                 $bscs='Yes';
                 $bsit='Yes';
@@ -157,7 +290,6 @@
                     </div>
                 </div>
                 ";
-               
             }else{
                 $bscs='No';
                 $bsit='No';
@@ -169,92 +301,223 @@
                 <p style='margin-left: 10px; color: red'>Sorry. You've failed the admission test.</p>
                 ";
             }
+            //RECOMMENDED COURSES
+            // if($verbal=='Average'){
+               
+            //     if($first_prioNB=$sql_1stprioNB->num_rows!=0){
+            //         $course1NB=$NB_1stprio["1stprio"];
+                   
+            //         $sql_max_no=$con->query("SELECT * FROM `exam_results` INNER JOIN `programs` ON exam_results.final_program=programs.abbreviation WHERE exam_results.final_program='$course1NB'");
+            //         $max=$sql_max_no->num_rows;
 
-            $results=$con->query("INSERT INTO `exam_results`(`application_no`, `student_name`, `raw_score`, `scaled_score`, `percentile_rank`, `stanine`, `verbal_interpretation`) VALUES ('$appID','$studname','$rawscore','$scaled','$percentile','$stanine','$verbal')");
+            //         if($NB_1stprio["max_no"]>$max){
+            //             $course=$NB_1stprio["1stprio"];
+            //             $results=$con->query("INSERT INTO `exam_results`(`application_no`, `student_name`, `final_program`, `raw_score`, `scaled_score`, `percentile_rank`, `stanine`, `verbal_interpretation`) VALUES ('$appID','$studname', '$course', '$rawscore','$scaled','$percentile','$stanine','$verbal')");
+            //         }else{
+            //             $course2NB=$NB_2ndprio["2ndprio"];
+            //             $sql_max_no=$con->query("SELECT * FROM `exam_results` INNER JOIN `programs` ON exam_results.final_program=programs.abbreviation WHERE exam_results.final_program='$course2NB'");
+            //             $max=$sql_max_no->num_rows;
+                        
+            //             if($NB_2ndprio["max_no"]>$max){
+            //                 $course=$NB_2ndprio["2ndprio"];
+            //                 $results=$con->query("INSERT INTO `exam_results`(`application_no`, `student_name`, `final_program`, `raw_score`, `scaled_score`, `percentile_rank`, `stanine`, `verbal_interpretation`) VALUES ('$appID','$studname', '$course', '$rawscore','$scaled','$percentile','$stanine','$verbal')");
+            //             }else{
+            //                 $sql_programsNB2=$con->query("SELECT * FROM `programs` WHERE `type`='Non-board' ORDER BY RAND()");
+            //                 while($row=$sql_programsNB2->fetch_array()){
+            //                     $courseNB=$row["abbreviation"];
+            //                     $max_number=$row["max_no"];
 
+            //                     $sql_max_no=$con->query("SELECT * FROM `exam_results` INNER JOIN `programs` ON exam_results.final_program=programs.abbreviation WHERE exam_results.final_program='$courseNB'");
+            //                     $max=$sql_max_no->num_rows;
+
+            //                     if($max_number>$max){
+            //                         $course=$row["abbreviation"];
+            //                         $results=$con->query("INSERT INTO `exam_results`(`application_no`, `student_name`, `final_program`, `raw_score`, `scaled_score`, `percentile_rank`, `stanine`, `verbal_interpretation`) VALUES ('$appID','$studname', '$course', '$rawscore','$scaled','$percentile','$stanine','$verbal')");
+            //                         break;
+            //                     }
+            //                 }
+            //             }
+            //         }
+            //     }else if($second_prioNB=$sql_2ndprioNB->num_rows!=0){
+            //         $course2NB=$NB_2ndprio["2ndprio"];
+            //         $sql_max_no=$con->query("SELECT * FROM `exam_results` INNER JOIN `programs` ON exam_results.final_program=programs.abbreviation WHERE exam_results.final_program='$course2NB'");
+            //         $max=$sql_max->num_rows;
+
+            //         if($NB_2ndprio["max_no"]>$max){
+            //             $course=$NB_2ndprio["2ndprio"];
+            //             $results=$con->query("INSERT INTO `exam_results`(`application_no`, `student_name`, `final_program`, `raw_score`, `scaled_score`, `percentile_rank`, `stanine`, `verbal_interpretation`) VALUES ('$appID','$studname', '$course', '$rawscore','$scaled','$percentile','$stanine','$verbal')");
+            //         }
+            //     }else{
+            //         $sql_programsNB2=$con->query("SELECT * FROM `programs` WHERE `type`='Non-board' ORDER BY RAND()");
+
+            //         while($row=$sql_programsNB2->fetch_array()){
+            //             $courseNB=$row["abbreviation"];
+            //             $max_number=$row["max_no"];
+
+            //             $sql_max_no=$con->query("SELECT * FROM `exam_results` INNER JOIN `programs` ON exam_results.final_program=programs.abbreviation WHERE exam_results.final_program='$courseNB'");
+            //             $max=$sql_max->num_rows;
+
+            //             if($max<=$row["max_no"]){
+            //                 $course=$row["abbreviation"];
+            //                 $results=$con->query("INSERT INTO `exam_results`(`application_no`, `student_name`, `final_program`, `raw_score`, `scaled_score`, `percentile_rank`, `stanine`, `verbal_interpretation`) VALUES ('$appID','$studname', '$course', '$rawscore','$scaled','$percentile','$stanine','$verbal')");
+            //             }else{
+            //                 $course="None";
+            //                 $results=$con->query("INSERT INTO `exam_results`(`application_no`, `student_name`, `final_program`, `raw_score`, `scaled_score`, `percentile_rank`, `stanine`, `verbal_interpretation`) VALUES ('$appID','$studname', '$course', '$rawscore','$scaled','$percentile','$stanine','$verbal')");
+            //             }
+            //         }
+                  
+                    
+            //     }
+
+            //     $bscs='Yes';
+            //     $bsit='Yes';
+            //     $bsa='No';
+            //     $bsais='No';
+            //     $beed='No';
+            //     $bsed='No';
+            //     $recommended="
+            //     <div class='row'>
+            //         <div class='col-md-6 col-sm-12'>
+            //             <p style='margin-left: 10px'>BS in Information Technology</p>
+            //             <p style='margin-left: 10px'>BS in Computer Science</p>
+            //         </div>
+            //         <div class='col-md-6 col-sm-12'>
+            //             <p style='margin-left: 10px'>BS in Accounting Information Systems</p>
+            //         </div>
+            //     </div>
+            //     ";
+            // }else if($verbal=='Above Average'){
+
+            //     if($first_prioB=$sql_1stprioB->num_rows!=0){
+            //         $course=$B_1stprio["1stprio"];
+            //         $results=$con->query("INSERT INTO `exam_results`(`application_no`, `student_name`, `final_program`, `raw_score`, `scaled_score`, `percentile_rank`, `stanine`, `verbal_interpretation`) VALUES ('$appID','$studname', '$course', '$rawscore','$scaled','$percentile','$stanine','$verbal')");
+            //     }else if($second_prioB=$sql_2ndprioB->num_rows!=0){
+            //         $course=$B_2ndprio["2ndprio"];
+            //         $results=$con->query("INSERT INTO `exam_results`(`application_no`, `student_name`, `final_program`, `raw_score`, `scaled_score`, `percentile_rank`, `stanine`, `verbal_interpretation`) VALUES ('$appID','$studname', '$course', '$rawscore','$scaled','$percentile','$stanine','$verbal')");
+            //     }else{
+            //         $course=$programsB["abbreviation"];
+            //         $results=$con->query("INSERT INTO `exam_results`(`application_no`, `student_name`, `final_program`, `raw_score`, `scaled_score`, `percentile_rank`, `stanine`, `verbal_interpretation`) VALUES ('$appID','$studname', '$course', '$rawscore','$scaled','$percentile','$stanine','$verbal')");
+            //     }
+
+            //     $bscs='Yes';
+            //     $bsit='Yes';
+            //     $bsa='Yes';
+            //     $bsais='Yes';
+            //     $beed='Yes';
+            //     $bsed='Yes';
+            //     $recommended="
+            //     <div class='row'>
+            //         <div class='col-md-6 col-sm-12'>
+            //             <p style='margin-left: 10px'>BS in Accountancy</p>
+            //             <p style='margin-left: 10px'>BS in Accounting Information Systems</p>
+            //             <p style='margin-left: 10px'>BS in Information Technology</p>
+            //         </div>
+            //         <div class='col-md-6 col-sm-12'>
+            //             <p style='margin-left: 10px'>BS in Computer Science</p>
+            //             <p style='margin-left: 10px'>Bachelor of Elementary Education</p>
+            //             <p style='margin-left: 10px'>Bachelor of Secondary Education</p>
+            //         </div>
+            //     </div>
+            //     ";
+               
+            // }else{
+            //     $course="Failed";
+            //     $bscs='No';
+            //     $bsit='No';
+            //     $bsa='No';
+            //     $bsais='No';
+            //     $beed='No';
+            //     $bsed='No';
+            //     $recommended="
+            //     <p style='margin-left: 10px; color: red'>Sorry. You've failed the admission test.</p>
+            //     ";
+            // }
+
+          
+        //     <table class='table table-responsive table-bordered text-center' id='test-results'>
+        //     <thead class='table-dark'>
+        //         <th>SUBTESTS</th>
+        //         <th># OF ITEMS</th>
+        //         <th>RAW SCORE</th>
+        //         <th>SCALED SCORE</th>
+        //         <th>PERCENTILE RANK</th>
+        //         <th>STANINE</th>
+        //         <th>VERBAL INTREPRETATION</th>
+        //     </thead>
+        //     <tbody>
+        //         <tr>
+        //             <td><b>Total Verbal</b></td>
+        //             <td><b>36</b></td>
+        //             <td>$verbaltotal</td>
+        //             <td>$Vscale</td>
+        //             <td>$Vpercentile</td>
+        //             <td>$Vstanine</td>
+        //             <td>$V</td>
+        //         </tr>
+        //         <tr>
+        //             <td>Verbal Comprehension</td>
+        //             <td>12</td>
+        //             <td>$VCscore</td>
+        //             <td>-</td>
+        //             <td>-</td>
+        //             <td>-</td>
+        //             <td>-</td>
+        //         </tr>
+        //         <tr>
+        //             <td>Verbal Reasoning</td>
+        //             <td>24</td>
+        //             <td>$VRscore</td>
+        //             <td>-</td>
+        //             <td>-</td>
+        //             <td>-</td>
+        //             <td>-</td>
+        //         </tr>
+        //         <tr>
+        //             <td><b>Total Non-Verbal</b></td>
+        //             <td><b>36</b></td>
+        //             <td>$nonverbaltotal</td>
+        //             <td>$NVscale</td>
+        //             <td>$NVpercentile</td>
+        //             <td>$NVstanine</td>
+        //             <td>$NV</td>
+        //         </tr>
+        //         <tr>
+        //             <td>Figural Reasoning</td>
+        //             <td>18</td>
+        //             <td>$figuralscore</td>
+        //             <td>-</td>
+        //             <td>-</td>
+        //             <td>-</td>
+        //             <td>-</td>
+        //         </tr>
+        //         <tr>
+        //             <td>Quantitative Reasoning</td>
+        //             <td>18</td>
+        //             <td>$quantitativescore</td>
+        //             <td>-</td>
+        //             <td>-</td>
+        //             <td>-</td>
+        //             <td>-</td>
+        //         </tr>
+        //         <tr class='table-dark'>
+        //             <td><b>TOTAL</b></td>
+        //             <td><b>72</b></td>
+        //             <td>$rawscore</td>
+        //             <td>$scaled</td>
+        //             <td>$percentile</td>
+        //             <td>$stanine</td>
+        //             <td><b class='text-uppercase' style='color: $color'>$verbal</b></td>
+        //         </tr>
+        //     </tbody>
+        // </table>
             echo "
-                        <div class='row mt-5 tbl-results'>
-                            <table class='table table-responsive table-bordered text-center' id='test-results'>
-                                <thead class='table-dark'>
-                                    <th>SUBTESTS</th>
-                                    <th># OF ITEMS</th>
-                                    <th>RAW SCORE</th>
-                                    <th>SCALED SCORE</th>
-                                    <th>PERCENTILE RANK</th>
-                                    <th>STANINE</th>
-                                    <th>VERBAL INTREPRETATION</th>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td><b>Total Verbal</b></td>
-                                        <td><b>36</b></td>
-                                        <td>$verbaltotal</td>
-                                        <td>$Vscale</td>
-                                        <td>$Vpercentile</td>
-                                        <td>$Vstanine</td>
-                                        <td>$V</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Verbal Comprehension</td>
-                                        <td>12</td>
-                                        <td>$VCscore</td>
-                                        <td>-</td>
-                                        <td>-</td>
-                                        <td>-</td>
-                                        <td>-</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Verbal Reasoning</td>
-                                        <td>24</td>
-                                        <td>$VRscore</td>
-                                        <td>-</td>
-                                        <td>-</td>
-                                        <td>-</td>
-                                        <td>-</td>
-                                    </tr>
-                                    <tr>
-                                        <td><b>Total Non-Verbal</b></td>
-                                        <td><b>36</b></td>
-                                        <td>$nonverbaltotal</td>
-                                        <td>$NVscale</td>
-                                        <td>$NVpercentile</td>
-                                        <td>$NVstanine</td>
-                                        <td>$NV</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Figural Reasoning</td>
-                                        <td>18</td>
-                                        <td>$figuralscore</td>
-                                        <td>-</td>
-                                        <td>-</td>
-                                        <td>-</td>
-                                        <td>-</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Quantitative Reasoning</td>
-                                        <td>18</td>
-                                        <td>$quantitativescore</td>
-                                        <td>-</td>
-                                        <td>-</td>
-                                        <td>-</td>
-                                        <td>-</td>
-                                    </tr>
-                                    <tr class='table-dark'>
-                                        <td><b>TOTAL</b></td>
-                                        <td><b>72</b></td>
-                                        <td>$rawscore</td>
-                                        <td>$scaled</td>
-                                        <td>$percentile</td>
-                                        <td>$stanine</td>
-                                        <td><b class='text-uppercase' style='color: $color'>$verbal</b></td>
-                                    </tr>
-                                </tbody>
-                            </table>
+                        <div class='row tbl-results'>
+                            
                         </div>
                         <div class='row info-test mt-3' style='border-style: solid; border-width: 1px; border-radius: 10px; padding: 10px'>
                             <div class='col-md-6 col-sm-12'>
                                 <p><h6 class='text-center'>TEST DESCRIPTION</h6></p>
-                                <p style='text-align: justify'>The <b>Otis-Lennon School Ability Test</b> is designed to measure abstract thinking and reasoning ability that are relevant to school achievement. OLSAT is based on the notion that to learn new things, student must be able to perceive accurately, to recognize and recall what has been perceived, to think logically, to understand relationships, to abstract form a set of particulars, and to apply generalizations to new and different contexts.</p>
+                                <p style='text-align: justify'>The <b>City College of Calamba Admission Test</b> is designed to measure abstract thinking and reasoning ability that are relevant to school achievement. This is based on the notion that to learn new things, student must be able to perceive accurately, to recognize and recall what has been perceived, to think logically, to understand relationships, to abstract form a set of particulars, and to apply generalizations to new and different contexts.</p>
                                 <p style='text-align: justify'><b>Verbal Comprehension</b> is dependent on the ability to perceive the relational aspects of words and word combinations, to derive meaning from types of words, to understand subtle differences among similar words and phrases, and to manipulate words to produce meaning.</p>
                                 <p style='text-align: justify'><b>Verbal Reasoning</b> is dependent on the ability to infer relationships among words, to apply inferences to new situations, to evaluate conditions in order to determine necessary versus optional, and to perceive similarities and differences.</p>
                                 <p style='text-align: justify'><b>Figural Reasoning</b> items assess the ability to use geometric figures to infer relationships; to perceive progressions and predict what would be the next step in those progressions; to generalize form one set of figures to another, dissimilar set of figures; and to manipulate spatially.</p>
@@ -329,137 +592,137 @@
              ->flatten()
              ->saveAs('../../test results/files/'.$filename);
 
-             $student=stripslashes($studname);
-             $mail = new PHPMailer(true);
-             try {
-                // $mail->SMTPDebug = 4; 
-                $mail->isSMTP(); 
-                $mail->Host       = 'smtp.gmail.com';
-                $mail->SMTPAuth   = true;
-                $mail->Username   = 'cccadmissionProject2021@gmail.com';
-                $mail->Password   = 'ccc_admission2021-2022'; 
-                $mail->SMTPSecure = 'tls';
-                $mail->Port       = 587;
-                $mail->setFrom('ccc.gtdc@gmail.com', 'CCC Guidance, Counseling, Testing and Career Development Office');
-                $mail->addAddress($email, $student);
-                $mail->addAttachment('../../test results/files/'.$filename, $filename);
-                $mail->isHTML(true);
+//              $student=stripslashes($studname);
+//              $mail = new PHPMailer(true);
+//              try {
+//                 // $mail->SMTPDebug = 4; 
+//                 $mail->isSMTP(); 
+//                 $mail->Host       = 'smtp.gmail.com';
+//                 $mail->SMTPAuth   = true;
+//                 $mail->Username   = 'cccadmissionProject2021@gmail.com';
+//                 $mail->Password   = 'ccc_admission2021-2022'; 
+//                 $mail->SMTPSecure = 'tls';
+//                 $mail->Port       = 587;
+//                 $mail->setFrom('ccc.gtdc@gmail.com', 'CCC Guidance, Counseling, Testing and Career Development Office');
+//                 $mail->addAddress($email, $student);
+//                 $mail->addAttachment('../../test results/files/'.$filename, $filename);
+//                 $mail->isHTML(true);
 
-                $mail->Subject =  "City College of Calamba Admission Test Result";
-                $mail->Body    =  
-    "
-    <!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.0 Strict//EN' 'http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd'>
-<html>
+//                 $mail->Subject =  "City College of Calamba Admission Test Result";
+//                 $mail->Body    =  
+//     "
+//     <!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.0 Strict//EN' 'http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd'>
+// <html>
 
-<head>
-    <meta http-equiv='Content-Type' content='text/html; charset=utf-8'/>
-    <meta name='viewport' content='width=device-width, initial-scale=1.0' />
-    <title>City College of Calamba</title>
-    <style>
-        /* A simple css reset */
-        body,table,thead,tbody,tr,td,img {
-            padding: 0;
-            margin: 0;
-            border: none;
-            border-spacing: 0px;
-            border-collapse: collapse;
-            vertical-align: top;
-        }
+// <head>
+//     <meta http-equiv='Content-Type' content='text/html; charset=utf-8'/>
+//     <meta name='viewport' content='width=device-width, initial-scale=1.0' />
+//     <title>City College of Calamba</title>
+//     <style>
+//         /* A simple css reset */
+//         body,table,thead,tbody,tr,td,img {
+//             padding: 0;
+//             margin: 0;
+//             border: none;
+//             border-spacing: 0px;
+//             border-collapse: collapse;
+//             vertical-align: top;
+//         }
 
-        /* Add some padding for small screens */
-        .wrapper {
-            padding-left: 10px;
-            padding-right: 10px;
-        }
+//         /* Add some padding for small screens */
+//         .wrapper {
+//             padding-left: 10px;
+//             padding-right: 10px;
+//         }
 
-        h1,h2,h3,h4,h5,h6,p {
-            margin: 0;
-            padding: 0;
-            padding-bottom: 20px;
-            line-height: 1.6;
-            font-family: 'Helvetica', 'Arial', sans-serif;
-        }
+//         h1,h2,h3,h4,h5,h6,p {
+//             margin: 0;
+//             padding: 0;
+//             padding-bottom: 20px;
+//             line-height: 1.6;
+//             font-family: 'Helvetica', 'Arial', sans-serif;
+//         }
 
-        p,a,li {
-            font-family: 'Helvetica', 'Arial', sans-serif;
-        }
+//         p,a,li {
+//             font-family: 'Helvetica', 'Arial', sans-serif;
+//         }
 
-        img {
-            width: 100%;
-            display: block;
-        }
+//         img {
+//             width: 100%;
+//             display: block;
+//         }
 
-        @media only screen and (max-width: 620px) {
+//         @media only screen and (max-width: 620px) {
 
-            .wrapper .section {
-                width: 100%;
-            }
+//             .wrapper .section {
+//                 width: 100%;
+//             }
 
-            .wrapper .column {
-                width: 100%;
-                display: block;
-            }
-        }
-    </style>
-</head>
+//             .wrapper .column {
+//                 width: 100%;
+//                 display: block;
+//             }
+//         }
+//     </style>
+// </head>
 
-<body>
-    <table width=100%>
-        <tbody>
-            <tr>
-                <td class='wrapper' width='600' align='center'>
-                    <!-- Header image -->
-                    <table class='section header' cellpadding='0' cellspacing='0' width='800'>
-                        <tr>
-                            <td class='column'>
-                                <table>
-                                    <tbody>
-                                        <tr>
-                                            <td align='left'>
-                                            <img src='https://i.ibb.co/3yZ0r3G/cccheader.png' alt='cccheader' border='0'>
-                                            <center>
-                                            <a href='https://ccc.edu.ph'><img src='https://i.ibb.co/ym2jbKn/ccc.png' alt='ccc' border='0' style='width: 100px'></a>
-                                            </center>
-                                            <br><br><br>
-                                            <h5>Application number: $appID</h5><br><br>
-                                                <h3>Hello $student,</h3>
+// <body>
+//     <table width=100%>
+//         <tbody>
+//             <tr>
+//                 <td class='wrapper' width='600' align='center'>
+//                     <!-- Header image -->
+//                     <table class='section header' cellpadding='0' cellspacing='0' width='800'>
+//                         <tr>
+//                             <td class='column'>
+//                                 <table>
+//                                     <tbody>
+//                                         <tr>
+//                                             <td align='left'>
+//                                             <img src='https://i.ibb.co/3yZ0r3G/cccheader.png' alt='cccheader' border='0'>
+//                                             <center>
+//                                             <a href='https://ccc.edu.ph'><img src='https://i.ibb.co/ym2jbKn/ccc.png' alt='ccc' border='0' style='width: 100px'></a>
+//                                             </center>
+//                                             <br><br><br>
+//                                             <h5>Application number: $appID</h5><br><br>
+//                                                 <h3>Hello $student,</h3>
                                                 
-                                                <p style='text-align:justify;'>
-                                                Please check the copy of your test result attached in this email.</p>
-                                                <br>
-                                                <p style='text-align:justify;'>For more questions and inquiry please message us on our Facebook page <a href='https://www.facebook.com/CCCGTCDC' style='color: blue' target='_blank'>CCC Guidance, Counseling, Testing and Career Dev't Office</a>.
-                                                </p>
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                            <br><br><br><br><br><br><br><br><br><br>
-                            <img src='https://i.ibb.co/gSjXRwr/cccfooter2.png' alt='cccfooter2' border='0'>
-                            </td>
-                        </tr>
-                    </table>
-                    <!-- Two columns -->
-                </td>
-            </tr>
-        </tbody>
-    </table>
+//                                                 <p style='text-align:justify;'>
+//                                                 Please check the copy of your test result attached in this email.</p>
+//                                                 <br>
+//                                                 <p style='text-align:justify;'>For more questions and inquiry please message us on our Facebook page <a href='https://www.facebook.com/CCCGTCDC' style='color: blue' target='_blank'>CCC Guidance, Counseling, Testing and Career Dev't Office</a>.
+//                                                 </p>
+//                                             </td>
+//                                         </tr>
+//                                     </tbody>
+//                                 </table>
+//                             </td>
+//                         </tr>
+//                         <tr>
+//                             <td>
+//                             <br><br><br><br><br><br><br><br><br><br>
+//                             <img src='https://i.ibb.co/gSjXRwr/cccfooter2.png' alt='cccfooter2' border='0'>
+//                             </td>
+//                         </tr>
+//                     </table>
+//                     <!-- Two columns -->
+//                 </td>
+//             </tr>
+//         </tbody>
+//     </table>
     
     
-</body>
-</html>
-    ";
-    $mail->send();
-             }catch(Exception $e){
-                echo "<script>
-                Swal.fire({
-                    title: 'Email not sent'
-                })
-                </script>";
-             }
+// </body>
+// </html>
+//     ";
+//     $mail->send();
+//              }catch(Exception $e){
+//                 echo "<script>
+//                 Swal.fire({
+//                     title: 'Email not sent'
+//                 })
+//                 </script>";
+//              }
 
     }
 
