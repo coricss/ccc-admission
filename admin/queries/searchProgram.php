@@ -14,8 +14,9 @@
               <th style='border: 1px solid gray' width='10%'>Program #</th>
               <th style='border: 1px solid gray' width='20%'>Program Name</th>
               <th style='border: 1px solid gray' width='10%'>Abbreviation</th>
-              <th style='border: 1px solid gray' width='10%'>Required GWA</th>
+              <th style='border: 1px solid gray' width='5%'>Required GWA</th>
               <th style='border: 1px solid gray' width='10%'>Maximum number of students</th>
+              <th style='border: 1px solid gray' width='5%'>Program Type</th>
               <th style='border: 1px solid gray' width='10%'>Action</th>
             </thead>
         <tbody>
@@ -28,6 +29,7 @@
               <td style='border: 1px solid gray'>".$row['abbreviation']."</a></td>
               <td style='border: 1px solid gray'>".$row['required_gwa']."</td>
               <td style='border: 1px solid gray'>".$row['max_no']."</td>
+              <td style='border: 1px solid gray'>".$row['type']."</td>
               <td style='border: 1px solid gray' class='actions'>
                 <button class='btn btn-success mb-1'>
                   <i class='bx bxs-pencil fs-5' ></i>

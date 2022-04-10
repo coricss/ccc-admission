@@ -1132,6 +1132,9 @@ div.ccc{
   div#container-program{
     max-width: 100%;
   }
+  div#edit-container-program{
+    max-width: 100%;
+  }
   div.admin-profile{
     max-width: 100%
   }
@@ -1206,6 +1209,9 @@ div.ccc{
     max-width: 100%;
   }
   div#container-program{
+    max-width: 100%;
+  }
+  div#edit-container-program{
     max-width: 100%;
   }
   div.admin-profile{
@@ -1337,6 +1343,9 @@ div.ccc{
     max-width: 100%;
   }
   div#container-program{
+    max-width: 100%;
+  }
+  div#edit-container-program{
     max-width: 100%;
   }
   div.admin-profile{
@@ -1474,6 +1483,9 @@ div.ccc{
   div#container-program{
     max-width: 100%;
   }
+  div#edit-container-program{
+    max-width: 100%;
+  }
   img#profileDisplayAdmin{ 
     height: 1in; 
     width: 1in; 
@@ -1603,6 +1615,9 @@ div.ccc{
     max-width: 100%;
   }
   div#container-program{
+    max-width: 100%;
+  }
+  div#edit-container-program{
     max-width: 100%;
   }
   img#profileDisplayAdmin{ 
@@ -1745,6 +1760,9 @@ div.ccc{
   div#container-program{
     max-width: 100%;
   }
+  div#edit-container-program{
+    max-width: 100%;
+  }
   img#profileDisplayAdmin{ 
     height: 1in; 
     width: 1in; 
@@ -1788,6 +1806,9 @@ div.ccc{
   max-width: 50%;
 }
 #container-program{
+  max-width: 50%;
+}
+div#edit-container-program{
   max-width: 50%;
 }
 .img-placeholderAdmin {
