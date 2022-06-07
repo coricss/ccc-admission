@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 04, 2022 at 12:36 PM
+-- Generation Time: Jun 07, 2022 at 07:47 AM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 8.1.2
 
@@ -289,7 +289,13 @@ INSERT INTO `admin_logs` (`log_id`, `adminID`, `activity`, `date`, `time`) VALUE
 (218, 1, 'Your Account was Logged Out', '05/14/2022', '10:04 PM'),
 (219, 1, 'Your Account was Logged In', '05/14/2022', '10:18 PM'),
 (220, 1, 'Your Account was Logged In', '05/16/2022', '3:19 PM'),
-(221, 1, 'Your Account was Logged Out', '05/16/2022', '4:20 PM');
+(221, 1, 'Your Account was Logged Out', '05/16/2022', '4:20 PM'),
+(222, 1, 'Your Account was Logged In', '06/04/2022', '6:46 PM'),
+(223, 1, 'Your Account was Logged Out', '06/04/2022', '9:02 PM'),
+(224, 1, 'You Entered Invalid Password', '06/07/2022', '1:34 AM'),
+(225, 1, 'Your Account was Logged In', '06/07/2022', '1:35 AM'),
+(226, 1, 'You Registered New Student', '06/07/2022', '1:38 AM'),
+(227, 1, 'Your Account was Logged Out', '06/07/2022', '1:39 AM');
 
 -- --------------------------------------------------------
 
@@ -506,7 +512,8 @@ INSERT INTO `educ_bg` (`student_id`, `admit_type`, `elem_name`, `elem_address`, 
 (42, 'Freshman', 'Pamplona Elem School', 'Block 14 Lot 76 Majada In', '2022-03-04', '', 'MajadaInNHS', 'Block 14 Lot 76 Majada In', '2022-03-07', '', 'STI College Calamba', 'Block 14 Lot 76 Majada In', 'Technical-Vocational-Livelihood', 'Home Economics', '2022-03-09', '', '90', '90', '', '', '', '', '', '', '', '', '', '', ''),
 (43, 'Freshman', 'Pamplona Elem School', 'erter', '2022-03-08', '', 'MajadaInNHS', 'Block 14 Lot 76 Majada In', '2022-03-02', '', 'STI College Calamba', 'Block 14 Lot 76 Majada In', 'Technical-Vocational-Livelihood', 'ICT', '2022-03-03', '', '90', '90', '', '', '', '', '', '', '', '', '', '', ''),
 (44, 'Freshman', 'Pamplona Elem School', 'Block 14 Lot 76 Majada In', '2022-03-03', '', 'MajadaInNHS', 'Block 14 Lot 76 Majada In', '2022-03-03', '', 'STI College Calamba', 'Calamba, Laguna', 'Technical-Vocational-Livelihood', 'Agri-Fishery Arts', '2022-03-10', '', '90', '90', '', '', '', '', '', '', '', '', '', '', ''),
-(45, 'Freshman', 'Pamplona Elem School', 'Block 14 Lot 76 Majada In', '2022-04-04', '', 'MajadaInNHS', 'Block 14 Lot 76 Majada In', '2022-04-07', '', 'STI College Calamba', 'Block 14 Lot 76 Majada In', 'Technical-Vocational-Livelihood', 'ICT', '2022-04-06', '', '80', '89', '', '', '', '', '', '', '', '', '', '', '');
+(45, 'Freshman', 'Pamplona Elem School', 'Block 14 Lot 76 Majada In', '2022-04-04', '', 'MajadaInNHS', 'Block 14 Lot 76 Majada In', '2022-04-07', '', 'STI College Calamba', 'Block 14 Lot 76 Majada In', 'Technical-Vocational-Livelihood', 'ICT', '2022-04-06', '', '80', '89', '', '', '', '', '', '', '', '', '', '', ''),
+(46, 'Freshman', 'Pamplona Elem School', 'Block 14 Lot 76 Majada In', '2022-06-03', '', 'MajadaInNHS', 'Block 14 Lot 76 Majada In', '2022-06-02', '', 'STI College Calamba', 'Block 14 Lot 76 Majada In', 'Technical-Vocational-Livelihood', 'Home Economics', '2022-06-03', '', '90', '90', '', '', '', '', '', '', '', '', '', '', '');
 
 -- --------------------------------------------------------
 
@@ -663,7 +670,8 @@ INSERT INTO `fam_bg` (`student_id`, `father_name`, `father_citizenship`, `father
 (42, 'Nildo Guinanao', 'Filipino', 'Block 14 Lot 76 Majada In', '09625487878', 'guinanaorico@gmail.com', 'Private Employee', '', '', '', 'Elementary Graduate', 'Eden Guinanao', 'Filipino', 'Block 14 Lot 76 Majada In', '09124547878', 'guinanaorico@gmail.com', 'Private Employee', '', '', '', 'Elementary Graduate', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'P10, 481.00-P20, 962.00'),
 (43, 'asd', 'Filipino', 'Block 14 Lot 76 Majada In', '09625487878', 'guinanaorico@gmail.com', 'Private Employee', '', '', '', 'High School Graduate', 'Eden Guinanao', 'Filipino', 'Block 14 Lot 76 Majada In', '09124547878', 'guinanaorico@gmail.com', 'Government Employee', '', '', '', 'High School Undergraduate', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'Below P10, 481'),
 (44, 'Nildo Guinanao', 'Filipino', 'Block 14 Lot 76 Majada In', '09625487878', 'guinanaorico@gmail.com', 'Government Employee', '', '', '', 'Elementary Graduate', 'Eden Guinanao', 'Filipino', 'Block 14 Lot 76 Majada In', '09124547878', 'guinanaorico@gmail.com', 'Private Employee', '', '', '', 'Elementary Undergraduate', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'Below P10, 481'),
-(45, 'Nildo Guinanao', 'asdad', 'Block 14 Lot 76 Majada In', '09625487878', 'guinanaorico@gmail.com', 'Private Employee', '', '', '', 'Elementary Undergraduate', 'Eden Guinanao', 'Filipino', 'Block 14 Lot 76 Majada In', '09124547878', 'guinanaorico@gmail.com', 'Government Employee', '', '', '', 'Elementary Graduate', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'Below P10, 481');
+(45, 'Nildo Guinanao', 'asdad', 'Block 14 Lot 76 Majada In', '09625487878', 'guinanaorico@gmail.com', 'Private Employee', '', '', '', 'Elementary Undergraduate', 'Eden Guinanao', 'Filipino', 'Block 14 Lot 76 Majada In', '09124547878', 'guinanaorico@gmail.com', 'Government Employee', '', '', '', 'Elementary Graduate', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'Below P10, 481'),
+(46, 'asd', 'asdad', 'Block 14 Lot 76 Majada In', '09625487878', 'guinanaorico@gmail.com', 'Private Employee', '', '', '', 'High School Undergraduate', 'dsfsf', 'asdasdasd', 'Calamba, Laguna', '09124789565', 'estriborics@gmail.com', 'Self-Employed', '', '', '', 'College Undergraduate', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'P10, 481.00-P20, 962.00');
 
 -- --------------------------------------------------------
 
@@ -701,7 +709,8 @@ CREATE TABLE `notifications` (
 
 INSERT INTO `notifications` (`notif_id`, `adminID`, `admin_name`, `activity`, `date_time`) VALUES
 (115, 1, 'CCC Admin', 'inserted a new program', '2022-04-18 09:29:22 PM'),
-(116, 1, 'CCC Admin', 'inserted a new program', '2022-04-18 09:41:55 PM');
+(116, 1, 'CCC Admin', 'inserted a new program', '2022-04-18 09:41:55 PM'),
+(117, 1, 'CCC Admin', 'registered a student named anya forger', '2022-06-07 01:38:23 AM');
 
 -- --------------------------------------------------------
 
@@ -774,7 +783,8 @@ INSERT INTO `org_involvement` (`student_id`, `org1`, `pos1`, `nature1`, `yrs1`, 
 (42, '', '', '', '', '', '', '', '', '', '', '', ''),
 (43, '', '', '', '', '', '', '', '', '', '', '', ''),
 (44, '', '', '', '', '', '', '', '', '', '', '', ''),
-(45, '', '', '', '', '', '', '', '', '', '', '', '');
+(45, '', '', '', '', '', '', '', '', '', '', '', ''),
+(46, '', '', '', '', '', '', '', '', '', '', '', '');
 
 -- --------------------------------------------------------
 
@@ -839,7 +849,8 @@ INSERT INTO `personal_admiration` (`student_id`, `hobbies`, `reason_enroll`, `ch
 (42, 'qweq', 'qweqwe', 'qweqew', 'qweq'),
 (43, 'qweqwe', 'qweq', 'qweq', 'qeqeqw'),
 (44, 'rthrt', 'rtyrt', 'rtyrty', 'rtyr'),
-(45, 'dfhfg', 'fgu', 'ftu', 'rtuy');
+(45, 'dfhfg', 'fgu', 'ftu', 'rtuy'),
+(46, 'ghfg', 'fghrty', 'tyrty', 'ytryrt');
 
 -- --------------------------------------------------------
 
@@ -943,7 +954,8 @@ INSERT INTO `requirements` (`student_id`, `admit_type`, `g11card`, `g12card`, `t
 (42, 'Freshman', '2022-A-0037.pdf', '2022-A-0037.pdf', NULL, NULL, '2022-A-0037.pdf', '2022-A-0037.pdf', '2022-A-0037.pdf', '2022-A-0037.pdf', '2022-A-0037.jpg', '2022-A-0037.jpg', 'Recipient of Student Financial Assistance\n'),
 (43, 'Freshman', '2022-A-0038.pdf', '2022-A-0038.pdf', NULL, NULL, '2022-A-0038.pdf', '2022-A-0038.pdf', '2022-A-0038.pdf', '2022-A-0038.pdf', '', '2022-A-0004.png', ''),
 (44, 'Freshman', '2022-A-0039.pdf', '2022-A-0039.pdf', NULL, NULL, '2022-A-0039.pdf', '2022-A-0039.pdf', '2022-A-0039.pdf', '2022-A-0039.pdf', '2022-A-0039.jpg', '2022-A-0039.jpg', 'Grade 11 Card\nBirth Certificate\nCertificate of Residency\nVaccination Card\n'),
-(45, 'Freshman', '2022-A-0040.pdf', '2022-A-0040.pdf', NULL, NULL, '2022-A-0040.pdf', '2022-A-0040.pdf', '2022-A-0040.pdf', '2022-A-0040.pdf', '2022-A-0040.jpg', '2022-A-0040.jpg', '');
+(45, 'Freshman', '2022-A-0040.pdf', '2022-A-0040.pdf', NULL, NULL, '2022-A-0040.pdf', '2022-A-0040.pdf', '2022-A-0040.pdf', '2022-A-0040.pdf', '2022-A-0040.jpg', '2022-A-0040.jpg', ''),
+(46, 'Freshman', '2022-A-0041.pdf', '2022-A-0041.pdf', NULL, NULL, '2022-A-0041.pdf', '2022-A-0041.pdf', '2022-A-0041.pdf', '2022-A-0041.pdf', '2022-A-0041.jpg', '2022-A-0041.jpg', '');
 
 -- --------------------------------------------------------
 
@@ -1392,7 +1404,8 @@ INSERT INTO `student_info` (`student_id`, `application_no`, `picture`, `first_na
 (42, '2022-A-0037', 'default_photo.png', 'qweqwe', 'qweqwe', 'qweqwe', 'Sr.', 18, 'Quezon', '2004-03-09', 'Catholic\'dfg', 'Male', 'Single', '', '', '', '', '', 'Freshman', 'qweq@wd.dsf', '09319542169', 'BSCS', 'BEED', 'Yes', '2022-03-02', 'Block 14 Lot 76 Majada In', 'Camaligan', 'Calamba', '4027', 'Block 14 Lot 76 Majada In', 'Camaligan', 'Calamba', '4027', 'Recipient of Student Financial Assistance', '', 'Pending'),
 (43, '2022-A-0038', 'default_photo.png', 'rter', 'ertgert', 'ertert', '', 18, 'Quezon', '2004-03-03', 'sd', 'Male', 'Single', '', '', '', '', '', 'Freshman', 'guinanaorico@gmail.comerte', '09319542169', 'BSCS', 'BSA', 'Yes', '2022-03-11', 'Block 14 Lot 76 Majada In', 'Camaligan', 'Calamba', '4027', 'Block 14 Lot 76 Majada In', 'Camaligan', 'Calamba', '4027', 'Person with Disability', '', 'Pending'),
 (44, '2022-A-0039', 'default_photo.png', 'qeq', 'qweq', 'qweqw', '', 18, 'qeqw', '2004-03-09', 'sd', 'Male', 'Single', '', '', '', '', '', 'Freshman', 'estriborics@gmail.coeqw', '09251486985', 'BSEE', 'BSAIS', 'Yes', '2022-03-10', 'Calamba, Laguna', 'Canlubang', 'Calamba', '4027', 'Calamba, Laguna', 'Canlubang', 'Calamba', '4027', 'Working Student', '', 'Pending'),
-(45, '2022-A-0040', '1649496102_placeholder.png', 'zxc', 'zcx', 'zc', '', 18, 'Quezon', '2004-04-07', 'Catholic', 'Male', 'Single', '', '', '', '', '', 'Freshman', 'admin@gmail.com', '09319542169', 'BSA', 'BSA', 'Yes', '2021-06-17', 'Block 14 Lot 76 Majada In', 'Banadero', 'Calamba', '4027', 'Block 14 Lot 76 Majada In', 'Banadero', 'Calamba', '4027', 'Recipient of 4Ps', 'Yes', 'Verified');
+(45, '2022-A-0040', '1649496102_placeholder.png', 'zxc', 'zcx', 'zc', '', 18, 'Quezon', '2004-04-07', 'Catholic', 'Male', 'Single', '', '', '', '', '', 'Freshman', 'admin@gmail.com', '09319542169', 'BSA', 'BSA', 'Yes', '2021-06-17', 'Block 14 Lot 76 Majada In', 'Banadero', 'Calamba', '4027', 'Block 14 Lot 76 Majada In', 'Banadero', 'Calamba', '4027', 'Recipient of 4Ps', 'Yes', 'Verified'),
+(46, '2022-A-0041', '1654537103_10c9c02224ae9c08ba781bae2a856675.jpg', 'anya', 'briar', 'forger', '', 18, 'FGHNGFDGFDGFDG', '2004-06-05', 'Catholic\'dfg', 'Female', 'Single', '', '', '', '', '', 'Freshman', 'estriborics@gmail.com', '09251486985', 'BSIT', 'BSIT', 'Yes', '2022-06-01', 'Calamba, Laguna', 'Canlubang', 'Calamba', '4027', 'Calamba, Laguna', 'Canlubang', 'Calamba', '4027', 'Recipient of 4Ps', '', 'Pending');
 
 --
 -- Indexes for dumped tables
@@ -1514,7 +1527,7 @@ ALTER TABLE `admin_info`
 -- AUTO_INCREMENT for table `admin_logs`
 --
 ALTER TABLE `admin_logs`
-  MODIFY `log_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=222;
+  MODIFY `log_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=228;
 
 --
 -- AUTO_INCREMENT for table `admission_status`
@@ -1538,7 +1551,7 @@ ALTER TABLE `answer_key`
 -- AUTO_INCREMENT for table `educ_bg`
 --
 ALTER TABLE `educ_bg`
-  MODIFY `student_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
+  MODIFY `student_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
 
 --
 -- AUTO_INCREMENT for table `exam_results`
@@ -1550,7 +1563,7 @@ ALTER TABLE `exam_results`
 -- AUTO_INCREMENT for table `fam_bg`
 --
 ALTER TABLE `fam_bg`
-  MODIFY `student_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
+  MODIFY `student_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
 
 --
 -- AUTO_INCREMENT for table `feedbacks`
@@ -1562,19 +1575,19 @@ ALTER TABLE `feedbacks`
 -- AUTO_INCREMENT for table `notifications`
 --
 ALTER TABLE `notifications`
-  MODIFY `notif_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=117;
+  MODIFY `notif_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=118;
 
 --
 -- AUTO_INCREMENT for table `org_involvement`
 --
 ALTER TABLE `org_involvement`
-  MODIFY `student_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
+  MODIFY `student_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
 
 --
 -- AUTO_INCREMENT for table `personal_admiration`
 --
 ALTER TABLE `personal_admiration`
-  MODIFY `student_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
+  MODIFY `student_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
 
 --
 -- AUTO_INCREMENT for table `programs`
@@ -1586,7 +1599,7 @@ ALTER TABLE `programs`
 -- AUTO_INCREMENT for table `requirements`
 --
 ALTER TABLE `requirements`
-  MODIFY `student_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
+  MODIFY `student_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
 
 --
 -- AUTO_INCREMENT for table `student_answers`
@@ -1604,7 +1617,7 @@ ALTER TABLE `student_exam_log`
 -- AUTO_INCREMENT for table `student_info`
 --
 ALTER TABLE `student_info`
-  MODIFY `student_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
+  MODIFY `student_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
